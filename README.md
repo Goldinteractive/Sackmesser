@@ -52,7 +52,7 @@ and it will add the new component into the folder set inside bower.json ( by def
 
 ### v0.1.0
   * Sackmesser open sourced!
-  * removed: all the jQuery.GI.* plugins will pulled from their own github repos
+  * removed: all the jQuery.GI.* plugins, they will pulled from their own github repos
 
 ### v0.0.9
   * added: 'jQuery.OnePageScroll' plugin
