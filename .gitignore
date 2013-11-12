@@ -1,15 +1,48 @@
-lib-cov
-*.seed
+# Numerous always-ignore extensions
+*.diff
+*.err
+*.orig
 *.log
-*.csv
-*.dat
-*.out
-*.pid
-*.gz
+*.rej
+*.swo
+*.swp
+*.vi
+*~
+*.sass-cache
 
-pids
-logs
-results
+# OS or Editor folders
+.DS_Store
+Thumbs.db
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+nbproject
 
-npm-debug.log
+# Dreamweaver added files
+_notes
+dwsync.xml
+
+# Komodo
+*.komodoproject
+.komodotools
+
+# Folders to ignore
+.hg
+.svn
+.CVS
+intermediate
+publish
+.idea
 node_modules
+.sass-cache
+
+# Ignore all the vendor because they will be downloaded using bower
+assets/vendor
+
+# ignore the distribution folder
+dist
+
+# the style.css must be generated using 'compass compile'
+assets/css/style.css

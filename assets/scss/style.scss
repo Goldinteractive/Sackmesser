@@ -1,0 +1,45 @@
+
+/*!
+ * Bootstrap v0.1.0
+ *
+ * Copyright 2013 Gold Interactive
+ * 
+ * 
+ * Designed and mantained by Gold Interactive
+ * 
+ */
+
+// CSS Reset
+@import "compass";
+@import "include/animation";
+@import "include/reset";
+@import "include/mixins";
+
+// Core variables and mixins
+@import "include/variables"; // Modify this for custom colors, font-sizes, etc
+
+// Font include
+@import "include/fonts";
+
+// Grid system and page structure
+@import "include/grid"; 
+
+// Base CSS
+
+// Components: common
+@import "include/common";
+@import "include/icons";
+
+// Components: Buttons
+@import "include/buttons";
+
+// Components: Nav
+@import "include/header";
+@import "include/nav";
+@import "include/footer";
+
+
+// Utility classes
+@import "include/responsive-utilities"; 
+@import "include/utilities"; // It must be the last to override the other classes It is when necessary
+

@@ -1,0 +1,121 @@
+/////////////////
+// Semantic.gs // for SCSS: http://sass-lang.com/
+/////////////////
+
+// Defaults which you can freely override
+$column-width: 23px;
+$gutter-width: 36px;
+$columns: 16;
+$grid-class: g !default;
+
+// Utility function — you should never need to modify this
+@function gridsystem-width($columns:$columns) {
+	@return ($column-width * $columns) + ($gutter-width * $columns);
+}
+
+// Set $total-width to 100% for a fluid layout
+$total-width: gridsystem-width($columns);
+
+// Uncomment these two lines and the star-hack width/margin lines below to enable sub-pixel fix for IE6 & 7. See http://tylertate.com/blog/2012/01/05/subpixel-rounding.html
+// $min-width: 999999;
+// $correction: 0.5 / $min-width * 100;
+
+// The micro clearfix http://nicolasgallagher.com/micro-clearfix-hack/
+@mixin clearfix() {
+	*zoom:1;
+
+	&:before,
+	&:after {
+	    content:"";
+	    display:table;
+	}
+	&:after {
+	    clear:both;
+	}
+}
+
+
+//////////
+// GRID //
+//////////
+
+
+@mixin row($columns:$columns) {
+	display: block;
+	float:left;
+	width: $total-width*(($gutter-width + gridsystem-width($columns))/gridsystem-width($columns));
+	margin: 0 $total-width*((($gutter-width*.5)/gridsystem-width($columns))*-1);
+	// *width: $total-width*(($gutter-width + gridsystem-width($columns))/gridsystem-width($columns))-$correction;
+	// *margin: 0 $total-width*((($gutter-width*.5)/gridsystem-width($columns))*-1)-$correction;
+	@include clearfix();
+}
+@mixin column($x,$columns:$columns) {
+	float:left;
+	width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns));
+	margin: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns));
+	// *width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns))-$correction;
+	// *margin: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns))-$correction;
+}
+@mixin inner($x,$columns:$columns) {
+	width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns)) - $total-width*(($gutter-width*.5)/gridsystem-width($columns));
+}
+@mixin push($offset:1) {
+	margin-left: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns));
+}
+@mixin pull($offset:1) {
+	margin-right: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns));
+}
+
+/**
+ * Building the grid classes
+ */
+
+@for $i from 1 through $columns {
+	.#{$grid-class}-#{$i} {
+		@include column($i);
+	}
+	.#{$grid-class}-#{$i}-inner {
+		@include inner($i);
+	}
+
+	.push-#{$i} {
+		@include push($i);
+	}
+	.pull-#{$i} {
+		@include pull($i);
+	}
+}
+
+[class*="g-"],
+[class^="g-"] {
+	float:left;
+	display:inline;
+	@include box-sizing(border-box);
+}
+
+.row {
+	width:944px;
+	padding:0 18px;
+	float:left;
+}
+.full-width {
+	width:100%;
+	@include box-sizing(border-box);
+}
+.noMarginLR {
+	margin-left:0;
+	margin-right:0;
+}
+
+.noMarginL {
+	margin-left:0;
+}
+
+.noMarginR {
+	margin-right:0;
+}
+.grid-test {
+	background:#6fffd2;
+	margin-top:5px;
+	height:300px;
+}

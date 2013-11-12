@@ -1,0 +1,118 @@
+/**
+ *
+ * This contains the mobile toggle switch to show or hide the mobile navigation
+ *
+ *
+ *  <div class="GIMobileToggle">
+ *		<i class="GIMobileToggle_text">
+ *			Menu
+ *		</i>
+ *		<div class="GIMobileToggle_graphic">
+ *			<span></span>
+ *			<span></span>
+ *			<span></span>
+ *		</div>
+ *	</div>
+ * 
+ */
+.GIMobileToggle {
+	display:none; // this is hidden by default
+	position:absolute;
+	cursor:pointer;
+	top:30px;
+	right:10px;
+	@include size(30px,30px);
+	@include respond-to(mobile) { 
+		display:block;
+	}
+	/**
+	 *
+	 * If you need text put it in here
+	 * 
+	 */
+	.GIMobileToggle_text {
+		margin: 0 10px 0 0; 
+	}
+	/**
+	 *
+	 * All the icons could be used here
+	 * 
+	 */
+	.GIMobileToggle_graphic {
+		display:inline-block;
+		vertical-align:middle;
+		span {
+			display:block;
+			background:$grayDark;
+			margin:3px 0;
+			@include size(3px,18px);
+		}
+	}
+}
+/**
+ *
+ * Append this class to the nav and it should be enough
+ *
+ *
+ *
+ *  <nav class="GIMobileNav">
+ *		<ul>
+ *			<li><a href="#">Menu item</a></li>
+ *			<li>
+ *				Menu item 2
+ *				<ul>
+ *					<li><a href="#">Submenu item</a></li>
+ *					<li><a href="#">Submenu item 2</a></li>
+ *				</ul>
+ *			</li>
+ *			[ .... ]
+ *		</ul>
+ *	</div>
+ *
+ *
+ * 
+ * 
+ */
+// this style will be applied only to the mobile navigation
+@include respond-to(mobile) { 
+	.GIMobileNav {
+		width:100%;
+		max-height:0;
+		overflow:hidden;
+		@include transition(max-height 0.5s ease-in-out);
+		&.active, & > ul > li ul.active {
+   			max-height:1000px;
+		}
+		& > ul {
+			& > li {
+				ul {
+					max-height:0;
+					position:relative;
+					overflow:hidden;
+					@include transition(all 0.5s ease-in-out);
+				}
+			}
+		}
+		ul {
+			margin:0;
+			padding:0;
+			list-style:none;
+			width:100%;
+			li {
+				width:100%;
+				padding:2% 6%;
+				display: inline-block;
+				border-bottom: 1px solid #6f6f6f;
+				&:last-child {
+					border: none;
+				}
+				a {
+					width: 100%;
+					color:white;
+					text-decoration:none;
+					display: block;
+				}
+			}
+		}
+	}
+}

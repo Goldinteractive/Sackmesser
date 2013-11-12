@@ -1,0 +1,29 @@
+{
+  "name": "Sackmesser",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Toolset to build and mantain any kind of website or web app",
+  "main": "Gruntfile.js",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-grunticon": "~0.3.1",
+    "grunt-svgmin": "~0.2.0",
+    "grunt-contrib-watch": "~0.4.3",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-compass": "~0.2.0",
+    "grunt-usemin": "~0.1.12",
+    "load-grunt-tasks": "~0.1.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-ftpscript": "~0.1.7",
+    "grunt-favicons": "~0.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Gold Interactive",
+  "license": "BSD",
+  "gitHead": "7c14ab72aafcc321b763e534c0e7c4235d224037",
+  "readmeFilename": "README.md"
+}

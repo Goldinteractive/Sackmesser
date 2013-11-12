@@ -1,0 +1,10 @@
+{
+  "sitehost.staging": {
+    "username": "username",
+    "password": "password"
+  },
+  "sitehost.production": {
+    "username": "username",
+    "password": "password"
+  }
+}
