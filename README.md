@@ -3,15 +3,17 @@ Before you start dealing with this package please make sure to have the latest [
 
 ## Before installing the frontend dependencies 
 
-Please select the right setup for your project from the ``config`` folder. 
-If for example your project will use backbone and requirejs, just replace the files in the root with the config files contained into ``config/backbone-requirejs/``. 
+Please select the right setup for your project from the ``config`` folder.
+
+If for example your project will use backbone and requirejs, just replace the files in the root with the config files contained into ``config/backbone-requirejs/``.
+ 
 The default files contained into the root folder can be useful just for a normal html project without too much ceremony.
 
-__Attention__: the ``config`` folders could contain also other ``assets``, in that case just replace the files needed for the new project setup for example:
+__Attention__: the ``config`` subfolders could contain also other kind of assets, in that case just replace the files needed for the new project setup for example:
 
 ``config/backbone-requirejs/assets/js/`` -> ``assets/js`` 
 
-Please once you have replaced the config files please delete the ``config`` folder
+Please once you have replaced the config files delete the ``config`` folder
 
 ## Install all the dependencies
 Just run the `$ sudo make` command into the root of this project to install all the dependencies.
