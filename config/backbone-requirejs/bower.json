@@ -1,0 +1,18 @@
+{
+  "name": "Sackmesser",
+  "version": "0.0.9",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "assets/vendor"
+  ],
+  "devDependencies": {},
+  "dependencies": {
+    "lodash": "~2.3.0",
+    "backbone": "~1.1.0",
+    "jquery": "~2.0.3",
+    "layoutmanager": "~0.9.4",
+    "requirejs": "~2.1.9",
+    "handlebars": "~1.1.2"
+  }
+}

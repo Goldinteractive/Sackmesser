@@ -1,5 +1,15 @@
-# Sackmesser v0.1.0 Stable
+# Sackmesser v0.1.1 Stable
 Before you start dealing with this package please make sure to have the latest [nodejs](http://nodejs.org/) version installed on your machine
+
+## Before install the frontend dependencies 
+
+Please select the right setup for your project from the config folder. If for example your project will use backbone and requirejs, just replace the files in the root with the config files contained into ``config/backbone-requirejs/``. The config files contained by default into the root are useful just for a normal html project without ceremony
+
+__Attention__: the ``config`` folders could contain also other ``assets``, in that case just replace the files needed for the new project setup: for example:
+
+``config/backbone-requirejs/assets/js/`` -> ``assets/js`` 
+
+Please once you have replaced the config files please delete the ``config`` folder
 
 ## Install all the dependencies
 Just run the `$ sudo make` command into the root of this project to install all the dependencies.
@@ -49,6 +59,9 @@ and it will add the new component into the folder set inside bower.json ( by def
  * Please download the js libraries whether it is possible from sites like [cdnjs](http://cdnjs.com/)
 
 ## Changelog
+
+### v0.1.1
+  * added: ``config`` folder to use several project setups
 
 ### v0.1.0
   * Sackmesser open sourced!

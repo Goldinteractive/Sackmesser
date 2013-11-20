@@ -1,0 +1,21 @@
+{
+  "main": "Gruntfile.js",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-grunticon": "~0.6.14",
+    "grunt-svgmin": "~0.2.1",
+    "grunt-contrib-compass": "~0.6.0",
+    "grunt-favicons": "~0.3.2",
+    "load-grunt-tasks": "~0.2.0",
+    "grunt-ftpscript": "~0.1.7",
+    "grunt-contrib-handlebars": "~0.6.0",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-contrib-requirejs": "~0.4.1"
+  },
+  "scripts": {
+    "test": "grunt"
+  },
+  "author": "Gold Interactive",
+  "license": "no license"
+}
