@@ -43,6 +43,7 @@ assets/vendor
 
 # ignore the distribution folder
 dist
+.tmp
 
 # the style.css must be generated using 'compass compile'
 assets/css/style.css
