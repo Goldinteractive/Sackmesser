@@ -49,11 +49,7 @@ module.exports = function(grunt) {
         handlebars: {
             compile: {
                 options: {
-                    namespace: 'JST',
-                    processName: function(filePath) { // input:  templates/_header.hbs
-                        var pieces = filePath.split('assets/js/templates/src/');
-                        return pieces[pieces.length - 1]; // output: _header.hbs
-                    }
+                    namespace: 'JST'
                 },
                 files: {
                     'assets/js/tmp/templates.js': [
