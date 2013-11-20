@@ -3,7 +3,9 @@ Before you start dealing with this package please make sure to have the latest [
 
 ## Before installing the frontend dependencies 
 
-Please select the right setup for your project from the config folder. If for example your project will use backbone and requirejs, just replace the files in the root with the config files contained into ``config/backbone-requirejs/``. The config files contained by default into the root are useful just for a normal html project without ceremony
+Please select the right setup for your project from the ``config`` folder. 
+If for example your project will use backbone and requirejs, just replace the files in the root with the config files contained into ``config/backbone-requirejs/``. 
+The default files contained into the root folder can be useful just for a normal html project without too much ceremony.
 
 __Attention__: the ``config`` folders could contain also other ``assets``, in that case just replace the files needed for the new project setup: for example:
 
