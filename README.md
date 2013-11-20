@@ -1,7 +1,7 @@
 # Sackmesser v0.1.1 Stable
 Before you start dealing with this package please make sure to have the latest [nodejs](http://nodejs.org/) version installed on your machine
 
-## Before install the frontend dependencies 
+## Before installing the frontend dependencies 
 
 Please select the right setup for your project from the config folder. If for example your project will use backbone and requirejs, just replace the files in the root with the config files contained into ``config/backbone-requirejs/``. The config files contained by default into the root are useful just for a normal html project without ceremony
 
