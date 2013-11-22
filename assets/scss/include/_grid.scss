@@ -3,9 +3,9 @@
 /////////////////
 
 // Defaults which you can freely override
-$column-width: 23px;
-$gutter-width: 36px;
-$columns: 16;
+$column-width: 10%;
+$gutter-width: 2%;
+$columns: 10;
 $grid-class: g !default;
 
 // Utility function — you should never need to modify this
@@ -94,9 +94,7 @@ $total-width: gridsystem-width($columns);
 }
 
 .row {
-	width:944px;
-	padding:0 18px;
-	float:left;
+	@include row();
 }
 .full-width {
 	width:100%;
@@ -113,9 +111,4 @@ $total-width: gridsystem-width($columns);
 
 .noMarginR {
 	margin-right:0;
-}
-.grid-test {
-	background:#6fffd2;
-	margin-top:5px;
-	height:300px;
 }
