@@ -1,4 +1,4 @@
-# Sackmesser v0.1.1 Stable
+# Sackmesser v0.1.2 Stable
 Before you start dealing with this package please make sure to have the latest [nodejs](http://nodejs.org/) version installed on your machine
 
 ## Before installing the frontend dependencies 
@@ -63,6 +63,10 @@ and it will add the new component into the folder set inside bower.json ( by def
  * Please download the js libraries whether it is possible from sites like [cdnjs](http://cdnjs.com/)
 
 ## Changelog
+
+
+### v0.1.2
+  * added: ``config/latavel4`` folder build files
 
 ### v0.1.1
   * added: ``config`` folder to use several project setups
