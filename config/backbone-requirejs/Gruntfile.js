@@ -91,34 +91,6 @@ module.exports = function(grunt) {
                 dest: 'favicons/'
             }
         },
-        ftpscript: { // see https://npmjs.org/package/grunt-ftpscript, also: http://www.tech-step.net/?p=515
-            staging: {
-                // remember to setup correctly the .ftppass file
-                options: {
-                    host: 'sitehost.staging',
-                    passive: false,
-                    type: 'binary'
-                },
-                files: [{
-                    expand: true,
-                    cwd: './',
-                    src: ['dist/**']
-                }]
-            },
-            production: {
-                // remember to setup correctly the .ftppass file
-                options: {
-                    host: 'sitehost.production',
-                    passive: false,
-                    type: 'binary'
-                },
-                files: [{
-                    expand: true,
-                    cwd: './',
-                    src: ['dist/**']
-                }]
-            }
-        },
         // build the scss files reading the compass config
         compass: {
             dist: {
