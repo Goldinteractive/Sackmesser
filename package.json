@@ -15,7 +15,6 @@
     "grunt-usemin": "~2.0.2",
     "load-grunt-tasks": "~0.2.0",
     "grunt-contrib-copy": "~0.4.1",
-    "grunt-ftpscript": "~0.1.7",
     "grunt-favicons": "~0.3.2"
   },
   "repository": {
