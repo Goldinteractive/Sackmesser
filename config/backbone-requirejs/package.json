@@ -8,7 +8,6 @@
     "grunt-contrib-compass": "~0.6.0",
     "grunt-favicons": "~0.3.2",
     "load-grunt-tasks": "~0.2.0",
-    "grunt-ftpscript": "~0.1.7",
     "grunt-contrib-handlebars": "~0.6.0",
     "grunt-contrib-jshint": "~0.7.2",
     "grunt-contrib-requirejs": "~0.4.1"
