@@ -10,7 +10,7 @@ module.exports = function(grunt) {
                 ],
                 // parse the index.html to get all the js files to compile
                 // and then it puts the generated file into the dist folder
-                tasks: ['useminPrepare', 'concat', 'uglify']
+                tasks: ['jshint']
             },
             css: {
                 // watch all the scss files

@@ -64,6 +64,11 @@ and it will add the new component into the folder set inside bower.json ( by def
 
 ## Changelog
 
+### v0.1.3
+  * feature: added jshint to all the build packages hoping that all the js files will never be a mess 
+  * added: ``config/backbone-requirejs`` folder build files
+  * added: ``config/redaxo-backbone-requirejs`` folder build files
+  * added: ``config/redaxo`` folder build files
 
 ### v0.1.2
   * added: ``config/latavel4`` folder build files

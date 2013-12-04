@@ -1,7 +1,7 @@
 {
   "name": "Sackmesser",
   "private": true,
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Toolset to build and mantain any kind of website or web app",
   "main": "Gruntfile.js",
   "devDependencies": {
