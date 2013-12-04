@@ -1,4 +1,4 @@
-# Sackmesser v0.1.2 Stable
+# Sackmesser Stable
 Before you start dealing with this package please make sure to have the latest [nodejs](http://nodejs.org/) version installed on your machine
 
 ## Before installing the frontend dependencies 
