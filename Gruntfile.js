@@ -20,6 +20,11 @@ module.exports = function(grunt) {
                 tasks: ['compass']
             }
         },
+        clean: {
+            build: {
+                src: ['dist']
+            }
+        },
         // copy all the useful files from the root to the dist folder
         copy: {
             main: {

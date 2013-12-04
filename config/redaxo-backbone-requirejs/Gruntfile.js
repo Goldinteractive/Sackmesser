@@ -3,6 +3,9 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         watch: {
+            options: {
+                livereload: true
+            },
             js: {
                 // watch all the changes in these files
                 files: [
@@ -13,19 +16,63 @@ module.exports = function(grunt) {
                 tasks: ['jshint']
             },
             tpl: {
-                files: ['assets/js/**/**/*.hbs'],
-                task: ['handlebars']
+                files: ['assets/js/**/**/**/*.hbs'],
+                tasks: ['handlebars']
             },
             css: {
                 // watch all the scss files
                 files: [
                     'assets/scss/**/*.scss',
                 ],
-                tasks: ['compass']
+                tasks: ['compass'],
+            }
+        },
+        clean: {
+            build: {
+                src: ['dist']
+            }
+        },
+        processhtml: {
+            build: {
+                files: {
+                    'dist/templates/include/end.inc.php': ['templates/include/end.inc.php']
+                }
+            }
+        },
+        copy: {
+            build: {
+                files: [
+                    // includes files within path
+                    {
+                        expand: true,
+                        src: [
+                            '*.!(json|rb|md|js)',
+                            // obligatory folders
+                            'assets/**',
+                            'redaxo/**',
+                            'templates/**',
+                            // optional folders and files
+                            'api/**',
+                            'Marcbriefer/**',
+                            // folders to exclude
+                            '!redaxo/include/master.inc.php',
+                            '!Marcbriefer/bootstrap.php', // do not replace this file
+                            '!assets/js/**',
+                            '!assets/scss/**',
+                            '!assets/vendor/**'
+                        ],
+                        dest: 'dist/',
+                        rename: function(dest, src) {
+                            if (src === 'redaxo/include/master.inc.prod.php')
+                                src = 'redaxo/include/master.inc.php';
+                            return dest + src;
+                        }
+                    }
+                ]
             }
         },
         jshint: {
-            all: ['Gruntfile.js', 'assets/js/**/*.js']
+            all: ['Gruntfile.js', 'assets/js/**/*.js', '!assets/js/tmp/templates.js']
         },
         // minifying all the svgs
         svgmin: { // Task
@@ -46,30 +93,6 @@ module.exports = function(grunt) {
                 }]
             }
         },
-        clean: {
-            build: {
-                src: ['dist']
-            }
-        },
-        // copy all the useful files from the root to the dist folder
-        copy: {
-            main: {
-                files: [{
-                    // take the only the folders needed on the production server from the assets folde
-                    expand: true,
-                    cwd: 'assets',
-                    src: ['css/**', 'img/**'],
-                    dest: 'dist/assets'
-                }, {
-                    // take only the root files needed on the production server from the root
-                    expand: true,
-                    // exclude settings and config files
-                    src: ['*.!(json|rb|md|js)'],
-                    dest: 'dist',
-                    filter: 'isFile'
-                }],
-            }
-        },
         handlebars: {
             compile: {
                 options: {
@@ -82,23 +105,22 @@ module.exports = function(grunt) {
                 },
             }
         },
-        processhtml: {
+        requirejs: {
             build: {
-                files: {
-                    'dist/index.html': ['index.html']
+                options: {
+                    baseUrl: 'assets/js',
+                    out: 'dist/assets/js/build.min.js',
+                    mainConfigFile: 'assets/js/config.js',
+                    name: '../vendor/almond/almond',
+                    optimize: 'uglify2',
+                    include: ['main'],
+                    insertRequire: ['main'],
+                    findNestedDependencies: true,
+                    preserveLicenseComments: false,
+                    wrap: true
                 }
             }
-        },
-        requirejs: {
-            options: {
-                baseUrl: 'assets/js',
-                out: 'min/build.min.js',
-                mainConfigFile: 'assets/js/config.js',
-                name: '../vendor/almond/almond',
-                include: ['main'],
-                insertRequire: ['main'],
-                wrap: true
-            }
+
         },
         // create the css from the svg files
         grunticon: {
@@ -135,7 +157,7 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     // Default task.
-    grunt.registerTask('default', ['clean','svgmin', 'grunticon', 'compass', 'copy','requirejs','processhtml']);
+    grunt.registerTask('default', ['clean', 'svgmin', 'handlebars', 'grunticon', 'compass', 'copy', 'requirejs', 'processhtml']);
     // Build the svg icons
     grunt.registerTask('build-icons', ['svgmin', 'grunticon']);
 
