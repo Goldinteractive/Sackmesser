@@ -135,7 +135,7 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     // Default task.
-    grunt.registerTask('default', ['clean','svgmin', 'grunticon', 'compass', 'copy','requirejs','processhtml']);
+    grunt.registerTask('default', ['jshint','clean','svgmin', 'grunticon', 'compass', 'copy','requirejs','processhtml']);
     // Build the svg icons
     grunt.registerTask('build-icons', ['svgmin', 'grunticon']);
 

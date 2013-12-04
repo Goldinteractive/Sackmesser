@@ -30,6 +30,9 @@ module.exports = function(grunt) {
         clean: {
             build: {
                 src: ['dist']
+            },
+            tmp: {
+                src:['.tmp']
             }
         },
         processhtml: {
@@ -38,6 +41,38 @@ module.exports = function(grunt) {
                     'dist/templates/include/end.inc.php': ['templates/include/end.inc.php']
                 }
             }
+        },
+        // parse the file (or the files containing the js files to build)
+        // remember to wrap all the js files to build inside an html comment
+        // 
+        // <!-- build:js assets/js/main.min.js -->
+        // <script src="js/app.js"></script>
+        // <script src="js/controllers/thing-controller.js"></script>
+        // <script src="js/models/thing-model.js"></script>
+        // <script src="js/views/thing-view.js"></script>
+        // <!-- endbuild -->
+        // 
+        //  THIS will become ...
+        //  
+        //                  |
+        //                  |
+        //                  |
+        //                  |
+        //                  |
+        //                  V
+        //                  
+        // <script src="assets/js/main.min.js"></script>
+        // 
+        useminPrepare: {
+            html: 'templates/include/end.inc.php',
+            options: {
+                dest: 'dist'
+            }
+        },
+        // replace the html build comments with the right build js script
+        // see above..
+        usemin: {
+            html: ['dist/templates/include/end.inc.php']
         },
         copy: {
             build: {
@@ -52,8 +87,11 @@ module.exports = function(grunt) {
                             'redaxo/**',
                             'templates/**',
                             // optional folders and files
+                            'api/**',
+                            'Marcbriefer/**',
                             // folders to exclude
                             '!redaxo/include/master.inc.php',
+                            '!Marcbriefer/bootstrap.php', // do not replace this file
                             '!assets/js/**',
                             '!assets/scss/**',
                             '!assets/vendor/**'
@@ -154,7 +192,7 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     // Default task.
-    grunt.registerTask('default', ['clean', 'svgmin', 'handlebars', 'grunticon', 'compass', 'copy', 'requirejs', 'processhtml']);
+    grunt.registerTask('default', ['jshint','clean:build', 'svgmin','grunticon', 'compass', 'copy',  'useminPrepare', 'concat', 'uglify','usemin','clean:tmp']);
     // Build the svg icons
     grunt.registerTask('build-icons', ['svgmin', 'grunticon']);
 

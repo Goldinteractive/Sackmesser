@@ -20,9 +20,15 @@ module.exports = function(grunt) {
                 tasks: ['compass']
             }
         },
+        jshint: {
+            all: ['Gruntfile.js', 'assets/js/**/*.js']
+        },
         clean: {
             build: {
                 src: ['dist']
+            },
+            tmp: {
+                src: ['.tmp']
             }
         },
         // copy all the useful files from the root to the dist folder
@@ -130,7 +136,7 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     // Default task.
-    grunt.registerTask('default', ['svgmin', 'grunticon', 'copy', 'useminPrepare', 'concat', 'uglify', 'compass', 'usemin']);
+    grunt.registerTask('default', ['jshint','clean:build','svgmin', 'grunticon', 'copy', 'useminPrepare', 'concat', 'uglify', 'compass', 'usemin','clean:tmp']);
     // Build the svg icons
     grunt.registerTask('build-icons', ['svgmin', 'grunticon']);
 
