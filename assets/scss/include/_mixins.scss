@@ -48,6 +48,9 @@
   @else if $media == desktop {
     @media only screen and (min-width: $break-large + 1) { @content; }
   }
+  @else if $media == retina {
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi) { @content; }
+  }
 }
 
 
