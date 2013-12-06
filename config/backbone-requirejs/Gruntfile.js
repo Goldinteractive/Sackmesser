@@ -46,6 +46,30 @@ module.exports = function(grunt) {
                 }]
             }
         },
+        clean: {
+            build: {
+                src: ['dist']
+            }
+        },
+        // copy all the useful files from the root to the dist folder
+        copy: {
+            main: {
+                files: [{
+                    // take the only the folders needed on the production server from the assets folde
+                    expand: true,
+                    cwd: 'assets',
+                    src: ['css/**', 'img/**'],
+                    dest: 'dist/assets'
+                }, {
+                    // take only the root files needed on the production server from the root
+                    expand: true,
+                    // exclude settings and config files
+                    src: ['*.!(json|rb|md|js)'],
+                    dest: 'dist',
+                    filter: 'isFile'
+                }],
+            }
+        },
         handlebars: {
             compile: {
                 options: {
@@ -56,6 +80,13 @@ module.exports = function(grunt) {
                         'assets/js/**/**/*.hbs'
                     ],
                 },
+            }
+        },
+        processhtml: {
+            build: {
+                files: {
+                    'dist/index.html': ['index.html']
+                }
             }
         },
         requirejs: {
@@ -91,34 +122,6 @@ module.exports = function(grunt) {
                 dest: 'favicons/'
             }
         },
-        ftpscript: { // see https://npmjs.org/package/grunt-ftpscript, also: http://www.tech-step.net/?p=515
-            staging: {
-                // remember to setup correctly the .ftppass file
-                options: {
-                    host: 'sitehost.staging',
-                    passive: false,
-                    type: 'binary'
-                },
-                files: [{
-                    expand: true,
-                    cwd: './',
-                    src: ['dist/**']
-                }]
-            },
-            production: {
-                // remember to setup correctly the .ftppass file
-                options: {
-                    host: 'sitehost.production',
-                    passive: false,
-                    type: 'binary'
-                },
-                files: [{
-                    expand: true,
-                    cwd: './',
-                    src: ['dist/**']
-                }]
-            }
-        },
         // build the scss files reading the compass config
         compass: {
             dist: {
@@ -132,7 +135,7 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     // Default task.
-    grunt.registerTask('default', ['svgmin', 'grunticon', 'compass']);
+    grunt.registerTask('default', ['jshint','clean','svgmin', 'grunticon', 'compass', 'copy','requirejs','processhtml']);
     // Build the svg icons
     grunt.registerTask('build-icons', ['svgmin', 'grunticon']);
 

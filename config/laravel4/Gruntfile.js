@@ -3,10 +3,13 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         watch: {
+            options: {
+                livereload: true
+            },
             js: {
                 // watch all the changes in these files
                 files: [
-                    'assets/js/**/*.js'
+                    'public/js/**/*.js'
                 ],
                 // parse the index.html to get all the js files to compile
                 // and then it puts the generated file into the dist folder
@@ -15,40 +18,49 @@ module.exports = function(grunt) {
             css: {
                 // watch all the scss files
                 files: [
-                    'assets/scss/**/*.scss',
+                    'public/scss/**/*.scss',
                 ],
                 tasks: ['compass']
             }
         },
-        jshint: {
-            all: ['Gruntfile.js', 'assets/js/**/*.js']
-        },
+        // remove the dist folder
         clean: {
-            build: {
-                src: ['dist']
-            },
-            tmp: {
-                src: ['.tmp']
-            }
+          build: {
+            src: ['dist']
+          },
+          tmp: {
+            src: ['.tmp']
+          }
         },
         // copy all the useful files from the root to the dist folder
         copy: {
             main: {
-                files: [{
-                    // take the only the folders needed on the production server from the assets folde
+                files: [
+                // take all the assets
+                {
                     expand: true,
-                    cwd: 'assets',
-                    src: ['css/**', 'img/**'],
-                    dest: 'dist/assets'
-                }, {
-                    // take only the root files needed on the production server from the root
+                    cwd: 'public',
+                    src: ['**','.htaccess','!scss/**','!js/**','!vendor/**'],
+                    dest: 'dist/public'
+                },
+                // take the right laravel core files
+                {
+                    expand: true,
+                    src: ['app/**', 'bootstrap/**','vendor/**'],
+                    dest: 'dist'
+                },
+                // take only the root files needed on the production server from the root
+                {
                     expand: true,
                     // exclude settings and config files
-                    src: ['*.!(json|rb|md|js)'],
+                    src: ['*.!(json|rb|md|js|xml)','composer.json'],
                     dest: 'dist',
                     filter: 'isFile'
                 }],
             }
+        },
+        jshint: {
+            all: ['Gruntfile.js', 'public/js/**/*.js']
         },
         // parse the file (or the files containing the js files to build)
         // remember to wrap all the js files to build inside an html comment
@@ -72,15 +84,16 @@ module.exports = function(grunt) {
         // <script src="assets/js/main.min.js"></script>
         // 
         useminPrepare: {
-            html: 'index.html',
+            html: 'app/views/layouts/base.blade.php',
             options: {
+                root:'public',
                 dest: 'dist'
             }
         },
         // replace the html build comments with the right build js script
         // see above..
         usemin: {
-            html: ['dist/index.html']
+            html: ['dist/app/views/layouts/base.blade.php']
         },
         // minifying all the svgs
         svgmin: { // Task
@@ -94,9 +107,9 @@ module.exports = function(grunt) {
             dist: { // Target
                 files: [{ // Dictionary of files
                     expand: true, // Enable dynamic expansion.
-                    cwd: 'assets/img/icons/', // Src matches are relative to this path.
+                    cwd: 'public/img/icons/', // Src matches are relative to this path.
                     src: ['*.svg'], // Actual pattern(s) to match.
-                    dest: 'assets/img/icons/', // Destination path prefix.
+                    dest: 'public/img/icons/', // Destination path prefix.
                     ext: '.svg' // Dest filepaths will have this extension
                 }]
             }
@@ -105,8 +118,8 @@ module.exports = function(grunt) {
         grunticon: {
             myIcons: {
                 options: {
-                    src: "assets/img/icons/",
-                    dest: "assets/css/iconsbuild/",
+                    src: "public/img/icons/",
+                    dest: "public/css/iconsbuild/",
                     cssprefix: "icon-"
                 }
             }
@@ -116,11 +129,11 @@ module.exports = function(grunt) {
             options: {
                 appleTouchBackgroundColor: '#ffffff',
                 trueColor: true,
-                html: 'favicons/favicons.html'
+                html: 'public/favicons/favicons.html'
             },
             icons: {
-                src: 'favicon.png',
-                dest: 'favicons/'
+                src: 'public/favicons/favicon.png',
+                dest: 'public/favicons/'
             }
         },
         // build the scss files reading the compass config

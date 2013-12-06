@@ -1,0 +1,6 @@
+{
+  "directory": "public/vendor",
+  "searchpath": [
+      "https://bower.herokuapp.com"
+    ]
+}

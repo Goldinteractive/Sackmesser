@@ -3,6 +3,9 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         watch: {
+            options: {
+                livereload: true
+            },
             js: {
                 // watch all the changes in these files
                 files: [
@@ -12,75 +15,61 @@ module.exports = function(grunt) {
                 // and then it puts the generated file into the dist folder
                 tasks: ['jshint']
             },
+            tpl: {
+                files: ['assets/js/**/**/**/*.hbs'],
+                tasks: ['handlebars']
+            },
             css: {
                 // watch all the scss files
                 files: [
                     'assets/scss/**/*.scss',
                 ],
-                tasks: ['compass']
+                tasks: ['compass'],
             }
-        },
-        jshint: {
-            all: ['Gruntfile.js', 'assets/js/**/*.js']
         },
         clean: {
             build: {
                 src: ['dist']
-            },
-            tmp: {
-                src: ['.tmp']
             }
         },
-        // copy all the useful files from the root to the dist folder
+        processhtml: {
+            build: {
+                files: {
+                    'dist/templates/include/end.inc.php': ['templates/include/end.inc.php']
+                }
+            }
+        },
         copy: {
-            main: {
-                files: [{
-                    // take the only the folders needed on the production server from the assets folde
-                    expand: true,
-                    cwd: 'assets',
-                    src: ['css/**', 'img/**'],
-                    dest: 'dist/assets'
-                }, {
-                    // take only the root files needed on the production server from the root
-                    expand: true,
-                    // exclude settings and config files
-                    src: ['*.!(json|rb|md|js)'],
-                    dest: 'dist',
-                    filter: 'isFile'
-                }],
+            build: {
+                files: [
+                    // includes files within path
+                    {
+                        expand: true,
+                        src: [
+                            '*.!(json|rb|md|js)',
+                            // obligatory folders
+                            'assets/**',
+                            'redaxo/**',
+                            'templates/**',
+                            // optional folders and files
+                            // folders to exclude
+                            '!redaxo/include/master.inc.php',
+                            '!assets/js/**',
+                            '!assets/scss/**',
+                            '!assets/vendor/**'
+                        ],
+                        dest: 'dist/',
+                        rename: function(dest, src) {
+                            if (src === 'redaxo/include/master.inc.prod.php')
+                                src = 'redaxo/include/master.inc.php';
+                            return dest + src;
+                        }
+                    }
+                ]
             }
         },
-        // parse the file (or the files containing the js files to build)
-        // remember to wrap all the js files to build inside an html comment
-        // 
-        // <!-- build:js assets/js/main.min.js -->
-        // <script src="js/app.js"></script>
-        // <script src="js/controllers/thing-controller.js"></script>
-        // <script src="js/models/thing-model.js"></script>
-        // <script src="js/views/thing-view.js"></script>
-        // <!-- endbuild -->
-        // 
-        //  THIS will become ...
-        //  
-        //                  |
-        //                  |
-        //                  |
-        //                  |
-        //                  |
-        //                  V
-        //                  
-        // <script src="assets/js/main.min.js"></script>
-        // 
-        useminPrepare: {
-            html: 'index.html',
-            options: {
-                dest: 'dist'
-            }
-        },
-        // replace the html build comments with the right build js script
-        // see above..
-        usemin: {
-            html: ['dist/index.html']
+        jshint: {
+            all: ['Gruntfile.js', 'assets/js/**/*.js']
         },
         // minifying all the svgs
         svgmin: { // Task
@@ -100,6 +89,35 @@ module.exports = function(grunt) {
                     ext: '.svg' // Dest filepaths will have this extension
                 }]
             }
+        },
+        handlebars: {
+            compile: {
+                options: {
+                    namespace: 'JST'
+                },
+                files: {
+                    'assets/js/tmp/templates.js': [
+                        'assets/js/**/**/*.hbs'
+                    ],
+                },
+            }
+        },
+        requirejs: {
+            build: {
+                options: {
+                    baseUrl: 'assets/js',
+                    out: 'dist/assets/js/build.min.js',
+                    mainConfigFile: 'assets/js/config.js',
+                    name: '../vendor/almond/almond',
+                    optimize: 'uglify2',
+                    include: ['main'],
+                    insertRequire: ['main'],
+                    findNestedDependencies: true,
+                    preserveLicenseComments: false,
+                    wrap: true
+                }
+            }
+
         },
         // create the css from the svg files
         grunticon: {
@@ -136,7 +154,7 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     // Default task.
-    grunt.registerTask('default', ['jshint','clean:build','svgmin', 'grunticon', 'copy', 'useminPrepare', 'concat', 'uglify', 'compass', 'usemin','clean:tmp']);
+    grunt.registerTask('default', ['clean', 'svgmin', 'handlebars', 'grunticon', 'compass', 'copy', 'requirejs', 'processhtml']);
     // Build the svg icons
     grunt.registerTask('build-icons', ['svgmin', 'grunticon']);
 
