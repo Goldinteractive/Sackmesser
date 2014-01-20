@@ -90,14 +90,16 @@ module.exports = function(grunt) {
             }
         },
         requirejs: {
-            options: {
-                baseUrl: 'assets/js',
-                out: 'min/build.min.js',
-                mainConfigFile: 'assets/js/require-config.js',
-                name: '../vendor/almond/almond',
-                include: ['main'],
-                insertRequire: ['main'],
-                wrap: true
+            build: {
+                options: {
+                    baseUrl: 'assets/js',
+                    out: 'dist/assets/js/build.min.js',
+                    mainConfigFile: 'assets/js/require-config.js',
+                    name: '../vendor/almond/almond',
+                    include: ['main'],
+                    insertRequire: ['main'],
+                    wrap: true
+                }
             }
         },
         // create the css from the svg files
@@ -135,7 +137,7 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     // Default task.
-    grunt.registerTask('default', ['jshint','clean','svgmin', 'grunticon', 'compass', 'copy','requirejs','processhtml']);
+    grunt.registerTask('default', ['jshint', 'clean', 'svgmin', 'grunticon', 'compass', 'copy', 'requirejs', 'processhtml']);
     // Build the svg icons
     grunt.registerTask('build-icons', ['svgmin', 'grunticon']);
 
