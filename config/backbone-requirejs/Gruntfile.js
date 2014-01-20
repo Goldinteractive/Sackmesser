@@ -93,7 +93,7 @@ module.exports = function(grunt) {
             options: {
                 baseUrl: 'assets/js',
                 out: 'min/build.min.js',
-                mainConfigFile: 'assets/js/config.js',
+                mainConfigFile: 'assets/js/require-config.js',
                 name: '../vendor/almond/almond',
                 include: ['main'],
                 insertRequire: ['main'],
