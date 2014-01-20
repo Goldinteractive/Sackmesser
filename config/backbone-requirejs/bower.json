@@ -8,11 +8,11 @@
   ],
   "devDependencies": {},
   "dependencies": {
-    "lodash": "~2.3.0",
+    "lodash": "~2.4.1",
     "backbone": "~1.1.0",
     "jquery": "~2.0.3",
     "layoutmanager": "~0.9.4",
     "requirejs": "~2.1.9",
-    "handlebars": "~1.1.2"
+    "handlebars": "~1.3.0"
   }
 }
