@@ -10,7 +10,7 @@ require(['bootstrap'],function(){
 		 */
 		$window.on('resize orientationchange',_.debounce(function(){
 			$window.trigger('viewport:update');
-		}),200);
+		},200));
 
 
 		/**
