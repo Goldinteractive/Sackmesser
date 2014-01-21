@@ -1,4 +1,3 @@
-
 @media print {
 	* {
 		background: transparent !important;
@@ -49,7 +48,7 @@
 		max-width: 100% !important;
 	}
 
-	$page {
+	@page {
 		margin: 0.5cm;
 	}
 
