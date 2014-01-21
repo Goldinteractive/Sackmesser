@@ -9,6 +9,7 @@ require(['bootstrap'],function(){
 		 *
 		 */
 		$window.on('resize orientationchange',_.debounce(function(){
+			app.setupViewport();
 			$window.trigger('viewport:update');
 		},200));
 
@@ -16,14 +17,27 @@ require(['bootstrap'],function(){
 		/**
 		 * Init the app object and export it to the window
 		 */
-		window.app = {};
+		window.app = {
+			viewport: {
+				width:0,
+				height:0
+			}
+		};
 
 		/**
 		 * Create the initialize function
 		 */
 		app.init = function () {
-			app.router = new Router();
+			this.setupViewport();
+			this.router = new Router();
 			Backbone.history.start();
+		};
+		/**
+		 * Function needed to cache the viewport size
+		 */
+		app.setupViewport = function () {
+			this.viewport.width = $window.width();
+			this.viewport.height = $window.height();
 		};
 
 		// run the app
