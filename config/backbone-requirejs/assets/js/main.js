@@ -3,16 +3,6 @@ require(['bootstrap'],function(){
 	require(['Router'],function(Router){
 		// private vars
 		var $window = $(window);
-		/**
-		 *
-		 * Trigger a delayed resize window event being able to listen it from everywhere
-		 *
-		 */
-		$window.on('resize orientationchange',_.debounce(function(){
-			app.setupViewport();
-			$window.trigger('viewport:update');
-		},200));
-
 
 		/**
 		 * Init the app object and export it to the window
@@ -36,9 +26,17 @@ require(['bootstrap'],function(){
 		 * Function needed to cache the viewport size
 		 */
 		app.setupViewport = function () {
-			this.viewport.width = $window.width();
-			this.viewport.height = $window.height();
+			app.viewport.width = $window.width();
+			app.viewport.height = $window.height();
+			$window.trigger('update');
 		};
+
+		/**
+		 *
+		 * Trigger a delayed resize window event being able to listen it from everywhere
+		 *
+		 */
+		$window.on('resize orientationchange',_.debounce(app.setupViewport,200));
 
 		// run the app
 		app.init();
