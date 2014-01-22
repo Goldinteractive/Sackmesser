@@ -1,4 +1,7 @@
-require(['bootstrap'],function(){
+require([
+	'require-config',
+	'bootstrap'
+],function(){
 	'use strict';
 	require(['Router'],function(Router){
 		// private vars
@@ -28,7 +31,7 @@ require(['bootstrap'],function(){
 		app.setupViewport = function () {
 			app.viewport.width = $window.width();
 			app.viewport.height = $window.height();
-			console.log('s');
+
 			$window.trigger('update');
 		};
 
@@ -38,7 +41,6 @@ require(['bootstrap'],function(){
 		 *
 		 */
 		$window.on('resize orientationchange',_.debounce(app.setupViewport,200));
-
 		// run the app
 		app.init();
 
