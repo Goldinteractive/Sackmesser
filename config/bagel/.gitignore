@@ -37,13 +37,28 @@ publish
 .idea
 node_modules
 .sass-cache
-vendor
 
 # Ignore all the vendor because they will be downloaded using bower
 public/assets/vendor
 
 # ignore the distribution folder
 dist
+.tmp
 
 # the style.css must be generated using 'compass compile'
 public/assets/css/style.css
+
+# bagel stuff
+/bootstrap/compiled.php
+/vendor
+app/storage/cache/*
+composer.phar
+
+public/packages/*
+public/files/*
+app/config/packages/*
+workbench
+
+!app/config/packages/.gitkeep
+!public/files/.gitkeep
+style.css
