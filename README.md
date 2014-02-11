@@ -74,6 +74,7 @@ and it will add the new component into the folder set inside bower.json ( by def
   * removed: a lot of useless mixins and variables (please use the compass mixins instead http://compass-style.org/reference/compass/)
   * removed: the svgmin grunt dependency (never used)
   * removed: sackmesser logo (honestly it was really ugly)
+  * removed: all the redaxo config folders
   * removed: jquery script link into index.html, install it using bower instead
 
 
