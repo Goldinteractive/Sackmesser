@@ -37,7 +37,14 @@ publish
 .idea
 node_modules
 .sass-cache
-vendor
+
+# Laravel stuff
+/bootstrap/compiled.php
+/vendor
+composer.phar
+composer.lock
+.env.local.php
+.env.php
 
 # Ignore all the vendor because they will be downloaded using bower
 public/assets/vendor
