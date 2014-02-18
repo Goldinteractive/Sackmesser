@@ -2,121 +2,41 @@
 // Variables
 // --------------------------------------------------
 
-
-// Global values
-// --------------------------------------------------
-
 // Enable compass svg gradient fallback
 $experimental-support-for-svg: true;
 
-// Grays
+// Colors
 // -------------------------
-$black:                 #000;
-$grayDarker:            #333333;
-$grayOpaque:			 #cbcbcb;
-$grayOpaqueDark:		 #c4c4c4;
-$grayDark:              #585858;
-$gray:                  #ededed;
-$grayLight:             #dedddd;
-$grayLighter:           #f0f0f0;
-$white:                 #fff;
-
-
-// Accent colors
-// -------------------------
-$blue:                  #049cdb;
-$blueDark:              #0064cd;
-$green:                 #46a546;
-$red:                   #9d261d;
-$yellow:                #ffc40d;
-$orange:                #f89406;
-$pink:                  #c3325f;
-$purple:                #7a43b6;
 
 
 // Scaffolding
 // -------------------------
-$bodyBackground:        $white;
-$textColor:             $grayDark;
-
+$bodyBackground: white;
+$textColor: #3d3d3d;
 
 // Links
 // -------------------------
-$linkColor:             #08c;
-$linkColorHover:        darken($linkColor, 15%);
+$linkColor: #0088cc;
+$linkColorHover: darken($linkColor, 15%);
 
 // Typography
 // -------------------------
-$sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
-$serifFontFamily:       Georgia, "Times New Roman", Times, serif;
-$monoFontFamily:        Monaco, Menlo, Consolas, "Courier New", monospace;
+$sansFontFamily: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serifFontFamily: Georgia, "Times New Roman", Times, serif;
+$monoFontFamily: Monaco, Menlo, Consolas, "Courier New", monospace;
 
-$baseFontSize:          14px;
-$baseFontFamily:        $sansFontFamily;
-$baseLineHeight:        20px;
-$altFontFamily:         $serifFontFamily;
-
-/**
- * Custom fonts
- */
-$customFont:			"", sans-serif;
-$customRegular:			"", sans-serif;
-$customThin: 			"", sans-serif;
-
-
-// Buttons
-// -------------------------
-// Component sizing
-// -------------------------
-// Based on 14px font-size and 20px line-height
-
-$fontSizeLarge: $baseFontSize * 1.25; // ~18px
-$fontSizeSmall: $baseFontSize * 0.85; // ~12px
-$fontSizeMini: $baseFontSize * 0.75; // ~11px
-
-$paddingLarge: 11px 19px; // 44px
-$paddingSmall: 2px 10px; // 26px
-$paddingMini: 1px 6px; // 24px
-
-$baseBorderRadius: 4px;
-$borderRadiusLarge: 6px;
-$borderRadiusSmall: 3px;
-
-$btnBackground: $white !default;
-$btnBackgroundHighlight: darken($white, 10%) !default;
-$btnBorder: #bbb !default;
-
-$btnPrimaryBackground: $linkColor !default;
-$btnPrimaryBackgroundHighlight: adjust-hue($btnPrimaryBackground, 20%) !default;
-
-$btnInfoBackground: #5bc0de !default;
-$btnInfoBackgroundHighlight: #2f96b4 !default;
-
-$btnSuccessBackground: #62c462 !default;
-$btnSuccessBackgroundHighlight: #51a351 !default;
-
-$btnWarningBackground: lighten($orange, 15%) !default;
-$btnWarningBackgroundHighlight: $orange !default;
-
-$btnDangerBackground: #ee5f5b !default;
-$btnDangerBackgroundHighlight: #bd362f !default;
-
-$btnInverseBackground: #444 !default;
-$btnInverseBackgroundHighlight: $grayDarker !default;
-
+$fontSize: 1em;
 
 //Responsive breakpoints
 // -------------------------
 
 $break-small: 320px;
-$break-medium:768px;
+$break-medium: 768px;
 $break-large: 1024px;
-
 
 // Images paths
 // -------------------------
-$imagePath:					"../img/";
-
+$imagePath: "../img/";
 
 // Css easing transition helpers
 //
@@ -126,39 +46,32 @@ $imagePath:					"../img/";
 // 		@include transition(all 0.5s $easeInBack);
 // }
 //
-$linear:cubic-bezier(0.250, 0.250, 0.750, 0.750);
-$ease:cubic-bezier(0.250, 0.100, 0.250, 1.000);
-$ease-in:cubic-bezier(0.420, 0.000, 1.000, 1.000);
-$ease-out:cubic-bezier(0.000, 0.000, 0.580, 1.000);
-$ease-in-out:cubic-bezier(0.420, 0.000, 0.580, 1.000);
-$easeInQuad:cubic-bezier(0.550, 0.085, 0.680, 0.530);
-$easeInCubic:cubic-bezier(0.550, 0.055, 0.675, 0.190);
-$easeInQuart:cubic-bezier(0.895, 0.030, 0.685, 0.220);
-$easeInQuint:cubic-bezier(0.755, 0.050, 0.855, 0.060);
-$easeInSine:cubic-bezier(0.470, 0.000, 0.745, 0.715);
-$easeInExpo:cubic-bezier(0.950, 0.050, 0.795, 0.035);
-$easeInCirc:cubic-bezier(0.600, 0.040, 0.980, 0.335);
-$easeInBack:cubic-bezier(0.600, -0.280, 0.735, 0.045);
-$easeOutQuad:cubic-bezier(0.250, 0.460, 0.450, 0.940);
-$easeOutCubic:cubic-bezier(0.215, 0.610, 0.355, 1.000);
-$easeOutQuart:cubic-bezier(0.165, 0.840, 0.440, 1.000);
-$easeOutQuint:cubic-bezier(0.230, 1.000, 0.320, 1.000);
-$easeOutSine:cubic-bezier(0.390, 0.575, 0.565, 1.000);
-$easeOutExpo:cubic-bezier(0.190, 1.000, 0.220, 1.000);
-$easeOutCirc:cubic-bezier(0.075, 0.820, 0.165, 1.000);
-$easeOutBack:cubic-bezier(0.175, 0.885, 0.320, 1.275);
-$easeInOutQuad:cubic-bezier(0.455, 0.030, 0.515, 0.955);
-$easeInOutCubic:cubic-bezier(0.645, 0.045, 0.355, 1.000);
-$easeInOutQuart:cubic-bezier(0.770, 0.000, 0.175, 1.000);
-$easeInOutQuint:cubic-bezier(0.860, 0.000, 0.070, 1.000);
-$easeInOutSine:cubic-bezier(0.445, 0.050, 0.550, 0.950);
-$easeInOutExpo:cubic-bezier(1.000, 0.000, 0.000, 1.000);
-$easeInOutCirc:cubic-bezier(0.785, 0.135, 0.150, 0.860);
-$easeInOutBack:cubic-bezier(0.680, -0.550, 0.265, 1.550);
-
-
-
-
-
-
-
+$linear: cubic-bezier(0.25, 0.25, 0.75, 0.75);
+$ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+$ease-in: cubic-bezier(0.42, 0, 1, 1);
+$ease-out: cubic-bezier(0, 0, 0.58, 1);
+$ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+$easeInQuad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+$easeInCubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$easeInQuart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+$easeInQuint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+$easeInSine: cubic-bezier(0.47, 0, 0.745, 0.715);
+$easeInExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+$easeInCirc: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+$easeInBack: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+$easeOutQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+$easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
+$easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1);
+$easeOutSine: cubic-bezier(0.39, 0.575, 0.565, 1);
+$easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
+$easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+$easeInOutQuad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+$easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+$easeInOutQuart: cubic-bezier(0.77, 0, 0.175, 1);
+$easeInOutQuint: cubic-bezier(0.86, 0, 0.07, 1);
+$easeInOutSine: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+$easeInOutExpo: cubic-bezier(1, 0, 0, 1);
+$easeInOutCirc: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+$easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);

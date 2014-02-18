@@ -46,6 +46,7 @@ module.exports = function(grunt) {
                         'assets/img/**',
                         'favicons/**',
                         'files/**',
+                        'packages/**',
                         '*.txt',
                         '*.php'
                     ],
@@ -136,7 +137,7 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     // Default task.
-    grunt.registerTask('default', ['jshint', 'clean:build', 'grunticon', 'copy', 'useminPrepare', 'concat', 'uglify', 'compass', 'usemin', 'clean:tmp']);
+    grunt.registerTask('default', ['jshint','clean:build', 'grunticon', 'copy', 'useminPrepare', 'concat', 'uglify', 'compass', 'usemin','clean:tmp']);
     // Build the svg icons
     grunt.registerTask('build-icons', ['grunticon']);
 

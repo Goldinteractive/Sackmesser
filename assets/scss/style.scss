@@ -1,12 +1,9 @@
-
 /*!
- * Bootstrap v0.1.3
- *
- * Copyright 2013 Gold Interactive
- * 
- * 
+ * Copyright (c) Gold Interactive
  * Designed and mantained by Gold Interactive
- * 
+ *
+ * It includes: Files from twitter bootstrap, and html5 boilerplate
+ *
  */
 
 // CSS Reset
@@ -22,24 +19,17 @@
 @import "include/fonts";
 
 // Grid system and page structure
-@import "include/grid"; 
+@import "include/grid";
 
 // Base CSS
-
-// Components: common
 @import "include/common";
+// UI Components
 @import "include/icons";
-
-// Components: Buttons
-@import "include/buttons";
-
-// Components: Nav
 @import "include/header";
 @import "include/nav";
 @import "include/footer";
 
-
 // Utility classes
-@import "include/responsive-utilities"; 
+@import "include/responsive-utilities";
 @import "include/utilities"; // It must be the last to override the other classes It is when necessary
 

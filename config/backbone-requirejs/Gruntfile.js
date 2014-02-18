@@ -27,25 +27,7 @@ module.exports = function(grunt) {
         jshint: {
             all: ['Gruntfile.js', 'assets/js/**/*.js']
         },
-        // minifying all the svgs
-        svgmin: { // Task
-            options: { // Configuration that will be passed directly to SVGO
-                plugins: [{
-                    removeViewBox: true, // don't remove the viewbox atribute from the SVG
-                    removeUselessStrokeAndFill: true, // don't remove Useless Strokes and Fills
-                    removeEmptyAttrs: true
-                }]
-            },
-            dist: { // Target
-                files: [{ // Dictionary of files
-                    expand: true, // Enable dynamic expansion.
-                    cwd: 'assets/img/icons/', // Src matches are relative to this path.
-                    src: ['*.svg'], // Actual pattern(s) to match.
-                    dest: 'assets/img/icons/', // Destination path prefix.
-                    ext: '.svg' // Dest filepaths will have this extension
-                }]
-            }
-        },
+
         clean: {
             build: {
                 src: ['dist']
@@ -102,12 +84,17 @@ module.exports = function(grunt) {
                 }
             }
         },
+
         // create the css from the svg files
         grunticon: {
             myIcons: {
+                files: [{
+                    expand: true,
+                    cwd: 'assets/img/icons/',
+                    src: ['*.svg', '*.png'],
+                    dest: "assets/css/iconsbuild/"
+                }],
                 options: {
-                    src: "assets/img/icons/",
-                    dest: "assets/css/iconsbuild/",
                     cssprefix: "icon-"
                 }
             }
@@ -120,7 +107,7 @@ module.exports = function(grunt) {
                 html: 'favicons/favicons.html'
             },
             icons: {
-                src: 'favicon.png',
+                src: 'favicon-source.png',
                 dest: 'favicons/'
             }
         },
@@ -137,8 +124,8 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     // Default task.
-    grunt.registerTask('default', ['jshint', 'clean', 'svgmin', 'grunticon', 'compass', 'copy', 'requirejs', 'processhtml']);
+    grunt.registerTask('default', ['jshint', 'clean', 'grunticon', 'compass', 'copy', 'requirejs', 'processhtml']);
     // Build the svg icons
-    grunt.registerTask('build-icons', ['svgmin', 'grunticon']);
+    grunt.registerTask('build-icons', ['grunticon']);
 
 };

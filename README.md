@@ -1,17 +1,17 @@
 # Sackmesser Stable
 Before you start dealing with this package please make sure to have the latest [nodejs](http://nodejs.org/) version installed on your machine
 
-## Before installing the frontend dependencies 
+## Before installing the frontend dependencies
 
 Please select the right setup for your project from the ``config`` folder.
 
 If for example your project will use backbone and requirejs, just replace the files in the root with the config files contained into ``config/backbone-requirejs/``.
- 
+
 The default files contained into the root folder can be useful just for a normal html project without too much ceremony.
 
 __Attention__: the ``config`` subfolders could contain also other kind of assets, in that case just replace the files needed for the new project setup for example:
 
-``config/backbone-requirejs/assets/js/`` -> ``assets/js`` 
+``config/backbone-requirejs/assets/js/`` -> ``assets/js``
 
 Please once you have replaced the config files delete the ``config`` folder
 
@@ -35,7 +35,7 @@ The Gruntfile.js in this project provide us a list of command to build the scss 
 
 ## Update and Install new grunt packages
 
-### To install a node js module just type 
+### To install a node js module just type
 
 	$ npm install yourmodule --save-dev
 
@@ -54,7 +54,7 @@ to find all the frameworks you could install through this tool.
 
 Bower is designed to keep track of all the frameworks we are using in our project (jquery plugins, libraries and so on) so to install a new _"framework"_ just run es:
 
-	$ bower install jquery -save 
+	$ bower install jquery -save
 
 and it will add the new component into the folder set inside bower.json ( by default assets/vendor )
 
@@ -64,8 +64,22 @@ and it will add the new component into the folder set inside bower.json ( by def
 
 ## Changelog
 
+### v0.1.4
+  * updated: all the nodejs grunt dependencies
+  * updated: modernizr to 2.7.1
+  * updated: humans.txt
+  * updated: all the Gruntfile.js
+  * added: ``config/bagel`` folder
+  * removed: buttons stuff
+  * removed: a lot of useless mixins and variables (please use the compass mixins instead http://compass-style.org/reference/compass/)
+  * removed: the svgmin grunt dependency (never used)
+  * removed: sackmesser logo (honestly it was really ugly)
+  * removed: all the redaxo config folders
+  * removed: jquery script link into index.html, install it using bower instead
+
+
 ### v0.1.3
-  * feature: added jshint to all the build packages hoping that all the js files will never be a mess 
+  * feature: added jshint to all the build packages hoping that all the js files will never be a mess
   * added: ``config/backbone-requirejs`` folder build files
   * added: ``config/redaxo-backbone-requirejs`` folder build files
   * added: ``config/redaxo`` folder build files

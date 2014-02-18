@@ -52,25 +52,25 @@ module.exports = function(grunt) {
         },
         // parse the file (or the files containing the js files to build)
         // remember to wrap all the js files to build inside an html comment
-        // 
+        //
         // <!-- build:js assets/js/main.min.js -->
         // <script src="js/app.js"></script>
         // <script src="js/controllers/thing-controller.js"></script>
         // <script src="js/models/thing-model.js"></script>
         // <script src="js/views/thing-view.js"></script>
         // <!-- endbuild -->
-        // 
+        //
         //  THIS will become ...
-        //  
+        //
         //                  |
         //                  |
         //                  |
         //                  |
         //                  |
         //                  V
-        //                  
+        //
         // <script src="assets/js/main.min.js"></script>
-        // 
+        //
         useminPrepare: {
             html: 'index.html',
             options: {
@@ -82,31 +82,16 @@ module.exports = function(grunt) {
         usemin: {
             html: ['dist/index.html']
         },
-        // minifying all the svgs
-        svgmin: { // Task
-            options: { // Configuration that will be passed directly to SVGO
-                plugins: [{
-                    removeViewBox: true, // don't remove the viewbox atribute from the SVG
-                    removeUselessStrokeAndFill: true, // don't remove Useless Strokes and Fills
-                    removeEmptyAttrs: true
-                }]
-            },
-            dist: { // Target
-                files: [{ // Dictionary of files
-                    expand: true, // Enable dynamic expansion.
-                    cwd: 'assets/img/icons/', // Src matches are relative to this path.
-                    src: ['*.svg'], // Actual pattern(s) to match.
-                    dest: 'assets/img/icons/', // Destination path prefix.
-                    ext: '.svg' // Dest filepaths will have this extension
-                }]
-            }
-        },
         // create the css from the svg files
         grunticon: {
             myIcons: {
+                files: [{
+                    expand: true,
+                    cwd: 'assets/img/icons/',
+                    src: ['*.svg', '*.png'],
+                    dest: "assets/css/iconsbuild/"
+                }],
                 options: {
-                    src: "assets/img/icons/",
-                    dest: "assets/css/iconsbuild/",
                     cssprefix: "icon-"
                 }
             }
@@ -119,7 +104,7 @@ module.exports = function(grunt) {
                 html: 'favicons/favicons.html'
             },
             icons: {
-                src: 'favicon.png',
+                src: 'favicon-source.png',
                 dest: 'favicons/'
             }
         },
@@ -136,8 +121,8 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
 
     // Default task.
-    grunt.registerTask('default', ['jshint','clean:build','svgmin', 'grunticon', 'copy', 'useminPrepare', 'concat', 'uglify', 'compass', 'usemin','clean:tmp']);
+    grunt.registerTask('default', ['jshint', 'clean:build', 'grunticon', 'copy', 'useminPrepare', 'concat', 'uglify', 'compass', 'usemin', 'clean:tmp']);
     // Build the svg icons
-    grunt.registerTask('build-icons', ['svgmin', 'grunticon']);
+    grunt.registerTask('build-icons', ['grunticon']);
 
 };
