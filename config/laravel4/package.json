@@ -16,7 +16,8 @@
     "load-grunt-tasks": "~0.3.0",
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-favicons": "~0.6.0"
+    "grunt-favicons": "~0.6.0",
+    "load-grunt-configs": "^0.3.3"
   },
   "repository": {
     "type": "git",
