@@ -1,0 +1,10 @@
+{
+  "staging": {
+    "host" : "host",
+    "username" : "username",
+    "password" : "psw"
+  },
+  "production": {
+
+  }
+}

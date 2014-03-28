@@ -64,6 +64,10 @@ and it will add the new component into the folder set inside bower.json ( by def
 
 ## Changelog
 
+### v0.1.5
+  * updated: all the nodejs grunt dependencies
+  * updated: the grunt process
+
 ### v0.1.4
   * updated: all the nodejs grunt dependencies
   * updated: modernizr to 2.7.1
