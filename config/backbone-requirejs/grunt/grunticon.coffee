@@ -9,4 +9,4 @@ module.exports = myIcons:
     dest: "assets/css/iconsbuild/"
   ]
   options:
-    cssprefix: "icon-"
+    cssprefix: ".icon-"
