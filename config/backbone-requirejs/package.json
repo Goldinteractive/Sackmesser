@@ -1,23 +1,21 @@
 {
   "main": "Gruntfile.js",
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-grunticon": "~0.6.14",
-    "grunt-contrib-compass": "~0.6.0",
-    "grunt-favicons": "~0.3.2",
-    "load-grunt-tasks": "~0.2.0",
-    "grunt-contrib-handlebars": "~0.6.0",
-    "grunt-contrib-jshint": "~0.7.2",
-    "grunt-contrib-requirejs": "~0.4.1",
-    "grunt-processhtml": "~0.2.6",
-    "grunt-contrib-copy": "~0.4.1",
-    "grunt-contrib-clean": "~0.5.0",
-    "load-grunt-configs": "^0.3.3"
+    "grunt": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-grunticon": "*",
+    "grunt-contrib-compass": "*",
+    "grunt-favicons": "*",
+    "load-grunt-tasks": "*",
+    "grunt-contrib-handlebars": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-requirejs": "*",
+    "grunt-processhtml": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-clean": "*",
+    "load-grunt-configs": "*"
   },
   "scripts": {
     "test": "grunt"
-  },
-  "author": "Gold Interactive",
-  "license": "no license"
+  }
 }

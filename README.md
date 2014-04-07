@@ -64,9 +64,15 @@ and it will add the new component into the folder set inside bower.json ( by def
 
 ## Changelog
 
+### v0.1.6
+  * updated: bower will fetch always inside the ``assets/vendor/bower`` folder, allowing the use of the ``assets/vendor`` folder also for other kind of third party libraries
+  * updated: ``index.html`` cleaned up
+  * updated: the __modernizr__ and __grunticon__ scripts will be loaded from the ``assets/vendor`` folder and compressed into a single file during the building process
+  * updated: npm will fetch always the latest versions of the nodejs dependencies stored into ``package.json``
+
 ### v0.1.5
   * updated: all the nodejs grunt dependencies
-  * updated: the grunt process
+  * updated: the grunt process has been split in separate coffeescript files
 
 ### v0.1.4
   * updated: all the nodejs grunt dependencies

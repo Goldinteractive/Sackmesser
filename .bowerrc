@@ -1,5 +1,5 @@
 {
-  "directory": "assets/vendor",
+  "directory": "assets/vendor/bower",
   "searchpath": [
       "https://bower.herokuapp.com"
     ]
