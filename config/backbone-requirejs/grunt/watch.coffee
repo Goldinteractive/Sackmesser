@@ -5,7 +5,7 @@ module.exports =
 
   tpl:
     files: ["assets/js/**/**/*.hbs"]
-    task: ["handlebars"]
+    tasks: ["handlebars"]
 
   css:
     files: ["assets/scss/**/*.scss"]
