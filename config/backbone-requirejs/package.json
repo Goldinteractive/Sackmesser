@@ -13,6 +13,7 @@
     "grunt-processhtml": "*",
     "grunt-contrib-copy": "*",
     "grunt-contrib-clean": "*",
+    "grunt-contrib-uglify": "*",
     "load-grunt-configs": "*"
   },
   "scripts": {

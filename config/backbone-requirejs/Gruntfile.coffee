@@ -20,6 +20,7 @@ module.exports = (grunt) ->
     "compass"
     "copy"
     "requirejs"
+    "uglify"
     "processhtml"
   ]
 
