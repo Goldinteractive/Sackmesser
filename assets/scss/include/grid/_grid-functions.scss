@@ -1,0 +1,104 @@
+/**
+ *
+ * Do not touch this file if you don't know what you are doing
+ * The grid functions were originally part of semantic.gs and here they got extended
+ *
+ */
+
+// Utility function — you should never need to modify this
+@function gridsystem-width($columns:$default-columns-amount,$column-width:$default-column-width,$gutter-width:$default-gutter-width) {
+	@return ($column-width * $columns) + ($gutter-width * $columns);
+}
+
+
+@mixin column(
+	$x: 1,
+	$columns: $default-columns-amount,
+	$column-width: $default-column-width,
+	$gutter-width: $default-gutter-width
+) {
+	float:left;
+	width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns,$column-width,$gutter-width));
+	margin-left:$total-width*(($gutter-width*.5)/gridsystem-width($columns,$column-width,$gutter-width));
+	margin-right:$total-width*(($gutter-width*.5)/gridsystem-width($columns,$column-width,$gutter-width));
+	// *width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns,$column-width,$gutter-width))-$correction;
+	// *margin: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns,$column-width,$gutter-width))-$correction;
+}
+
+@mixin inner(
+	$x: 1,
+	$columns: $default-columns-amount,
+	$column-width: $default-column-width,
+	$gutter-width: $default-gutter-width
+) {
+	width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns,$column-width,$gutter-width)) - $total-width*(($gutter-width*.5)/gridsystem-width($columns,$column-width,$gutter-width));
+}
+@mixin push(
+	$offset: 1,
+	$columns: $default-columns-amount,
+	$column-width: $default-column-width,
+	$gutter-width: $default-gutter-width
+) {
+	margin-left: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns,$column-width,$gutter-width)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns,$column-width,$gutter-width)) !important;
+}
+@mixin pull(
+	$offset:1,
+	$columns: $default-columns-amount,
+	$column-width: $default-column-width,
+	$gutter-width: $default-gutter-width
+) {
+	margin-right: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns,$column-width,$gutter-width)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns,$column-width,$gutter-width)) !important;
+}
+
+/**
+ * Building the grid classes
+ */
+
+@mixin loop-grid (
+	$columns,
+	$column-width,
+	$gutter-width,
+	$device:''
+) {
+	@for $i from 1 through $columns {
+		.g-#{$device}#{$i} {
+			@include column($i,$columns,$column-width,$gutter-width);
+		}
+		.g-#{$device}#{$i}inner {
+			@include inner($i,$columns,$column-width,$gutter-width);
+		}
+
+		.push-#{$device}#{$i} {
+			@include push($i,$columns,$column-width,$gutter-width);
+		}
+		.pull-#{$device}#{$i} {
+			@include pull($i,$columns,$column-width,$gutter-width);
+		}
+	}
+}
+
+@mixin create-grid(
+	$columns: $default-columns-amount,
+	$column-width: $default-column-width,
+	$gutter-width: $default-gutter-width,
+	$device: '',
+	$isFluid: false,
+	$mediaQuery:false
+) {
+	@if $device and $device != '' {
+		$device: $device + '-';
+	}
+	@if ($isFluid) {
+		$total-width: 100%;
+	} @else {
+		$total-width: gridsystem-width($columns,$column-width,$gutter-width);
+	}
+	@if ($mediaQuery) {
+		@media #{$mediaQuery} {
+			@include loop-grid($columns,$column-width,$gutter-width,$device);
+		}
+	} @else {
+		@include loop-grid($columns,$column-width,$gutter-width,$device);
+	}
+
+}

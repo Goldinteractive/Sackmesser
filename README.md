@@ -64,6 +64,9 @@ and it will add the new component into the folder set inside bower.json ( by def
 
 ## Changelog
 
+### v0.1.7
+  * added: a brand new custom scss responsive grid system
+
 ### v0.1.6
   * updated: bower will fetch always inside the ``assets/vendor/bower`` folder, allowing the use of the ``assets/vendor`` folder also for other kind of third party libraries
   * updated: ``index.html`` cleaned up

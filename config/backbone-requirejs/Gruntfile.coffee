@@ -6,10 +6,11 @@ module.exports = (grunt) ->
         "grunt/*.coffee"
         "grunt/*.js"
       ]
+      pkg: grunt.file.readJSON("package.json")
+      now: new Date().getTime()
+      secret: grunt.file.readJSON(".ftppass")
   )
-  tasks.pkg = grunt.file.readJSON("package.json")
-  tasks.now = new Date().getTime()
-  tasks.secret = grunt.file.readJSON(".ftppass")
+
   grunt.initConfig tasks
 
   # Default task

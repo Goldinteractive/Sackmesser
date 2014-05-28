@@ -96,6 +96,14 @@ a {
 	}
 }
 
+.container {
+    width: $full-default-width;
+    margin:0 auto;
+    @include breakpoint($break-medium) {
+        width:100%;
+    }
+}
+
 
 
 

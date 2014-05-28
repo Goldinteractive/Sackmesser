@@ -1,7 +1,7 @@
 {
   "name": "Sackmesser",
-  "version": "0.1.6",
-  "description": "Toolset to build and mantain any kind of website or web app",
+  "version": "0.1.7",
+  "description": "Toolset to build and maintain any kind of website or web app",
   "main": "Gruntfile.js",
   "devDependencies": {
     "grunt": "*",
@@ -23,7 +23,5 @@
     "url": ""
   },
   "author": "Gold Interactive",
-  "license": "MIT",
-  "gitHead": "7c14ab72aafcc321b763e534c0e7c4235d224037",
-  "readmeFilename": "README.md"
+  "license": "MIT"
 }

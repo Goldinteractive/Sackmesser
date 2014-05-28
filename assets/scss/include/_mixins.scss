@@ -49,6 +49,17 @@
   }
 }
 
+/**
+ *
+ * Simpler shortcut to create easily break points
+ *
+ */
+
+@mixin breakpoint($width) {
+  @media only screen and (max-width: $width) {
+      @content;
+  }
+}
 
 /**
  * Easy functions to create easily pure css arrows anywhere
