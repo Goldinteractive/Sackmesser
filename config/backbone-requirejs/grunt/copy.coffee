@@ -6,8 +6,10 @@ module.exports = main:
       src: [
         "css/**"
         "img/**"
+        "vendor/**"
+        "!vendor/bower"
       ]
-      dest: "dist/assets"
+      dest: "dist/public"
     }
     {
       expand: true

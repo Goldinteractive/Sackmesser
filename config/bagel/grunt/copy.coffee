@@ -9,6 +9,8 @@ module.exports = main:
         "favicons/**"
         "files/**"
         "packages/**"
+        "vendor/**"
+        "!vendor/bower"
         "*.txt"
         "*.php"
       ]
