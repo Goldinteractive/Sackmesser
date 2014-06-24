@@ -7,6 +7,5 @@
   "noarg": true,    // true: Prohibit use of `arguments.caller` and `arguments.callee`
   "sub": true,      // true: Tolerate using `[]` notation when it can still be expressed in dot notation
   "boss": true,     // true: Tolerate assignments where comparisons would be expected
-  "eqnull": true,   // true: Tolerate use of `== null`
-  "indent":4
+  "eqnull": true   // true: Tolerate use of `== null`
 }
