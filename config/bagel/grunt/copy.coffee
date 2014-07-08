@@ -20,6 +20,10 @@ module.exports = main:
       expand: true
       src: [
         "app/**"
+        # ignore the content of the cache folder..
+        "!app/storage/cache/**"
+        # .. but copy the folder empty anyway
+        "app/storage/cache"
         "vendor/**"
         "bootstrap/**"
         "*.php"

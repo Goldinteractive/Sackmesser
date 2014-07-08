@@ -1,13 +1,8 @@
 {
-  "name": "Sackmesser",
-  "version": "0.1.4",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "assets/vendor"
-  ],
-  "devDependencies": {},
-  "dependencies": {
-    "jquery": "~2.1.0"
-  }
+	"name": "Sackmesser",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"assets/vendor"
+	]
 }
