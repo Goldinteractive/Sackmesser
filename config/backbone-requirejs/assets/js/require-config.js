@@ -1,6 +1,6 @@
 requirejs.config({
     paths: {
-        jquery: '../vendor/bower/jquery/jquery',
+        jquery: '../vendor/bower/jquery/dist/jquery',
         backbone: '../vendor/bower/backbone/backbone',
         underscore: '../vendor/bower/lodash/dist/lodash.underscore',
         layoutmanager: '../vendor/bower/layoutmanager/backbone.layoutmanager'
