@@ -1,49 +1,51 @@
 require([
-	'require-config',
-],function(){
+	'bootstrap',
+], function () {
 	'use strict';
-	require(['bootstrap'],function(){
-		require(['Router'],function(Router){
-			// private vars
-			var $window = $(window);
+	require([
+		'Router',
+		'layouts/BaseLayout'
+	], function (Router, BaseLayout) {
+		// private vars
+		var $window = $(window);
 
-			/**
-			 * Init the app object and export it to the window
-			 */
-			window.app = {
-				viewport: {
-					width:0,
-					height:0
-				}
-			};
+		/**
+		 * Init the app object and export it to the window
+		 */
+		window.app = {
+			viewport: {
+				width: 0,
+				height: 0
+			},
+			baseLayout: new BaseLayout()
+		};
 
-			/**
-			 * Create the initialize function
-			 */
-			app.init = function () {
-				this.router = new Router();
-				Backbone.history.start();
-				this.setupViewport();
-			};
-			/**
-			 * Function needed to cache the viewport size
-			 */
-			app.setupViewport = function () {
-				app.viewport.width = $window.width();
-				app.viewport.height = $window.height();
+		/**
+		 * Create the initialize function
+		 */
+		app.init = function () {
+			this.router = new Router();
+			Backbone.history.start();
+			this.setupViewport();
+		};
+		/**
+		 * Function needed to cache the viewport size
+		 */
+		app.setupViewport = function () {
+			app.viewport.width = $window.width();
+			app.viewport.height = $window.height();
 
-				$window.trigger('update');
-			};
+			$window.trigger('update');
+		};
 
-			/**
-			 *
-			 * Trigger a delayed resize window event being able to listen it from everywhere
-			 *
-			 */
-			$window.on('resize orientationchange',_.debounce(app.setupViewport,200));
-			// run the app
-			app.init();
+		/**
+		 *
+		 * Trigger a delayed resize window event being able to listen it from everywhere
+		 *
+		 */
+		$window.on('resize orientationchange', _.debounce(app.setupViewport, 200));
+		// run the app
+		app.init();
 
-		});
 	});
 });
