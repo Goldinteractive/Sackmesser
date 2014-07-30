@@ -2,11 +2,11 @@
  *
  * Simple module checkbox toggle
  *
- *	<div class="GICheckboxToggle">	
+ *	<div class="GICheckboxToggle">
  *		<input type="checkbox" value="None" id="foo" name="foo" checked="">
  *		<label for="foo"></label>
  *	</div>
- * 
+ *
  */
 .GICheckboxToggle {
   width: 45px;
@@ -39,7 +39,7 @@
     background: transparent;
     top: 3px;
     right: 6px;
-    border: 2px solid $gray;
+    border: 2px solid #ccc;
     border-top: none;
     border-right: none;
     @include opacity(100);
@@ -47,10 +47,10 @@
     @include rotate(-45deg);
     @include transition(0.1s);
   }
-  
+
   &:before {
     content: 'x';
-    color: $gray;
+    color: #ccc;
     font-family:'Arial';
     top:0;
     left: 7px;
@@ -65,7 +65,7 @@
     position: absolute;
     top: 1px;
     left: 26px;
-    background: $pink;
+    background: pink;
     z-index: 1;
     @include square(18px);
     @include border-radius(50%);
