@@ -64,7 +64,7 @@
 		.g-#{$device}#{$i} {
 			@include column($i,$columns,$column-width,$gutter-width);
 		}
-		.g-#{$device}#{$i}inner {
+		.g-#{$device}#{$i}-inner {
 			@include inner($i,$columns,$column-width,$gutter-width);
 		}
 
