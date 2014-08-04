@@ -1,19 +1,20 @@
-# Sackmesser Stable
+# Sackmesser
+
 Before you start dealing with this package please make sure to have the latest [nodejs](http://nodejs.org/) version installed on your machine
 
 ## Before installing the frontend dependencies
 
-Please select the right setup for your project from the ``config`` folder.
+Please select the right setup for your project from the ``_config`` folder.
 
-If for example your project will use backbone and requirejs, just replace the files in the root with the config files contained into ``config/backbone-requirejs/``.
+If for example your project will use backbone and requirejs, just replace the files in the root with the config files contained into ``_config/backbone-requirejs/``.
 
 The default files contained into the root folder can be useful just for a normal html project without too much ceremony.
 
-__Attention__: the ``config`` subfolders could contain also other kind of assets, in that case just replace the files needed for the new project setup for example:
+__Attention__: the ``_config`` subfolders could contain also other kind of assets, in that case just replace the files needed for the new project setup for example:
 
-``config/backbone-requirejs/assets/js/`` -> ``assets/js``
+``_config/backbone-requirejs/assets/js/`` -> ``assets/js``
 
-Please once you have replaced the config files delete the ``config`` folder
+Please once you have replaced the config files delete the ``_config`` folder
 
 ## Install all the dependencies
 Just run the `$ sudo make` command into the root of this project to install all the dependencies.
@@ -62,10 +63,12 @@ and it will add the new component into the folder set inside bower.json ( by def
 
 > Don't think of cost. Think of value.
 
+> Test it first before deploying it
+
 ## Changelog
 
 ### v0.1.8
-  * modified: _config folder had been updated according to our new project setup standards
+  * modified: config -> _config folder has been updated according to our new project setup standards
 
 ### v0.1.7
   * added: a brand new custom scss responsive grid system
