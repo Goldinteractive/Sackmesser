@@ -60,7 +60,7 @@ and it will add the new component into the folder set inside bower.json ( by def
 
 ## Good practices
 
- * Please download the js libraries whether it is possible from sites like [cdnjs](http://cdnjs.com/)
+> Don't think of cost. Think of value.
 
 ## Changelog
 
