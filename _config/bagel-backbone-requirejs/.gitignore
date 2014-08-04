@@ -39,7 +39,7 @@ node_modules
 .sass-cache
 
 # Ignore all the vendor because they will be downloaded using bower
-public/assets/vendor
+public/assets/vendor/bower
 
 # ignore the distribution folder
 dist
