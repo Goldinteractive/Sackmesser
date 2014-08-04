@@ -64,6 +64,9 @@ and it will add the new component into the folder set inside bower.json ( by def
 
 ## Changelog
 
+### v0.1.8
+  * modified: _config folder had been updated according to our new project setup standards
+
 ### v0.1.7
   * added: a brand new custom scss responsive grid system
 

@@ -1,27 +1,27 @@
 {
-  "name": "Sackmesser",
-  "version": "0.1.7",
-  "description": "Toolset to build and maintain any kind of website or web app",
-  "main": "Gruntfile.js",
-  "devDependencies": {
-    "grunt": "*",
-    "grunt-grunticon": "*",
-    "grunt-contrib-jshint": "*",
-    "grunt-contrib-watch": "*",
-    "grunt-contrib-concat": "*",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-compass": "*",
-    "grunt-usemin": "*",
-    "load-grunt-tasks": "*",
-    "grunt-contrib-copy": "*",
-    "grunt-contrib-clean": "*",
-    "grunt-favicons": "*",
-    "load-grunt-configs": "*"
-  },
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "author": "Gold Interactive",
-  "license": "MIT"
+	"name": "Sackmesser",
+	"version": "0.1.8",
+	"description": "Toolset to build and maintain any kind of website or web app",
+	"main": "Gruntfile.js",
+	"devDependencies": {
+		"grunt": "*",
+		"grunt-grunticon": "*",
+		"grunt-contrib-jshint": "*",
+		"grunt-contrib-watch": "*",
+		"grunt-contrib-concat": "*",
+		"grunt-contrib-uglify": "*",
+		"grunt-contrib-compass": "*",
+		"grunt-usemin": "*",
+		"load-grunt-tasks": "*",
+		"grunt-contrib-copy": "*",
+		"grunt-contrib-clean": "*",
+		"grunt-favicons": "*",
+		"load-grunt-configs": "*"
+	},
+	"repository": {
+		"type": "git",
+		"url": ""
+	},
+	"author": "Gold Interactive",
+	"license": "MIT"
 }

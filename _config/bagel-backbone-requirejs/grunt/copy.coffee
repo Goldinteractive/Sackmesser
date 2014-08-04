@@ -6,7 +6,7 @@ module.exports = main:
       src: [
         "assets/css/**"
         "assets/img/**"
-        "favicons/**"
+        "assets/favicons/**"
         "files/**"
         "packages/**"
         "vendor/**"
