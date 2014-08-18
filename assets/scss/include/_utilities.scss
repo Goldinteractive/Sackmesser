@@ -104,6 +104,25 @@
 .fl {
     float: left;
 }
+
+@include respond-to('mobile') {
+    .fr-mobile {
+        float: right;
+    }
+    .fl-mobile {
+        float: left;
+    }
+}
+
+@include respond-to('tablet') {
+    .fr-tablet {
+        float: right;
+    }
+    .fl-tablet {
+        float: left;
+    }
+}
+
 .tac {
     text-align: center;
 }
@@ -113,6 +132,31 @@
 .tar {
     text-align: right;
 }
+
+@include respond-to('mobile') {
+   .tac-mobile {
+       text-align: center;
+   }
+   .tal-mobile {
+       text-align: left;
+   }
+   .tar-mobile {
+       text-align: right;
+   }
+}
+
+@include respond-to('tablet') {
+   .tac-tablet {
+       text-align: center;
+   }
+   .tal-tablet {
+       text-align: left;
+   }
+   .tar-tablet {
+       text-align: right;
+   }
+}
+
 .clear-both {
     clear:both;
 }
@@ -121,14 +165,4 @@
 }
 .clear-right {
     clear:right;
-}
-
-.align-right {
-    text-align: right;
-}
-.align-center {
-    text-align: center;
-}
-.align-left {
-    text-align: left;
 }

@@ -71,6 +71,22 @@ $full-default-width: gridsystem-width();
 	width:100%;
 	@include box-sizing(border-box);
 }
+
+.full-width-tablet {
+	@include respond-to('tablet') {
+		width: 100% !important;
+		margin-right: 0 !important;
+		margin-left: 0 !important;
+	}
+}
+.full-width-mobile {
+	@include respond-to('mobile') {
+		width: 100% !important;
+		margin-right: 0 !important;
+		margin-left: 0 !important;
+	}
+}
+
 .noMarginLR {
 	margin-left:0;
 	margin-right:0;
