@@ -15,7 +15,7 @@ $full-default-width: gridsystem-width();
 // Custom responsive grids
 @include create-grid(
 	10, // columns number
-    8%,  // column width
+	8%,  // column width
 	1%,  // gutter width
 	tablet, // special grid class id
 	true, // is it Fluid?
