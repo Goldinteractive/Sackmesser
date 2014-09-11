@@ -99,7 +99,7 @@ a {
 .container {
     width: $full-default-width;
     margin:0 auto;
-    @include breakpoint($break-medium) {
+    @include breakpoint($break-large) {
         width:100%;
     }
 }

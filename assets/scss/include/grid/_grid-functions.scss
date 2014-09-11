@@ -5,74 +5,79 @@
  *
  */
 
-// Utility function — you should never need to modify this
-@function gridsystem-width($columns:$default-columns-amount,$column-width:$default-column-width,$gutter-width:$default-gutter-width) {
-	@return ($column-width * $columns) + ($gutter-width * $columns);
+@function gridsystem-width($columns: $default-columns-amount, $column-width: $default-column-width, $gutter-width: $default-gutter-width) {
+	@return $column-width * $columns + $gutter-width * $columns;
 }
 
-
 @mixin column(
+	$grid-total-width,
 	$x: 1,
 	$columns: $default-columns-amount,
 	$column-width: $default-column-width,
 	$gutter-width: $default-gutter-width
 ) {
-	float:left;
-	width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns,$column-width,$gutter-width));
-	margin-left:$total-width*(($gutter-width*.5)/gridsystem-width($columns,$column-width,$gutter-width));
-	margin-right:$total-width*(($gutter-width*.5)/gridsystem-width($columns,$column-width,$gutter-width));
-	// *width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns,$column-width,$gutter-width))-$correction;
-	// *margin: 0 $total-width*(($gutter-width*.5)/gridsystem-width($columns,$column-width,$gutter-width))-$correction;
+	float: left;
+	width: $grid-total-width * (($gutter-width + $column-width) * $x - $gutter-width) / gridsystem-width($columns, $column-width, $gutter-width);
+	margin-left: $grid-total-width * $gutter-width * 0.5 / gridsystem-width($columns, $column-width, $gutter-width);
+	margin-right: $grid-total-width * $gutter-width * 0.5 / gridsystem-width($columns, $column-width, $gutter-width);
+	// *width: $grid-total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns,$column-width,$gutter-width))-$correction;
+	// *margin: 0 $grid-total-width*(($gutter-width*.5)/gridsystem-width($columns,$column-width,$gutter-width))-$correction;
 }
 
 @mixin inner(
-	$x: 1,
-	$columns: $default-columns-amount,
+	$grid-total-width,
+	$x: 1, $columns:
+	$default-columns-amount,
 	$column-width: $default-column-width,
 	$gutter-width: $default-gutter-width
 ) {
-	width: $total-width*(((($gutter-width+$column-width)*$x)-$gutter-width) / gridsystem-width($columns,$column-width,$gutter-width)) - $total-width*(($gutter-width*.5)/gridsystem-width($columns,$column-width,$gutter-width));
+
+	width: $grid-total-width * (($gutter-width + $column-width) * $x - $gutter-width) / gridsystem-width($columns, $column-width, $gutter-width) - $grid-total-width * $gutter-width * 0.5 / gridsystem-width($columns, $column-width, $gutter-width);
 }
+
 @mixin push(
+	$grid-total-width,
 	$offset: 1,
 	$columns: $default-columns-amount,
 	$column-width: $default-column-width,
 	$gutter-width: $default-gutter-width
 ) {
-	margin-left: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns,$column-width,$gutter-width)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns,$column-width,$gutter-width)) !important;
+	margin-left: $grid-total-width * ($gutter-width + $column-width) * $offset / gridsystem-width($columns, $column-width, $gutter-width) + $grid-total-width * $gutter-width * 0.5 / gridsystem-width($columns, $column-width, $gutter-width) !important;
 }
+
 @mixin pull(
-	$offset:1,
+	$grid-total-width,
+	$offset: 1,
 	$columns: $default-columns-amount,
 	$column-width: $default-column-width,
 	$gutter-width: $default-gutter-width
 ) {
-	margin-right: $total-width*((($gutter-width+$column-width)*$offset) / gridsystem-width($columns,$column-width,$gutter-width)) + $total-width*(($gutter-width*.5)/gridsystem-width($columns,$column-width,$gutter-width)) !important;
+	margin-right: $grid-total-width * ($gutter-width + $column-width) * $offset / gridsystem-width($columns, $column-width, $gutter-width) + $grid-total-width * $gutter-width * 0.5 / gridsystem-width($columns, $column-width, $gutter-width) !important;
 }
 
 /**
  * Building the grid classes
  */
 
-@mixin loop-grid (
+@mixin loop-grid(
+	$grid-total-width,
 	$columns,
 	$column-width,
 	$gutter-width,
-	$device:''
+	$device: ""
 ) {
 	@for $i from 1 through $columns {
 		.g-#{$device}#{$i} {
-			@include column($i,$columns,$column-width,$gutter-width);
+			@include column($grid-total-width, $i, $columns, $column-width, $gutter-width);
 		}
 		.g-#{$device}#{$i}-inner {
-			@include inner($i,$columns,$column-width,$gutter-width);
+			@include inner($grid-total-width, $i, $columns, $column-width, $gutter-width);
 		}
-
 		.push-#{$device}#{$i} {
-			@include push($i,$columns,$column-width,$gutter-width);
+			@include push($grid-total-width, $i, $columns, $column-width, $gutter-width);
 		}
 		.pull-#{$device}#{$i} {
-			@include pull($i,$columns,$column-width,$gutter-width);
+			@include pull($grid-total-width, $i, $columns, $column-width, $gutter-width);
 		}
 	}
 }
@@ -81,24 +86,26 @@
 	$columns: $default-columns-amount,
 	$column-width: $default-column-width,
 	$gutter-width: $default-gutter-width,
-	$device: '',
+	$device: "",
 	$isFluid: false,
-	$mediaQuery:false
+	$mediaQuery: false,
+	$grid-total-width: 100%
 ) {
-	@if $device and $device != '' {
-		$device: $device + '-';
-	}
-	@if ($isFluid) {
-		$total-width: 100%;
-	} @else {
-		$total-width: gridsystem-width($columns,$column-width,$gutter-width);
-	}
-	@if ($mediaQuery) {
-		@media #{$mediaQuery} {
-			@include loop-grid($columns,$column-width,$gutter-width,$device);
-		}
-	} @else {
-		@include loop-grid($columns,$column-width,$gutter-width,$device);
+
+	@if $device and $device != "" {
+		$device: $device + "-";
 	}
 
+	@if not $isFluid {
+		$grid-total-width: gridsystem-width($columns, $column-width, $gutter-width);
+	}
+
+	@if $mediaQuery {
+		@media #{$mediaQuery} {
+			@include loop-grid($grid-total-width, $columns, $column-width, $gutter-width, $device);
+		}
+	}
+	@else {
+		@include loop-grid($grid-total-width, $columns, $column-width, $gutter-width, $device);
+	}
 }

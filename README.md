@@ -67,6 +67,10 @@ and it will add the new component into the folder set inside bower.json ( by def
 
 ## Changelog
 
+### v0.1.9
+  * updated: gird system - now it works also with the new Compass version (1.0.1) and it's backword compatible
+  * added: Watezz to the team members
+
 ### v0.1.8
   * modified: config -> _config folder has been updated according to our new project setup standards
 

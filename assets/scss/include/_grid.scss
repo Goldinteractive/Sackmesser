@@ -1,5 +1,11 @@
-@import "grid/grid-defaults";
 @import "grid/grid-functions";
+@import "grid/grid-helpers";
+
+
+// Default grid values
+$default-column-width:60px;
+$default-gutter-width:20px;
+$default-columns-amount: 12;
 
 // Default grid without any media query
 // all the grid values are stored in _grid-defaults.scss
@@ -9,93 +15,18 @@ $full-default-width: gridsystem-width();
 // Custom responsive grids
 @include create-grid(
 	10, // columns number
-	9%,  // column width
+    8%,  // column width
 	1%,  // gutter width
 	tablet, // special grid class id
-	true, // is Fluid?
+	true, // is it Fluid?
 	'only screen and (min-width: #{$break-small + 1}) and (max-width: #{$break-large})' // media query
 );
 
 @include create-grid(
-	8, // columns number
-	11.5%,  // column width
-	1%,  // gutter width
+	10, // columns number
+	6%,  // column width
+	2%,  // gutter width
 	mobile, // special grid class id
-	true, // is Fluid?
+	true, // is it Fluid?
 	'only screen and (max-width: #{$break-small})' // media query
 );
-
-[class*="g-"],
-[class^="g-"] {
-	float:left;
-	display:inline;
-	@include box-sizing(border-box);
-	// used to debug the grid
-	.grid-debug & {
-		background: rgba(0,100,0,0.2);
-		margin-top: 10px;
-		height:150px;
-		text-align: center;
-		@include respond-to(tablet) {
-			background: rgba(100,0,100,0.2);
-		}
-		@include respond-to(mobile) {
-			background: rgba(0,100,100,0.2);
-		}
-		&:after {
-			font-size:0.7em;
-
-			content:  'grid ('attr(class)")" ;
-			@include respond-to(tablet) {
-				content: "tablet grid" ;
-			}
-			@include respond-to(mobile) {
-				content: "mobile grid";
-			}
-		}
-
-	}
-}
-
-.row {
-	width: 100%;
-	float:left;
-	clear:both;
-	.grid-debug & {
-		padding-bottom:10px;
-		border-bottom:1px solid rgba(0,0,0,0.4);
-	}
-}
-
-.full-width {
-	width:100%;
-	@include box-sizing(border-box);
-}
-
-.full-width-tablet {
-	@include respond-to('tablet') {
-		width: 100% !important;
-		margin-right: 0 !important;
-		margin-left: 0 !important;
-	}
-}
-.full-width-mobile {
-	@include respond-to('mobile') {
-		width: 100% !important;
-		margin-right: 0 !important;
-		margin-left: 0 !important;
-	}
-}
-
-.noMarginLR {
-	margin-left:0;
-	margin-right:0;
-}
-
-.noMarginL {
-	margin-left:0;
-}
-
-.noMarginR {
-	margin-right:0;
-}

@@ -8,7 +8,7 @@ module.exports = (grunt) ->
       ]
     pkg: grunt.file.readJSON("package.json")
     now: new Date().getTime()
-    secret: grunt.file.readJSON(".ftppass")
+    # secret: grunt.file.readJSON(".ftppass")
   )
 
   grunt.initConfig tasks
