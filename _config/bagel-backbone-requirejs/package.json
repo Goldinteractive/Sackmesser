@@ -1,0 +1,22 @@
+{
+  "main": "Gruntfile.js",
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-grunticon": "*",
+    "grunt-contrib-compass": "*",
+    "grunt-favicons": "*",
+    "load-grunt-tasks": "*",
+    "grunt-contrib-handlebars": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-requirejs": "*",
+    "grunt-processhtml": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-uglify": "*",
+    "load-grunt-configs": "*"
+  },
+  "scripts": {
+    "test": "grunt"
+  }
+}
