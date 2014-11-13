@@ -66,7 +66,7 @@ and it will add the new component into the folder set inside bower.json ( by def
 ### v0.2.0
   * removed: useless ie conditionals from the templates
   * removed: grunt-processhtml using always grunt-usemin instead
-  * added: ``assets/shared-variables.json`` that is used the scss files and it could be used also into the javascript files
+  * added: ``assets/shared-variables.json`` that is used in the scss files and it could be also loaded into the javascript files
   * added: grunt-filerev to uncache the resource on every new project deployment
   * updated: README.md
 
