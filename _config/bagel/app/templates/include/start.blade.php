@@ -7,7 +7,10 @@
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link type="text/plain" rel="author" href="humans.txt" />
+		<!-- build:css assets/css/style.css -->
 		<link rel="stylesheet" href="assets/css/style.css">
+		<!-- endbuild -->
+		
 		<!-- build:js assets/js/boot.min.js -->
 			<script src="assets/vendor/grunticon/grunticon.js"></script>
 			<script src="assets/vendor/modernizr/modernizr.min.js"></script>
