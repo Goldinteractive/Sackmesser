@@ -22,7 +22,9 @@ module.exports = (grunt) ->
     "copy"
     "requirejs"
     "uglify"
-    "processhtml"
+    "filerev"
+    "usemin"
+    "clean:tmp"
   ]
 
   # Build the svg icons

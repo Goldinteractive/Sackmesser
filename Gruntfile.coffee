@@ -23,6 +23,7 @@ module.exports = (grunt) ->
     "concat"
     "uglify"
     "compass"
+    "filerev"
     "usemin"
     "clean:tmp"
   ]

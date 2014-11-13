@@ -1,2 +1,6 @@
-module.exports = build:
-  src: ["dist"]
+module.exports =
+  build:
+    src: ["dist"]
+
+  tmp:
+    src: [".tmp"]

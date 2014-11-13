@@ -1,6 +1,7 @@
 <!-- build:js assets/js/build.min.js -->
 	<script data-main="assets/js/require-config" src="assets/vendor/bower/requirejs/require.js"></script>
 <!-- /build -->
+
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 	<!--
 	<script>
