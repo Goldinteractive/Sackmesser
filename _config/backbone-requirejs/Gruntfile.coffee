@@ -16,12 +16,13 @@ module.exports = (grunt) ->
   # Default task
   grunt.registerTask "default", [
     "jshint"
-    "clean"
+    "clean:build"
     "grunticon"
     "compass"
     "copy"
-    "requirejs"
+    "concat"
     "uglify"
+    "requirejs"
     "filerev"
     "usemin"
     "clean:tmp"

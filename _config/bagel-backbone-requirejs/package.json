@@ -13,6 +13,8 @@
     "grunt-usemin": "*",
     "grunt-filerev": "*",
     "grunt-contrib-copy": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-cssmin": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-uglify": "*",
     "load-grunt-configs": "*"

@@ -1,6 +1,10 @@
 <!-- build:js assets/js/build.min.js -->
-	<script data-main="assets/js/require-config" src="assets/vendor/bower/requirejs/require.js"></script>
-<!-- /build -->
+	<!-- hack to use usemin with requirejs -->
+	<script
+		src="assets/vendor/bower/requirejs/require.js"
+		data-main="assets/js/require-config">
+	</script>
+<!-- endbuild -->
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 	<!--

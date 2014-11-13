@@ -1,0 +1,1 @@
+module.exports = html: ["dist/app/templates/include/scripts.blade.php"]
