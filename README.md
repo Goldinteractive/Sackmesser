@@ -141,5 +141,5 @@ and it will add the new component into the folder set inside bower.json ( by def
   * the `style.css` file produced using Compass will be ignored by default avoiding the annoying merge conflicts
   * all the vendor frameworks downloaded by **bower** are ignored by default and cannot be uploaded on the project repo use only **bower** to manage them ( ..so now also Sidney is Happy :) )
   * `codekit-config.json` has been removed because we don't use it anymore
-  * **Matteo Patisso** has been removed from the `humans.txt` replaced with **Miro Bossert**
+  * **Matteo Patisso** has been removed from the `humans.txt` replaced by **Miro Bossert**
   * ...still looking for a better logo...
