@@ -1,35 +1,33 @@
 module.exports = (grunt) ->
-  require("load-grunt-tasks") grunt
-  tasks = require("load-grunt-configs")(grunt,
+  require('load-grunt-tasks') grunt
+  tasks = require('load-grunt-configs')(grunt,
     config:
       src: [
-        "grunt/*.coffee"
-        "grunt/*.js"
+        'grunt/*.coffee'
+        'grunt/*.js'
       ]
-    pkg: grunt.file.readJSON("package.json")
+    pkg: grunt.file.readJSON('package.json')
     now: new Date().getTime()
-    secret: grunt.file.readJSON(".ftppass")
   )
 
   grunt.initConfig tasks
 
-
   # Default task.
-  grunt.registerTask "default", [
-    "jshint"
-    "clean:build"
-    "grunticon"
-    "copy"
-    "useminPrepare"
-    "concat"
-    "uglify"
-    "compass"
-    "requirejs"
-    "filerev"
-    "usemin"
-    "clean:tmp"
+  grunt.registerTask 'default', [
+    'jshint'
+    'clean:build'
+    'grunticon'
+    'compass'
+    'copy'
+    'useminPrepare'
+    'concat:generated'
+    'cssmin:generated'
+    'uglify:generated'
+    'requirejs'
+    'usemin'
+    'clean:tmp'
   ]
 
   # Build the svg icons
-  grunt.registerTask "build-icons", ["grunticon"]
+  grunt.registerTask 'build-icons', ['grunticon']
   return

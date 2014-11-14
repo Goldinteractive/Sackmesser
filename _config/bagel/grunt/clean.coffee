@@ -1,6 +1,6 @@
 module.exports =
   build:
-    src: ["dist"]
+    src: ['dist']
 
   tmp:
-    src: [".tmp"]
+    src: ['.tmp']

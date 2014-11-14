@@ -1,4 +1,4 @@
 module.exports =
-  html: "index.html"
+  html: 'index.html'
   options:
-    dest: "dist"
+    dest: 'dist'

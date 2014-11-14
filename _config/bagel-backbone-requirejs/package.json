@@ -11,7 +11,6 @@
     "grunt-contrib-jshint": "*",
     "grunt-contrib-requirejs": "*",
     "grunt-usemin": "*",
-    "grunt-filerev": "*",
     "grunt-contrib-copy": "*",
     "grunt-contrib-concat": "*",
     "grunt-contrib-cssmin": "*",

@@ -27,11 +27,11 @@ $fontSize: 1em;
 //Responsive breakpoints
 // -------------------------
 
-// these values are all strings and we need to convert to valid sass numbers
-// https://github.com/HugoGiraudel/SassyCast is the right guy for us
-$break-small: to-number(get_shared_var('break-small'));
-$break-medium: to-number(get_shared_var('break-medium'));
-$break-large: to-number(get_shared_var('break-large'));
+// these values are all just numbers and we need to convert to px values
+// so we apply an easy typecast
+$break-small: get_shared_var('break-small') + 0px;
+$break-medium: get_shared_var('break-medium') + 0px;
+$break-large: get_shared_var('break-large') + 0px;
 
 // Images paths
 // -------------------------

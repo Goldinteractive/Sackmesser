@@ -1,4 +1,4 @@
 module.exports = all: [
-  "Gruntfile.js"
-  "public/assets/js/**/*.js"
+  'Gruntfile.js'
+  'public/assets/js/**/*.js'
 ]

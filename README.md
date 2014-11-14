@@ -69,12 +69,17 @@ and it will add the new component into the folder set inside bower.json ( by def
 
 ## Changelog
 
+### v0.2.1
+  * removed: grunt-filerev for an easier decache strategy
+  * removed: removed useless files
+  * updated: config.rb to parse Boolean, Numbers, and Strings
+
 ### v0.2.0
   * removed: useless ie conditionals from the templates
   * removed: grunt-processhtml using always grunt-usemin instead
   * removed: the `assets/scss/inlucde/animations` folder, we have rever used them
   * added: ``assets/shared-variables.json`` that is used in the scss files and it could be also loaded into the javascript files
-  * added: grunt-filerev to uncache the resource on every new project deployment
+  * added: grunt-filerev to decache the resource on every new project deployment
   * updated: README.md
 
 ### v0.1.9

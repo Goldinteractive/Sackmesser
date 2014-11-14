@@ -1,9 +1,9 @@
 module.exports =
   options:
-    appleTouchBackgroundColor: "#ffffff"
+    appleTouchBackgroundColor: '#ffffff'
     trueColor: true
-    html: "assets/favicons/favicons.html"
+    html: 'assets/favicons/favicons.html'
 
   icons:
-    src: "assets/favicons/favicon-source.png"
-    dest: "assets/favicons/"
+    src: 'assets/favicons/favicon-source.png'
+    dest: 'assets/favicons/'

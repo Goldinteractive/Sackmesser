@@ -2,17 +2,17 @@ module.exports = main:
   files: [
     {
       expand: true
-      cwd: "assets"
+      cwd: 'assets'
       src: [
-        "css/**"
-        "img/**"
+        'css/**'
+        'img/**'
       ]
-      dest: "dist/assets"
+      dest: 'dist/assets'
     }
     {
       expand: true
-      src: ["*.!(json|rb|md|js)"]
-      dest: "dist"
-      filter: "isFile"
+      src: ['*.!(json|rb|md|js)']
+      dest: 'dist'
+      filter: 'isFile'
     }
   ]

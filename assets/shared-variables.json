@@ -1,7 +1,7 @@
 {
-	"break-small": "320px",
-	"break-medium": "768px",
-	"break-large": "1024px",
+	"break-small": 320,
+	"break-medium": 768,
+	"break-large": 1024,
 	"primaryFg": "#3d3d3d",
 	"primaryBg": "white"
 }

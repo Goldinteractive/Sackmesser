@@ -32,9 +32,16 @@ module Sass::Script::Functions
 		unless json = JSON.load(IO.read(options[:custom]['shared_variables']))
 			raise Sass::SyntaxError.new("Error: File '#{options[:custom]['shared_variables']}' does not exist")
 		end
-		# get the json variable as string
-		if json[variable.value]
-			Sass::Script::String.new(json[variable.value])
+		# get the json variable value
+		value = json[variable.value];
+		if value
+			if (value.is_a? Fixnum or value.is_a? Float)
+				Sass::Script::Number.new(value)
+			elsif (value.is_a? TrueClass or value.is_a? FalseClass)
+				Sass::Script::Bool.new(value)
+			else
+				Sass::Script::String.new(value)
+			end
 		else
 			raise Sass::SyntaxError.new("Error: Breakpoint '#{variable}' does not exist, choose from the following: #{json.keys.join(', ')}")
 		end

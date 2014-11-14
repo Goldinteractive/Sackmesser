@@ -1,12 +1,12 @@
 module.exports = myIcons:
   files: [
     expand: true
-    cwd: "assets/img/icons/"
+    cwd: 'assets/img/icons/'
     src: [
-      "*.svg"
-      "*.png"
+      '*.svg'
+      '*.png'
     ]
-    dest: "assets/css/iconsbuild/"
+    dest: 'assets/css/iconsbuild/'
   ]
   options:
-    cssprefix: ".icon-"
+    cssprefix: '.icon-'

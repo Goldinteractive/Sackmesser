@@ -2,32 +2,32 @@ module.exports = main:
   files: [
     {
       expand: true
-      cwd: "public"
+      cwd: 'public'
       src: [
-        "assets/css/**"
-        "assets/img/**"
-        "assets/favicons/**"
-        "files/**"
-        "packages/**"
-        "vendor/**"
-        "!vendor/bower"
-        "*.txt"
-        "*.php"
+        'assets/css/**'
+        'assets/img/**'
+        'assets/favicons/**'
+        'files/**'
+        'packages/**'
+        'vendor/**'
+        '!vendor/bower'
+        '*.txt'
+        '*.php'
       ]
-      dest: "dist/public/"
+      dest: 'dist/public/'
     }
     {
       expand: true
       src: [
-        "app/**"
+        'app/**'
         # ignore the content of the cache folder..
-        "!app/storage/cache/**"
+        '!app/storage/cache/**'
         # .. but copy the folder empty anyway
-        "app/storage/cache"
-        "vendor/**"
-        "bootstrap/**"
-        "*.php"
+        'app/storage/cache'
+        'vendor/**'
+        'bootstrap/**'
+        '*.php'
       ]
-      dest: "dist"
+      dest: 'dist'
     }
   ]
