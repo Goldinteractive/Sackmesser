@@ -51,7 +51,7 @@ The Gruntfile.js in this project provide us a list of command to build the scss 
 ### To install a node js module just type
 
 ```shell
-	$ npm install yourmodule -save-dev
+$ npm install yourmodule -save-dev
 ```
 
 ## jQuery plugins and js frameworks installation
@@ -60,7 +60,7 @@ Anytime you need to install a new jQuery plugin or either an utility you must do
 If you have all the dependencies installed now you should be able to run the command:
 
 ```shell
-	$ bower search
+$ bower search
 ```
 
 to find all the frameworks you could install through this tool.
@@ -68,7 +68,7 @@ to find all the frameworks you could install through this tool.
 Bower is designed to keep track of all the frameworks we are using in our project (jquery plugins, libraries and so on) so to install a new _"framework"_ just run es:
 
 ```shell
-	$ bower install jquery -save
+$ bower install jquery -save
 ```
 
 and it will add the new component into the folder set inside bower.json ( by default assets/vendor/bower )

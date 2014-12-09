@@ -11,10 +11,10 @@
    ========================================================================== */
 
 html {
-    color: $textColor;
-    font-size: $fontSize;
-    font-family: $sansFontFamily;
-    background:$bodyBackground;
+    color: $text-color;
+    font-size: $font-size;
+    font-family: $sans-font-family;
+    background:$body-background;
 }
 
 /*
@@ -90,9 +90,9 @@ textarea {
 
 
 a {
-	color:$linkColor;
+	color:$link-color;
 	&:hover, &:focus, &:active {
-		color:$linkColorHover;
+		color:$link-color-hover;
 	}
 }
 
