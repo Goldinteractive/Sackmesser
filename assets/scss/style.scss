@@ -15,20 +15,21 @@
 // Core variables and mixins
 @import "include/variables"; // Modify this for custom colors, font-sizes, etc
 
-// Font include
+// Gold Interactive UI Components
+@import "../vendor/bower/gi-ui-grid/style";
+
+// Custom Fonts
 @import "include/fonts";
 
 // Base CSS
 @import "include/common";
+@import "include/grid";
+@import "include/icons";
 
 // Common UI Regions
-@import "include/icons";
 @import "include/header";
 @import "include/nav";
 @import "include/footer";
-
-// Gold Interactive UI Components
-
 
 // Utility classes
 @import "include/responsive-utilities";

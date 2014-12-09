@@ -1,0 +1,23 @@
+
+// Default grid values
+$default-column-width:60px;
+$default-gutter-width:20px;
+$default-columns-amount: 12;
+
+// Default grid without any media query
+$full-default-width: gridsystem-width();
+/**
+* Use the following functions to create your own custom grids
+*/
+
+@include create-grid();
+
+// Custom responsive grids
+@include create-grid(
+	10, // columns number
+	8%, // column width
+	1%, // gutter width
+	tablet, // special grid class id
+	true, // is it Fluid?
+	'only screen and (min-width: #{$break-small + 1}) and (max-width: #{$break-large})' // media query
+);

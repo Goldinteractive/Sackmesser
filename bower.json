@@ -1,8 +1,11 @@
 {
-	"name": "Sackmesser",
-	"ignore": [
-		"**/.*",
-		"node_modules",
-		"assets/vendor"
-	]
+  "name": "Sackmesser",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "assets/vendor"
+  ],
+  "dependencies": {
+    "gi-ui-grid": "*"
+  }
 }

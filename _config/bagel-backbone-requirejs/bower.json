@@ -13,6 +13,7 @@
 		"layoutmanager": "~0.9.4",
 		"requirejs": "~2.1.9",
 		"handlebars": "~1.3.0",
-		"almond": "~0.2.9"
+		"almond": "~0.2.9",
+		"gi-ui-grid": "*"
 	}
 }

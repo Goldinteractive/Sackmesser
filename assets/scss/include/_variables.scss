@@ -4,13 +4,12 @@
 
 // Colors
 // -------------------------
-$primaryFg: get_shared_var('primaryFg');
-$primaryBg: get_shared_var('primaryBg');
+
 
 // Scaffolding
 // -------------------------
-$bodyBackground: $primaryBg;
-$textColor: $primaryFg;
+$bodyBackground: white;
+$textColor: black;
 
 // Links
 // -------------------------
@@ -28,10 +27,9 @@ $fontSize: 1em;
 // -------------------------
 
 // these values are all just numbers and we need to convert to px values
-// so we apply an easy typecast
-$break-small: get_shared_var('break-small') + 0px;
-$break-medium: get_shared_var('break-medium') + 0px;
-$break-large: get_shared_var('break-large') + 0px;
+$break-small: to-number(get_shared_var('break-small')px);
+$break-medium: to-number(get_shared_var('break-medium')px);
+$break-large: to-number(get_shared_var('break-large')px);
 
 // Images paths
 // -------------------------
