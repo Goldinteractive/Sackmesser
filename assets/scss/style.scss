@@ -18,18 +18,19 @@
 // Font include
 @import "include/fonts";
 
-// Grid system and page structure
-@import "include/grid";
-
 // Base CSS
 @import "include/common";
-// UI Components
+
+// Common UI Regions
 @import "include/icons";
 @import "include/header";
 @import "include/nav";
 @import "include/footer";
 
+// Gold Interactive UI Components
+
+
 // Utility classes
 @import "include/responsive-utilities";
-@import "include/utilities"; // It must be the last to override the other classes It is when necessary
+@import "include/utilities";
 

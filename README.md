@@ -1,5 +1,16 @@
 # Sackmesser
 
+## UI Components
+- [buttons](http://goldinteractive.github.io/ui-buttons/)
+- [grid](http://goldinteractive.github.io/ui-grid/)
+
+### How to install a component
+To install a ui component just use `bower install gi-ui-[name of the component] -save` for example:
+
+```shell
+$ bower install gi-ui-buttons -save
+```
+
 Before you start dealing with this package please make sure to have the latest [nodejs](http://nodejs.org/) version installed on your machine
 
 ## Before installing the frontend dependencies
@@ -68,6 +79,10 @@ and it will add the new component into the folder set inside bower.json ( by def
 > Test it first before deploying it
 
 ## Changelog
+
+### v0.3.0
+  * removed: useless scss files
+  * added: the brand new components framework compatibility
 
 ### v0.2.1
   * removed: grunt-filerev for an easier decache strategy
