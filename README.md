@@ -7,6 +7,9 @@
 - [slider](http://goldinteractive.github.io/ui-slider/)
 - [toggle](http://goldinteractive.github.io/ui-toggle/)
 - [select](http://goldinteractive.github.io/ui-select/)
+- [textfield](http://goldinteractive.github.io/ui-textfield/)
+- [checkbox](http://goldinteractive.github.io/ui-checkbox/)
+- [form](http://goldinteractive.github.io/ui-form/)
 - Effects
   - [material](http://goldinteractive.github.io/ui-effects-material/)
 
