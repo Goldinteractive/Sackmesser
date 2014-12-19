@@ -17,12 +17,11 @@
 [class^="icon-"],
 [class*=" icon-"] {
   display: inline-block;
-  @include ie7-restore-right-whitespace();
   vertical-align: text-top;
   background-size:100%;
   background-repeat: no-repeat;
-  @include square(30px);
   image-rendering: optimizequality;
+  @include square($icons-size);
 }
 
 

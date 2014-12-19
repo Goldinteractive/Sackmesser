@@ -9,9 +9,14 @@
 - [select](http://goldinteractive.github.io/ui-select/)
 - [textfield](http://goldinteractive.github.io/ui-textfield/)
 - [checkbox](http://goldinteractive.github.io/ui-checkbox/)
+- [radio](http://goldinteractive.github.io/ui-radio/)
+- [overlay](http://goldinteractive.github.io/ui-overlay/)
 - [form](http://goldinteractive.github.io/ui-form/)
+- [horizontal-toolbar](http://goldinteractive.github.io/ui-horizontal-toolbar/)
+- [vertical-toolbar](http://goldinteractive.github.io/ui-vertical-toolbar/)
 - Effects
   - [material](http://goldinteractive.github.io/ui-effects-material/)
+
 
 ### How to install a Gold Interactive component
 To install a ui component just use `bower install gi-ui-[name of the component] -save` for example:

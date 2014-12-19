@@ -5,21 +5,20 @@
 
 // CSS Reset
 @import "compass";
-@import "include/reset";
-@import "include/mixins";
-@import "include/vendor/SassyCast/SassyCast";
+@import "compass/reset";
+
+// Gold Interactive shared scss
+@import "../vendor/bower/gi-scss-global-variables/global-variables";
+@import "../vendor/bower/gi-scss-mixins/mixins";
 
 // Third party css
+@import "../vendor/bower/sassy-cast/stylesheets/SassyCast";
 
-
-// Core variables and mixins
+// Project variables
 @import "include/variables"; // Modify this for custom colors, font-sizes, etc
 
 // Gold Interactive UI Components
 @import "../vendor/bower/gi-ui-grid/style";
-
-// Custom Fonts
-@import "include/fonts";
 
 // Base CSS
 @import "include/common";
@@ -32,6 +31,6 @@
 @import "include/footer";
 
 // Utility classes
-@import "include/responsive-utilities";
-@import "include/utilities";
+@import "../vendor/bower/gi-scss-responsive-utilities/responsive-utilities";
+@import "../vendor/bower/gi-scss-utilities/utilities";
 

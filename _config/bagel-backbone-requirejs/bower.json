@@ -7,6 +7,12 @@
 	],
 	"devDependencies": {},
 	"dependencies": {
+		"gi-scss-mixins": "*",
+		"gi-scss-global-variables":"*",
+	    "gi-scss-utilities": "*",
+	    "gi-scss-responsive-utilities":"*",
+	    "gi-ui-grid": "*",
+	    "sassy-cast": "*",
 		"lodash": "~2.4.1",
 		"backbone": "~1.1.0",
 		"jquery": "~2.0.3",

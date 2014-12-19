@@ -1,5 +1,8 @@
 ## Changelog
 
+### v0.3.1
+  * updated: all the scss files will be installed using bower
+
 ### v0.3.0
   * removed: useless scss files
   * added: the brand new components framework compatibility

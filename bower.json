@@ -3,9 +3,14 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "assets/vendor"
+    "assets/bower/vendor"
   ],
   "dependencies": {
-    "gi-ui-grid": "*"
+  	"gi-scss-mixins": "*",
+  	"gi-scss-global-variables":"*",
+    "gi-scss-utilities": "*",
+    "gi-scss-responsive-utilities":"*",
+    "gi-ui-grid": "*",
+    "sassy-cast": "*"
   }
 }
