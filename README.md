@@ -54,16 +54,23 @@ Just run the `$ sudo make` command into the root of this project to install all 
 If "make" command is not installed on your machine run following commands manually:
 
 ```shell
+$ bower install && npm install
+```
+
+## Configure your machine to start working with Sackmesser ( only the first tume )
+
+In Sackmesser we use several tools that must be installed on your machine before you will be able to work on a project.
+Once you are sure to have the latest [nodejs](http://nodejs.org/) and ruby on your device, you can run the command `make setup` or the following command:
+
+```shell
 # to compile the css
-$ gem install sass
+gem install sass
 # to import the sass variables from a json file
-$ gem install sass-json-vars
+gem install sass-json-vars
 # to install the frontend dependencies
-$ npm install -g bower
-$ bower install --allow-root
+npm install -g bower
 # to install the compile script dependencies
-$ npm install --save-dev
-$ npm install -g grunt-cli
+npm install -g grunt-cli
 ```
 
 ## Build the project
