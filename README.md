@@ -118,6 +118,10 @@ $foo: 'my string';
 
 ```
 
+#### References
+
+- [sass-guidelines](sass-guidelin.es)
+
 
 # Other Links
 
