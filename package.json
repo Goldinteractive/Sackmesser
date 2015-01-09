@@ -1,12 +1,12 @@
 {
 	"name": "Sackmesser",
-	"version": "0.3.11",
+	"version": "0.4.0",
 	"description": "Toolset to build and maintain any kind of website or web app",
 	"main": "Gruntfile.js",
 	"devDependencies": {
 		"grunt": "*",
 		"grunt-contrib-clean": "*",
-		"grunt-contrib-compass": "*",
+		"grunt-shell":"*",
 		"grunt-contrib-concat": "*",
 		"grunt-contrib-copy": "*",
 		"grunt-contrib-cssmin": "*",

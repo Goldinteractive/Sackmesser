@@ -6,7 +6,8 @@
 @media print {
     * {
         background: transparent !important;
-        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        color: #000 !important;
+        /* Black prints faster: h5bp.com/s */
         box-shadow: none !important;
         text-shadow: none !important;
     }
@@ -23,11 +24,9 @@
     abbr[title]:after {
         content: " (" attr(title) ")";
     }
-
     /*
      * Don't show links for images, or javascript/internal links
      */
-
     a[href^="javascript:"]:after,
     a[href^="#"]:after {
         content: "";
@@ -40,7 +39,8 @@
     }
 
     thead {
-        display: table-header-group; /* h5bp.com/t */
+        display: table-header-group;
+        /* h5bp.com/t */
     }
 
     tr,

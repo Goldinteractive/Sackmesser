@@ -1,5 +1,3 @@
-// Default grid without any media query
-$full-default-width: gridsystem-width();
 /**
 * Use the following functions to create your own custom grids
 */
@@ -9,9 +7,18 @@ $full-default-width: gridsystem-width();
 // Custom responsive grids
 @include create-grid(
 	10, // columns number
-	8%, // column width
+	9%, // column width
+	0.5%, // gutter width
+	tablet, // special grid class id
+	true, // is it Fluid?
+	map-get($breakpoints, tablet) // media query
+);
+
+@include create-grid(
+	10, // columns number
+	9%, // column width
 	1%, // gutter width
 	tablet, // special grid class id
 	true, // is it Fluid?
-	'only screen and (min-width: #{$break-small + 1}) and (max-width: #{$break-large})' // media query
+	map-get($breakpoints, mobile) // media query
 );

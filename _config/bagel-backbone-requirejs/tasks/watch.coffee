@@ -9,4 +9,4 @@ module.exports =
 
   css:
     files: ['public/assets/scss/**/*.scss']
-    tasks: ['compass']
+    tasks: ['sass']

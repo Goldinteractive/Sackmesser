@@ -4,7 +4,7 @@
     "grunt": "*",
     "grunt-contrib-watch": "*",
     "grunt-grunticon": "*",
-    "grunt-contrib-compass": "*",
+    "grunt-shell":"*",
     "grunt-favicons": "*",
     "load-grunt-tasks": "*",
     "grunt-contrib-handlebars": "*",

@@ -53,10 +53,18 @@ Please once you have replaced the config files delete the ``_config`` folder
 Just run the `$ sudo make` command into the root of this project to install all the dependencies.
 If "make" command is not installed on your machine run following commands manually:
 
-	$ npm i -g bower
-	$ npm install
-	$ npm i -g grunt-cli
-	$ bower install
+```shell
+# to compile the css
+$ gem install sass
+# to import the sass variables from a json file
+$ gem install sass-json-vars
+# to install the frontend dependencies
+$ npm install -g bower
+$ bower install --allow-root
+# to install the compile script dependencies
+$ npm install --save-dev
+$ npm install -g grunt-cli
+```
 
 ## Build the project
 
@@ -65,7 +73,7 @@ The Gruntfile.js in this project provide us a list of command to build the scss 
 
  * `$ grunt` this command triggers the default build action that could be different depending on the project. By default grunt builds the svg icons, processes the scss files and minifies the js creating the dist folder to upload)
  * `$ grunt build-icons` use this to build the svg icons
- * `$ grunt watch:css` with this cool trick the css gets updated anytime you change a scss file
+ * `$ grunt watch:scss` with this cool trick the css gets updated anytime you change a scss file __ATTENTION this task is not triggered through `grunt watch` but it's just an alias for `grunt shell:sass-watch` to get a high speed compiling process__
  * `$ grunt watch:js` build and minify all the js files only when one of them gets changed or modified
 
 ## Install new grunt packages

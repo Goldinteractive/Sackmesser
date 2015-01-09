@@ -3,34 +3,38 @@
  * Designed and mantained by Gold Interactive
  */
 
-// CSS Reset
-@import "compass";
-@import "compass/reset";
-
-// Gold Interactive shared scss
-@import "../vendor/bower/gi-scss-global-variables/global-variables";
-@import "../vendor/bower/gi-scss-mixins/mixins";
+// CSS shared variables
+// compass and mixins
+@import
+'../shared-variables.json',
+'../vendor/bower/gi-scss-global-variables/global-variables',
+'../vendor/bower/gi-scss-mixins/mixins';
 
 // Third party css
-@import "../vendor/bower/sassy-cast/stylesheets/SassyCast";
+
 
 // Project variables
-@import "include/variables"; // Modify this for custom colors, font-sizes, etc
+@import
+'include/variables'; // Modify this for custom colors, font-sizes, etc
 
 // Gold Interactive UI Components
-@import "../vendor/bower/gi-ui-grid/style";
+@import
+'../vendor/bower/gi-ui-grid/style';
 
 // Base CSS
-@import "include/common";
-@import "include/grid";
-@import "include/icons";
+@import
+'include/common',
+'include/grid',
+'include/icons';
 
 // Common UI Regions
-@import "include/header";
-@import "include/nav";
-@import "include/footer";
+@import
+'include/header',
+'include/nav',
+'include/footer';
 
 // Utility classes
-@import "../vendor/bower/gi-scss-responsive-utilities/responsive-utilities";
-@import "../vendor/bower/gi-scss-utilities/utilities";
+@import
+'../vendor/bower/gi-scss-responsive-utilities/responsive-utilities',
+'../vendor/bower/gi-scss-utilities/utilities';
 

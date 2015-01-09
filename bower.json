@@ -10,7 +10,6 @@
   	"gi-scss-global-variables":"*",
     "gi-scss-utilities": "*",
     "gi-scss-responsive-utilities":"*",
-    "gi-ui-grid": "*",
-    "sassy-cast": "*"
+    "gi-ui-grid": "*"
   }
 }

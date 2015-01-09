@@ -1,5 +1,12 @@
 ## Changelog
 
+### v0.4.0
+  * removed: __compass__ as dependency we now compile everything with sass that is a lot faster
+  * added: grunt shell to compile and watch the scss directly with sass
+  * added: the $breakpoints variable to make the grid and the respond-to calls more consistent and flexible
+  * added: the `gem install sass-json-vars` dependency to load json files directly with sass
+  * updated: the `grunt` folder now it's called `tasks` for a more consistent scaffold
+
 ### v0.3.1
   * updated: all the scss files will be installed using bower
 

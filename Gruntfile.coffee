@@ -3,8 +3,8 @@ module.exports = (grunt) ->
   tasks = require('load-grunt-configs')(grunt,
     config:
       src: [
-        'grunt/*.coffee'
-        'grunt/*.js'
+        'tasks/*.coffee'
+        'tasks/*.js'
       ]
     pkg: grunt.file.readJSON('package.json')
     now: new Date().getTime()
@@ -17,7 +17,7 @@ module.exports = (grunt) ->
     'jshint'
     'clean:build'
     'grunticon'
-    'compass'
+    'sass'
     'copy'
     'useminPrepare'
     'concat:generated'
@@ -29,4 +29,8 @@ module.exports = (grunt) ->
 
   # Build the svg icons
   grunt.registerTask 'build-icons', ['grunticon']
+
+  # Watch and compile the scss files
+  grunt.registerTask 'watch:sass', ['shell:sass-watch']
+  grunt.registerTask 'sass', ['shell:sass-compile']
   return
