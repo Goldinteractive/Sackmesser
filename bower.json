@@ -6,10 +6,10 @@
     "assets/bower/vendor"
   ],
   "dependencies": {
-  	"gi-scss-mixins": "*",
-  	"gi-scss-global-variables":"*",
+  	"gi-scss-mixins": "~0.2.0",
+  	"gi-scss-global-variables":"~0.2.0",
     "gi-scss-utilities": "*",
     "gi-scss-responsive-utilities":"*",
-    "gi-ui-grid": "*"
+    "gi-ui-grid": "~0.2.0"
   }
 }
