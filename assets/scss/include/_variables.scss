@@ -2,13 +2,6 @@
 // Variables
 // --------------------------------------------------
 
-// Grid Size
-// Default grid values
-$default-column-width:60px;
-$default-gutter-width:20px;
-$default-columns-amount: 12;
-// Default grid without any media query
-$full-default-width: gridsystem-width();
 
 // Colors
 // -------------------------
@@ -47,6 +40,12 @@ $breakpoints:(
 	'desktop': 'only screen and (min-width: #{$break-large} + 1)',
 	'retina': 'only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi)',
 );
+
+// Grid
+// Default grid values
+$default-column-width:60px;
+$default-gutter-width:20px;
+$default-columns-amount: 12;
 
 
 // Images paths

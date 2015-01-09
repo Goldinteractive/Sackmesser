@@ -13,8 +13,8 @@
 // For the white version of the icons, just add the .icon-white class:
 // <i class="icon-inbox icon-white"></i>
 
-[class^="icon-"],
-[class*=" icon-"] {
+[class^='icon-'],
+[class*=' icon-'] {
 	@include square($icons-size);
 	display: inline-block;
 	vertical-align: text-top;

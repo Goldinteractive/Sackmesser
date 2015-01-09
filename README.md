@@ -106,6 +106,19 @@ $button-color: #fff;
 
 ```
 
+Use always the single quotes in the sass and the javascript files
+
+```scss
+// WRONG!
+$foo: "my string";
+
+// GOOD
+
+$foo: 'my string';
+
+```
+
+
 # Other Links
 
 - [Changelog](CHANGELOG.md)
