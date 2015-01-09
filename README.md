@@ -57,7 +57,7 @@ If "make" command is not installed on your machine run following commands manual
 $ bower install && npm install
 ```
 
-## Configure your machine to start working with Sackmesser ( only the first tume )
+## Configure your machine to start working with Sackmesser ( only the first time )
 
 In Sackmesser we use several tools that must be installed on your machine before you will be able to work on a project.
 Once you are sure to have the latest [nodejs](http://nodejs.org/) and ruby on your device, you can run the command `make setup` or the following command:
