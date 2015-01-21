@@ -1,5 +1,8 @@
 ## Changelog
 
+### v0.4.1
+  * added: the `craft` configuration folder
+
 ### v0.4.0
   * removed: __compass__ as dependency we now compile everything with sass that is a lot faster
   * added: grunt shell to compile and watch the scss directly with sass

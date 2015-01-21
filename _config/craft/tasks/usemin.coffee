@@ -1,7 +1,7 @@
 module.exports =
 	html: [
-		'dist/app/templates/include/start.blade.php'
-		'dist/app/templates/include/scripts.blade.php'
+		'dist/craft/templates/_include/start.twig'
+		'dist/craft/templates/_include/scripts.twig'
 	]
 	options:
 		blockReplacements:

@@ -8,7 +8,6 @@ module.exports = main:
         'assets/img/**'
         'assets/favicons/**'
         'files/**'
-        'packages/**'
         'vendor/**'
         '!vendor/bower'
         '*.txt'
@@ -19,14 +18,8 @@ module.exports = main:
     {
       expand: true
       src: [
-        'app/**'
-        # ignore the content of the cache folder..
-        '!app/storage/cache/**'
-        # .. but copy the folder empty anyway
-        'app/storage/cache'
-        'vendor/**'
-        'bootstrap/**'
-        '*.php'
+        'crafter/**'
+        'craft/**'
       ]
       dest: 'dist'
     }

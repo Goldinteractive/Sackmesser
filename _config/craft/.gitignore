@@ -48,17 +48,9 @@ dist
 # the style.css must be generated using 'compass compile'
 public/assets/css/style.css
 
-# bagel stuff
-/bootstrap/compiled.php
-/vendor
-app/storage/cache/*
-composer.phar
-
-public/packages/*
+# craft stuff
 public/files/*
-app/config/packages/*
-workbench
+creafter/vendor
+creafter/composer.phar
 
-!app/config/packages/.gitkeep
-!public/files/.gitkeep
 style.css

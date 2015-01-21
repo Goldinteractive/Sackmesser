@@ -10,7 +10,7 @@
 		<!-- build:css assets/css/style.css -->
 		<link rel="stylesheet" href="assets/css/style.css">
 		<!-- endbuild -->
-		
+
 		<!-- build:js assets/js/boot.min.js -->
 			<script src="assets/vendor/grunticon/grunticon.js"></script>
 			<script src="assets/vendor/modernizr/modernizr.min.js"></script>
