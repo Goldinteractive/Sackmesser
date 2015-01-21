@@ -50,7 +50,7 @@ public/assets/css/style.css
 
 # craft stuff
 public/files/*
-creafter/vendor
-creafter/composer.phar
+crafter/vendor
+crafter/composer.phar
 
 style.css

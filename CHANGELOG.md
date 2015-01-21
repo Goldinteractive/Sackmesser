@@ -2,6 +2,7 @@
 
 ### v0.4.1
   * added: the `craft` configuration folder
+  * removed: the `bagel-backbone-requirejs` configuration folder
 
 ### v0.4.0
   * removed: __compass__ as dependency we now compile everything with sass that is a lot faster
