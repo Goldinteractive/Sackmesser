@@ -8,7 +8,7 @@
     "grunt-favicons": "*",
     "load-grunt-tasks": "*",
     "grunt-contrib-handlebars": "*",
-    "grunt-contrib-jshint": "*",
+    "grunt-eslint": "*",
     "grunt-contrib-requirejs": "*",
     "grunt-usemin": "*",
     "grunt-contrib-copy": "*",

@@ -14,7 +14,7 @@ module.exports = (grunt) ->
 
   # Default task.
   grunt.registerTask 'default', [
-    'jshint'
+    'eslint'
     'clean:build'
     'grunticon'
     'sass'

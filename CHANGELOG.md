@@ -1,5 +1,8 @@
 ## Changelog
 
+### v0.4.2
+  * added: the `eslint` instead of jshint
+
 ### v0.4.1
   * added: the `craft` configuration folder
   * removed: the `bagel-backbone-requirejs` configuration folder
