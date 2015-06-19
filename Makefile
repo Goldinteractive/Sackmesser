@@ -1,7 +1,7 @@
 #Install all the project dependencies
 install:
 	bower install
-	npm install
+	sudo npm install
 
 # setup your machine
 setup:

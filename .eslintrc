@@ -77,7 +77,7 @@ rules:
                               #     statements
     default-case: 2           # require default case in switch statements
     dot-notation: 1           # encourages use of dot notation whenever possible
-    eqeqeq: o                 # require the use of === and !==
+    eqeqeq: 0                 # require the use of === and !==
     guard-for-in: 1           # make sure for-in loops have an if statement
     no-alert: 2               # disallow the use of alert, confirm, and prompt
     no-caller: 2              # disallow use of arguments.caller or arguments.callee
@@ -122,7 +122,7 @@ rules:
     radix: 2                  # require use of the second argument for parseInt()
     vars-on-top: 0            # requires to declare all vars on top of their containing scope
     wrap-iife: [2, "inside"]  # require immediate function invocation to be wrapped in parentheses
-    yoda: "never"             # require or disallow Yoda conditions
+    yoda: [2, "never"]             # require or disallow Yoda conditions
 
     ###########################################################################
     #                                                                         #
@@ -207,7 +207,7 @@ rules:
     quote-props: 0                 # require quotes around object literal property names
     semi: [2, "always"]            # require or disallow use of semicolons instead of ASI
     sort-vars: 0                   # sort variables within the same declaration block
-    space-after-keywords: "always" # require a space after certain keywords
+    space-after-keywords: [2, "always"] # require a space after certain keywords
     space-before-blocks: 2         # require or disallow space before blocks
     space-in-brackets: 0           # require or disallow spaces inside brackets
     space-in-parens: 0             # require or disallow spaces inside parentheses
