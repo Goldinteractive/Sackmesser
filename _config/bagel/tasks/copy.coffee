@@ -7,11 +7,11 @@ module.exports = main:
         'assets/css/**'
         'assets/img/**'
         'assets/favicons/**'
+        'assets/*.json'
         'files/**'
         'packages/**'
         'vendor/**'
         '!vendor/bower'
-        'shared-variables.json'
         '*.txt'
         '*.php'
       ]
