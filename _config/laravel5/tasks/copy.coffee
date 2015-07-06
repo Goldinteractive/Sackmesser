@@ -8,10 +8,11 @@ module.exports = main:
         'assets/img/**'
         'assets/favicons/**'
         'files/**'
+        'packages/**'
         'vendor/**'
         '!vendor/bower'
-        '*.txt'
         'shared-variables.json'
+        '*.txt'
         '*.php'
       ]
       dest: 'dist/public/'
@@ -19,8 +20,19 @@ module.exports = main:
     {
       expand: true
       src: [
-        'crafter/**'
-        'craft/**'
+        'app/**'
+        'resources/**'
+        'database/**'
+        'storage/**'
+        'config/**'
+        'vendor/**'
+        'bootstrap/**'
+        # ignore the content of the cache folder..
+        '!storage/cache/**'
+        '!storage/logs/**'
+        # .. but copy the folder empty anyway
+        'storage/cache'
+        '*.php'
       ]
       dest: 'dist'
     }

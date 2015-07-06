@@ -6,6 +6,7 @@ module.exports = main:
       src: [
         'css/**'
         'img/**'
+        'shared-variables.json'
       ]
       dest: 'dist/assets'
     }

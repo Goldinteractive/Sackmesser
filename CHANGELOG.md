@@ -1,5 +1,11 @@
 ## Changelog
 
+### v0.5.2
+  * removed: the `_config/backbone-requirejs` folder
+  * added: the `_config/laravel5` folder
+  * updated: the favicon to a transparent one to avoid useless 404 logs
+  * changed: javascript style to 4 spaces indentation being consistent with our php style guide
+
 ### v0.4.2
   * added: the `eslint` instead of jshint
 

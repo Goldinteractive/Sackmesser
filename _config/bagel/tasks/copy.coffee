@@ -11,6 +11,7 @@ module.exports = main:
         'packages/**'
         'vendor/**'
         '!vendor/bower'
+        'shared-variables.json'
         '*.txt'
         '*.php'
       ]
