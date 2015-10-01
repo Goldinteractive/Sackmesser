@@ -4,6 +4,19 @@
 
 @include create-grid();
 
+// Uncomment the following lines if the defalt grid is just needed on desktop
+// this can be used if you need no push on mobile grid
+
+// @include create-grid(
+// 	$default-columns-amount, // columns number
+// 	$default-column-width, // column width
+// 	$default-gutter-width, // gutter width
+// 	"", // special grid class id
+// 	true, // is it Fluid?
+// 	map-get($breakpoints, desktop) // media query
+// );
+
+
 // Custom responsive grids
 @include create-grid(
 	10, // columns number
