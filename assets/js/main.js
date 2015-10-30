@@ -1,12 +1,7 @@
-(function () {
-    'use strict';
+var app = {
+  init() {
+    // here you can write all your fancy stuff...
+  }
+}
+app.init()
 
-    var app = {
-      init: function () {
-        // here you can write all your fancy stuff...
-      }
-    };
-
-    app.init();
-
-})();

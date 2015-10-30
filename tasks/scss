@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# compile the scss files
+# the config variables are set in the make file
+# the "$1" could be either '' or --watch
+scss --style=compressed --sourcemap=none $1 $IN:$OUT -r sass-json-vars
+
+
