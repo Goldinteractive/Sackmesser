@@ -17,7 +17,7 @@
 
 // Project variables
 @import
-	'include/variables'; // Modify this for custom colors, font-sizes, etc
+	'utils/variables'; // Modify this for custom colors, font-sizes, etc
 
 // Gold Interactive UI Components
 @import
@@ -25,15 +25,15 @@
 
 // Base CSS
 @import
-	'include/common',
-	'include/grid',
-	'include/icons';
+	'base/common',
+	'base/grid',
+	'base/icons';
 
 // Common UI Regions
 @import
-	'include/header',
-	'include/nav',
-	'include/footer';
+	'components/header',
+	'components/nav',
+	'components/footer';
 
 // Utility classes
 @import

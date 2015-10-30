@@ -6,9 +6,11 @@
   "devDependencies": {
     "babel-core": "^5.8.33",
     "babel-loader": "^5.3.3",
+    "clean-css": "^3.4.6",
     "eslint": "^1.7.3",
     "html-loader": "^0.3.0",
     "json-loader": "^0.5.3",
+    "svg-sprite": "^1.2.12",
     "webpack": "^1.12.2"
   },
   "repository": {

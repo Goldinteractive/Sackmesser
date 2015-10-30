@@ -1,0 +1,13 @@
+@mixin z-index($level: 'content') {
+  z-index: map-get($layers, $level);
+}
+
+@mixin square($size: 100%) {
+  width: $size;
+  height: $size;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}

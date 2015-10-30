@@ -1,6 +1,7 @@
 const webpack = require('webpack'),
   path = require('path'),
   IS_DEBUG = process.env.DEBUG && process.env.DEBUG != 'false',
+  IS_WATCH = process.env.WATCH && process.env.WATCH != 'false',
   BASE = path.join(__dirname, '..', process.env.BASE)
 
 module.exports = {
@@ -13,21 +14,25 @@ module.exports = {
     sourceMapFilename: `${process.env.OUT}.map`
   },
   devtool: IS_DEBUG ? '#source-map' : false,
+  watch: IS_WATCH,
   module: {
-    loaders: [{
-      test: /\.js$/,
-      exclude: /node_modules|bower/,
-      loader: 'babel-loader?optional[]=runtime&stage=0'
-    }, {
-      test: /\.html$/,
-      exclude: /node_modules|bower/,
-      loader: 'html-loader?attrs=none'
-    },
-    {
-      test: /\.json$/,
-      exclude: /node_modules|bower/,
-      loader: 'json-loader'
-    }]
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules|bower/,
+        loader: 'babel-loader?optional[]=runtime&stage=0'
+      },
+      {
+        test: /\.html$/,
+        exclude: /node_modules|bower/,
+        loader: 'html-loader?attrs=none'
+      },
+      {
+        test: /\.json$/,
+        exclude: /node_modules|bower/,
+        loader: 'json-loader'
+      }
+    ]
   },
   resolve: {
     alias: {

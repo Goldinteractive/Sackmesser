@@ -1,0 +1,35 @@
+#!/bin/bash
+
+echo 'Copying the root folders'
+rsync -avR --ignore-errors . $DEST \
+      --exclude=$ASSETS_PATH \
+      --exclude='dist' \
+      --exclude='node_modules' \
+      --exclude='tasks' \
+      --exclude='Makefile' \
+      --exclude='LICENSE' \
+      --exclude='/*.*' \
+      --exclude='.*' \
+      --exclude='.*/'
+
+# copy the assets excluding the js, vendor and scss folder
+echo 'Copying the assets files'
+rsync -avR --ignore-errors $ASSETS_PATH $DEST \
+      --exclude='scss' \
+      --exclude='vendor' \
+      --exclude='js' \
+      --exclude='.*' \
+      --exclude='.*/'
+
+# move the js generated into the right folder
+echo 'Copying the js file generated'
+rsync -avR --ignore-errors $JS_BASE/$JS_OUT $DEST
+
+# copy the important root files
+echo 'Copying the root files'
+rsync -dv --ignore-errors *.* $DEST \
+      --exclude='*/' \
+      --exclude='*.md' \
+      --exclude='*.js' \
+      --exclude='*.json'
+
