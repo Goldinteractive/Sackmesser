@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # install bower to manage the frontend dependencies
-@ bower install
+sudo bower install --allow-root
 # to compile the css
-@ gem install sass
+gem install sass
 # to import the sass variables from a json file
-@ gem install sass-json-vars
+gem install sass-json-vars
 # to install the frontend dependencies
-@ npm install -g bower
+npm install -g bower

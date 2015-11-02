@@ -13,20 +13,22 @@
 	'../vendor/bower/gi-scss-mixins/mixins';
 
 // Third party css
-
+@import
+	'iconsbuild/icons.data.svg.css',
+	'../vendor/bower/normalize-css/normalize.css';
 
 // Project variables
 @import
-	'utils/variables'; // Modify this for custom colors, font-sizes, etc
+	'utils/variables',
+	'utils/grid-setup'; // Modify this for custom colors, font-sizes, etc
 
 // Gold Interactive UI Components
-@import
-	'../vendor/bower/gi-ui-grid/style';
+
 
 // Base CSS
 @import
+	'grid.css',
 	'base/common',
-	'base/grid',
 	'base/icons';
 
 // Common UI Regions
@@ -37,6 +39,5 @@
 
 // Utility classes
 @import
-	'../vendor/bower/gi-scss-responsive-utilities/responsive-utilities',
 	'../vendor/bower/gi-scss-utilities/utilities';
 

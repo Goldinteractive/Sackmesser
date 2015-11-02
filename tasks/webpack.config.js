@@ -20,7 +20,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules|bower/,
-        loader: 'babel-loader?optional[]=runtime&stage=0'
+        loader: 'babel-loader?presets[]=es2015'
       },
       {
         test: /\.html$/,

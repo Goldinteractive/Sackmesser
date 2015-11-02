@@ -25,20 +25,25 @@ $mono-font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;
 $font-size: 1em;
 
 // Icons
-$icons-size: 30px;
+$icons-size: 22px;
 
 //Responsive breakpoints
 // -------------------------
 
 // Needed to generate the grid and the respond-to calls
 $breakpoints:(
-	'landscape': 'only screen and (orientation:landscape)',
-	'portrait': 'only screen and (orientation:portrait)',
-	'mobile': 'only screen and (max-width: #{$break-small})',
-	'exclude-mobile': 'only screen and (min-width: #{$break-small + 1})',
-	'tablet': 'only screen and (min-width: #{$break-small + 1}) and (max-width: #{$break-large})',
-	'desktop': 'only screen and (min-width: #{$break-large + 1})',
-	'retina': 'only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi)',
+	landscape: 'only screen and (orientation:landscape)',
+	portrait: 'only screen and (orientation:portrait)',
+	mobile: 'only screen and (max-width: #{$break-small})',
+	exclude-mobile: 'only screen and (min-width: #{$break-small + 1})',
+	tablet: 'only screen and (min-width: #{$break-small + 1}) and (max-width: #{$break-large})',
+	desktop: 'only screen and (min-width: #{$break-large + 1})',
+	retina: 'only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi)',
+);
+
+$layers: (
+  content: 1,
+  header: 2,
 );
 
 // Grid
@@ -51,4 +56,5 @@ $default-columns-amount: 12;
 // Images paths
 // -------------------------
 $image-path: '../img/';
+
 

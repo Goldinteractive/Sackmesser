@@ -1,0 +1,23 @@
+@import  '../../vendor/bower/gridle/sass/gridle/gridle';
+
+// check the documentation http://gridle.org/documentation
+
+// setting up the grid
+@include gridle_setup((
+  context: $default-columns-amount,
+  gutter-width: $default-gutter-width,
+));
+
+@include gridle_register_state (tablet, (
+  query: map-get($breakpoints, tablet),
+
+  gutter-width: 10%,
+  max-width: $break-medium,
+));
+
+// make the use of media queries a piece of cake
+@include gridle_register_state (mobile, (
+  query: map-get($breakpoints, mobile),
+  gutter-width: 10%,
+  max-width: $break-small,
+));

@@ -1,9 +1,8 @@
 #!/bin/bash
 
-
 # install the frontend dependencies
 if [ -f .bowerrc ]; then
-  bower install
+  sudo bower install --allow-root
 fi
 
 # install the nodejs dependencies
