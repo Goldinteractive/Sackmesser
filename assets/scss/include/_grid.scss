@@ -1,0 +1,37 @@
+/**
+* Use the following functions to create your own custom grids
+*/
+
+@include create-grid();
+
+// Uncomment the following lines if the defalt grid is just needed on desktop
+// this can be used if you need no push on mobile grid
+
+// @include create-grid(
+// 	$default-columns-amount, // columns number
+// 	$default-column-width, // column width
+// 	$default-gutter-width, // gutter width
+// 	"", // special grid class id
+// 	true, // is it Fluid?
+// 	map-get($breakpoints, desktop) // media query
+// );
+
+
+// Custom responsive grids
+@include create-grid(
+	10, // columns number
+	9%, // column width
+	0.5%, // gutter width
+	tablet, // special grid class id
+	true, // is it Fluid?
+	map-get($breakpoints, tablet) // media query
+);
+
+@include create-grid(
+	10, // columns number
+	9%, // column width
+	1%, // gutter width
+	tablet, // special grid class id
+	true, // is it Fluid?
+	map-get($breakpoints, mobile) // media query
+);
