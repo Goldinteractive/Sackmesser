@@ -21,7 +21,7 @@ SCSS_IN=$(ASSETS_PATH)/scss
 CSS_OUT=$(ASSETS_PATH)/css
 
 # Icons
-SRC_ICONS_PATH=$(ASSETS_PATH)/img/icons/*.svg
+SRC_ICONS_PATH=$(ASSETS_PATH)/img/icons
 OUT_ICONS_PATH=$(ASSETS_PATH)/css/iconsbuild
 
 # js
@@ -102,19 +102,8 @@ watch-js:
 debug-js:
 	@ DEBUG=true $(MAKE) js
 
-# icons:
-# 	@ $(SVG_SPRITE) -cD $(ASSETS_PATH)  \
-# 		--mode-css-dest $(ASSETS_PATH) \
-# 		--css-example \
-# 		--defs-inline \
-# 		--css-prefix . \
-# 		--css-render-scss-dest $(SASS_ICONS_FILE_OUT_PATH) \
-# 		--css-sprite $(CSS_SPRITE_OUT_PATH) \
-# 		--css-render-scss \
-# 		$(SRC_ICONS_PATH)
-
 icons:
-	OUT=$(OUT_ICONS_PATH) IN=`ls $(SRC_ICONS_PATH)` node tasks/icons
+	@ grunticon $(SRC_ICONS_PATH) $(OUT_ICONS_PATH) --config=tasks/grunticonOptions
 
 watch:
 	@ $(SCRIPTS_FOLDER)/utils/parallel \

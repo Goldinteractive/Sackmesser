@@ -2,9 +2,11 @@
 
 # install bower to manage the frontend dependencies
 sudo bower install --allow-root
+
 # to compile the css
 gem install sass
 # to import the sass variables from a json file
 gem install sass-json-vars
 # to install the frontend dependencies
-npm install -g bower
+npm i -g bower
+subo npm i -g grunticon-cli
