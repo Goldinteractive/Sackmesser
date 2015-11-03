@@ -14,13 +14,11 @@
 
 // Third party css
 @import
-	'iconsbuild/icons.data.svg.css',
 	'../vendor/bower/normalize-css/normalize.css';
 
 // Project variables
 @import
-	'utils/variables',
-	'utils/grid-setup'; // Modify this for custom colors, font-sizes, etc
+	'utils/variables'; // Modify this for custom colors, font-sizes, etc
 
 // Gold Interactive UI Components
 
@@ -30,6 +28,7 @@
 	'grid.css',
 	'base/common',
 	'base/icons';
+
 
 // Common UI Regions
 @import

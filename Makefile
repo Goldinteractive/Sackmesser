@@ -30,7 +30,10 @@ JS_IN=main.js
 JS_OUT=main.bundle.js
 JS_CONFIG=tasks/webpack.config.js
 
-build: clean test js css cssmin copy
+help:
+	@ $(SCRIPTS_FOLDER)/help
+
+build: clean test js css copy
 
 # Install all the project dependencies
 # this may change in any project
@@ -43,8 +46,10 @@ sass:
 	@ scss \
 		--style=compressed \
 		--sourcemap=none \
-		$(SCSS_IN)/style.scss:$(CSS_OUT)/style.css \
+		$(SCSS_IN)/style.scss:$(CSS_OUT)/style.scss.css \
 		-r sass-json-vars
+
+grid:
 	# compile the grid
 	@ scss \
 		--style=compressed \
@@ -52,27 +57,42 @@ sass:
 		$(SCSS_IN)/grid.scss:$(CSS_OUT)/grid.css \
 		-r sass-json-vars
 
+watch-grid:
+	# watch the grid
+	@ scss \
+		--style=compressed \
+		--sourcemap=none \
+		$(SCSS_IN)/grid.scss:$(CSS_OUT)/grid.css \
+		-r sass-json-vars \
+		--watch
+
 # watch the scss files
 watch-sass:
 	@ scss \
 		--style=compressed \
 		--sourcemap=none \
-		$(SCSS_IN):$(CSS_OUT) \
+		$(SCSS_IN)/style.scss:$(CSS_OUT)/style.scss.css \
 		-r sass-json-vars \
 		--watch
 
 postcss:
 	# autoprefix the css
-	@ $(POSTCSS) --use autoprefixer $(CSS_OUT)/style.css -o $(CSS_OUT)/style.css
+	@ $(POSTCSS) --use autoprefixer $(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css
 
 watch-postcss:
-	@ $(POSTCSS) --use autoprefixer $(CSS_OUT)/style.css -o $(CSS_OUT)/style.css --watch
+	@ $(POSTCSS) --use autoprefixer $(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css --watch
 
 cssmin:
 	# optimize the css for the build
 	@ $(CLEANCSS) $(CSS_OUT)/style.css -o $(CSS_OUT)/style.css
 
-css: sass postcss
+css: sass postcss grid cssmin
+
+watch-css:
+	# compile the css on the fly
+	@ $(SCRIPTS_FOLDER)/utils/parallel \
+		"make watch-scss" \
+		"make watch-postcss"
 
 # check the js files
 test:
@@ -111,11 +131,6 @@ watch:
 		"make watch-scss" \
 		"make watch-postcss"
 
-watch-css:
-	@ $(SCRIPTS_FOLDER)/utils/parallel \
-		"make watch-scss" \
-		"make watch-postcss"
-
 # setup your machine
 setup:
 	# install bower to manage the frontend dependencies
@@ -134,9 +149,11 @@ watch-scss: watch-sass
 	scss
 	sass
 	js
+	grid
 	debug-js
 	watch
 	watch-js
+	watch-grid
 	watch-sass
 	watch-scss
 	watch-css

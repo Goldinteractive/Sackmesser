@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Run in parallel multiple bash commands
 # 4 ex: ./parallel "make watch-js" "make watch-scss"
 

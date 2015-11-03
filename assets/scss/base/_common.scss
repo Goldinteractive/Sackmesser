@@ -100,8 +100,18 @@ a {
 .container {
 	max-width: $break-large;
 	margin: 0 auto;
-	@include gridle_container();
+
+	//animation: bounce 5s infinite;
 	@include breakpoint($break-large) {
 		width: 100%;
+	}
+}
+
+@keyframes bounce {
+	0% {
+		transform: translatey(-10%);
+	}
+	100% {
+		transform: translatey(10%);
 	}
 }

@@ -12,13 +12,22 @@ rsync -avR --ignore-errors . $DEST \
       --exclude='.*' \
       --exclude='.*/'
 
+# copy the important root files
+echo 'Copying the root files'
+rsync -dv --ignore-errors *.* $DEST \
+      --exclude='*/' \
+      --exclude='.*' \
+      --exclude='*.md' \
+      --exclude='*.js' \
+      --exclude='*.json'
+
 # copy the assets excluding the js, vendor and scss folder
 echo 'Copying the assets files'
 rsync -avR --ignore-errors $ASSETS_PATH $DEST \
       --exclude='scss' \
       --exclude='img/icons' \
       --exclude='grid.*' \
-      --exclude='sprite.css.*' \
+      --exclude='*.scss.*' \
       --exclude='vendor' \
       --exclude='js' \
       --exclude='.*' \

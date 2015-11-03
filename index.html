@@ -23,21 +23,20 @@
 		<meta name="msapplication-TileImage" content="assets/favicons/windows-tile-144x144.png">
 		<meta name="msapplication-TileColor" content="#000000">
 
+		<script src="assets/css/iconsbuild/grunticon.loader.js"></script>
+		<script>
+			grunticon(['assets/css/iconsbuild/icons.data.svg.css', 'assets/css/iconsbuild/icons.data.png.css', 'assets/css/iconsbuild/icons.fallback.css'], grunticon.svgLoadedCallback);
+		</script>
+		<noscript><link href="assets/css/iconsbuild/icons.fallback.css" rel="stylesheet"></noscript>
+
 	</head>
 	<body>
 
 		<!-- Add your site or application content here -->
-		<div class="container">
-			<h1>Hello world! Welcome to Sackmesser the Gold Interactive Bootstrap. <i class="icon-logo"></i> <i class="icon-add-entry"></i></h1>
-			<div class="row">
-				<div class="gr-6 gr-12@mobile" id="header">
-				  I'm the header, 12 columns width
-				</div>
-				<div class="gr-6 gr-12@mobile" id="header">
-				  I'm the header, 12 columns width
-				</div>
-			</div>
-		</div>
+		<center class="container">
+			<h1>Hello world! Welcome to Sackmesser the Gold Interactive Bootstrap.</h1>
+			<img src="sackmesser.svg" width="60%" />
+		</center>
 
 		<script src="assets/js/main.bundle.js"></script>
 
