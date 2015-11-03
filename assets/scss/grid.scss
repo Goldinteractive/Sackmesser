@@ -28,3 +28,15 @@
 ));
 
 @include gridle_generate_classes(all, -debug);
+
+/**
+ * Main page container
+ */
+
+.container {
+  max-width: $break-large;
+  margin: 0 auto;
+  @include breakpoint($break-large) {
+    width: 100%;
+  }
+}

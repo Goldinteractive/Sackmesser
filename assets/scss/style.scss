@@ -8,35 +8,39 @@
 // CSS shared variables
 // compass and mixins
 @import
-	'../shared-variables.json',
-	'../vendor/bower/gi-scss-global-variables/global-variables',
-	'../vendor/bower/gi-scss-mixins/mixins';
+  '../shared-variables.json',
+  '../vendor/bower/gi-scss-global-variables/global-variables',
+  '../vendor/bower/gi-scss-mixins/mixins';
 
 // Third party css
 @import
-	'../vendor/bower/normalize-css/normalize.css';
+  '../vendor/bower/normalize-css/normalize.css';
 
-// Project variables
+// Project variables and utils
 @import
-	'utils/variables'; // Modify this for custom colors, font-sizes, etc
+  'utils/mixins',
+  'utils/placeholders',
+  'utils/variables'; // Modify this for custom colors, font-sizes, etc
 
 // Gold Interactive UI Components
-
+// @import 'components/slider';
 
 // Base CSS
 @import
-	'grid.css',
-	'base/common',
-	'base/icons';
+  'grid.css',
+  'base/reset',
+  'base/typography',
+  'base/common',
+  'base/icons';
 
 
-// Common UI Regions
+// Common UI layout Regions
 @import
-	'components/header',
-	'components/nav',
-	'components/footer';
+  'layout/header',
+  'layout/nav',
+  'layout/footer';
 
 // Utility classes
 @import
-	'../vendor/bower/gi-scss-utilities/utilities';
+  '../vendor/bower/gi-scss-utilities/utilities';
 

@@ -77,10 +77,10 @@ watch-sass:
 
 postcss:
 	# autoprefix the css
-	@ $(POSTCSS) --use autoprefixer $(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css
+	@ $(POSTCSS) --use autoprefixer --autoprefixer.browsers "> 30%" $(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css
 
 watch-postcss:
-	@ $(POSTCSS) --use autoprefixer $(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css --watch
+	@ $(POSTCSS) --use autoprefixer --autoprefixer.browsers "> 30%" $(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css --watch
 
 cssmin:
 	# optimize the css for the build

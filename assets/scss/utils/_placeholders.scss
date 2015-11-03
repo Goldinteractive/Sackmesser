@@ -1,6 +1,6 @@
 %hw-accelerated {
-  -webkit-backface-visibility: hidden;
-  -webkit-transform: translate3d(0,0,0);
+  backface-visibility: hidden;
+  transform: translate3d(0,0,0);
 }
 
 %fullscreen {
@@ -17,5 +17,5 @@
 }
 
 %transition {
-  @include transition(all 0.3s ease-in-out);
+  transition: all 0.3s ease-in-out;
 }

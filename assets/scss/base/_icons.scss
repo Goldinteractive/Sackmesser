@@ -1,5 +1,3 @@
-
-
 // ICONS
 // -----
 
@@ -13,10 +11,11 @@
 
 [class^='icon-'],
 [class*=' icon-'] {
-	@include square($icons-size);
-	display: inline-block;
-	vertical-align: text-top;
-	background-size: 100%;
-	background-repeat: no-repeat;
-	image-rendering: optimizequality;
+  @include square($icons-size);
+
+  display: inline-block;
+  vertical-align: text-top;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  image-rendering: optimizequality;
 }
