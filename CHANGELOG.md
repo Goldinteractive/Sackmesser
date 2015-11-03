@@ -1,5 +1,11 @@
 ## Changelog
 
+### 0.6.0
+  * removed: grunt and all its dependencies
+  * updated: all the frontend tasks will be handle via `Makefile`
+  * added: postcss instead of the compass mixins
+  * added: finally __a logo__ made by [@ursi](https://twitter.com/ursi_hofstetter)
+
 ### v0.5.2
   * removed: the `_config/backbone-requirejs` folder
   * added: the `_config/laravel5` folder
