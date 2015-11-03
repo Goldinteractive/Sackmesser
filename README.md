@@ -1,5 +1,8 @@
 # Sackmesser
 
+![Sackmesser logo](sackmesser.svg)
+
+
 ## UI Components
 
 - [buttons](http://goldinteractive.github.io/ui-buttons/)

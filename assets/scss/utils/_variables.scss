@@ -1,0 +1,60 @@
+//
+// Variables
+// --------------------------------------------------
+
+
+// Colors
+// -------------------------
+
+
+// Scaffolding
+// -------------------------
+$body-background: white;
+$text-color: black;
+
+// Links
+// -------------------------
+$link-color: #08c;
+$link-color-hover: darken($link-color, 15%);
+
+// Typography
+// -------------------------
+$sans-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$serif-font-family: Georgia, 'Times New Roman', Times, serif;
+$mono-font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;
+$font-size: 1em;
+
+// Icons
+$icons-size: 22px;
+
+//Responsive breakpoints
+// -------------------------
+
+// Needed to generate the grid and the respond-to calls
+$breakpoints:(
+	landscape: 'only screen and (orientation:landscape)',
+	portrait: 'only screen and (orientation:portrait)',
+	mobile: 'only screen and (max-width: #{$break-small})',
+	exclude-mobile: 'only screen and (min-width: #{$break-small + 1})',
+	tablet: 'only screen and (min-width: #{$break-small + 1}) and (max-width: #{$break-large})',
+	desktop: 'only screen and (min-width: #{$break-large + 1})',
+	retina: 'only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi)',
+);
+
+$layers: (
+  content: 1,
+  header: 2,
+);
+
+// Grid
+// Default grid values
+$default-column-width:60px;
+$default-gutter-width:20px;
+$default-columns-amount: 12;
+
+
+// Images paths
+// -------------------------
+$image-path: '../img/';
+
+

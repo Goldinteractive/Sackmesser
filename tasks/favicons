@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Favicon and Apple Touch Icon Generator
+
+CONVERT_CMD=`which convert`
+SRC_IMAGE=$1/source.png
+BASE=$1
+
+if [ -z $CONVERT_CMD ] || [ ! -f $CONVERT_CMD ] || [ ! -x $CONVERT_CMD ];
+then
+    echo 'ImageMagick needs to be installed to run this script'
+    exit;
+fi
+
+echo $SRC_IMAGE
+if [ -z $SRC_IMAGE ];
+then
+  echo 'You must set correctly the path to the source image.'
+  exit;
+fi
+
+if [ ! -f $SRC_IMAGE ];
+then
+    echo 'Source image \"$SRC_IMAGE\" does not exist.'
+    exit;
+fi
+
+echo 'Generating square base image'
+$CONVERT_CMD $SRC_IMAGE -resize 256x256! -transparent white $BASE/favicon-256.png
+
+echo 'Generating default ico files'
+$CONVERT_CMD $BASE/favicon-256.png -resize 16x16 $BASE/favicon-16.png
+$CONVERT_CMD $BASE/favicon-256.png -colors 256 $BASE/favicon.ico
+
+echo 'Generating touch icons'
+$CONVERT_CMD $BASE/favicon-256.png -resize 57x57 $BASE/apple-touch-icon-precomposed.png
+$CONVERT_CMD $BASE/favicon-256.png -resize 72x72 $BASE/apple-touch-icon-72x72-precomposed.png
+$CONVERT_CMD $BASE/favicon-256.png -resize 76x76 $BASE/apple-touch-icon-76x76-precomposed.png
+$CONVERT_CMD $BASE/favicon-256.png -resize 114x114 $BASE/apple-touch-icon-114x114-precomposed.png
+$CONVERT_CMD $BASE/favicon-256.png -resize 120x120 $BASE/apple-touch-icon-120x120-precomposed.png
+$CONVERT_CMD $BASE/favicon-256.png -resize 144x144 $BASE/apple-touch-icon-144x144-precomposed.png
+$CONVERT_CMD $BASE/favicon-256.png -resize 152x152 $BASE/apple-touch-icon-152x152-precomposed.png
+
+echo 'Generating the windows icons'
+$CONVERT_CMD $BASE/favicon-256.png -resize 144x144 $BASE/windows-tile-144x144.png
+
+echo 'Removing temp files'
+rm -rf $BASE/favicon-256.png
