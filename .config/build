@@ -1,0 +1,33 @@
+# Project variables needed to compile the css, js and all the other fancy stuff we need
+
+# shell scripts paths and node bin files
+SCRIPTS_FOLDER=./tasks
+WEBPACK=./node_modules/.bin/webpack
+ESLINT=./node_modules/.bin/eslint
+CLEANCSS=./node_modules/.bin/cleancss
+POSTCSS=./node_modules/.bin/postcss
+SVG_SPRITE=./node_modules/.bin/svg-sprite
+
+# this could change in any project
+ASSETS_PATH=assets
+# set here the destination of your copy task
+COPY_DEST=dist
+
+# 90% of the times you should not change what's below
+
+# Favicons path
+FAVICONS_PATH=$(ASSETS_PATH)/favicons
+
+# css
+SCSS_IN=$(ASSETS_PATH)/scss
+CSS_OUT=$(ASSETS_PATH)/css
+
+# icons
+IN_ICONS_PATH=$(ASSETS_PATH)/img/icons
+OUT_ICONS_PATH=$(ASSETS_PATH)/css/iconsbuild
+
+# js
+JS_BASE=$(ASSETS_PATH)/js
+JS_IN=main.js
+JS_OUT=main.bundle.js
+JS_CONFIG=.config/webpack.js

@@ -39,14 +39,14 @@ and it will add the new utility into the folder set inside bower.json ( by defau
 
 ## Before installing the frontend dependencies
 
-Please select the right setup for your project from the ``.config`` folder.
+Please select the right setup for your project from the ``frameworks-bootstrap`` folder.
 The default files contained into the root folder can be useful just for a normal html project without too much ceremony.
 
-__Attention__: the ``.config`` subfolders could contain also other kind of assets, in that case just replace the files needed for the new project setup for example:
+__Attention__: the ``frameworks-bootstrap`` subfolders could contain also other kind of assets, in that case just replace the files needed for the new project setup for example:
 
-``.config/craft/.bowerrc`` -> ``.bowerrc``
+``frameworks-bootstrap/craft/.bowerrc`` -> ``.bowerrc``
 
-Please once you have replaced the config files delete the ``.config`` folder
+Please once you have replaced the config files delete the ``frameworks-bootstrap`` folder
 
 ## Install all the dependencies
 
@@ -74,6 +74,8 @@ If you just want to build the project to bring it on the live site please use:
 ```shell
 $ make build
 ```
+
+All the build variables are stored in the `.config/build` file
 
 ## Install new build dependencies packages
 

@@ -1,34 +1,5 @@
-# Project constants
-SCRIPTS_FOLDER=./tasks
-WEBPACK=./node_modules/.bin/webpack
-ESLINT=./node_modules/.bin/eslint
-CLEANCSS=./node_modules/.bin/cleancss
-POSTCSS=./node_modules/.bin/postcss
-SVG_SPRITE=./node_modules/.bin/svg-sprite
-
-# this could change in any project
-ASSETS_PATH=assets
-# set here the destination of your copy task
-COPY_DEST=dist
-
-# 90% of the times you should not change what's below
-
-# Favicons path
-FAVICONS_PATH=$(ASSETS_PATH)/favicons
-
-# css
-SCSS_IN=$(ASSETS_PATH)/scss
-CSS_OUT=$(ASSETS_PATH)/css
-
-# Icons
-SRC_ICONS_PATH=$(ASSETS_PATH)/img/icons
-OUT_ICONS_PATH=$(ASSETS_PATH)/css/iconsbuild
-
-# js
-JS_BASE=$(ASSETS_PATH)/js
-JS_IN=main.js
-JS_OUT=main.bundle.js
-JS_CONFIG=tasks/webpack.config.js
+# Import the build variables
+-include .config/build
 
 help:
 	@ $(SCRIPTS_FOLDER)/help
@@ -123,7 +94,7 @@ debug-js:
 	@ DEBUG=true $(MAKE) js
 
 icons:
-	@ grunticon $(SRC_ICONS_PATH) $(OUT_ICONS_PATH) --config=tasks/grunticonOptions
+	@ grunticon $(IN_ICONS_PATH) $(OUT_ICONS_PATH) --config=.config/grunticon
 
 watch:
 	@ $(SCRIPTS_FOLDER)/utils/parallel \

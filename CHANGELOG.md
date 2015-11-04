@@ -1,5 +1,9 @@
 ## Changelog
 
+### 0.6.1
+  * updated: renamed the old `.config` => `frameworks-bootstrap`
+  * updated: moved all the build variables and config files in `.config`
+
 ### 0.6.0
   * removed: grunt and all its dependencies
   * updated: all the frontend tasks will be handle via `Makefile`
