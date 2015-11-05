@@ -1,12 +1,8 @@
-# Project constants
-
-
 deployment-release:
 	@	DEPLOYMENT_FOLDER=$(DEPLOYMENT_FOLDER)  \
 		DEPLOY_SCRIPTS_FOLDER=$(DEPLOY_SCRIPTS_FOLDER) \
 		CONFIG_FOLDER=$(CONFIG_FOLDER) \
 		$(DEPLOY_SCRIPTS_FOLDER)/release.sh
-
 
 deployment-deploy-patch-%:
 	@ make build
