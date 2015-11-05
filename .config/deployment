@@ -1,8 +1,6 @@
 DEPLOYMENT_FOLDER=./deployment
 
-
-
-#should git be used to tag the deployments?
+j#should git be used to tag the deployments?
 USE_GIT=0
 
 DUMP_FOLDER="$DEPLOYMENT_FOLDER/database/structure/tables"
@@ -15,7 +13,6 @@ DB_DATABASE="database"
 # binaries
 MYSQL="/Applications/MAMP/Library/bin/mysql"
 MYSQLDUMP="/Applications/MAMP/Library/bin/mysqldump"
-MYSQLDIFF="/Applications/MAMP/Library/bin/mysqldiff"
 
 # Document Root Path (usually . or ./public)
 WEBROOT_PATH=.
