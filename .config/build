@@ -31,3 +31,11 @@ JS_BASE=$(ASSETS_PATH)/js
 JS_IN=main.js
 JS_OUT=main.bundle.js
 JS_CONFIG=.config/webpack.js
+
+
+# Deployment
+DEPLOYMENT_FOLDER=./deployment
+CONFIG_FOLDER=./.config
+
+# Document Root Path (usually . or ./public)
+WEBROOT_PATH=.
