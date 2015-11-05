@@ -31,50 +31,6 @@ else
 
     rm $DUMP_TABLE
     rm $DUMP_TABLE_TMP
-#
-#    echo "show tables;" | $MYSQL $DB_DATABASE -h $DB_HOST --port=$DB_PORT -u $DB_USER --password=$DB_PW | grep -v '^Tables_in_' > $TABLES_FILE
-#    echo "show tables;" | $MYSQL $TEMPDB -h $DB_HOST --port=$DB_PORT -u $DB_USER --password=$DB_PW | grep -v '^Tables_in_' > $TABLES_TMP_FILE
-#
-#
-#    #create tables
-#    for x in `cat $TABLES_FILE`; do
-#        TABLE_FOUND=0
-#
-#        for y in `cat $TABLES_TMP_FILE`; do
-#            if [ $x = $y ]; then
-#                TABLE_FOUND=1
-#            fi
-#        done
-#
-#        if [ $TABLE_FOUND -eq 0 ]; then
-#            CREATETABLE=`$MYSQL $DB_DATABASE -h $DB_HOST --port=$DB_PORT -u $DB_USER --password=$DB_PW -e "show create table $x;" | grep 'CREATE TABLE'`
-#            CREATETABLE="${CREATETABLE#${x}};"
-#            CREATETABLE=${CREATETABLE//\\n/}
-#            $MYSQL $TEMPDB -h $DB_HOST --port=$DB_PORT -u $DB_USER --password=$DB_PW -e "$CREATETABLE"
-#
-#            echo "$CREATETABLE" >> $DUMP_FILE
-#        fi
-#    done
-#
-#    #alter tables
-#    for x in `cat $TABLES_FILE`; do
-#         DIFFOUTPUT=`$MYSQLDIFF  --server1=$DB_USER:$DB_PW@$DB_HOST:$DB_PORT \
-#                --changes-for=server2 \
-#                --force \
-#                --quiet \
-#                --difftype=sql \
-#                "$DB_DATABASE.$x":"$TEMPDB.$x"`
-#
-#         #DIFFOUTPUT=${DIFFOUTPUT//\`$TEMPDB\`./}
-#         #DIFFOUTPUT=${DIFFOUTPUT//\`$DB_DATABASE\`./}
-#
-#         echo "$DIFFOUTPUT" >> $DUMP_FILE
-#
-#    done
-#
-#    #cleanup
-#    rm $TABLES_FILE
-#    rm $TABLES_TMP_FILE
 
     $MYSQL -h $DB_HOST --port=$DB_PORT -u $DB_USER --password=$DB_PW -e "DROP DATABASE $TEMPDB"
 
