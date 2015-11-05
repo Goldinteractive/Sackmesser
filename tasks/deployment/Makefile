@@ -9,7 +9,7 @@ deployment-release:
 
 
 deployment-deploy-patch-%:
-	#@ make build
+	@ make build
 	@ DEPLOYENV=$* \
 	COPY_DEST=$(COPY_DEST) \
 	CONFIG_FOLDER=$(CONFIG_FOLDER) \
