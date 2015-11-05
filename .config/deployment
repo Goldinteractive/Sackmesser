@@ -1,6 +1,6 @@
 DEPLOYMENT_FOLDER=./deployment
 
-j#should git be used to tag the deployments?
+#should git be used to tag the deployments?
 USE_GIT=0
 
 DUMP_FOLDER="$DEPLOYMENT_FOLDER/database/structure/tables"

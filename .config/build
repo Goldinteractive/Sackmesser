@@ -34,3 +34,5 @@ JS_IN=main.js
 JS_OUT=main.bundle.js
 JS_CONFIG=$(CONFIG_FOLDER)/webpack.js
 
+# deployment
+DEPLOY_SCRIPTS_FOLDER=$(SCRIPTS_FOLDER)/deployment

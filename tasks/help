@@ -21,10 +21,10 @@ Build the project:
 
 Deploy the project:
 
-  $START2  make deploy-setup    $END execute this command to setup your machine
-  $START2  make deploy-*        $END deploy the project on the production/staging server
-  $START2  make deploy-patch-*  $END just upload and sync the files changed recently
-  $START2  make rollback-*      $END rollback to the previous hopefully working version
+  $START2  make deploy-setup-*  $END execute this command to setup your machine (* = environment)
+  $START2  make deploy-*        $END deploy the project on the production/staging server (* = environment)
+  $START2  make deploy-patch-*  $END just upload and sync the files changed recently (* = environment)
+  $START2  make rollback-*      $END rollback to the previous hopefully working version (* = environment)
   $START2  make release         $END make a new release
 
 "
