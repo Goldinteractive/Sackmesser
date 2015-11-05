@@ -1,4 +1,6 @@
 # Project variables needed to compile the css, js and all the other fancy stuff we need
+CONFIG_FOLDER=./.config
+
 
 # shell scripts paths and node bin files
 SCRIPTS_FOLDER=./tasks
@@ -30,4 +32,5 @@ OUT_ICONS_PATH=$(ASSETS_PATH)/css/iconsbuild
 JS_BASE=$(ASSETS_PATH)/js
 JS_IN=main.js
 JS_OUT=main.bundle.js
-JS_CONFIG=.config/webpack.js
+JS_CONFIG=$(CONFIG_FOLDER)/webpack.js
+
