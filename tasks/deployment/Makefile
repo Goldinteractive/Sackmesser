@@ -1,18 +1,17 @@
-deployment-release:
+release:
 	@	DEPLOYMENT_FOLDER=$(DEPLOYMENT_FOLDER)  \
 		DEPLOY_SCRIPTS_FOLDER=$(DEPLOY_SCRIPTS_FOLDER) \
 		CONFIG_FOLDER=$(CONFIG_FOLDER) \
 		$(DEPLOY_SCRIPTS_FOLDER)/release.sh
 
-deployment-deploy-patch-%:
+deploy-patch-%:
 	@ make build
 	@ DEPLOYENV=$* \
 	COPY_DEST=$(COPY_DEST) \
 	CONFIG_FOLDER=$(CONFIG_FOLDER) \
 	 $(DEPLOY_SCRIPTS_FOLDER)/deploy-patch.sh
 
-
-deployment-deploy-%:
+deploy-%:
 	@ make build
 	@ DEPLOYENV=$* \
 	 DEPLOYMENT_FOLDER=$(DEPLOYMENT_FOLDER) \
@@ -22,7 +21,7 @@ deployment-deploy-%:
 	 CONFIG_FOLDER=$(CONFIG_FOLDER) \
 	 $(DEPLOY_SCRIPTS_FOLDER)/deploy.sh
 
-deployment-rollback-%:
+rollback-%:
 	@ DEPLOYENV=$* \
 	 DEPLOYMENT_FOLDER=$(DEPLOYMENT_FOLDER) \
 	 DEPLOY_SCRIPTS_FOLDER=$(DEPLOY_SCRIPTS_FOLDER) \

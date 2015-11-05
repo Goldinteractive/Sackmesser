@@ -14,7 +14,7 @@ newRev=$(($currentRev+1))
 printf "$COL_HL Creating new revision: $newRev $COL_CLEAR\n"
 
 
-$DEPLOY_SCRIPTS_FOLDER/unittest.sh
+$DEPLOY_SCRIPTS_FOLDER/test.sh
 if [ $? -eq 1 ]; then
     printf "$COL_ERR Unit Test failed $COL_CLEAR\n"
     printf "$COL_ERR Release cancelled. Please fix the unit test $COL_CLEAR\n"
