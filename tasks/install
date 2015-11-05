@@ -14,3 +14,5 @@ fi
 if [ -f composer.json ]; then
   sudo composer install --prefer-dist
 fi
+
+echo "Remember set up your ssh credentials using 'ssh-copy-id username@server.TLD'"

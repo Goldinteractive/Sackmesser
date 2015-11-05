@@ -1,19 +1,30 @@
 #!/bin/bash
 START="\033[35;1m"
+START2="\x1B[36m"
 END="\033[0m"
 
 printf "
 Command list:
 
-$START  make build     $END     compile the project js css creating the dist folder
-$START  make css       $END     compile the css with sass and postcss process
-$START  make js        $END     compile the javascript using webpack
-$START  make watch     $END     watch the js and the scss files compiling them
-$START  make grid      $END     generate the grid
-$START  make watch-grid$END     generate and watch the grid
-$START  make icons     $END     generate the icons using grunticon
-$START  make favicons  $END     generate the favicons
-$START  make watch-css $END     watch the scss files compiling them and running the post-processor
-$START  make watch-js  $END     watch the js ES6 files transpiling them to ES5
+Build the project:
+
+  $START  make build            $END compile the project js css creating the dist folder
+  $START  make css              $END compile the css with sass and postcss process
+  $START  make js               $END compile the javascript using webpack
+  $START  make watch            $END watch the js and the scss files compiling them
+  $START  make grid             $END generate the grid
+  $START  make watch-grid       $END generate and watch the grid
+  $START  make icons            $END generate the icons using grunticon
+  $START  make favicons         $END generate the favicons
+  $START  make watch-css        $END watch the scss files compiling them and running the post-processor
+  $START  make watch-js         $END watch the js ES6 files transpiling them to ES5
+
+Deploy the project:
+
+  $START2  make deploy-setup    $END execute this command to setup your machine
+  $START2  make deploy-*        $END deploy the project on the production/staging server
+  $START2  make deploy-patch-*  $END just upload and sync the files changed recently
+  $START2  make rollback-*      $END rollback to the previous hopefully working version
+  $START2  make release         $END make a new release
 
 "

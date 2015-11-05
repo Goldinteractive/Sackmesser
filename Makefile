@@ -114,7 +114,7 @@ favicons:
 scss: sass
 watch-scss: watch-sass
 
-include $(DEPLOY_SCRIPTS_FOLDER)/Makefile
+-include $(DEPLOY_SCRIPTS_FOLDER)/Makefile
 
 .PHONY:
 	install

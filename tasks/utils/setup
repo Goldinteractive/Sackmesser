@@ -10,3 +10,6 @@ gem install sass-json-vars
 # to install the frontend dependencies
 npm i -g bower
 subo npm i -g grunticon-cli
+
+# set up the project credentials for the deployment
+brew install ssh-copy-id
