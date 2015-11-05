@@ -7,7 +7,7 @@ DEPLOY_DB=1
 #root folder of the web app
 DEPLOY_APPROOT="deployment.ch"
 
-DEPLOY_HOST="goldinter01.nine.ch"
+DEPLOY_HOST="host"
 DEPLOY_PORT="22"
 DEPLOY_USER="user"
 
