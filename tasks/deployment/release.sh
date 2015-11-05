@@ -22,11 +22,13 @@ if [ $? -eq 1 ]; then
     exit 1
 fi
 
-REV=$newRev \
-CONFIG_FOLDER=$CONFIG_FOLDER \
-DEPLOYMENT_FOLDER=$DEPLOYMENT_FOLDER \
-    DEPLOY_SCRIPTS_FOLDER=$DEPLOY_SCRIPTS_FOLDER \
-    $DEPLOY_SCRIPTS_FOLDER/dbdump.sh
+if [ $USE_DB -eq 1 ]; then
+    REV=$newRev \
+    CONFIG_FOLDER=$CONFIG_FOLDER \
+    DEPLOYMENT_FOLDER=$DEPLOYMENT_FOLDER \
+        DEPLOY_SCRIPTS_FOLDER=$DEPLOY_SCRIPTS_FOLDER \
+        $DEPLOY_SCRIPTS_FOLDER/dbdump.sh
+fi
 
 if [ $USE_GIT -eq 1 ]; then
     printf "$COL_HL Create Git tag$COL_CLEAR\n"
