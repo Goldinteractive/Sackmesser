@@ -21,9 +21,6 @@ fi
 
 printf "\033[0;32m Rollback to Revision $ROLLBACKTOREV. \033[0m \n"
 
-printf "\033[0;32m We need the password so we can execute the necessary steps to activate our changes \033[0m \n"
-printf "Password: \033[0;32m $DEPLOY_PW \033[0m \n"
-
 ssh $DEPLOY_USER@$DEPLOY_HOST "$(which bash) -s" << EOF
     cd $DEPLOY_APPROOT
 

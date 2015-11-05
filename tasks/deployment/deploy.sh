@@ -27,12 +27,10 @@ tar --exclude="$archiveFileName" -cvzf "$REV_FOLDER/$archiveFileName" -C "$REV_F
 
 mv "$REV_FOLDER" "$COPY_DEST"
 
-printf "No we want to upload our archive to the server. For that we need the SSH Password. Here it comes: \n"
-printf "Password: \033[0;32m $DEPLOY_PW \033[0m \n"
+printf "No we want to upload our archive to the server.\n"
 
 scp "$COPY_DEST/$archiveFileName" $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT
 
-printf "\033[0;32m The upload of the file seemed to work. Now we need the password again so we can execute the necessary steps to activate our changes \033[0m \n"
 
 ssh $DEPLOY_USER@$DEPLOY_HOST "$(which bash) -s" << EOF
     cd $DEPLOY_APPROOT
