@@ -46,9 +46,11 @@ ssh $DEPLOY_USER@$DEPLOY_HOST "$(which bash) -s" << EOF
     fi
 
     cp -af "$REV_FOLDER/deployment/files/$DEPLOYENV/." "$REV_FOLDER/"
-    cp -af "current/$DEPLOY_DATA_FOLDER/." "$REV_FOLDER/$DEPLOY_DATA_FOLDER/"
 
-    mv "current" "$OLDREV_FOLDER"
+    if [ -d "current" ]; then
+        cp -af "current/$DEPLOY_DATA_FOLDER/." "$REV_FOLDER/$DEPLOY_DATA_FOLDER/"
+        mv "current" "$OLDREV_FOLDER"
+    fi
 
     mv "$REV_FOLDER" "current"
 EOF

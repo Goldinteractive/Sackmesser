@@ -1,11 +1,12 @@
 #!/bin/bash
 
+source "$CONFIG_FOLDER/deployment"
+
 COL_HL="\033[0;32m"
 COL_ERR="\033[0;31m"
 COL_CLEAR="\033[0m"
 REV_FILE="$DEPLOYMENT_FOLDER/rev"
 
-source "$CONFIG_FOLDER/deployment"
 
 currentRev=$(cat $REV_FILE)
 

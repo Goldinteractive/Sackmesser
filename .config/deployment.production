@@ -1,8 +1,8 @@
 #should the db be backuped when deploying?
-BACKUP_DB=1
+BACKUP_DB=0
 
 #should the db be deployed. Should be the same value like BACKUP_DB
-DEPLOY_DB=1
+DEPLOY_DB=0
 
 #root folder of the web app
 DEPLOY_APPROOT="deployment.ch"
