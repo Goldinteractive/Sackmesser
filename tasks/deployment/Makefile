@@ -37,4 +37,6 @@ rollback-%:
 
 clean-%:
 	@	DEPLOYENV=$* \
+		WEBROOT_PATH=$(WEBROOT_PATH) \
+        CONFIG_FOLDER=./.config \
 		 $(DEPLOY_SCRIPTS_FOLDER)/clean.sh
