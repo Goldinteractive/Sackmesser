@@ -18,8 +18,8 @@ fi
 
 source $DEPLOYMENT_CONFIG_FILE
 
-if [ $CURRENTREV -eq 0 ]; then
-    printf "\033[0;31m We can't rollback below revision 0. Cancel. \033[0m \n"
+if [ $CURRENTREV -eq 1 ]; then
+    printf "\033[0;31m We can't rollback below revision 1. Cancel. \033[0m \n"
     exit 1
 fi
 
