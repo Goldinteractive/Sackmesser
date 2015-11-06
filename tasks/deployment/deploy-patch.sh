@@ -7,4 +7,6 @@ if [ ! -e $DEPLOYMENT_CONFIG_FILE ]; then
     exit 1
 fi
 
-rsync -azP $COPY_DEST/ $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT/current
+source $DEPLOYMENT_CONFIG_FILE
+
+rsync -azP -e "ssh -p $DEPLOY_PORT" $COPY_DEST/ $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT/current
