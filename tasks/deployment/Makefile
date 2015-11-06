@@ -35,3 +35,6 @@ rollback-%:
 		CONFIG_FOLDER=./.config \
 		 $(DEPLOY_SCRIPTS_FOLDER)/rollback.sh
 
+clean-%:
+	@	DEPLOYENV=$* \
+		 $(DEPLOY_SCRIPTS_FOLDER)/clean.sh
