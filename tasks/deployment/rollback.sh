@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source "$CONFIG_FOLDER/deployment"
+
 REV_FILE=$DEPLOYMENT_FOLDER/rev
 CURRENTREV=$(cat $REV_FILE)
 ROLLBACKTOREV=$((CURRENTREV-1))
@@ -14,6 +16,8 @@ if [ ! -e $DEPLOYMENT_CONFIG_FILE ]; then
     exit 1
 fi
 
+source $DEPLOYMENT_CONFIG_FILE
+
 if [ $CURRENTREV -eq 0 ]; then
     printf "\033[0;31m We can't rollback below revision 0. Cancel. \033[0m \n"
     exit 1
@@ -21,7 +25,7 @@ fi
 
 printf "\033[0;32m Rollback to Revision $ROLLBACKTOREV. \033[0m \n"
 
-ssh $DEPLOY_USER@$DEPLOY_HOST "$(which bash) -s" << EOF
+ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT "$(which bash) -s" << EOF
     cd $DEPLOY_APPROOT
 
     if [ $DEPLOY_DB -eq 1 ]; then

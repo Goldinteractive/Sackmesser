@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source "$CONFIG_FOLDER/deployment"
+
 REV_FILE=$DEPLOYMENT_FOLDER/rev
 CURRENTREV=$(cat $REV_FILE)
 OLDREV=$(($CURRENTREV-1))
@@ -32,7 +34,7 @@ printf "No we want to upload our archive to the server.\n"
 scp "$COPY_DEST/$archiveFileName" $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT
 
 
-ssh $DEPLOY_USER@$DEPLOY_HOST "$(which bash) -s" << EOF
+ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "$(which bash) -s" << EOF
     cd $DEPLOY_APPROOT
      tar -zxvf $archiveFileName
     rm $archiveFileName

@@ -2,40 +2,57 @@
 
 source "$CONFIG_FOLDER/deployment"
 
-COL_HL="\033[0;32m"
-COL_ERR="\033[0;31m"
-COL_CLEAR="\033[0m"
-REV_FILE="$DEPLOYMENT_FOLDER/rev"
+REV_FILE=$DEPLOYMENT_FOLDER/rev
+CURRENTREV=$(cat $REV_FILE)
+OLDREV=$(($CURRENTREV-1))
+REV_FOLDER="rev$CURRENTREV"
+OLDREV_FOLDER="rev$OLDREV"
 
-
-currentRev=$(cat $REV_FILE)
-
-newRev=$(($currentRev+1))
-
-printf "$COL_HL Creating new revision: $newRev $COL_CLEAR\n"
-
-
-$DEPLOY_SCRIPTS_FOLDER/test.sh
-if [ $? -eq 1 ]; then
-    printf "$COL_ERR Unit Test failed $COL_CLEAR\n"
-    printf "$COL_ERR Release cancelled. Please fix the unit test $COL_CLEAR\n"
+#load config
+DEPLOYMENT_CONFIG_FILE="$CONFIG_FOLDER/deployment.$DEPLOYENV"
+if [ ! -e $DEPLOYMENT_CONFIG_FILE ]; then
+    printf "\033[0;31m Unknown Environment: $DEPLOYENV \033[0m \n"
     exit 1
 fi
 
-if [ $USE_DB -eq 1 ]; then
-    REV=$newRev \
-    CONFIG_FOLDER=$CONFIG_FOLDER \
-    DEPLOYMENT_FOLDER=$DEPLOYMENT_FOLDER \
-        DEPLOY_SCRIPTS_FOLDER=$DEPLOY_SCRIPTS_FOLDER \
-        $DEPLOY_SCRIPTS_FOLDER/dbdump.sh
-fi
+source $DEPLOYMENT_CONFIG_FILE
 
-if [ $USE_GIT -eq 1 ]; then
-    printf "$COL_HL Create Git tag$COL_CLEAR\n"
-    git tag -a "rev-$newRev" -m "Revision $newRev created"
-    git push origin "rev-$newRev"
-fi
+#htaccess stuff
+rm "$COPY_DEST/$WEBROOT_PATH/.htaccess"
+mv "$COPY_DEST/$WEBROOT_PATH/.htaccess.$DEPLOYENV" "$COPY_DEST/$WEBROOT_PATH/.htaccess"
+rm $COPY_DEST/$WEBROOT_PATH/.htaccess.*
+
+mv "$COPY_DEST" "$REV_FOLDER"
+
+archiveFileName="rev$CURRENTREV.tar.gz"
+tar --exclude="$archiveFileName" -cvzf "$REV_FOLDER/$archiveFileName" -C "$REV_FOLDER/../" $REV_FOLDER
+
+mv "$REV_FOLDER" "$COPY_DEST"
+
+printf "No we want to upload our archive to the server.\n"
+
+scp "$COPY_DEST/$archiveFileName" $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT
 
 
-#finally write to new file
-echo $newRev > $REV_FILE
+ssh $DEPLOY_USER@$DEPLOY_HOST "$(which bash) -s" << EOF
+    cd $DEPLOY_APPROOT
+     tar -zxvf $archiveFileName
+    rm $archiveFileName
+
+    if [ $BACKUP_DB -eq 1 ]; then
+        mysqldump -h $DEPLOY_DB_HOST --port=$DEPLOY_DB_PORT -u $DEPLOY_DB_USER --password=$DEPLOY_DB_PW $DEPLOY_DB_DATABASE  > "$REV_FOLDER/deployment/database/backup/backup.sql"
+    fi
+
+    if [ $DEPLOY_DB -eq 1 ]; then
+        mysql --host=$DEPLOY_DB_HOST --port=$DEPLOY_DB_PORT  --user=$DEPLOY_DB_USER --password=$DEPLOY_DB_PW $DEPLOY_DB_DATABASE < "$REV_FOLDER/deployment/database/structure/tables/$REV_FOLDER.sql"
+    fi
+
+    cp -af "$REV_FOLDER/deployment/files/$DEPLOYENV/." "$REV_FOLDER/"
+
+    if [ -d "current" ]; then
+        cp -af "current/$DEPLOY_DATA_FOLDER/." "$REV_FOLDER/$DEPLOY_DATA_FOLDER/"
+        mv "current" "$OLDREV_FOLDER"
+    fi
+
+    mv "$REV_FOLDER" "current"
+EOF
