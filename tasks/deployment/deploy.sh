@@ -18,9 +18,17 @@ fi
 source $DEPLOYMENT_CONFIG_FILE
 
 #htaccess stuff
-rm "$COPY_DEST/$WEBROOT_PATH/.htaccess"
-mv "$COPY_DEST/$WEBROOT_PATH/.htaccess.$DEPLOYENV" "$COPY_DEST/$WEBROOT_PATH/.htaccess"
-rm $COPY_DEST/$WEBROOT_PATH/.htaccess.*
+DEFAULT_HTACCESS="$COPY_DEST/$WEBROOT_PATH/.htaccess"
+ENV_HTACCESS="$COPY_DEST/$WEBROOT_PATH/.htaccess.$DEPLOYENV"
+
+# just remove/move the htaccess if there is a htaccess for the specified environment
+if [ -e $ENV_HTACCESS ]; then
+    rm -f $DEFAULT_HTACCESS
+    mv  ENV_HTACCESS $DEFAULT_HTACCESS
+fi
+
+# remove unneeded env htaccess
+rm -f $COPY_DEST/$WEBROOT_PATH/.htaccess.*
 
 mv "$COPY_DEST" "$REV_FOLDER"
 
@@ -33,6 +41,9 @@ printf "No we want to upload our archive to the server.\n"
 
 scp "$COPY_DEST/$archiveFileName" $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT
 
+if [ $? -eq 1 ]; then
+    exit 1
+fi
 
 ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "$(which bash) -s" << EOF
     cd $DEPLOY_APPROOT
@@ -56,3 +67,7 @@ ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "$(which bash) -s" << EOF
 
     mv "$REV_FOLDER" "current"
 EOF
+
+if [ $? -ne 0 ]; then
+    exit 1
+fi

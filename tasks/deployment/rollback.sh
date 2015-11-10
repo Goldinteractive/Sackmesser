@@ -42,7 +42,7 @@ ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT "$(which bash) -s" << EOF
                   --port=$DEPLOY_DB_PORT \
                   --user=$DEPLOY_DB_USER \
                   --password=$DEPLOY_DB_PW \
-                  $DEPLOY_DB_DATABASE < "$REV_FOLDER/deployment/database/backup/backup.sql"
+                  $DEPLOY_DB_DATABASE < "current/deployment/database/backup/backup.sql"
         else
            printf "\033[0;32m DB was not rolled back because the setting BACKUP_DB is set to false \033[0m \n"
         fi
@@ -51,3 +51,8 @@ ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT "$(which bash) -s" << EOF
     mv "current" "$REV_FOLDER"
     mv "$ROLLBACKTOREV_FOLDER" "current"
 EOF
+
+
+if [ $? -ne 0 ]; then
+    exit 1
+fi
