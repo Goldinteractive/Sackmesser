@@ -30,12 +30,17 @@ fi
 # remove unneeded env htaccess
 rm -f $COPY_DEST/$WEBROOT_PATH/.htaccess.*
 
+# copy env files
+cp -af "deployment/files/$DEPLOYENV/." "$COPY_DEST/"
+
 mv "$COPY_DEST" "$REV_FOLDER"
 
 archiveFileName="rev$CURRENTREV.tar.gz"
 tar --exclude="$archiveFileName" -cvzf "$REV_FOLDER/$archiveFileName" -C "$REV_FOLDER/../" $REV_FOLDER
 
 mv "$REV_FOLDER" "$COPY_DEST"
+
+exit
 
 printf "Now we want to upload our archive to the server.\n"
 
@@ -57,8 +62,6 @@ ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "$(which bash) -s" << EOF
     if [ $DEPLOY_DB -eq 1 ]; then
         mysql --host=$DEPLOY_DB_HOST --port=$DEPLOY_DB_PORT  --user=$DEPLOY_DB_USER --password=$DEPLOY_DB_PW $DEPLOY_DB_DATABASE < "$REV_FOLDER/deployment/database/structure/tables/$REV_FOLDER.sql"
     fi
-
-    cp -af "$REV_FOLDER/deployment/files/$DEPLOYENV/." "$REV_FOLDER/"
 
     if [ -d "current" ]; then
         cp -af "current/$DEPLOY_DATA_FOLDER/." "$REV_FOLDER/$DEPLOY_DATA_FOLDER/"
