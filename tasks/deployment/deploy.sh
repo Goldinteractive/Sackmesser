@@ -40,8 +40,6 @@ tar --exclude="$archiveFileName" -cvzf "$REV_FOLDER/$archiveFileName" -C "$REV_F
 
 mv "$REV_FOLDER" "$COPY_DEST"
 
-exit
-
 printf "Now we want to upload our archive to the server.\n"
 
 scp "$COPY_DEST/$archiveFileName" $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT
