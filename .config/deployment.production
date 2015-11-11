@@ -7,14 +7,14 @@ DEPLOY_DB=0
 #root folder of the web app
 DEPLOY_APPROOT="deployment.ch"
 
+# SSH
 DEPLOY_HOST="host"
 DEPLOY_PORT="22"
 DEPLOY_USER="user"
 
+# DB
 DEPLOY_DB_DATABASE="deployment"
 DEPLOY_DB_PORT=3306
 DEPLOY_DB_HOST="localhost"
 DEPLOY_DB_USER="deployment"
 DEPLOY_DB_PW=""
-
-DEPLOY_DATA_FOLDER="files"

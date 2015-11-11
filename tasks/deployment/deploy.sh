@@ -30,6 +30,9 @@ fi
 # remove unneeded env htaccess
 rm -f $COPY_DEST/$WEBROOT_PATH/.htaccess.*
 
+# remove dev files
+rm -rf ./$DEPLOY_DATA_FOLDER/*
+
 # copy env files
 cp -af "deployment/files/$DEPLOYENV/." "$COPY_DEST/"
 

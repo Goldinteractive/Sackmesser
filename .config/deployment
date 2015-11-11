@@ -1,9 +1,11 @@
 DEPLOYMENT_FOLDER=./deployment
 
-#should git be used to tag the deployments?
+# should git be used to tag the deployments?
 USE_GIT=0
 
+# should a db be used?
 USE_DB=0
+
 DUMP_FOLDER="$DEPLOYMENT_FOLDER/database/structure/tables"
 DB_HOST="host"
 DB_PORT=3306
@@ -11,9 +13,20 @@ DB_USER="user"
 DB_PW=""
 DB_DATABASE="database"
 
+# Document Root Path (usually . or ./public)
+WEBROOT_PATH=.
+
+# Folder where uploaded files are. Folder must be named "files"
+DEPLOY_DATA_FOLDER="files"
+
+# Folder where the data files should be backuped
+DEPLOY_DATA_BACKUP_FOLDER="$DEPLOYMENT_FOLDER/data"
+
 # binaries
 MYSQL=mysql
 MYSQLDUMP=mysqldump
 
-# Document Root Path (usually . or ./public)
-WEBROOT_PATH=.
+
+
+
+
