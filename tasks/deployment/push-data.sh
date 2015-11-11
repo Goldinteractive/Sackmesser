@@ -11,7 +11,7 @@ fi
 
 source $DEPLOYMENT_CONFIG_FILE
 
-DB_DATA_PUSH_FILE=mktemp
+DB_DATA_PUSH_FILE=`mktemp`
 
 # backup files
 printf "\033[0;32m Backup files in $DEPLOY_DATA_FOLDER \033[0m \n"

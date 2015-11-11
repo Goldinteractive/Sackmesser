@@ -12,7 +12,7 @@ fi
 source $DEPLOYMENT_CONFIG_FILE
 
 
-DB_DATA_PULL_FILE=mktemp
+DB_DATA_PULL_FILE="db_data_pull_file.sql"
 
 # backup files
 printf "\033[0;32m Backup files in $DEPLOY_DATA_FOLDER \033[0m \n"
