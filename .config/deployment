@@ -12,8 +12,8 @@ DB_PW=""
 DB_DATABASE="database"
 
 # binaries
-MYSQL="/Applications/MAMP/Library/bin/mysql"
-MYSQLDUMP="/Applications/MAMP/Library/bin/mysqldump"
+MYSQL=mysql
+MYSQLDUMP=mysqldump
 
 # Document Root Path (usually . or ./public)
 WEBROOT_PATH=.
