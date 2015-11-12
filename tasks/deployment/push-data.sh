@@ -32,7 +32,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # db
-mysqldump --add-drop-table -h $DB_HOST --port=$DB_PORT -u $DB_USER --password=$DB_PW $DB_DATABASE  > $DB_DATA_PUSH_FILE
+mysqldump --add-drop-table -h $DB_DEV_HOST --port=$DB_DEV_PORT -u $DB_DEV_USER --password=$DB_DEV_PW $DB_DEV_DATABASE  > $DB_DATA_PUSH_FILE
 
 scp -r $DB_DATA_PUSH_FILE $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT/db_data_push_file.sql
 

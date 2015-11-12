@@ -30,7 +30,7 @@ fi
 # backup db
 if [ $USE_DB -eq 1 ]; then
     printf "\033[0;32m Backup DB with Data \033[0m \n"
-    $MYSQLDUMP -h $DB_HOST --port=$DB_PORT -u $DB_USER --password=$DB_PW $DB_DATABASE  > "$DEPLOY_DATA_BACKUP_FOLDER/backup_db.sql"
+    $MYSQLDUMP -h $DB_DEV_OST --port=$DB_DEV_PORT -u $DB_DEV_USER --password=$DB_DEV_PW $DB_DEV_DATABASE  > "$DEPLOY_DATA_BACKUP_FOLDER/backup_db.sql"
 
     if [ $? -ne 0 ]; then
         exit 1
@@ -51,14 +51,14 @@ EOF
     ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "rm -f $DB_DATA_PULL_FILE"
 
     # clear db
-    DB=$DB_DATABASE \
-    DB_HOST=$DB_HOST \
-    DB_PORT=$DB_PORT \
-    DB_USER=$DB_USER \
-    DB_PW=$DB_PW \
+    DB=$DB_DEV_DATABASE \
+    DB_HOST=$DB_DEV_HOST \
+    DB_PORT=$DB_DEV_PORT \
+    DB_USER=$DB_DEV_USER \
+    DB_PW=$DB_DEV_PW \
         $DEPLOY_SCRIPTS_FOLDER/utils/db-clear-tables.sh
 
-     mysql $DB_DATABASE -h $DB_HOST --port=$DB_PORT -u $DB_USER --password=$DB_PW < $DB_DATA_PULL_FILE
+     mysql $DB_DEV_DATABASE -h $DB_DEV_HOST --port=$DB_DEV_PORT -u $DB_DEV_USER --password=$DB_DEV_PW < $DB_DATA_PULL_FILE
 
      rm -f $DB_DATA_PULL_FILE
 
