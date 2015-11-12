@@ -1,0 +1,20 @@
+#should the db be backuped when deploying?
+BACKUP_DB=0
+
+#should the db be deployed. Should be the same value like BACKUP_DB
+DEPLOY_DB=0
+
+#root folder of the web app
+DEPLOY_APPROOT="deployment.ch"
+
+# SSH
+DEPLOY_HOST="host"
+DEPLOY_PORT="22"
+DEPLOY_USER="user"
+
+# DB
+DEPLOY_DB_DATABASE="deployment"
+DEPLOY_DB_PORT=3306
+DEPLOY_DB_HOST="localhost"
+DEPLOY_DB_USER="deployment"
+DEPLOY_DB_PW=""
