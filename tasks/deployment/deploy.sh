@@ -18,34 +18,20 @@ fi
 source $DEPLOYMENT_CONFIG_FILE
 
 #htaccess stuff
-DEFAULT_HTACCESS="$COPY_DEST/$WEBROOT_PATH/.htaccess"
-ENV_HTACCESS="$COPY_DEST/$WEBROOT_PATH/.htaccess.$DEPLOYENV"
+ENV_HTACCESS="$WEBROOT_PATH/.htaccess.$DEPLOYENV"
+DEFAULT_HTACCESS="$WEBROOT_PATH/.htaccess"
 
-# just remove/move the htaccess if there is a htaccess for the specified environment
 if [ -e $ENV_HTACCESS ]; then
-    rm -f $DEFAULT_HTACCESS
-    mv  $ENV_HTACCESS $DEFAULT_HTACCESS
+    cp $ENV_HTACCESS "$COPY_DEST/$WEBROOT_PATH/.htaccess"
+else
+    cp $DEFAULT_HTACCESS "$COPY_DEST/$WEBROOT_PATH/.htaccess"
 fi
-
-# remove unneeded env htaccess
-rm -f $COPY_DEST/$WEBROOT_PATH/.htaccess.*
 
 # env stuff
-DEFAULT_ENV="$COPY_DEST/.env"
-ENV="$COPY_DEST/.htaccess.$DEPLOYENV"
-
-# just remove/move the htaccess if there is a htaccess for the specified environment
-if [ -e $ENV ]; then
-    rm -f $DEFAULT_ENV
-    mv  $ENV $DEFAULT_ENV
-fi
-
-# remove unneeded env htaccess
-rm -f $COPY_DEST/.env.*
-
+cp ".env.$DEPLOYENV" $COPY_DEST/.env
 
 # remove dev files
-rm -rf ./$DEPLOY_DATA_FOLDER/*
+rm -rf ./$COPY_DEST/$DEPLOY_DATA_FOLDER/*
 
 # copy env files
 cp -af "deployment/files/$DEPLOYENV/." "$COPY_DEST/"

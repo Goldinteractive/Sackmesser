@@ -13,7 +13,7 @@ DEPLOY_PORT="22"
 DEPLOY_USER="user"
 
 # DB
-source env.staging
+source .env.staging
 
 
 DEPLOY_DB_DATABASE=$DB_DATABASE

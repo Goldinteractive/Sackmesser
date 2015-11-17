@@ -13,7 +13,7 @@ DEPLOY_PORT="22"
 DEPLOY_USER="user"
 
 # DB
-source env.production
+source .env.production
 
 DEPLOY_DB_DATABASE=$DB_DATABASE
 DEPLOY_DB_PORT=$DB_PORT
