@@ -24,11 +24,25 @@ ENV_HTACCESS="$COPY_DEST/$WEBROOT_PATH/.htaccess.$DEPLOYENV"
 # just remove/move the htaccess if there is a htaccess for the specified environment
 if [ -e $ENV_HTACCESS ]; then
     rm -f $DEFAULT_HTACCESS
-    mv  ENV_HTACCESS $DEFAULT_HTACCESS
+    mv  $ENV_HTACCESS $DEFAULT_HTACCESS
 fi
 
 # remove unneeded env htaccess
 rm -f $COPY_DEST/$WEBROOT_PATH/.htaccess.*
+
+# env stuff
+DEFAULT_ENV="$COPY_DEST/.env"
+ENV="$COPY_DEST/.htaccess.$DEPLOYENV"
+
+# just remove/move the htaccess if there is a htaccess for the specified environment
+if [ -e $ENV ]; then
+    rm -f $DEFAULT_ENV
+    mv  $ENV $DEFAULT_ENV
+fi
+
+# remove unneeded env htaccess
+rm -f $COPY_DEST/.env.*
+
 
 # remove dev files
 rm -rf ./$DEPLOY_DATA_FOLDER/*
