@@ -30,7 +30,7 @@ fi
 # backup db
 if [ $USE_DB -eq 1 ]; then
     printf "\033[0;32m Backup DB with Data \033[0m \n"
-    $MYSQLDUMP -h $DB_DEV_OST --port=$DB_DEV_PORT -u $DB_DEV_USER --password=$DB_DEV_PW $DB_DEV_DATABASE  > "$DEPLOY_DATA_BACKUP_FOLDER/backup_db.sql"
+    $MYSQLDUMP -h $DB_DEV_HOST --port=$DB_DEV_PORT -u $DB_DEV_USER --password=$DB_DEV_PW $DB_DEV_DATABASE  > "$DEPLOY_DATA_BACKUP_FOLDER/backup_db.sql"
 
     if [ $? -ne 0 ]; then
         exit 1
