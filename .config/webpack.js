@@ -53,7 +53,7 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: IS_DEBUG
     }),
-    new webpack.BannerPlugin(`Gold Interactive - ${ new Date().getFullYear() }`)
+    new webpack.BannerPlugin(`Gold Interactive - www.goldinteractive.ch - ${ new Date().getFullYear() }`)
   ]
 }
 
