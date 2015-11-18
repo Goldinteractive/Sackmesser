@@ -40,6 +40,11 @@ module.exports = {
     }
   },
   plugins: [
+    // load also the bower components
+    new BowerWebpackPlugin({
+      excludes: /\.css$/,
+      searchResolveModulesDirectories: false
+    }),
     new webpack.ProvidePlugin({
       // $: 'jquery',
       // 'window.jQuery': 'jquery',
@@ -48,11 +53,7 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: IS_DEBUG
     }),
-    // load also the bower components
-    new BowerWebpackPlugin({
-      excludes: /\.css$/,
-      searchResolveModulesDirectories: false
-    })
+    new webpack.BannerPlugin(`Gold Interactive - ${ new Date().getFullYear() }`)
   ]
 }
 
