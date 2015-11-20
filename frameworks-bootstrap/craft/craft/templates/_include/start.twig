@@ -3,23 +3,33 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>{% block title %}{% endblock %}</title>
-		<base href="{{craft.config.environmentVariables.baseUrl}}" />
+		<title>{{ siteName }} - {{ entry.title }}</title>
+		<base href="{{craft.config.environmentVariables.baseUrl}}/" />
 		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link type="text/plain" rel="author" href="humans.txt" />
-		<!-- build:css assets/css/style.css -->
-			<link rel="stylesheet" href="assets/css/style.css" />
-		<!-- endbuild -->
 
-		<!-- build:js assets/js/boot.min.js -->
-			<script src="assets/vendor/grunticon/grunticon.js"></script>
-			<script src="assets/vendor/modernizr/modernizr.min.js"></script>
-		<!-- endbuild -->
+		<link rel="stylesheet" href="assets/css/style.css">
+
+		<link rel="shortcut icon"  href="assets/favicons/favicon.ico">
+		<link rel="icon" type="image/png" sizes="64x64" href="assets/favicons/favicon.png">
+		<link rel="apple-touch-icon" href="assets/favicons/apple-touch-icon.png">
+		<link rel="apple-touch-icon-precomposed" href="assets/favicons/apple-touch-icon-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/favicons/apple-touch-icon-72x72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="76x76" href="assets/favicons/apple-touch-icon-76x76-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/favicons/apple-touch-icon-114x114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="120x120" href="assets/favicons/apple-touch-icon-120x120-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/favicons/apple-touch-icon-144x144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="assets/favicons/apple-touch-icon-152x152-precomposed.png">
+		<meta name="msapplication-TileImage" content="assets/favicons/windows-tile-144x144.png">
+		<meta name="msapplication-TileColor" content="#000000">
+
+		<script src="assets/css/iconsbuild/grunticon.loader.js"></script>
 		<script>
-		// load the right icons css
-		grunticon( [ "assets/css/iconsbuild/icons.data.svg.css", "assets/css/iconsbuild/icons.data.png.css", "assets/css/iconsbuild/icons.fallback.css" ] );
+			grunticon(['assets/css/iconsbuild/icons.data.svg.css', 'assets/css/iconsbuild/icons.data.png.css', 'assets/css/iconsbuild/icons.fallback.css'], grunticon.svgLoadedCallback);
+			var SHARED_VARS = {{ (craft.crafter.make('path.public') ~ '/assets/shared-variables.json') | loadJSON | raw }};
 		</script>
 		<noscript><link href="assets/css/iconsbuild/icons.fallback.css" rel="stylesheet"></noscript>
+
 	</head>
 	<body class="{% block bodyClass %}{% endblock %}">
