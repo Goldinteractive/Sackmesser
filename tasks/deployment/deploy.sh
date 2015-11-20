@@ -53,7 +53,12 @@ fi
 
 ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "$(which bash) -s" << EOF
     cd $DEPLOY_APPROOT
-     tar -zxvf $archiveFileName
+
+    if [ -d "$REV_FOLDER" ]; then
+        rm -rf "$REV_FOLDER"
+    fi
+
+    tar -zxvf $archiveFileName
     rm $archiveFileName
 
     if [ $BACKUP_DB -eq 1 ]; then
@@ -63,6 +68,8 @@ ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "$(which bash) -s" << EOF
     if [ $DEPLOY_DB -eq 1 ]; then
         mysql --host=$DEPLOY_DB_HOST --port=$DEPLOY_DB_PORT  --user=$DEPLOY_DB_USER --password=$DEPLOY_DB_PW $DEPLOY_DB_DATABASE < "$REV_FOLDER/deployment/database/structure/tables/$REV_FOLDER.sql"
     fi
+
+
 
     if [ -d "current" ]; then
         cp -af "current/$DEPLOY_DATA_FOLDER/." "$REV_FOLDER/$DEPLOY_DATA_FOLDER/"

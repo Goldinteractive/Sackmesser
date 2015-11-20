@@ -2,8 +2,8 @@
 
 @import
   '../vendor/bower/gridle/sass/gridle/gridle',
-	'../shared-variables.json',
-	'utils/variables',
+  '../shared-variables.json',
+  'utils/variables',
   '../vendor/bower/gi-scss-mixins/mixins';
 
 // check the documentation http://gridle.org/documentation
@@ -39,5 +39,31 @@
   margin: 0 auto;
   @include breakpoint($break-large) {
     width: 100%;
+  }
+}
+
+/**
+ * Small hack for a big problem, used to enable the background colors,
+ * images inside a grid block
+ * 4 ex:
+ *  .row
+ *    .gr-12
+ *      .gr-inner
+ *        row style="background:white"
+ *          .gr-6
+ *          .gr-6
+ */
+.gr-inner {
+  margin-left:  $default-gutter-width / 2;
+  margin-right: $default-gutter-width / 2;
+
+  @include respond-to(tablet) {
+    margin-left:  5%; // the half of the gutter width on tablet!
+    margin-right: 5%;
+  }
+
+  @include respond-to(mobile) {
+    margin-left:  5%; // the half of the gutter width on mobile!
+    margin-right: 5%;
   }
 }
