@@ -47,3 +47,5 @@ dist
 
 # the style.css must be generated using 'compass compile'
 assets/css/style.css
+
+.env
