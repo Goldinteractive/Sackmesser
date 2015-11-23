@@ -27,7 +27,6 @@
 		<script src="assets/css/iconsbuild/grunticon.loader.js"></script>
 		<script>
 			grunticon(['assets/css/iconsbuild/icons.data.svg.css', 'assets/css/iconsbuild/icons.data.png.css', 'assets/css/iconsbuild/icons.fallback.css'], grunticon.svgLoadedCallback);
-			var SHARED_VARS = {{ (craft.crafter.make('path.public') ~ '/assets/shared-variables.json') | loadJSON | raw }};
 		</script>
 		<noscript><link href="assets/css/iconsbuild/icons.fallback.css" rel="stylesheet"></noscript>
 
