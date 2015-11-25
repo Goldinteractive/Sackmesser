@@ -4,6 +4,32 @@ const webpack = require('webpack'),
   IS_DEBUG = process.env.DEBUG && process.env.DEBUG != 'false',
   IS_WATCH = process.env.WATCH && process.env.WATCH != 'false',
   BASE = path.join(__dirname, '..', process.env.BASE)
+  
+// default plugins
+var plugins = [
+  new BowerWebpackPlugin({
+    excludes: /\.css$/,
+    searchResolveModulesDirectories: false
+  }),
+  new webpack.ProvidePlugin({
+    //  $: 'jquery',
+    // jQuery: 'jquery',
+  })
+]
+
+// Extend the default plugins to
+// minify everything in production
+// adding the credits as well
+if (!IS_DEBUG)
+  plugins = plugins.concat([
+    new webpack.BannerPlugin(`Gold Interactive - www.goldinteractive.ch - ${ new Date().getFullYear() }`),
+    new webpack.optimize.UglifyJsPlugin({
+      comments: false,
+      compress: {
+        warnings: false
+      }
+    })
+  ])
 
 module.exports = {
   entry: path.join(BASE, process.env.IN),
@@ -20,13 +46,12 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        exclude: /node_modules|bower/,
-        loader: 'babel-loader?presets[]=es2015'
-      },
-      {
-        test: /\.html$/,
-        exclude: /node_modules|bower/,
-        loader: 'html-loader?attrs=none'
+        exclude: /(node_modules|bower)/,
+        loader: 'babel',
+        query: {
+          cacheDirectory: true,
+          presets: ['es2015']
+        }
       },
       {
         test: /\.json$/,
@@ -35,25 +60,6 @@ module.exports = {
       }
     ]
   },
-  resolve: {
-    alias: {
-    }
-  },
-  plugins: [
-    // load also the bower components
-    new BowerWebpackPlugin({
-      excludes: /\.css$/,
-      searchResolveModulesDirectories: false
-    }),
-    new webpack.ProvidePlugin({
-      // $: 'jquery',
-      // 'window.jQuery': 'jquery',
-    }),
-    // minify by default
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: IS_DEBUG
-    }),
-    new webpack.BannerPlugin(`Gold Interactive - www.goldinteractive.ch - ${ new Date().getFullYear() }`)
-  ]
+  plugins: plugins
 }
 
