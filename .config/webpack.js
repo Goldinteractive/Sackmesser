@@ -22,13 +22,13 @@ var plugins = [
 // adding the credits as well
 if (!IS_DEBUG)
   plugins = plugins.concat([
-    new webpack.BannerPlugin(`Gold Interactive - www.goldinteractive.ch - ${ new Date().getFullYear() }`),
     new webpack.optimize.UglifyJsPlugin({
       comments: false,
       compress: {
         warnings: false
       }
-    })
+    }),
+    new webpack.BannerPlugin(`Gold Interactive - www.goldinteractive.ch - ${ new Date().getFullYear() }`)
   ])
 
 module.exports = {
