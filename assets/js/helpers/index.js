@@ -106,7 +106,6 @@ export function supportsCss(property, value) {
   var el = document.body || document.documentElement,
     style = el.style,
     cssProp,
-    prop,
     // Tests for vendor specific prop
     prefixes = ['Webkit', 'Moz', 'ms', 'O', 'Khtml']
 
