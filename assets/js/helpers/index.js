@@ -130,7 +130,7 @@ export function supportsCss(property, value) {
   if (typeof value == 'undefined') {
     return property
   } else {
-    // check the css value on a dummy dome element
+    // check the css value on a dummy dom element
     el = document.createElement('test')
     cssProp = `${toDash(property)}:`
     style = el.style
