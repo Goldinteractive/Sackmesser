@@ -1,5 +1,4 @@
 # Deployment
-
     
 ## Setup 
 For each project you need to setup your machine to save the SSH credentials. If mysql and mysqldump aren't globally available, it will ask you to give the path to the binaries.
