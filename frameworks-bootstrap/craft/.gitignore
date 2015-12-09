@@ -54,3 +54,6 @@ crafter/vendor
 crafter/composer.phar
 
 style.css
+
+
+.env

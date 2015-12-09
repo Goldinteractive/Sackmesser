@@ -62,3 +62,6 @@ workbench
 !app/config/packages/.gitkeep
 !public/files/.gitkeep
 style.css
+
+
+.env

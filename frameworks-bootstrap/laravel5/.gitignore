@@ -51,3 +51,6 @@ style.css
 
 # Ignore the laravel vendor packages
 /vendor
+
+
+.env
