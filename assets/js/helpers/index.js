@@ -27,11 +27,18 @@ export function outerWidth(el, includeMargin = true) {
  * requestAnimationFrame polyfill
  */
 export const rAF = (function() {
+  var lastTime = 0
   return  window.requestAnimationFrame       ||
           window.webkitRequestAnimationFrame ||
           window.mozRequestAnimationFrame    ||
-          function( callback ) {
-            window.setTimeout(callback, 1000 / 60)
+          window.msRequestAnimationFrame     ||
+          window.oRequestAnimationFrame      ||
+          function(callback, element) {
+            var currTime = new Date().getTime(),
+              timeToCall = Math.max(0, 16 - (currTime - lastTime)),
+              id = window.setTimeout(function() { callback(currTime + timeToCall) }, timeToCall)
+            lastTime = currTime + timeToCall
+            return id
           }
 })()
 
