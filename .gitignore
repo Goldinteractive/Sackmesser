@@ -41,11 +41,12 @@ node_modules
 # Ignore all the vendor because they will be downloaded using bower
 assets/vendor/bower
 
-# ignore the distribution folder
+# Ignore the distribution folder
 dist
 .tmp
 
-# the style.css must be generated using 'compass compile'
+# The style.css must be generated using 'compass compile'
 assets/css/style.css
 
+# The .env.local file must be copied and updated to match your individual requirements
 .env
