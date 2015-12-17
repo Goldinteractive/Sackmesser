@@ -36,8 +36,6 @@ rm -rf ./$COPY_DEST/$DEPLOY_DATA_FOLDER/*
 # copy env files
 cp -af $DEPLOYMENT_FOLDER/files/$DEPLOYENV/* "$COPY_DEST/"
 
-exit
-
 #copy deployment folder
 cp -af $DEPLOYMENT_FOLDER "$COPY_DEST/"
 
