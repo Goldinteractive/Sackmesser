@@ -28,5 +28,6 @@ Deploy the project:
   $START2  make release         $END make a new release
 
   $START2  make push-data-*     $END push the data (data files and db) (* = environment)
+  $START2  make push-data-db-*  $END push only the db (* = environment)
   $START2  make pull-data-*     $END pull the data (data files and db) (* = environment)
 "
