@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source "$CONFIG_FOLDER/deployment"
+
 #load config
 DEPLOYMENT_CONFIG_FILE="$CONFIG_FOLDER/deployment.$DEPLOYENV"
 if [ ! -e $DEPLOYMENT_CONFIG_FILE ]; then
