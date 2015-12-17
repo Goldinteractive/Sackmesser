@@ -11,8 +11,6 @@ fi
 
 source $DEPLOYMENT_CONFIG_FILE
 
-DB_DATA_PUSH_FILE=`mktemp -t deployment`
-
 # backup files
 printf "\033[0;32m Backup files in $DEPLOY_DATA_FOLDER \033[0m \n"
 
@@ -25,24 +23,10 @@ EOF
 
 # upload files
 printf "\033[0;32m Upload files to $DEPLOY_APPROOT/current/$DEPLOY_DATA_FOLDER \033[0m \n"
-scp -r "$DEPLOY_DATA_FOLDER/." $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT/current/$DEPLOY_DATA_FOLDER/
+rsync -azP -e "ssh -p $DEPLOY_PORT" $DEPLOY_DATA_FOLDER/ $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT/current/$DEPLOY_DATA_FOLDER/
 
 if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# db
-mysqldump --add-drop-table -h $DB_DEV_HOST --port=$DB_DEV_PORT -u $DB_DEV_USER --password=$DB_DEV_PW $DB_DEV_DATABASE  > $DB_DATA_PUSH_FILE
-
-scp -r $DB_DATA_PUSH_FILE $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT/db_data_push_file.sql
-
-if [ $USE_DB -eq 1 ]; then
-    printf "\033[0;32m Backup DB with Data \033[0m \n"
-     ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "$(which bash) -s" << EOF
-        cd $DEPLOY_APPROOT
-        mysqldump -h $DEPLOY_DB_HOST --port=$DEPLOY_DB_PORT -u $DEPLOY_DB_USER --password=$DEPLOY_DB_PW $DEPLOY_DB_DATABASE  > "current/$DEPLOY_DATA_BACKUP_FOLDER/backup_db.sql"
-
-        mysql --host=$DEPLOY_DB_HOST --port=$DEPLOY_DB_PORT  --user=$DEPLOY_DB_USER --password=$DEPLOY_DB_PW $DEPLOY_DB_DATABASE < "db_data_push_file.sql"
-        exit
-EOF
-fi
+$DEPLOY_SCRIPTS_FOLDER/push-data-db.sh

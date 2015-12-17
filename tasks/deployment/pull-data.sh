@@ -21,7 +21,7 @@ rm -rf $DEPLOY_DATA_FOLDER/*
 
 # get files
 printf "\033[0;32m Download files from $DEPLOY_APPROOT/current/$DEPLOY_DATA_FOLDER \033[0m \n"
-scp -r $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT"/current/$DEPLOY_DATA_FOLDER/." $DEPLOY_DATA_FOLDER/
+rsync -azP -e "ssh -p $DEPLOY_PORT" $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT"/current/$DEPLOY_DATA_FOLDER/." $DEPLOY_DATA_FOLDER/
 
 if [ $? -ne 0 ]; then
     exit 1

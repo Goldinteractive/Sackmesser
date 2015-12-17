@@ -48,6 +48,12 @@ push-data-%:
 		CONFIG_FOLDER=$(CONFIG_FOLDER) \
 		 $(DEPLOY_SCRIPTS_FOLDER)/push-data.sh
 
+push-data-db-%:
+	@	DEPLOYENV=$* \
+		WEBROOT_PATH=$(WEBROOT_PATH) \
+		CONFIG_FOLDER=$(CONFIG_FOLDER) \
+		 $(DEPLOY_SCRIPTS_FOLDER)/push-data-db.sh
+
 pull-data-%:
 	@	DEPLOYENV=$* \
 		DEPLOY_SCRIPTS_FOLDER=$(DEPLOY_SCRIPTS_FOLDER) \
