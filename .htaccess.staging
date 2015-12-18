@@ -1,0 +1,5 @@
+#staging
+AuthType Basic
+AuthName "Password Protected Area"
+AuthUserFile /home/username/dev.domain.ch/current/.htpasswd
+Require valid-user
