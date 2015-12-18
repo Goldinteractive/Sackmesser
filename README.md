@@ -130,5 +130,5 @@ $foo: 'my string';
 
 # Deployment
 
-- [Deployment Readme](deployment/README.md)
+- [Deployment Readme](.deployment/README.md)
 
