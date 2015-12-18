@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo 'Copying the root folders'
-rsync -avR --ignore-errors . $DEST \
+rsync -avtR --ignore-errors . $DEST \
       --exclude=$ASSETS_PATH \
       --exclude='dist' \
       --exclude='node_modules' \
@@ -10,7 +10,8 @@ rsync -avR --ignore-errors . $DEST \
       --exclude='LICENSE' \
       --exclude='/*.*' \
       --exclude='.*' \
-      --exclude='.*/'
+      --exclude='.*/' \
+      --exclude='craft/storage/*'
 
 # copy the important root files
 echo 'Copying the root files'
@@ -23,7 +24,7 @@ rsync -dv --ignore-errors *.* $DEST \
 
 # copy the assets excluding the js, vendor and scss folder
 echo 'Copying the assets files'
-rsync -avR --ignore-errors $ASSETS_PATH $DEST \
+rsync -avtR --ignore-errors $ASSETS_PATH $DEST \
       --exclude='scss' \
       --exclude='img/icons' \
       --exclude='grid.*' \
