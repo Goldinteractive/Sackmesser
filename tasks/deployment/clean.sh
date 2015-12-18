@@ -16,7 +16,7 @@ fi
 
 source $DEPLOYMENT_CONFIG_FILE
 
-ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "$(which bash) -s" << EOF
+ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "bash -s" << EOF
     cd $DEPLOY_APPROOT
 
     mv $OLDREV_FOLDER "tmprev"

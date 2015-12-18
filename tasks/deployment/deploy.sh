@@ -54,7 +54,7 @@ if [ $? -eq 1 ]; then
     exit 1
 fi
 
-ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "$(which bash) -s" << EOF
+ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "bash -s" << EOF
     cd $DEPLOY_APPROOT
 
     if [ -d "$REV_FOLDER" ]; then

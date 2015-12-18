@@ -38,7 +38,7 @@ if [ $USE_DB -eq 1 ]; then
 
     # get db
     printf "\033[0;32m Download DB \033[0m \n"
-    ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "$(which bash) -s" << EOF
+    ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "bash -s" << EOF
         mysqldump -h $DEPLOY_DB_HOST --port=$DEPLOY_DB_PORT -u $DEPLOY_DB_USER --password=$DEPLOY_DB_PW $DEPLOY_DB_DATABASE  > $DB_DATA_PULL_FILE
 EOF
 
