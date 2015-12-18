@@ -18,7 +18,6 @@ printf "\033[0;32m Backup files in $DEPLOY_DATA_FOLDER \033[0m \n"
         cd $DEPLOY_APPROOT
 
         tar -cvzf "current/$DEPLOY_DATA_BACKUP_FOLDER/backup_files.tar.gz" -C "current/$DEPLOY_DATA_FOLDER/../" "files"
-        rm -rf current/$DEPLOY_DATA_FOLDER/*
 EOF
 
 # upload files
