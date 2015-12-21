@@ -3,9 +3,8 @@
 echo 'Copying the root folders'
 rsync -avtR --ignore-errors . $DEST \
       --exclude=$ASSETS_PATH \
-      --exclude='dist' \
-      --exclude='node_modules' \
-      --exclude='tasks' \
+      --exclude='/dist' \
+      --exclude='/node_modules' \
       --exclude='Makefile' \
       --exclude='LICENSE' \
       --exclude='/*.*' \
