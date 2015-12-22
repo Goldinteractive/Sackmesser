@@ -48,7 +48,8 @@ dist
 # The style.css must be generated using 'compass compile'
 assets/css/style.css
 
-.deployment/data/*
+.deployment/data/*.zip
+.deployment/data/*.sql
 .deployment/database/backup/*
 
 # The .env.local file must be copied and updated to match your individual requirements
