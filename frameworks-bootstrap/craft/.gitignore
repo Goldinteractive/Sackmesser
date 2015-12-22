@@ -55,5 +55,8 @@ crafter/composer.phar
 
 style.css
 
+.deployment/data/*.zip
+.deployment/data/*.sql
+.deployment/database/backup/*
 
 .env

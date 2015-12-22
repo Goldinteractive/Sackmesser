@@ -63,5 +63,9 @@ workbench
 !public/files/.gitkeep
 style.css
 
+.deployment/data/*.zip
+.deployment/data/*.sql
+.deployment/database/backup/*
+
 
 .env
