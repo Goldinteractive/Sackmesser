@@ -45,7 +45,12 @@ $ make rollback-%
 
 # Data Synchronization
 
-To synchronize data you can use `make pull-data-%` to get the data form the given environment or `make push-data-%` to push.
+To synchronize data you can use `make pull-data-%` to get the data from the given environment or `make push-data-%` to push.
 
-Warning: It will override the files and db. Use with caution.
+# Database Synchronization
+
+To synchronize the database you can use `make pull-data-db-%` to get the db from the given environment or `make push-data-db-%` to push.
+
+
+
 
