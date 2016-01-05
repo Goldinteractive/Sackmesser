@@ -42,11 +42,26 @@ clean-%:
         CONFIG_FOLDER=./.config \
 		 $(DEPLOY_SCRIPTS_FOLDER)/clean.sh
 
-push-data-%:
+push-data-db-%:
 	@	DEPLOYENV=$* \
 		WEBROOT_PATH=$(WEBROOT_PATH) \
 		CONFIG_FOLDER=$(CONFIG_FOLDER) \
+		 $(DEPLOY_SCRIPTS_FOLDER)/push-data-db.sh
+
+push-data-%:
+	@	DEPLOYENV=$* \
+		DEPLOY_SCRIPTS_FOLDER=$(DEPLOY_SCRIPTS_FOLDER) \
+		WEBROOT_PATH=$(WEBROOT_PATH) \
+		CONFIG_FOLDER=$(CONFIG_FOLDER) \
 		 $(DEPLOY_SCRIPTS_FOLDER)/push-data.sh
+
+pull-data-db-%:
+	@	DEPLOYENV=$* \
+		DEPLOY_SCRIPTS_FOLDER=$(DEPLOY_SCRIPTS_FOLDER) \
+		WEBROOT_PATH=$(WEBROOT_PATH) \
+		CONFIG_FOLDER=$(CONFIG_FOLDER) \
+		 $(DEPLOY_SCRIPTS_FOLDER)/pull-data-db.sh
+
 
 pull-data-%:
 	@	DEPLOYENV=$* \

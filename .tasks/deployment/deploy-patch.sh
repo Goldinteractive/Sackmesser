@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source "$CONFIG_FOLDER/deployment"
+
 #load config
 DEPLOYMENT_CONFIG_FILE="$CONFIG_FOLDER/deployment.$DEPLOYENV"
 if [ ! -e $DEPLOYMENT_CONFIG_FILE ]; then
@@ -8,5 +10,8 @@ if [ ! -e $DEPLOYMENT_CONFIG_FILE ]; then
 fi
 
 source $DEPLOYMENT_CONFIG_FILE
+
+# remove dev files
+rm -rf ./$COPY_DEST/$DEPLOY_DATA_FOLDER/*
 
 rsync -azP -e "ssh -p $DEPLOY_PORT" $COPY_DEST/ $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT/current

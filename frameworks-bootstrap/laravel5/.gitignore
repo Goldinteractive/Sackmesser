@@ -52,5 +52,9 @@ style.css
 # Ignore the laravel vendor packages
 /vendor
 
+.deployment/data/*.zip
+.deployment/data/*.sql
+.deployment/database/backup/*
+
 
 .env

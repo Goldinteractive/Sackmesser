@@ -1,0 +1,5 @@
+#staging
+AuthType Basic
+AuthName "Password Protected Area"
+AuthUserFile /home/www-goldinteractive/.htpasswd
+Require valid-user

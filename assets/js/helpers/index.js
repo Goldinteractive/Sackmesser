@@ -27,11 +27,18 @@ export function outerWidth(el, includeMargin = true) {
  * requestAnimationFrame polyfill
  */
 export const rAF = (function() {
+  var lastTime = 0
   return  window.requestAnimationFrame       ||
           window.webkitRequestAnimationFrame ||
           window.mozRequestAnimationFrame    ||
-          function( callback ) {
-            window.setTimeout(callback, 1000 / 60)
+          window.msRequestAnimationFrame     ||
+          window.oRequestAnimationFrame      ||
+          function(callback, element) {
+            var currTime = new Date().getTime(),
+              timeToCall = Math.max(0, 16 - (currTime - lastTime)),
+              id = window.setTimeout(function() { callback(currTime + timeToCall) }, timeToCall)
+            lastTime = currTime + timeToCall
+            return id
           }
 })()
 
@@ -60,7 +67,7 @@ export function debounce(func, wait, immediate) {
  * @type {Object}
  */
 export const support = {
-  transition: cssProperty('transition', true)
+  transition: supportsCss('transition')
 }
 
 /**
@@ -92,24 +99,53 @@ export function trim(string) {
   return string.replace(/^\s+|\s+$/gm, '')
 }
 
-// check whether a css property is supported
-export function cssProperty(p, rp) {
-  var b = document.body || document.documentElement,
-    s = b.style
+/**
+ * Check if any css property is supported
+ * @param   { String } property - css property to test for example 'column-count'
+ * @param   { String } value  - check whether a value is to a css property is supported
+ * @returns { String|Array|Boolean } either only the property in camel case, or the property and its value
+ * 4 ex:
+ *   supportCss('column-count') => 'MozColumnCount'
+ *   supportCss('column-count', '2') => ['MozColumnCount', '2']
+ *   supportCss('position', 'sticky') => ['position', '-webkit-sticky']
+ */
+export function supportsCss(property, value) {
+  var el = document.body || document.documentElement,
+    style = el.style,
+    cssProp,
+    // Tests for vendor specific prop
+    prefixes = ['Webkit', 'Moz', 'ms', 'O', 'Khtml']
 
   // No css support detected
-  if (typeof s == 'undefined') { return false }
+  if (typeof style == 'undefined') return false
 
-  // Tests for standard prop
-  if (typeof s[p] == 'string') { return rp ? p : true }
+  // normalize the property adding the prefixes
+  property = (function(prop) {
+    // Tests for standard prop
+    if (typeof style[prop] == 'string') return prop
 
-  // Tests for vendor specific prop
-  var v = ['Moz', 'Webkit', 'Khtml', 'O', 'ms', 'Icab']
+    prop = toCamel(prop.charAt(0).toUpperCase() + prop.substr(1))
 
-  p = p.charAt(0).toUpperCase() + p.substr(1)
+    for (var i = 0; i < prefixes.length; i++) {
+      if (typeof style[prefixes[i] + prop] == 'string') return  prefixes[i] + prop
+    }
 
-  for (var i = 0; i < v.length; i++) {
-    if (typeof s[v[i] + p] == 'string') { return rp ? v[i] + p : true }
+  })(property)
+
+  // check only if the property is supported
+  if (typeof value == 'undefined') {
+    return property
+  } else {
+    // check the css value on a dummy dom element
+    el = document.createElement('test')
+    cssProp = `${toDash(property)}:`
+    style = el.style
+
+    prefixes = prefixes.map(str => `-${str.toLowerCase()}-`).concat([''])
+    // add the value prefixed
+    style.cssText = cssProp + prefixes.join( value + ';' + cssProp ) + value + ';'
+    if (!style[ property ] || style[ property ].indexOf(value) == -1) return false
+    else return [ property, style[ property ]]
   }
 
   return false

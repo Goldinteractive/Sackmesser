@@ -25,7 +25,7 @@ fi
 
 printf "\033[0;32m Rollback to Revision $ROLLBACKTOREV. \033[0m \n"
 
-ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT "$(which bash) -s" << EOF
+ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT "bash -s" << EOF
     cd $DEPLOY_APPROOT
 
     if [ $DEPLOY_DB -eq 1 ]; then

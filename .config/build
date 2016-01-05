@@ -3,7 +3,7 @@ CONFIG_FOLDER=./.config
 
 
 # shell scripts paths and node bin files
-SCRIPTS_FOLDER=./tasks
+SCRIPTS_FOLDER=./.tasks
 WEBPACK=./node_modules/.bin/webpack
 ESLINT=./node_modules/.bin/eslint
 CLEANCSS=./node_modules/.bin/cleancss
