@@ -10,7 +10,6 @@
     "gi-scss-global-variables": "~0.3.0",
     "gi-scss-utilities": "*",
     "gridle": "~2.0.41",
-    "normalize-css": "~3.0.3",
-    "jQuery.GI.Carousel.js": "https://github.com/Goldinteractive/jQuery.GI.Carousel.js.git#~0.3.3"
+    "normalize-css": "~3.0.3"
   }
 }

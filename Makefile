@@ -75,6 +75,8 @@ copy:
 		JS_BASE=$(JS_BASE) \
 		JS_OUT=$(JS_OUT) \
 		$(SCRIPTS_FOLDER)/copy
+	# replace the @TIMESTAMP variable
+	@ egrep -lRZ "@TIMESTAMP" $(COPY_DEST) | xargs  sed -i '' "s/@TIMESTAMP/$(TIMESTAMP)/g"
 
 clean:
 	@ $(SCRIPTS_FOLDER)/clean
