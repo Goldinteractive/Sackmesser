@@ -100,6 +100,28 @@ export function trim(string) {
 }
 
 /**
+ * Convert a string containing dashes to camle case
+ * @param   { String } string - input string
+ * @returns { String } my-string -> myString
+ */
+export function toCamel(string) {
+  return string.replace(/(\-\w)/g, function(match) {
+    return match.toUpperCase().replace('-', '')
+  })
+}
+
+/**
+ * Convert a string containing uppercase to dash case version
+ * @param   { String } string - input string
+ * @returns { String } myString -> my-string
+ */
+export function toDash(string) {
+  return string.replace(/[A-Z]/g, function(match) {
+    return `-${match.toLowerCase()}`
+  })
+}
+
+/**
  * Check if any css property is supported
  * @param   { String } property - css property to test for example 'column-count'
  * @param   { String } value  - check whether a value is to a css property is supported
