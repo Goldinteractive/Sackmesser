@@ -27,5 +27,3 @@ rsync -azP -e "ssh -p $DEPLOY_PORT" $DEPLOY_DATA_FOLDER/ $DEPLOY_USER@$DEPLOY_HO
 if [ $? -ne 0 ]; then
     exit 1
 fi
-
-$DEPLOY_SCRIPTS_FOLDER/push-data-db.sh
