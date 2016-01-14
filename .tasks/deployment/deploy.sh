@@ -37,7 +37,8 @@ rm -rf ./$COPY_DEST/$DEPLOY_DATA_FOLDER/*
 cp -af $DEPLOYMENT_FOLDER/files/$DEPLOYENV/. "$COPY_DEST/"
 
 #copy deployment folder
-cp -af $DEPLOYMENT_FOLDER "$COPY_DEST/"
+rsync -avtR --ignore-errors $DEPLOYMENT_FOLDER "$COPY_DEST/" \
+    --exclude='data/*'
 
 mv "$COPY_DEST" "$REV_FOLDER"
 
