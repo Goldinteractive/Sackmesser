@@ -24,6 +24,11 @@ if [ $USE_DB -eq 1 ]; then
         cd $DEPLOY_APPROOT
         mysqldump -h $DEPLOY_DB_HOST --port=$DEPLOY_DB_PORT -u $DEPLOY_DB_USER --password=$DEPLOY_DB_PW $DEPLOY_DB_DATABASE  > "current/$DEPLOY_DATA_BACKUP_FOLDER/backup_db.sql"
 
+        if [ $? -ne 0 ]; then
+            printf "\033[0;31m Backup file was not created! \033[0m \n"
+            exit 1
+        fi
+
         mysql --host=$DEPLOY_DB_HOST --port=$DEPLOY_DB_PORT  --user=$DEPLOY_DB_USER --password=$DEPLOY_DB_PW $DEPLOY_DB_DATABASE < "db_data_push_file.sql"
 
         rm db_data_push_file.sql
