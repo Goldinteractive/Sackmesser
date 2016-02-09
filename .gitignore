@@ -50,6 +50,7 @@ assets/css/style.css
 
 .deployment/data/*.zip
 .deployment/data/*.tar
+.deployment/data/*.tar.gz
 .deployment/data/*.sql
 .deployment/database/backup/*
 
