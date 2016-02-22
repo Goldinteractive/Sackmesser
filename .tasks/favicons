@@ -26,7 +26,7 @@ then
 fi
 
 echo 'Generating square base image'
-$CONVERT_CMD $SRC_IMAGE -resize 256x256! -transparent white $BASE/favicon-256.png
+$CONVERT_CMD $SRC_IMAGE -resize 256x256! $BASE/favicon-256.png
 
 echo 'Generating default ico files'
 $CONVERT_CMD $BASE/favicon-256.png -resize 16x16 $BASE/favicon-16.png
