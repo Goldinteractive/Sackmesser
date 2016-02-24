@@ -13,7 +13,7 @@ else
     #create temp db
     TEMPDB=$DB_DEV_DATABASE"_deploy"
 
-    $MYSQL -h $DB_DEV_HOST --port=$DB_DEV_PORT -u $DB_DEV_USER --password=$DB_DEV_PW -e "CREATE DATABASE $TEMPDB"
+    $MYSQL -h $DB_DEV_HOST --port=$DB_DEV_PORT -u $DB_DEV_USER --password=$DB_DEV_PW -e "CREATE DATABASE \`$TEMPDB\`"
 
     for SQL in $DUMP_FOLDER/*.sql; do
         echo importing $SQL;
@@ -32,6 +32,6 @@ else
     rm $DUMP_TABLE
     rm $DUMP_TABLE_TMP
 
-    $MYSQL -h $DB_DEV_HOST --port=$DB_DEV_PORT -u $DB_DEV_USER --password=$DB_DEV_PW -e "DROP DATABASE $TEMPDB"
+    $MYSQL -h $DB_DEV_HOST --port=$DB_DEV_PORT -u $DB_DEV_USER --password=$DB_DEV_PW -e "DROP DATABASE \`$TEMPDB\`"
 
 fi

@@ -1,10 +1,5 @@
 import SHARED from '../../shared-variables.json'
 
-// private methods
-var _compareViewportWidth = function(mode) {
-  return window.innerWidth > window.parseInt(SHARED[mode])
-}
-
 /**
  * Calculate the outer width of any DOM element
  * @param   { DOMObject } el - DOM object we want to check
@@ -81,12 +76,18 @@ export const transitionEnd =
 
 // check if the viewport is in mobile mode
 export function isMobile() {
-  return _compareViewportWidth('break-small')
+  return window.innerWidth < window.parseInt(SHARED['break-small'])
 }
 
 // check if the viewport is in tablet mode
 export function isTablet() {
-  return _compareViewportWidth('break-medium')
+  return window.innerWidth < window.parseInt(SHARED['break-medium']) &&
+         window.innerWidth > window.parseInt(SHARED['break-small']) + 1
+}
+
+// check if the viewport is in desktop mode
+export function isDesktop() {
+  return window.innerWidth > window.parseInt(SHARED['break-medium'])
 }
 
 // is this a touch device?

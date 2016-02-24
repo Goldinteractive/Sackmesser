@@ -31,4 +31,6 @@ Deploy the project:
   $START2  make push-data-db-*  $END push the db data (* = environment)
   $START2  make pull-data-*     $END pull the data (data files) (* = environment)
   $START2  make pull-data-db-*  $END pull the db data (* = environment)
+
+  $START2  make clean-*         $END removes old revisions except the current and last one (* = environment)
 "

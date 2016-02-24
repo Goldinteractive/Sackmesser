@@ -30,7 +30,7 @@ grid:
 
 watch-grid:
 	# watch the grid
-	@ scss \x
+	@ scss \
 		--style=compressed \
 		--sourcemap=none \
 		$(SCSS_IN)/grid.scss:$(CSS_OUT)/grid.css \

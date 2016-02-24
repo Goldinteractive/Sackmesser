@@ -11,13 +11,18 @@ fi
 
 source $DEPLOYMENT_CONFIG_FILE
 
-
 DB_DATA_PULL_FILE="db_data_pull_file.sql"
+DB_DATA_BACKUP_FILE="$DEPLOY_DATA_BACKUP_FOLDER/backup_db.sql"
 
 # backup db
 if [ $USE_DB -eq 1 ]; then
     printf "\033[0;32m Backup DB with Data \033[0m \n"
-    $MYSQLDUMP -h $DB_DEV_HOST --port=$DB_DEV_PORT -u $DB_DEV_USER --password=$DB_DEV_PW $DB_DEV_DATABASE  > "$DEPLOY_DATA_BACKUP_FOLDER/backup_db.sql"
+
+    if [ -e $DB_DATA_BACKUP_FILE ]; then
+            mv $DB_DATA_BACKUP_FILE "$DEPLOY_DATA_BACKUP_FOLDER/$(date +%s)_backup_db.sql"
+        fi
+
+    $MYSQLDUMP -h $DB_DEV_HOST --port=$DB_DEV_PORT -u $DB_DEV_USER --password=$DB_DEV_PW $DB_DEV_DATABASE  > $DB_DATA_BACKUP_FILE
 
     if [ $? -ne 0 ]; then
         exit 1
@@ -54,6 +59,4 @@ EOF
         exit 1
     fi
 fi
-
-
 

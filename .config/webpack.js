@@ -35,6 +35,7 @@ module.exports = {
   entry: path.join(BASE, process.env.IN),
   target: 'web',
   cache: true,
+  bail: !IS_WATCH, // exit the build process in case of errors
   output: {
     path: BASE,
     filename: process.env.OUT,
