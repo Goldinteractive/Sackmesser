@@ -4,15 +4,15 @@
   "description": "Toolset to build and maintain any kind of website or web app",
   "main": "Gruntfile.js",
   "devDependencies": {
-    "autoprefixer": "^6.2.3",
-    "babel-core": "^6.3.26",
-    "babel-loader": "^6.2.1",
-    "babel-preset-es2015": "^6.3.13",
+    "autoprefixer": "^6.3.3",
+    "babel-core": "^6.5.2",
+    "babel-loader": "^6.2.3",
+    "babel-preset-es2015": "^6.5.0",
     "clean-css": "^3.4.9",
-    "eslint": "^1.10.3",
+    "eslint": "^2.2.0",
     "json-loader": "^0.5.4",
-    "postcss-cli": "^2.3.3",
-    "webpack": "^1.12.9",
+    "postcss-cli": "^2.5.1",
+    "webpack": "^1.12.14",
     "bower-webpack-plugin": "*"
   },
   "repository": {
