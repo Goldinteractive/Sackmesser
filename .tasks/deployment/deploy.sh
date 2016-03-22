@@ -67,11 +67,11 @@ ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "bash -s" << EOF
 
     if [ $CURRENTREV -gt 1 ]; then
         if [ $BACKUP_DB -eq 1 ]; then
-            mysqldump -h $DEPLOY_DB_HOST --port=$DEPLOY_DB_PORT -u $DEPLOY_DB_USER --password=$DEPLOY_DB_PW $DEPLOY_DB_DATABASE  > "$REV_FOLDER/deployment/database/backup/backup.sql"
+            mysqldump -h $DEPLOY_DB_HOST --port=$DEPLOY_DB_PORT -u $DEPLOY_DB_USER --password=$DEPLOY_DB_PW $DEPLOY_DB_DATABASE  > "$REV_FOLDER/.deployment/database/backup/backup.sql"
         fi
 
         if [ $DEPLOY_DB -eq 1 ]; then
-            mysql --host=$DEPLOY_DB_HOST --port=$DEPLOY_DB_PORT  --user=$DEPLOY_DB_USER --password=$DEPLOY_DB_PW $DEPLOY_DB_DATABASE < "$REV_FOLDER/deployment/database/structure/tables/$REV_FOLDER.sql"
+            mysql --host=$DEPLOY_DB_HOST --port=$DEPLOY_DB_PORT  --user=$DEPLOY_DB_USER --password=$DEPLOY_DB_PW $DEPLOY_DB_DATABASE < "$REV_FOLDER/.deployment/database/structure/tables/$REV_FOLDER.sql"
         fi
     fi
 
