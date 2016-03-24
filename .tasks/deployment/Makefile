@@ -13,6 +13,7 @@ deploy-patch-%:
 	@	make build
 	@	DEPLOYENV=$* \
 		COPY_DEST=$(COPY_DEST) \
+		DEPLOYMENT_FOLDER=$(DEPLOYMENT_FOLDER) \
 		CONFIG_FOLDER=$(CONFIG_FOLDER) \
 		 $(DEPLOY_SCRIPTS_FOLDER)/deploy-patch.sh
 
