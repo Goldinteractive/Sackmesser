@@ -14,4 +14,7 @@ source $DEPLOYMENT_CONFIG_FILE
 # remove dev files
 rm -rf ./$COPY_DEST/$DEPLOY_DATA_FOLDER/*
 
+# copy env files
+cp -af $DEPLOYMENT_FOLDER/files/$DEPLOYENV/. "$COPY_DEST/"
+
 rsync -azP -e "ssh -p $DEPLOY_PORT" $COPY_DEST/ $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT/current
