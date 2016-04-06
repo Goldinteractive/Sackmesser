@@ -170,7 +170,5 @@ export function supportsCss(property, value) {
     if (!style[ property ] || style[ property ].indexOf(value) == -1) return false
     else return [ property, style[ property ]]
   }
-
-  return false
 }
 
