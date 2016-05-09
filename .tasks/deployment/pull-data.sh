@@ -16,8 +16,10 @@ DB_DATA_PULL_FILE="db_data_pull_file.sql"
 
 # backup files
 printf "\033[0;32m Backup files in $DEPLOY_DATA_FOLDER \033[0m \n"
-tar -cvzf "$DEPLOY_DATA_BACKUP_FOLDER/backup_files.tar.gz" -C "$DEPLOY_DATA_FOLDER/../" "files"
-rm -rf $DEPLOY_DATA_FOLDER/*
+if [ -d "$DEPLOY_DATA_FOLDER" ]; then
+    tar -cvzf "$DEPLOY_DATA_BACKUP_FOLDER/backup_files.tar.gz" -C "$DEPLOY_DATA_FOLDER/../" "files"
+    rm -rf $DEPLOY_DATA_FOLDER/*
+fi
 
 # get files
 printf "\033[0;32m Download files from $DEPLOY_APPROOT/current/$DEPLOY_DATA_FOLDER \033[0m \n"

@@ -17,7 +17,11 @@ printf "\033[0;32m Backup files in $DEPLOY_DATA_FOLDER \033[0m \n"
   ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "bash -s" << EOF
         cd $DEPLOY_APPROOT
 
-        tar -cvzf "current/$DEPLOY_DATA_BACKUP_FOLDER/backup_files.tar.gz" -C "current/$DEPLOY_DATA_FOLDER/../" "files"
+        if [ -d "current/$DEPLOY_DATA_FOLDER" ]; then
+            tar -cvzf "current/$DEPLOY_DATA_BACKUP_FOLDER/backup_files.tar.gz" -C "current/$DEPLOY_DATA_FOLDER/../" "files"
+        else
+            echo "Data folder does not exist. Continue."
+        fi
 EOF
 
 # upload files
