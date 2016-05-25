@@ -18,15 +18,13 @@ DB_DATA_BACKUP_FILE="$DEPLOY_DATA_BACKUP_FOLDER/backup_db.sql"
 if [ $USE_DB -eq 1 ]; then
     printf "\033[0;32m Backup DB with Data \033[0m \n"
 
-    if [ -e $DB_DATA_BACKUP_FILE ]; then
-            mv $DB_DATA_BACKUP_FILE "$DEPLOY_DATA_BACKUP_FOLDER/$(date +%s)_backup_db.sql"
-        fi
-
     $MYSQLDUMP -h $DB_DEV_HOST --port=$DB_DEV_PORT -u $DB_DEV_USER --password=$DB_DEV_PW $DB_DEV_DATABASE  > $DB_DATA_BACKUP_FILE
 
     if [ $? -ne 0 ]; then
         exit 1
     fi
+
+    cp $DB_DATA_BACKUP_FILE "$DEPLOY_DATA_BACKUP_FOLDER/$(date +"%Y%m%d_%H%M%S")_backup_db.sql"
 
     # get db
     printf "\033[0;32m Download DB \033[0m \n"
