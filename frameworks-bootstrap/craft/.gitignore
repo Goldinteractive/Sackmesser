@@ -42,7 +42,7 @@ node_modules
 public/assets/vendor/bower
 
 # ignore the distribution folder
-dist
+/dist
 .tmp
 
 # the style.css must be generated using 'compass compile'
