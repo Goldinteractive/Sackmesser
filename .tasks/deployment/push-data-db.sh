@@ -18,7 +18,7 @@ DB_DATA_BACKUP_FILE="current/$DEPLOY_DATA_BACKUP_FOLDER/backup_db.sql"
 # db
 mysqldump --add-drop-table -h $DB_DEV_HOST --port=$DB_DEV_PORT -u $DB_DEV_USER --password=$DB_DEV_PW $DB_DEV_DATABASE  > $DB_DATA_PUSH_FILE
 
-scp -r $DB_DATA_PUSH_FILE $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT/db_data_push_file.sql
+scp -P $DEPLOY_PORT -r $DB_DATA_PUSH_FILE $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT/db_data_push_file.sql
 
 if [ $USE_DB -eq 1 ]; then
     printf "\033[0;32m Backup DB with Data \033[0m \n"
