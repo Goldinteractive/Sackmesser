@@ -49,7 +49,7 @@ mv "$REV_FOLDER" "$COPY_DEST"
 
 printf "Now we want to upload our archive to the server.\n"
 
-scp "$COPY_DEST/$archiveFileName" $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT
+scp -P $DEPLOY_PORT "$COPY_DEST/$archiveFileName" $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT
 
 if [ $? -eq 1 ]; then
     exit 1
