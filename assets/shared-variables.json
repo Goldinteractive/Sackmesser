@@ -1,5 +1,5 @@
 {
-	"break-small": "480px",
-	"break-medium": "768px",
-	"break-large": "1024px"
+    "break-small": "680px",
+    "break-medium": "768px",
+    "break-large": "1200px"
 }

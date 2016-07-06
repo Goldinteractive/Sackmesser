@@ -42,19 +42,24 @@ $breakpoints:(
 );
 
 $layers: (
-  content: 1,
-  header: 2,
+  content: 0
 );
 
 // Grid
+// -------------------------
+$container-max-width: calc(#{$break-large} - 20px);
+$mobile-container-max-width: 88%;
+
 // Default grid values
-$default-column-width:60px;
-$default-gutter-width:20px;
+$default-column-width: 60px;
 $default-columns-amount: 12;
 
+$default-gutter-width: 46px;
+$tablet-gutter-width: 3%;
+$mobile-gutter-width: 6%;
 
 // Images paths
 // -------------------------
 $image-path: '../img/';
-
+$font-path: '../fonts/';
 
