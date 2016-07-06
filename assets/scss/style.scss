@@ -12,16 +12,16 @@
     '../vendor/bower/gi-scss-global-variables/global-variables',
     '../vendor/bower/gi-scss-mixins/mixins';
 
-// Third party css
-@import
-    '../vendor/bower/normalize-css/normalize.css';
-
 // Project variables and utils
 @import
     'utils/variables', // Modify this for custom colors, font-sizes, etc
     'utils/mixins',
     'utils/placeholders',
     'utils/helpers';
+
+// Third party css
+@import
+    '../vendor/bower/normalize-css/normalize.css';
 
 // Base CSS
 @import
@@ -38,4 +38,5 @@
     'layout/footer';
 
 // Gold Interactive UI Components
-// @import 'components/slider';
+// @import
+    // 'components/slider';
