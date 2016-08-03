@@ -27,3 +27,9 @@
 @include gridle_generate_custom_class( ('float-none','@','%state') ) {
     float: none;
 }
+
+@include gridle_generate_custom_class( ('hide-br','@','%state') ) {
+    br {
+        display: none;
+    }
+}

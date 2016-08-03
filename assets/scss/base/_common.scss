@@ -1,8 +1,19 @@
 a {
-  color: $link-color;
-  &:hover,
-  &:focus,
-  &:active {
-    color: $link-color-hover;
-  }
+    color: $link-color;
+    text-decoration: none;
+    transition: color .2s ease;
+    &:hover,
+    &:focus,
+    &:active {
+        color: $link-color-hover;
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+td,
+th {
+    vertical-align: top;
 }

@@ -49,3 +49,12 @@
     position: static;
     width: auto;
 }
+
+/*
+ * Remove margin of last element in div.
+ */
+.rlem {
+    *:last-child {
+        margin-bottom: 0;
+    }
+}
