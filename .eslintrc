@@ -30,6 +30,9 @@ globals:
   ###########################################################################
 
   require: true
+  $: true
+  jQuery: true
+  google: true
 
 rules:
 
@@ -180,7 +183,7 @@ rules:
   #                                                                         #
   ###########################################################################
 
-  indent: [2, 2]                 # Set a specific tab width
+  indent: [0, 4]                 # Set a specific tab width
   brace-style: 0                 # enforce one true brace style
   camelcase: 0                   # require camel case names
   comma-spacing: 2               # enforce spacing before and after comma
@@ -205,7 +208,7 @@ rules:
   no-trailing-spaces: 2          # disallow trailing whitespace at the end of lines
   no-multiple-empty-lines: 0     # disallow multiple empty lines
   no-underscore-dangle: 0        # disallow dangling underscores in identifiers
-  no-extra-parens: 2             # disallow wrapping of non-IIFE statements in parens
+  no-extra-parens: 0             # disallow wrapping of non-IIFE statements in parens
   one-var: 0                     # allow just one var statement per function
   padded-blocks: 0               # enforce padding within blocks
   quotes:                        # specify whether double or single quotes should be used
@@ -222,4 +225,3 @@ rules:
   spaced-line-comment: 0         # require or disallow a space immediately following
                                  #    the // in a line comment
   wrap-regex: 0                  # require regex literals to be wrapped in parentheses
-
