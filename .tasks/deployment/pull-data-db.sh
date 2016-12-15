@@ -11,6 +11,12 @@ fi
 
 source $DEPLOYMENT_CONFIG_FILE
 
+if [ $USE_DB -eq 0 ]; then
+ printf "\033[0;31m No DB in use \033[0m \n"
+ exit 1
+fi
+
+
 DB_DATA_PULL_FILE="db_data_pull_file.sql"
 DB_DATA_BACKUP_FILE="$DEPLOY_DATA_BACKUP_FOLDER/backup_db.sql"
 

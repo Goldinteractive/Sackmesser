@@ -11,6 +11,11 @@ fi
 
 source $DEPLOYMENT_CONFIG_FILE
 
+if [ $USE_DB -eq 0 ]; then
+ printf "\033[0;31m No DB in use \033[0m \n"
+ exit 1
+fi
+
 DB_DATA_PUSH_FILE=`mktemp -t deployment`
 
 DB_DATA_BACKUP_FILE="current/$DEPLOY_DATA_BACKUP_FOLDER/backup_db.sql"
