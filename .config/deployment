@@ -1,10 +1,10 @@
 DEPLOYMENT_FOLDER=./.deployment
 
 # should git be used to tag the deployments?
-USE_GIT=0
+USE_GIT=1
 
 # should a db be used?
-USE_DB=0
+USE_DB=1
 
 DUMP_FOLDER="$DEPLOYMENT_FOLDER/database/structure/tables"
 
@@ -17,10 +17,10 @@ DB_DEV_USER=$DB_USERNAME
 DB_DEV_PW=$DB_PASSWORD
 
 # Document Root Path (usually . or ./public)
-WEBROOT_PATH=.
+WEBROOT_PATH=./public/files
 
 # Folder where uploaded files are. Folder must be named "files"
-DEPLOY_DATA_FOLDER="files"
+DEPLOY_DATA_FOLDER="public/files"
 
 # Folder where the data files should be backuped
 DEPLOY_DATA_BACKUP_FOLDER="$DEPLOYMENT_FOLDER/data"
