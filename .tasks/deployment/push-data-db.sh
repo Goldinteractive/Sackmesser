@@ -12,7 +12,7 @@ fi
 
 source $DEPLOYMENT_CONFIG_FILE
 
-ask "Push DB $DB_DEV_DATABASE ($DB_DEV_HOST)\nto DB $DEPLOY_DB_DATABASE ($DEPLOY_DB_HOST)?"
+ask "Push DB $DB_DEV_DATABASE ($DB_DEV_HOST)\nto DB $DEPLOY_DB_DATABASE ($DEPLOY_HOST)?"
 
 if [ $? -ne 0 ]; then
     exit 1
