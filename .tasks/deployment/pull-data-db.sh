@@ -12,7 +12,7 @@ fi
 
 source $DEPLOYMENT_CONFIG_FILE
 
-ask "Pull DB $DEPLOY_DB_DATABASE ($DEPLOY_DB_HOST)\nfrom DB $DB_DEV_DATABASE ($DB_DEV_HOST)?"
+ask "Pull DB $DB_DEV_DATABASE ($DB_DEV_HOST)\ninto $DEPLOY_DB_DATABASE ($DEPLOY_DB_HOST)?"
 
 if [ $? -ne 0 ]; then
     exit 1
