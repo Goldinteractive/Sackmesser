@@ -1,46 +1,68 @@
 @charset "utf-8";
 
 @import
-  '../vendor/bower/gridle/sass/gridle/gridle',
-  '../shared-variables.json',
-  'utils/variables',
-  '../vendor/bower/gi-scss-mixins/mixins';
+    '../vendor/bower/gridle/sass/gridle/gridle',
+    '../shared-variables.json',
+    'utils/variables',
+    'utils/mixins',
+    '../vendor/bower/gi-scss-mixins/mixins';
 
 // check the documentation http://gridle.org/documentation
 
 // setting up the grid
 @include gridle_setup((
-  context: $default-columns-amount,
-  gutter-width: $default-gutter-width,
+    context: $default-columns-amount,
+    gutter-width: $default-gutter-width,
 ));
 
 @include gridle_register_state (tablet, (
-  query: map-get($breakpoints, tablet),
-
-  gutter-width: 10%,
-  max-width: $break-medium,
+    query: map-get($breakpoints, tablet),
+    gutter-width: $tablet-gutter-width,
+    max-width: $break-medium,
 ));
 
 // make the use of media queries a piece of cake
 @include gridle_register_state (mobile, (
-  query: map-get($breakpoints, mobile),
-  gutter-width: 10%,
-  max-width: $break-small,
+    query: map-get($breakpoints, mobile),
+    gutter-width: $mobile-gutter-width,
+    max-width: $break-small,
 ));
 
+
+// Generate classes
 @include gridle_generate_classes(all, -debug);
+@import 'utils/grid-helpers';
+
 
 /**
  * Main page container
  */
 
 .container {
-  max-width: $break-large;
-  margin: 0 auto;
-  @include breakpoint($break-large) {
-    width: 100%;
-  }
+    max-width: $container-max-width;
+    margin: 0 auto;
+    @include breakpoint($break-large) {
+        max-width: $mobile-container-max-width;
+    }
 }
+
+
+/**
+ * Fix negative margins for breakpoints
+ */
+
+.row {
+    @include respond-to(tablet) {
+        margin-left: -($tablet-gutter-width / 2);
+        margin-right: -($tablet-gutter-width / 2);
+    }
+
+    @include respond-to(mobile) {
+        margin-left: -($mobile-gutter-width / 2);
+        margin-right: -($mobile-gutter-width / 2);
+    }
+}
+
 
 /**
  * Small hack for a big problem, used to enable the background colors,
@@ -54,16 +76,16 @@
  *          .gr-6
  */
 .gr-inner {
-  margin-left:  $default-gutter-width / 2;
-  margin-right: $default-gutter-width / 2;
+    margin-left:  $default-gutter-width / 2;
+    margin-right: $default-gutter-width / 2;
 
-  @include respond-to(tablet) {
-    margin-left:  5%; // the half of the gutter width on tablet!
-    margin-right: 5%;
-  }
+    @include respond-to(tablet) {
+        margin-left: $tablet-gutter-width / 2; // the half of the gutter width on tablet!
+        margin-right: $tablet-gutter-width / 2;
+    }
 
-  @include respond-to(mobile) {
-    margin-left:  5%; // the half of the gutter width on mobile!
-    margin-right: 5%;
-  }
+    @include respond-to(mobile) {
+        margin-left: $mobile-gutter-width / 2; // the half of the gutter width on mobile!
+        margin-right: $mobile-gutter-width / 2;
+    }
 }

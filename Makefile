@@ -4,7 +4,7 @@
 help:
 	@ $(SCRIPTS_FOLDER)/help
 
-build: clean test js css copy
+build: clean js css copy
 
 # Install all the project dependencies
 # this may change in any project
@@ -68,6 +68,10 @@ watch-css:
 # check the js files
 test:
 	@ $(ESLINT) $(JS_BASE) --ignore-pattern=$(JS_BASE)/$(JS_OUT)
+
+phpunit:
+	# Not in use for right now
+	# @ $(PHPUNIT) --bootstrap $(PHPUNIT_BOOTSTRAP) --configuration $(PHPUNIT_CONFIG) $(PHPUNIT_TESTDIR)
 
 copy:
 	@ ASSETS_PATH=$(ASSETS_PATH) \
@@ -137,7 +141,7 @@ watch-scss: watch-sass
 	cssmin
 	favicons
 	test
+	phpunit
 	build
 	icons
 	clean
-

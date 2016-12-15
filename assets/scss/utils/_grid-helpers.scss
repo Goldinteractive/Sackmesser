@@ -1,0 +1,35 @@
+// Addiotional helper classes
+
+@include gridle_generate_custom_class( ('tac','@','%state') ) {
+    text-align: center;
+}
+
+@include gridle_generate_custom_class( ('tal','@','%state') ) {
+    text-align: left;
+}
+
+@include gridle_generate_custom_class( ('tar','@','%state') ) {
+    text-align: right;
+}
+
+@include gridle_generate_custom_class( ('fl','@','%state') ) {
+    float: left;
+}
+
+@include gridle_generate_custom_class( ('fr','@','%state') ) {
+    float: right;
+}
+
+@include gridle_generate_custom_class( ('fn','@','%state') ) {
+    float: none;
+}
+
+@include gridle_generate_custom_class( ('float-none','@','%state') ) {
+    float: none;
+}
+
+@include gridle_generate_custom_class( ('hide-br','@','%state') ) {
+    br {
+        display: none;
+    }
+}
