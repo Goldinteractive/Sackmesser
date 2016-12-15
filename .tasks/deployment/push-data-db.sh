@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source "$DEPLOY_SCRIPTS_FOLDER/utils/util.sh"
 source "$CONFIG_FOLDER/deployment"
 
 #load config
@@ -10,6 +11,12 @@ if [ ! -e $DEPLOYMENT_CONFIG_FILE ]; then
 fi
 
 source $DEPLOYMENT_CONFIG_FILE
+
+ask "Push DB $DB_DEV_DATABASE ($DB_DEV_HOST)\nto DB $DEPLOY_DB_DATABASE ($DEPLOY_DB_HOST)?"
+
+if [ $? -ne 0 ]; then
+    exit 1
+fi
 
 if [ $USE_DB -eq 0 ]; then
  printf "\033[0;31m No DB in use \033[0m \n"

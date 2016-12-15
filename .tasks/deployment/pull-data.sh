@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source "$DEPLOY_SCRIPTS_FOLDER/utils/util.sh"
 source "$CONFIG_FOLDER/deployment"
 
 #load config
@@ -11,6 +12,11 @@ fi
 
 source $DEPLOYMENT_CONFIG_FILE
 
+ask "Pull files from $DEPLOY_HOST ($DEPLOY_APPROOT/current/$DEPLOY_DATA_FOLDER)\nto localhost ($DEPLOY_DATA_FOLDER)?"
+
+if [ $? -ne 0 ]; then
+    exit 1
+fi
 
 DB_DATA_PULL_FILE="db_data_pull_file.sql"
 

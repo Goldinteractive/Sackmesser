@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source "$DEPLOY_SCRIPTS_FOLDER/utils/util.sh"
 source "$CONFIG_FOLDER/deployment"
 
 #load config
@@ -10,6 +11,12 @@ if [ ! -e $DEPLOYMENT_CONFIG_FILE ]; then
 fi
 
 source $DEPLOYMENT_CONFIG_FILE
+
+ask "Deploy\nto $DEPLOY_DB_HOST ($DEPLOY_APPROOT)?"
+
+if [ $? -ne 0 ]; then
+    exit 1
+fi
 
 # remove dev files
 rm -rf ./$COPY_DEST/$DEPLOY_DATA_FOLDER/*

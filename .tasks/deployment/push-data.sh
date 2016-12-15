@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source "$DEPLOY_SCRIPTS_FOLDER/utils/util.sh"
 source "$CONFIG_FOLDER/deployment"
 
 #load config
@@ -10,6 +11,12 @@ if [ ! -e $DEPLOYMENT_CONFIG_FILE ]; then
 fi
 
 source $DEPLOYMENT_CONFIG_FILE
+
+ask "Push files from localhost (DEPLOY_DATA_FOLDER)\nto $DEPLOY_HOST ($DEPLOY_APPROOT/current/$DEPLOY_DATA_FOLDER)?"
+
+if [ $? -ne 0 ]; then
+    exit 1
+fi
 
 # backup files
 printf "\033[0;32m Backup files in $DEPLOY_DATA_FOLDER \033[0m \n"

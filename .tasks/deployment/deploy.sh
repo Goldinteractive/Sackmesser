@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source "$DEPLOY_SCRIPTS_FOLDER/utils/util.sh"
 source "$CONFIG_FOLDER/deployment"
 
 REV_FILE=$DEPLOYMENT_FOLDER/rev
@@ -16,6 +17,12 @@ if [ ! -e $DEPLOYMENT_CONFIG_FILE ]; then
 fi
 
 source $DEPLOYMENT_CONFIG_FILE
+
+ask "Deploy\nto $DEPLOY_DB_HOST ($DEPLOY_APPROOT)?"
+
+if [ $? -ne 0 ]; then
+    exit 1
+fi
 
 #htaccess stuff
 ENV_HTACCESS="$WEBROOT_PATH/.htaccess.$DEPLOYENV"
