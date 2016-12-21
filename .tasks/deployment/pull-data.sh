@@ -22,7 +22,6 @@ fi
 printf "\033[0;32m Backup files in $DEPLOY_DATA_FOLDER \033[0m \n"
 if [ -d "$DEPLOY_DATA_FOLDER" ]; then
     tar -cvzf "$DEPLOY_DATA_BACKUP_FOLDER/backup_files.tar.gz" -C "$DEPLOY_DATA_FOLDER/../" "files"
-    rm -rf $DEPLOY_DATA_FOLDER/*
 fi
 
 # get files
