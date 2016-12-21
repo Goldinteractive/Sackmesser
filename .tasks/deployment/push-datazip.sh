@@ -12,13 +12,13 @@ fi
 
 source $DEPLOYMENT_CONFIG_FILE
 
-ask "Push files from localhost (DEPLOY_DATA_FOLDER)\nto $DEPLOY_HOST ($DEPLOY_APPROOT/current/$DEPLOY_DATA_FOLDER)?"
+ask "Push files from localhost (DEPLOY_DATA_FOLDER)\nto $DEPLOY_HOST ($DEPLOY_APPROOT/current/$DEPLOY_DATA_FOLDER)?\n"
 
 if [ $? -ne 0 ]; then
     exit 1
 fi
 
-ask "Backup server files?" 0
+ask "Backup server files? " 0
 
 if [ $? -eq 0 ]; then
     # backup files
@@ -29,7 +29,6 @@ if [ $? -eq 0 ]; then
 
         if [ -d "current/$DEPLOY_DATA_FOLDER" ]; then
             tar -cvzf "current/$DEPLOY_DATA_BACKUP_FOLDER/backup_files.tar.gz" -C "current/$DEPLOY_DATA_FOLDER/../" "files"
-            rm -rfv current/$DEPLOY_DATA_FOLDER/*
         else
             echo "Data folder does not exist. Continue."
         fi
