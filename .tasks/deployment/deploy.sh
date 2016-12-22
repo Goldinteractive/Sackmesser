@@ -18,7 +18,7 @@ fi
 
 source $DEPLOYMENT_CONFIG_FILE
 
-ask "Deploy to $DEPLOY_DB_HOST ($DEPLOY_APPROOT)?"
+ask "Deploy to $DEPLOY_HOST ($DEPLOY_APPROOT)?"
 
 if [ $? -ne 0 ]; then
     exit 1
