@@ -9,7 +9,6 @@
 // compass and mixins
 @import
     '../shared-variables.json',
-    '../vendor/bower/gi-scss-global-variables/global-variables',
     '../vendor/bower/gi-scss-mixins/mixins';
 
 // Project variables and utils
@@ -21,7 +20,11 @@
 
 // Third party css
 @import
-    '../vendor/bower/normalize-css/normalize.css';
+    'sanitize.css/sanitize.css';
+
+// Third party css
+// @import
+    // 'npmfolder/folder/style.css';
 
 // Base CSS
 @import
