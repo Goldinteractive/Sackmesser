@@ -2,17 +2,17 @@
 
 # install the frontend dependencies
 if [ -f .bowerrc ]; then
-  sudo bower install --allow-root
+  bower install
 fi
 
-# install the nodejs dependencies
+# install the npm dependencies
 if [ -f package.json ]; then
-  sudo npm install
+  yarn install
 fi
 
 # install the php dependencies (because we all love php!!!)
 if [ -f composer.json ]; then
-  sudo composer install --prefer-dist
+  composer install --prefer-dist
 fi
 
 

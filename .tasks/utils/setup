@@ -1,14 +1,16 @@
 #!/bin/bash
 
-# install bower to manage the frontend dependencies
-sudo bower install --allow-root
+# install and yarn to manage the frontend dependencies
+brew update
+brew install yarn
+npm i -g bower
 
 # to compile the css
 gem install sass
 # to import the sass variables from a json file
 gem install sass-json-vars
+
 # to install the frontend dependencies
-npm i -g bower
 sudo npm i -g grunticon-cli
 
 # set up the project credentials for the deployment
