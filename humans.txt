@@ -6,7 +6,6 @@ Chris Lalive d'Epinay
 Kevin Luginbuehl
 Nadine Engler
 Jonathan Beck
-Gianluca Guarini
 Sidney Widmer
 Watezz Bleuer
 Manuel Sommerhalder
