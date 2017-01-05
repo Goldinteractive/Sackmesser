@@ -4,16 +4,13 @@ const webpack = require('webpack'),
   IS_DEBUG = process.env.DEBUG && process.env.DEBUG != 'false',
   IS_WATCH = process.env.WATCH && process.env.WATCH != 'false',
   BASE = path.join(__dirname, '..', process.env.BASE)
-  
+
 // default plugins
 var plugins = [
-  new BowerWebpackPlugin({
-    excludes: /\.css$/,
-    searchResolveModulesDirectories: false
-  }),
   new webpack.ProvidePlugin({
-    //  $: 'jquery',
-    // jQuery: 'jquery',
+    gi: 'base',
+    $: 'jquery',
+    jQuery: 'jquery',
   })
 ]
 
@@ -32,6 +29,11 @@ if (!IS_DEBUG)
   ])
 
 module.exports = {
+  resolve: {
+    modulesDirectories: [
+        BASE, 'node_modules'
+    ]
+  },
   entry: path.join(BASE, process.env.IN),
   target: 'web',
   cache: true,
@@ -45,6 +47,7 @@ module.exports = {
   watch: IS_WATCH,
   module: {
     loaders: [
+      // { test: require.resolve('jquery'), loader: 'expose?$!expose?jQuery' },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower)/,
