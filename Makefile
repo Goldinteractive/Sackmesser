@@ -15,6 +15,7 @@ install:
 sass:
 	# compile the normal css
 	@ scss \
+	    -I $(NODE_MODULES) \
 		--style=compressed \
 		--sourcemap=none \
 		$(SCSS_IN)/style.scss:$(CSS_OUT)/style.scss.css \
@@ -23,6 +24,7 @@ sass:
 grid:
 	# compile the grid
 	@ scss \
+	    -I $(NODE_MODULES) \
 		--style=compressed \
 		--sourcemap=none \
 		$(SCSS_IN)/grid.scss:$(CSS_OUT)/grid.css \
@@ -31,6 +33,7 @@ grid:
 watch-grid:
 	# watch the grid
 	@ scss \
+	    -I $(NODE_MODULES) \
 		--style=compressed \
 		--sourcemap=none \
 		$(SCSS_IN)/grid.scss:$(CSS_OUT)/grid.css \
@@ -40,6 +43,7 @@ watch-grid:
 # watch the scss files
 watch-sass:
 	@ scss \
+	    -I $(NODE_MODULES) \
 		--style=compressed \
 		--sourcemap=none \
 		$(SCSS_IN)/style.scss:$(CSS_OUT)/style.scss.css \
@@ -47,17 +51,13 @@ watch-sass:
 		--watch
 
 postcss:
-	# autoprefix the css
-	@ $(POSTCSS) --use autoprefixer --autoprefixer.browsers "> 0%" $(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css
+	# modify the normal css with postcss
+	@ $(POSTCSS) --config .config/postcss.js $(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css
 
 watch-postcss:
-	@ $(POSTCSS) --use autoprefixer --autoprefixer.browsers "> 0%" $(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css --watch
+	@ $(POSTCSS) --config .config/postcss.js $(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css --watch
 
-cssmin:
-	# optimize the css for the build
-	@ $(CLEANCSS) $(CSS_OUT)/style.css -o $(CSS_OUT)/style.css
-
-css: sass postcss grid cssmin
+css: grid sass postcss
 
 watch-css:
 	# compile the css on the fly
@@ -138,7 +138,6 @@ watch-scss: watch-sass
 	watch-css
 	watch-postcss
 	postcss
-	cssmin
 	favicons
 	test
 	phpunit
