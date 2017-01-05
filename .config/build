@@ -4,11 +4,11 @@ CONFIG_FOLDER=./.config
 
 # shell scripts paths and node bin files
 SCRIPTS_FOLDER=./.tasks
-WEBPACK=./node_modules/.bin/webpack
-ESLINT=./node_modules/.bin/eslint
-CLEANCSS=./node_modules/.bin/cleancss
-POSTCSS=./node_modules/.bin/postcss
-SVG_SPRITE=./node_modules/.bin/svg-sprite
+NODE_MODULES=./node_modules
+WEBPACK=$(NODE_MODULES)/.bin/webpack
+ESLINT=$(NODE_MODULES)/.bin/eslint
+POSTCSS=$(NODE_MODULES)/.bin/postcss
+SVG_SPRITE=$(NODE_MODULES)/.bin/svg-sprite
 
 # this could change in any project
 ASSETS_PATH=assets
