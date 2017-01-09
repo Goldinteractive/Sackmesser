@@ -1,0 +1,5 @@
+{
+    "source": {
+        "excludePattern": "main.bundle.js(.map)?"
+    }
+}

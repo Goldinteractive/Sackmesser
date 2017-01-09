@@ -6,6 +6,15 @@ help:
 
 build: clean js css copy
 
+jsdoc:
+	# generate js documentation
+	@ jsdoc -r \
+		-c $(JSDOC_CONFIG) \
+		-t $(JSDOC_TEMPLATE_PATH) \
+		-d $(JSDOC_OUT) \
+		-R $(JSDOC_README) \
+		$(JSDOC_IN)
+
 # Install all the project dependencies
 # this may change in any project
 install:
@@ -52,10 +61,10 @@ watch-sass:
 
 postcss:
 	# modify the normal css with postcss
-	@ $(POSTCSS) --config .config/postcss.js $(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css
+	@ $(POSTCSS) --config $(POSTCSS_CONFIG) --postcss-assets.basePath $(ASSETS_PATH) $(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css
 
 watch-postcss:
-	@ $(POSTCSS) --config .config/postcss.js $(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css --watch
+	@ $(POSTCSS) --config $(POSTCSS_CONFIG) --postcss-assets.basePath $(ASSETS_PATH) $(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css --watch
 
 css: grid sass postcss
 
