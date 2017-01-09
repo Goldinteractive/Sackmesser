@@ -22,10 +22,14 @@ $link-color-hover: darken($link-color, 15%);
 $sans-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $serif-font-family: Georgia, 'Times New Roman', Times, serif;
 $mono-font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;
-$font-size: 1em;
+
+// Base font size and line-height
+$font-size: 15px;
+$line-height: 1.5;
 
 // Icons
 $icons-size: 22px;
+
 
 //Responsive breakpoints
 // -------------------------
@@ -47,8 +51,6 @@ $layers: (
 
 // Grid
 // -------------------------
-$container-max-width: calc(#{$break-large} - 20px);
-$mobile-container-max-width: 88%;
 
 // Default grid values
 $default-column-width: 60px;
@@ -58,8 +60,10 @@ $default-gutter-width: 46px;
 $tablet-gutter-width: 3%;
 $mobile-gutter-width: 6%;
 
-// Images paths
-// -------------------------
-$image-path: '../img/';
-$font-path: '../fonts/';
+$default-vertical-space: 0;
+$tablet-vertical-space: 0;
+$mobile-vertical-space: 0;
 
+$container-max-width: $break-large - ($default-gutter-width * 2) - ($default-vertical-space * 2);
+$container-max-width-tablet: calc(100% - #{$tablet-gutter-width * 2} - #{$tablet-vertical-space * 2});
+$container-max-width-mobile: calc(100% - #{$mobile-gutter-width * 2} - #{$mobile-vertical-space * 2});

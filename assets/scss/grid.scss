@@ -41,8 +41,11 @@
 .container {
     max-width: $container-max-width;
     margin: 0 auto;
+    @include respond-to(tablet) {
+        max-width: $container-max-width-tablet;
+    }
     @include breakpoint($break-large) {
-        max-width: $mobile-container-max-width;
+        max-width: $container-max-width-mobile;
     }
 }
 

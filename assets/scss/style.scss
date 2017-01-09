@@ -9,7 +9,7 @@
 // compass and mixins
 @import
     '../shared-variables.json',
-    '../vendor/bower/gi-scss-mixins/mixins';
+    'gi-scss-mixins/mixins';
 
 // Project variables and utils
 @import
@@ -18,7 +18,7 @@
     'utils/placeholders',
     'utils/helpers';
 
-// Third party css
+// Sanitize
 @import
     'sanitize.css/sanitize.css';
 
