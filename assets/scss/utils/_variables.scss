@@ -11,6 +11,8 @@
 // -------------------------
 $body-background: white;
 $text-color: black;
+$highlight-color: #b3d4fc;
+$placeholder-color: rgba($text-color, 0.7);
 
 // Links
 // -------------------------
@@ -25,6 +27,7 @@ $mono-font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;
 
 // Base font size and line-height
 $font-size: 15px;
+$font-size-small: 80%;
 $line-height: 1.5;
 
 // Icons
