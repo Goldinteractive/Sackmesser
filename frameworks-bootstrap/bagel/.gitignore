@@ -46,7 +46,8 @@ public/assets/vendor/bower
 .tmp
 
 # the style.css must be generated using 'compass compile'
-public/assets/css/style.css
+public/assets/css/*.css
+public/assets/js/main.bundle.*
 
 # bagel stuff
 /bootstrap/compiled.php
