@@ -3,15 +3,19 @@
     background-size: cover;
 }
 
+html, body {
+    height: 100%;
+}
+
 html {
-  color: $text-color;
-  line-height: $line-height;
-  font-family: $sans-font-family;
-  background: $body-background;
-  font-size: 16px;
-  text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-   -webkit-font-smoothing: antialiased;
+    color: $text-color;
+    line-height: $line-height;
+    font-family: $sans-font-family;
+    background: $body-background;
+    font-size: 16px;
+    text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -21,7 +25,7 @@ body {
 sub,
 sup,
 small {
-  font-size: $font-size-small;
+    font-size: $font-size-small;
 }
 
 /*
@@ -33,13 +37,13 @@ small {
  */
 
 ::-moz-selection {
-  background: $highlight-color;
-  text-shadow: none;
+    background: $highlight-color;
+    text-shadow: none;
 }
 
 ::selection {
-  background: $highlight-color;
-  text-shadow: none;
+    background: $highlight-color;
+    text-shadow: none;
 }
 
 /*
@@ -47,12 +51,17 @@ small {
  */
 
 hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+td,
+th {
+    vertical-align: top;
 }
 
 /*
@@ -67,7 +76,7 @@ iframe,
 img,
 svg,
 video {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 
 /*
@@ -75,9 +84,9 @@ video {
  */
 
 fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
+    border: 0;
+    margin: 0;
+    padding: 0;
 }
 
 /*
@@ -85,7 +94,11 @@ fieldset {
  */
 
 textarea {
-  resize: vertical;
+    resize: vertical;
+}
+
+img {
+    max-width: 100%;
 }
 
 /*
@@ -95,11 +108,11 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  transition: background-color 5000s ease-in-out 0s; // 1
+    transition: background-color 5000s ease-in-out 0s; // 1
 }
 
 
 ::placeholder {
-  opacity: 1;
-  color: $placeholder-color;
+    opacity: 1;
+    color: $placeholder-color;
 }

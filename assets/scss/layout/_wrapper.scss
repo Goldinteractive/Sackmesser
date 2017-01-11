@@ -1,0 +1,19 @@
+.layout-wrapper {
+    & {
+        display: flex;
+        height: 100%;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+
+    > * {
+        flex-shrink: 0;
+    }
+
+    > .content-wrapper {
+        position: relative;
+        width: 100%;
+        flex-grow: 1;
+        box-sizing: border-box;
+    }
+}
