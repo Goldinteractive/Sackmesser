@@ -14,7 +14,7 @@ Build the project:
   $START  make watch            $END watch the js and the scss files compiling them
   $START  make grid             $END generate the grid
   $START  make watch-grid       $END generate and watch the grid
-  $START  make icons            $END generate the icons using grunticon
+  $START  make icons            $END generate the icons
   $START  make favicons         $END generate the favicons
   $START  make watch-css        $END watch the scss files compiling them and running the post-processor
   $START  make watch-js         $END watch the js ES6 files transpiling them to ES5

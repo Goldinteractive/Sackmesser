@@ -108,8 +108,18 @@ watch-js:
 debug-js:
 	@ DEBUG=true $(MAKE) js
 
-icons:
-	@ grunticon $(IN_ICONS_PATH) $(OUT_ICONS_PATH) --config=.config/grunticon
+icons: icons-generate icons-optimize
+
+icons-generate:
+	# generate combined svg and json file with svg attribute informations
+	@ php -f $(SCRIPTS_FOLDER)/icons/generate.php \
+		iconsFolder=$(ICONS_IN) \
+		dataFileOutput=$(ICONS_DATA_FILE) \
+		svgCombOutput=$(ICONS_COMBINED_SVG)
+
+icons-optimize:
+	# optimize svg icons
+	@ svgo --pretty --folder $(ICONS_IN) --output $(ICONS_OUT)
 
 watch:
 	@ $(SCRIPTS_FOLDER)/utils/parallel \
@@ -117,9 +127,8 @@ watch:
 		"make watch-scss" \
 		"make watch-postcss"
 
-# setup your machine
 setup:
-	# install bower to manage the frontend dependencies
+	# setup your machine
 	@ $(SCRIPTS_FOLDER)/utils/setup
 
 favicons:

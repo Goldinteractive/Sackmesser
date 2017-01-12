@@ -21,11 +21,5 @@
 		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="assets/favicons/apple-touch-icon-152x152-precomposed.png">
 		<meta name="msapplication-TileImage" content="assets/favicons/windows-tile-144x144.png">
 		<meta name="msapplication-TileColor" content="#000000">
-
-		<script src="assets/css/iconsbuild/grunticon.loader.js"></script>
-		<script>
-			grunticon(['assets/css/iconsbuild/icons.data.svg.css', 'assets/css/iconsbuild/icons.data.png.css', 'assets/css/iconsbuild/icons.fallback.css'], grunticon.svgLoadedCallback);
-		</script>
-		<noscript><link href="assets/css/iconsbuild/icons.fallback.css" rel="stylesheet"></noscript>
 	</head>
 	<body>
