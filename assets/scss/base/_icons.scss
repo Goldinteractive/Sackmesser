@@ -1,21 +1,12 @@
 // ICONS
 // -----
 
-// All icons receive the styles of the <i> tag with a base class
-// of .i and are then given a unique class to add width, height,
-// and background-position. Your resulting HTML will look like
-// <i class="icon-inbox"></i>.
+.icon {}
 
-// For the white version of the icons, just add the .icon-white class:
-// <i class="icon-inbox icon-white"></i>
+.icon-box {
+    @include square($icons-size);
+    display: inline-block;
+    vertical-align: middle;
 
-[class^='icon-'],
-[class*=' icon-'] {
-  @include square($icons-size);
-
-  display: inline-block;
-  vertical-align: text-top;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  image-rendering: optimizequality;
+    > .icon {}
 }

@@ -25,6 +25,7 @@ foreach ($iconsDir as $info) {
         $svg = new SimpleXMLElement($content);
 
         $svg->registerXPathNamespace('svg', 'http://www.w3.org/2000/svg');
+        $svg->registerXPathNamespace('xlink', 'http://www.w3.org/1999/xlink');
 
         foreach ($svg->children() as $child) {
             $innerContent .= $child->asXML();
