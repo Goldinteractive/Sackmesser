@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: base/events.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: base/events.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Emitter module
+ * @module base/events
+ */
+
+/**
+ * Initialize a new `Emitter`.
+ *
+ * @api public
+ */
+
+export function Emitter(obj) {
+  if (obj) return mixin(obj)
+}
+
+/**
+ * Mixin the emitter properties.
+ *
+ * @param {Object} obj
+ * @return {Object}
+ * @api private
+ */
+
+function mixin(obj) {
+  for (var key in Emitter.prototype) {
+    obj[key] = Emitter.prototype[key]
+  }
+  return obj
+}
+
+/**
+ * Listen on the given `event` with `fn`.
+ *
+ * @param {String} event
+ * @param {Function} fn
+ * @return {Emitter}
+ * @api public
+ */
+
+Emitter.prototype.on =
+Emitter.prototype.addEventListener = function(event, fn) {
+  this._callbacks = this._callbacks || {}
+  (this._callbacks['$' + event] = this._callbacks['$' + event] || [])
+    .push(fn)
+  return this
+}
+
+/**
+ * Adds an `event` listener that will be invoked a single
+ * time then automatically removed.
+ *
+ * @param {String} event
+ * @param {Function} fn
+ * @return {Emitter}
+ * @api public
+ */
+
+Emitter.prototype.once = function(event, fn) {
+  function on() {
+    this.off(event, on)
+    fn.apply(this, arguments)
+  }
+
+  on.fn = fn
+  this.on(event, on)
+  return this
+}
+
+/**
+ * Remove the given callback for `event` or all
+ * registered callbacks.
+ *
+ * @param {String} event
+ * @param {Function} fn
+ * @return {Emitter}
+ * @api public
+ */
+
+Emitter.prototype.off =
+Emitter.prototype.removeListener =
+Emitter.prototype.removeAllListeners =
+Emitter.prototype.removeEventListener = function(event, fn) {
+  this._callbacks = this._callbacks || {}
+
+  // all
+  if (0 == arguments.length) {
+    this._callbacks = {}
+    return this
+  }
+
+  // specific event
+  var callbacks = this._callbacks['$' + event]
+  if (!callbacks) return this
+
+  // remove all handlers
+  if (1 == arguments.length) {
+    delete this._callbacks['$' + event]
+    return this
+  }
+
+  // remove specific handler
+  var cb
+  for (var i = 0; i &lt; callbacks.length; i++) {
+    cb = callbacks[i]
+    if (cb === fn || cb.fn === fn) {
+      callbacks.splice(i, 1)
+      break
+    }
+  }
+  return this
+}
+
+/**
+ * Emit `event` with the given args.
+ *
+ * @param {String} event
+ * @param {Mixed} ...
+ * @return {Emitter}
+ */
+
+Emitter.prototype.emit = function(event) {
+  this._callbacks = this._callbacks || {}
+  var args = [].slice.call(arguments, 1),
+      callbacks = this._callbacks['$' + event]
+
+  if (callbacks) {
+    callbacks = callbacks.slice(0)
+    for (var i = 0, len = callbacks.length; i &lt; len; ++i) {
+      callbacks[i].apply(this, args)
+    }
+  }
+
+  return this
+}
+
+/**
+ * Return array of callbacks for `event`.
+ *
+ * @param {String} event
+ * @return {Array}
+ * @api public
+ */
+
+Emitter.prototype.listeners = function(event) {
+  this._callbacks = this._callbacks || {}
+  return this._callbacks['$' + event] || []
+}
+
+/**
+ * Check if this emitter has `event` handlers.
+ *
+ * @param {String} event
+ * @return {Boolean}
+ * @api public
+ */
+
+Emitter.prototype.hasListeners = function(event) {
+  return !! this.listeners(event).length
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-base.html">base</a></li><li><a href="module-base_events.html">base/events</a></li><li><a href="module-base_features.html">base/features</a></li><li><a href="module-base_utils.html">base/utils</a></li><li><a href="module-base_utils_array.html">base/utils/array</a></li><li><a href="module-base_utils_check.html">base/utils/check</a></li><li><a href="module-base_utils_device.html">base/utils/device</a></li><li><a href="module-base_utils_dom.html">base/utils/dom</a></li><li><a href="module-base_utils_func.html">base/utils/func</a></li><li><a href="module-base_utils_object.html">base/utils/object</a></li><li><a href="module-base_utils_string.html">base/utils/string</a></li><li><a href="module-base_utils_url.html">base/utils/url</a></li></ul><h3>Classes</h3><ul><li><a href="module-base_features-Feature.html">Feature</a></li><li><a href="module-base_utils_device-DeviceInfo.html">DeviceInfo</a></li><li><a href="module-base_utils_dom-Scroller.html">Scroller</a></li><li><a href="RandomQuote.html">RandomQuote</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Jan 16 2017 11:16:55 GMT+0100 (CET)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

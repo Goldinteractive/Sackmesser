@@ -1,5 +1,4 @@
 const webpack = require('webpack'),
-  BowerWebpackPlugin = require('bower-webpack-plugin'),
   path = require('path'),
   IS_DEBUG = process.env.DEBUG && process.env.DEBUG != 'false',
   IS_WATCH = process.env.WATCH && process.env.WATCH != 'false',
@@ -8,9 +7,9 @@ const webpack = require('webpack'),
 // default plugins
 var plugins = [
   new webpack.ProvidePlugin({
-    gi: 'base',
+    gi: 'gi-js-base',
     $: 'jquery',
-    jQuery: 'jquery',
+    jQuery: 'jquery'
   })
 ]
 

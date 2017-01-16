@@ -10,7 +10,6 @@ jsdoc:
 	# generate js documentation
 	@ jsdoc -r \
 		-c $(JSDOC_CONFIG) \
-		-t $(JSDOC_TEMPLATE_PATH) \
 		-d $(JSDOC_OUT) \
 		-R $(JSDOC_README) \
 		$(JSDOC_IN)

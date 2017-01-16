@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: base/features.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: base/features.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Features module.
+ * @module base/features
+ */
+
+var features = {}
+
+/**
+ * Reinitializes features.
+ *
+ * @param {Node} [container=document.body]
+ *   Container element to filter where features should be reinitialized.
+ * @param {String} [name=null]
+ *   Comma separated string with names of the features
+ *   (used by the `data-feature` attribute) which sould be reinitialized.
+ */
+function reinit(container = document.body, name = null) {
+  destroy(container, name)
+  init(container, name)
+}
+
+/**
+ * Initializes features.
+ *
+ * @example
+ * // initialize all features
+ * base.features.init()
+ * @example
+ * // initialize `feature1` and `feature2` instances inside #wrapper
+ * base.features.init(document.getElementById('wrapper'), 'feature1,feature2')
+ *
+ * @param {Node} [container=document.body] Container element
+ *   Container element to filter where features should be initialized.
+ * @param {String} [name=null]
+ *   Comma separated string with names of the features
+ *   (used by the `data-feature` attribute) which sould be initialized.
+ */
+function init(container = document.body, name = null) {
+  var names = name ? name.split(',') : null
+  var featureNodes = container.querySelectorAll('[data-feature]')
+
+  for (let i = 0, featureNodesLength = featureNodes.length; i &lt; featureNodesLength; i++) {
+    var featureNode = featureNodes[i]
+    var dataFeatures = featureNode.getAttribute('data-feature').split(',')
+
+    dataFeatures.forEach(function(featureName) {
+      featureName = featureName.trim()
+      var feature = features[featureName]
+
+      // continue if feature has not been added
+      // or name is not whitelisted
+      // or is already initialized on this node
+      if (!feature
+          || (name &amp;&amp; name.indexOf(featureName) &lt; 0)
+          || (featureNode._baseFeatureInstances
+              &amp;&amp; featureNode._baseFeatureInstances[featureName])) return true
+
+      var instance = new feature.featureClass(
+        featureName, featureNode, feature.options
+      )
+
+      instance.init()
+    })
+  }
+}
+
+/**
+ * Destroy feature instances.
+ *
+ * @example
+ * // destroy all feature instances
+ * base.features.destroy()
+ * @example
+ * // destroy `feature1` and `feature2` instances inside #wrapper
+ * base.features.destroy(document.getElementById('wrapper'), 'feature1,feature2')
+ *
+ * @param {Node} [container=document.body] Container element
+ *   Container element to filter where features should be destroyed.
+ * @param {String} [name=null]
+ *   Comma separated string with names of the features
+ *   (used by the `data-feature` attribute) which sould be initialized.
+ */
+function destroy(container = document.body, name = null) {
+  var names = name ? name.split(',') : null
+  var featureNodes = container.querySelectorAll('[data-feature]')
+
+  for (let i = 0, featureNodesLength = featureNodes.length; i &lt; featureNodesLength; i++) {
+    var featureNode = featureNodes[i]
+    var nodeInstances = getInstancesByNode(featureNode)
+
+    for (let featureName in nodeInstances) {
+      if (nodeInstances.hasOwnProperty(featureName)
+          &amp;&amp; (!name || name.indexOf(featureName) > -1)
+      ) {
+        nodeInstances[featureName].destroy()
+        nodeInstances[featureName] = null
+      }
+    }
+  }
+}
+
+/**
+ * Add feature
+ *
+ * @example
+ * // add feature `deathStar`
+ * base.features.add('deathStar', DeathStar, { destroyAlderaan: true })
+ *
+ * @param {String} name
+ *   Name of the feature used by the `data-feature` attribute.
+ * @param {Feature} featureClass
+ *   Feature class to initiate.
+ * @param {Object} options
+ *   Any options to initialize the feature with.
+ */
+function add(name, featureClass, options = {}) {
+  if (features[name]) {
+    throw new Error('Feature "'+ name +'" has been already added!')
+  }
+
+  features[name] = { featureClass, options }
+}
+
+/**
+ * Return all initialized feature instances from given node.
+ *
+ * @example
+ * // get all the feature instances
+ * var features = base.features.getInstancesByNode(document.getElementById('deathstar'))
+ * // do something with one of the features
+ * features.deathStar.destroy()
+ *
+ * @param {Node} node
+ *   Node to return the instances from.
+ * @returns {Object|null}
+ *   Feature instances indexed by name (used by `data-feature` attribute).
+ */
+function getInstancesByNode(node) {
+  return node._baseFeatureInstances || null
+}
+
+/**
+ * Return initialized feature instance from given node and name.
+ *
+ * @example
+ * // get feature instance
+ * var deathStar = base.features.getInstancesByNode(document.getElementById('deathstar'), 'deathStar')
+ * // do something with the feature
+ * deathStar.destroy()
+ *
+ * @param {Node} node
+ *   Node to return the instance from.
+ * @param {String} name
+ *   Name used by `data-feature` attribute.
+ *
+ * @returns {module:base/features~Feature|null} Feature instance.
+ */
+function getInstanceByNode(node, name) {
+  if (!node._baseFeatureInstances) {
+    return null
+  }
+
+  return node._baseFeatureInstances[name] || null
+}
+
+
+/**
+ * Abstract Feature class.
+ * @abstract
+ */
+class Feature {
+
+  /**
+   * Constructor.
+   *
+   * @param {String} name
+   *   Name of the feature used by the `data-feature` attribute.
+   * @param {Node} node
+   *   Node the feature belongs to.
+   * @param {Object} options
+   *   Feature options which can be used for anything.
+   */
+  constructor(name, node, options) {
+    if (this.constructor === Feature) {
+      throw new Error("Can't instantiate abstract class!")
+    }
+
+    this._node = node
+    this._options = options
+
+    if (!this._node._baseFeatureInstances) {
+      this._node._baseFeatureInstances = {}
+    }
+
+    this._node._baseFeatureInstances[name] = this
+  }
+
+  /** Return node the feature belongs to. */
+  get node() { return this._node }
+
+  /** Return given options the feature has been initialized with. */
+  get options() { return this._options }
+
+  /** Initialize feature. */
+  init() {}
+
+  /** Destroy feature. */
+  destroy() {}
+
+}
+
+
+export {
+  /**
+   * Feature class.
+   * @see module:base/features~Feature
+   */
+  Feature,
+
+  init, destroy, reinit, add,
+  getInstanceByNode,
+  getInstancesByNode,
+
+  /**
+   * Features added to current site.
+   * @type {Object}
+   */
+  features
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-base.html">base</a></li><li><a href="module-base_events.html">base/events</a></li><li><a href="module-base_features.html">base/features</a></li><li><a href="module-base_utils.html">base/utils</a></li><li><a href="module-base_utils_array.html">base/utils/array</a></li><li><a href="module-base_utils_check.html">base/utils/check</a></li><li><a href="module-base_utils_device.html">base/utils/device</a></li><li><a href="module-base_utils_dom.html">base/utils/dom</a></li><li><a href="module-base_utils_events.html">base/utils/events</a></li><li><a href="module-base_utils_func.html">base/utils/func</a></li><li><a href="module-base_utils_object.html">base/utils/object</a></li><li><a href="module-base_utils_string.html">base/utils/string</a></li><li><a href="module-base_utils_url.html">base/utils/url</a></li></ul><h3>Classes</h3><ul><li><a href="module-base_events-EventHub.html">EventHub</a></li><li><a href="module-base_features-Feature.html">Feature</a></li><li><a href="module-base_utils_device-DeviceInfo.html">DeviceInfo</a></li><li><a href="module-base_utils_dom-Scroller.html">Scroller</a></li><li><a href="module-base_utils_events-Emitter.html">Emitter</a></li><li><a href="RandomQuote.html">RandomQuote</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Jan 16 2017 12:04:20 GMT+0100 (CET)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
