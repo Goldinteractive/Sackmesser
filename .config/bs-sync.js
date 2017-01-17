@@ -15,6 +15,7 @@
 module.exports = {
   'browser': process.env.BROWSER.split(','),
   'files': [
+    process.env.TEMPLATES_PATH,
     process.env.ASSETS_PATH +'/css/*.css',
     process.env.ASSETS_PATH +'/js/main.bundle.js'
   ]

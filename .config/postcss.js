@@ -13,6 +13,7 @@ module.exports = {
         minPixelValue: 2
     },
     'postcss-assets': {
+        basePath: process.env.ASSETS_PATH,
         loadPaths: ['img', 'fonts'],
         relative: true,
         cachebuster: true

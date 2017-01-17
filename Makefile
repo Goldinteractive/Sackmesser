@@ -26,8 +26,6 @@ sass:
 	# compile the normal css
 	@ scss \
 	    -I $(NODE_MODULES) \
-		--style=compressed \
-		--sourcemap=none \
 		$(SCSS_IN)/style.scss:$(CSS_OUT)/style.scss.css \
 		-r sass-json-vars
 
@@ -54,18 +52,23 @@ watch-grid:
 watch-sass:
 	@ scss \
 	    -I $(NODE_MODULES) \
-		--style=compressed \
-		--sourcemap=none \
 		$(SCSS_IN)/style.scss:$(CSS_OUT)/style.scss.css \
 		-r sass-json-vars \
 		--watch
 
 postcss:
 	# modify the normal css with postcss
-	@ $(POSTCSS) --config $(POSTCSS_CONFIG) --postcss-assets.basePath $(ASSETS_PATH) $(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css
+	@ ASSETS_PATH=$(ASSETS_PATH) \
+		$(POSTCSS) \
+		--config $(POSTCSS_CONFIG) \
+		$(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css
 
 watch-postcss:
-	@ $(POSTCSS) --config $(POSTCSS_CONFIG) --postcss-assets.basePath $(ASSETS_PATH) $(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css --watch
+	@ ASSETS_PATH=$(ASSETS_PATH) \
+		$(POSTCSS) \
+		--config $(POSTCSS_CONFIG) \
+		$(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css \
+		--watch
 
 css: grid sass postcss
 
@@ -124,7 +127,9 @@ icons-optimize:
 
 browser-sync:
 	# starting browser sync server
-	@ ASSETS_PATH=$(ASSETS_PATH) BROWSER=$(BROWSERSYNC_BROWSER) \
+	@ ASSETS_PATH=$(ASSETS_PATH) \
+		TEMPLATES_PATH=$(TEMPLATES_PATH) \
+		BROWSER=$(BROWSERSYNC_BROWSER) \
 		$(BROWSERSYNC) start \
 	    --config $(BROWSERSYNC_CONFIG) \
 		--port $(BROWSERSYNC_PORT) \

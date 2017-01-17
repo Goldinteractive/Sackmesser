@@ -13,6 +13,8 @@ SVG_SPRITE=$(NODE_MODULES)/.bin/svg-sprite
 
 # this could change in any project
 ASSETS_PATH=assets
+TEMPLATES_PATH=index.html # e.g. craft/templates/**.*
+
 # set here the destination of your copy task
 COPY_DEST=dist
 
