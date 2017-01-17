@@ -3,16 +3,16 @@
   "version": "0.6.0",
   "description": "Toolset to build and maintain any kind of website or web app",
   "main": "assets/js/main.js",
-  "devDependencies": {
+  "dependencies": {
     "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.18.0",
+    "browser-sync": "^2.18.6",
     "css-mqpacker": "^5.0.1",
     "cssnano": "^3.10.0",
     "eslint": "^3.13.1",
     "expose-loader": "^0.7.1",
     "gi-js-base": "^0.0.4",
-    "gi-scss-mixins": "^0.3.2",
     "gridle": "^2.0.48",
     "jquery": "^3.1.1",
     "json-loader": "^0.5.4",

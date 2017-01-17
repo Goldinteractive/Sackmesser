@@ -5,6 +5,7 @@ CONFIG_FOLDER=./.config
 # shell scripts paths and node bin files
 SCRIPTS_FOLDER=./.tasks
 NODE_MODULES=./node_modules
+BROWSERSYNC=$(NODE_MODULES)/.bin/browser-sync
 WEBPACK=$(NODE_MODULES)/.bin/webpack
 ESLINT=$(NODE_MODULES)/.bin/eslint
 POSTCSS=$(NODE_MODULES)/.bin/postcss
@@ -47,3 +48,6 @@ JSDOC_CONFIG=$(CONFIG_FOLDER)/jsdoc.json
 JSDOC_IN=$(ASSETS_PATH)/js
 JSDOC_OUT=.docs
 JSDOC_README=$(ASSETS_PATH)/js/README.md
+
+# browsersync service
+BROWSERSYNC_CONFIG=$(CONFIG_FOLDER)/bs-sync.js

@@ -1,5 +1,7 @@
 # Import the build variables
 -include .config/build
+# Import the environment variables
+-include .env
 
 help:
 	@ $(SCRIPTS_FOLDER)/help
@@ -119,6 +121,14 @@ icons-generate:
 icons-optimize:
 	# optimize svg icons
 	@ svgo --pretty --folder $(ICONS_IN) --output $(ICONS_OUT)
+
+browser-sync:
+	# starting browser sync server
+	@ ASSETS_PATH=$(ASSETS_PATH) BROWSER=$(BROWSERSYNC_BROWSER) \
+		$(BROWSERSYNC) start \
+	    --config $(BROWSERSYNC_CONFIG) \
+		--port $(BROWSERSYNC_PORT) \
+		--proxy $(PROXY)
 
 watch:
 	@ $(SCRIPTS_FOLDER)/utils/parallel \
