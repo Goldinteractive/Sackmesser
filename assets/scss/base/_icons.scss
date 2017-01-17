@@ -1,7 +1,15 @@
 // ICONS
-// -----
+// ======
 
-.icon {}
+.icon-svg {
+    transition: color .2s ease;
+}
+
+.icon {
+    &:not(#{$icons-excluded}) * {
+        fill: currentColor;
+    }
+}
 
 .icon-box {
     @include square($icons-size);
