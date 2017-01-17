@@ -1,0 +1,57 @@
+// Form elements
+// =============
+
+// TODO: checkbox, radio, toggle
+// TODO: error styles
+// TODO: .field class for vertical rhytm
+
+select,
+textarea,
+input:not([type="checkbox"]):not([type="radio"]) {
+    width: 100%;
+    display: inline-block;
+    margin: 0;
+    outline: 0;
+    cursor: pointer;
+    color: $form-color;
+    font-size: $form-font-size;
+    line-height: $form-line-height;
+    background-color: $form-background;
+    border-radius: $form-radius;
+    border: $form-border;
+    padding: $form-padding-vertical $form-padding-horizontal;
+    transition: background-color .1s ease-in;
+
+    &:focus {
+        background-color: $form-background-focus;
+    }
+}
+
+.select {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+    color: $form-color;
+
+    &::after {
+        position: absolute;
+        top: 50%;
+        right: $form-select-arrow-right;
+        display: inline-block;
+        content: '';
+        pointer-events: none;
+        transform: translateY(-$form-select-arrow-border-width / 2);
+
+        border-style: solid;
+        border-width: $form-select-arrow-border-width
+                      $form-select-arrow-border-width
+                      $form-select-arrow-border-width;
+
+        border-color: currentColor transparent transparent transparent;
+    }
+
+    > select {
+        padding: $form-select-padding;
+        appearance: none;
+    }
+}

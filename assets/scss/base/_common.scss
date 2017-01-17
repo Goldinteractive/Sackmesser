@@ -2,6 +2,7 @@ a {
     color: $link-color;
     text-decoration: none;
     transition: color .2s ease;
+
     &:hover,
     &:focus,
     &:active {
@@ -16,4 +17,13 @@ img {
 td,
 th {
     vertical-align: top;
+}
+
+a, area, button, input, label, textarea, [tabindex] {
+    -ms-touch-action: manipulation; /* 1 */
+    touch-action: manipulation;
+}
+
+[disabled] {
+    opacity: $disabled-opacity;
 }
