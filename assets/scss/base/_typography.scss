@@ -1,5 +1,14 @@
-p {
+body {
+    @include font-type('default');
+}
 
+p, ul, ol, dl, blockquote, pre, form, table, .vs {
+    margin-top: 0;
+    @include vspace('base');
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
 }
 
 h1 {
@@ -19,6 +28,5 @@ h4 {
 }
 
 h5 {
-  box-sizing: border-box;
-}
 
+}

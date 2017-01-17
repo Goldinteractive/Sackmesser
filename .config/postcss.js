@@ -1,8 +1,7 @@
 module.exports = {
-    'use': ['postcss-import', 'postcss-pxtorem', 'postcss-assets', 'css-mqpacker', 'cssnano'],
+    'use': ['autoprefixer', 'postcss-import', 'postcss-pxtorem', 'postcss-assets', 'css-mqpacker', 'cssnano'],
     'cssnano': {
-        zindex: false,
-        browsers: '> 5%'
+        zindex: false
     },
     'postcss-pxtorem': {
         rootValue: 16,

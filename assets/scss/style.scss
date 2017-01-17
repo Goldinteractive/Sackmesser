@@ -5,11 +5,10 @@
  * Designed and mantained by Gold Interactive
  */
 
-// CSS shared variables
-// compass and mixins
+// CSS shared variables and sanitize
 @import
     '../shared-variables.json',
-    'gi-scss-mixins/mixins';
+    'sanitize.css/sanitize.css';
 
 // Project variables and utils
 @import
@@ -17,10 +16,6 @@
     'utils/mixins',
     'utils/placeholders',
     'utils/helpers';
-
-// Sanitize
-@import
-    'sanitize.css/sanitize.css';
 
 // Third party css
 // @import
@@ -32,6 +27,7 @@
     'base/reset',
     'base/typography',
     'base/common',
+    'base/form',
     'base/icons';
 
 // Common UI layout Regions

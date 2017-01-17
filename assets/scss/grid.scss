@@ -1,31 +1,33 @@
 @charset "utf-8";
 
 @import
-    'gridle/sass/gridle/gridle',
+    'gridle/sass/gridle/gridle-flex',
     '../shared-variables.json',
     'utils/variables',
-    'utils/mixins',
-    '../vendor/bower/gi-scss-mixins/mixins';
+    'utils/mixins';
 
 // check the documentation http://gridle.org/documentation
 
 // setting up the grid
 @include gridle_setup((
-    context: $default-columns-amount,
-    gutter-width: $default-gutter-width,
+    context: $columns-amount,
+    gutter-width: $gutter-width,
 ));
 
-@include gridle_register_state (tablet, (
-    query: map-get($breakpoints, tablet),
-    gutter-width: $tablet-gutter-width,
-    max-width: $break-medium,
+@include gridle_register_state(large, (
+    query: map-get($breakpoints, large),
+    gutter-width: $gutter-width-large,
+));
+
+@include gridle_register_state(medium, (
+    query: map-get($breakpoints, medium),
+    gutter-width: $gutter-width-medium,
 ));
 
 // make the use of media queries a piece of cake
-@include gridle_register_state (mobile, (
-    query: map-get($breakpoints, mobile),
-    gutter-width: $mobile-gutter-width,
-    max-width: $break-small,
+@include gridle_register_state(small, (
+    query: map-get($breakpoints, small),
+    gutter-width: $gutter-width-small,
 ));
 
 
@@ -41,11 +43,15 @@
 .container {
     max-width: $container-max-width;
     margin: 0 auto;
-    @include respond-to(tablet) {
-        max-width: $container-max-width-tablet;
+
+    @include respond-to(large) {
+        max-width: $container-max-width-large;
     }
-    @include breakpoint($break-large) {
-        max-width: $container-max-width-mobile;
+    @include respond-to(medium) {
+        max-width: $container-max-width-medium;
+    }
+    @include respond-to(small) {
+        max-width: $container-max-width-small;
     }
 }
 
@@ -55,14 +61,19 @@
  */
 
 .row {
-    @include respond-to(tablet) {
-        margin-left: -($tablet-gutter-width / 2);
-        margin-right: -($tablet-gutter-width / 2);
+    @include respond-to(large) {
+        margin-left: -($gutter-width-large / 2);
+        margin-right: -($gutter-width-large / 2);
     }
 
-    @include respond-to(mobile) {
-        margin-left: -($mobile-gutter-width / 2);
-        margin-right: -($mobile-gutter-width / 2);
+    @include respond-to(medium) {
+        margin-left: -($gutter-width-medium / 2);
+        margin-right: -($gutter-width-medium / 2);
+    }
+
+    @include respond-to(small) {
+        margin-left: -($gutter-width-small / 2);
+        margin-right: -($gutter-width-small / 2);
     }
 }
 
@@ -79,16 +90,21 @@
  *          .gr-6
  */
 .gr-inner {
-    margin-left:  $default-gutter-width / 2;
-    margin-right: $default-gutter-width / 2;
+    margin-left: $gutter-width / 2;
+    margin-right: $gutter-width / 2;
 
-    @include respond-to(tablet) {
-        margin-left: $tablet-gutter-width / 2; // the half of the gutter width on tablet!
-        margin-right: $tablet-gutter-width / 2;
+    @include respond-to(large) {
+        margin-left: $gutter-width-large / 2; // the half of the gutter width on large!
+        margin-right: $gutter-width-large / 2;
     }
 
-    @include respond-to(mobile) {
-        margin-left: $mobile-gutter-width / 2; // the half of the gutter width on mobile!
-        margin-right: $mobile-gutter-width / 2;
+    @include respond-to(medium) {
+        margin-left: $gutter-width-medium / 2; // the half of the gutter width on medium!
+        margin-right: $gutter-width-medium / 2;
+    }
+
+    @include respond-to(small) {
+        margin-left: $gutter-width-small / 2; // the half of the gutter width on small!
+        margin-right: $gutter-width-small / 2;
     }
 }

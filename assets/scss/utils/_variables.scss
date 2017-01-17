@@ -1,7 +1,5 @@
-//
 // Variables
-// --------------------------------------------------
-
+// =========================
 
 // Colors
 // -------------------------
@@ -9,10 +7,11 @@
 
 // Scaffolding
 // -------------------------
-$body-background: white;
-$text-color: black;
+$body-background: #eee;
+$text-color: #444;
 $highlight-color: #b3d4fc;
 $placeholder-color: rgba($text-color, 0.7);
+$disabled-opacity: 0.7;
 
 // Links
 // -------------------------
@@ -25,48 +24,127 @@ $sans-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $serif-font-family: Georgia, 'Times New Roman', Times, serif;
 $mono-font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;
 
+$default-font: 'sans';
+$default-font-type: 'default';
+$default-font-weight: 'regular';
+
 // Base font size and line-height
 $font-size: 15px;
 $font-size-small: 80%;
 $line-height: 1.5;
 
 // Icons
-$icons-size: 22px;
-
-
-//Responsive breakpoints
 // -------------------------
-
-// Needed to generate the grid and the respond-to calls
-$breakpoints:(
-  landscape: 'only screen and (orientation:landscape)',
-  portrait: 'only screen and (orientation:portrait)',
-  mobile: 'only screen and (max-width: #{$break-small})',
-  exclude-mobile: 'only screen and (min-width: #{$break-small + 1})',
-  tablet: 'only screen and (min-width: #{$break-small + 1}) and (max-width: #{$break-large})',
-  desktop: 'only screen and (min-width: #{$break-large + 1})',
-  retina: 'only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi)',
+$icons-size: 22px;
+$icons-excluded: (
+    #sackmesser,
 );
 
+// Layer settings
+// -------------------------
 $layers: (
   content: 0
 );
 
+// Vertical rhytm settings
+// ------------------------
+
+$vspaces-attribute-default: 'margin-bottom';
+
+$vspaces: (
+    'base': (
+        default: 25px,
+        breakpoints: (
+            'large': 22px,
+            'medium': 20px,
+            'small': 18px,
+        ),
+    ),
+);
+
+// Font management
+// -------------------------
+$fonts: (
+    sans: (
+        family: $sans-font-family,
+        weights: (
+            regular: 400,
+            semi-bold: 600,
+            bold: 700,
+        ),
+    ),
+);
+
+$font-types: (
+    $default-font-type: (
+        font-size: $font-size,
+        line-height: $line-height,
+        config: (
+            font: $default-font,
+            weight: $default-font-weight,
+        ),
+        media: (
+            large: (
+                font-size: 14px,
+            ),
+            medium: (
+                font-size: 13px,
+            ),
+            small: (
+                font-size: 12px,
+            ),
+        ),
+    ),
+);
+
+// Form elements
+// -------------------------
+$form-font-size: inherit;
+$form-color: $text-color;
+$form-line-height: 1.4;
+$form-border: 1px solid #c7c5c1;
+$form-radius: 0;
+$form-background: #fff;
+$form-background-focus: #f8f8f8;
+$form-padding-vertical: 10px;
+$form-padding-horizontal: 12px;
+
+$form-select-arrow-right: 16px;
+$form-select-arrow-border-width: 6px;
+$form-select-padding:
+    $form-padding-vertical
+    ($form-select-arrow-right
+        + $form-select-arrow-border-width
+        + $form-padding-horizontal)
+    $form-padding-vertical
+    $form-padding-horizontal;
+
+// Responsive breakpoints
+// -------------------------
+$breakpoints:(
+    small: 'only screen and (max-width: #{$break-small})',
+    medium: 'only screen and (max-width: #{$break-medium})',
+    large: 'only screen and (max-width: #{$break-large})',
+    landscape: 'only screen and (orientation:landscape)',
+    portrait: 'only screen and (orientation:portrait)',
+    retina: 'only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi)',
+);
+
 // Grid
 // -------------------------
+$columns-amount: 12;
 
-// Default grid values
-$default-column-width: 60px;
-$default-columns-amount: 12;
+$gutter-width: 46px;
+$gutter-width-large: 40px;
+$gutter-width-medium: 30px;
+$gutter-width-small: 20px;
 
-$default-gutter-width: 46px;
-$tablet-gutter-width: 3%;
-$mobile-gutter-width: 6%;
+$vertical-space: 0px;
+$vertical-space-large: 0px;
+$vertical-space-medium: 0px;
+$vertical-space-small: 0px;
 
-$default-vertical-space: 0;
-$tablet-vertical-space: 0;
-$mobile-vertical-space: 0;
-
-$container-max-width: $break-large - ($default-gutter-width * 2) - ($default-vertical-space * 2);
-$container-max-width-tablet: calc(100% - #{$tablet-gutter-width * 2} - #{$tablet-vertical-space * 2});
-$container-max-width-mobile: calc(100% - #{$mobile-gutter-width * 2} - #{$mobile-vertical-space * 2});
+$container-max-width: $break-large - ($gutter-width * 2) - ($vertical-space * 2);
+$container-max-width-large: calc(100% - #{$gutter-width-large * 2} - #{$vertical-space-large * 2});
+$container-max-width-medium: calc(100% - #{$gutter-width-medium * 2} - #{$vertical-space-medium * 2});
+$container-max-width-small: calc(100% - #{$gutter-width-small * 2} - #{$vertical-space-small * 2});
