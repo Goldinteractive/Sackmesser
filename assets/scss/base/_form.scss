@@ -1,8 +1,6 @@
 // Form elements
 // =========================
 
-$form-error-line-height: 2px;
-
 $form-select-arrow-right: 16px;
 $form-select-arrow-border-width: 6px;
 $form-select-padding:
@@ -16,9 +14,11 @@ $form-select-padding:
 // TODO: checkbox, radio, toggle
 
 .form-field {
-    position: relative;
-    display: block;
-    @include vspace('form-field');
+    & {
+        @include vspace('form-field');
+        position: relative;
+        display: block;
+    }
 
     > .label,
     > label {
@@ -81,18 +81,20 @@ $form-select-padding:
 select,
 textarea,
 input:not([type="checkbox"]):not([type="radio"]) {
-    @include font-type('form-element');
-    position: relative;
-    width: 100%;
-    display: block;
-    margin: 0;
-    cursor: pointer;
-    color: $form-color;
-    background-color: $form-background;
-    border-radius: $form-radius;
-    border: $form-border;
-    padding: $form-padding-vertical $form-padding-horizontal;
-    transition: background-color .1s ease-in, box-shadow .1s ease-in;
+    & {
+        @include font-type('form-element');
+        position: relative;
+        width: 100%;
+        display: block;
+        margin: 0;
+        cursor: pointer;
+        color: $form-color;
+        background-color: $form-background;
+        border-radius: $form-radius;
+        border: $form-border;
+        padding: $form-padding-vertical $form-padding-horizontal;
+        transition: background-color .1s ease-in, box-shadow .1s ease-in;
+    }
 
     .-error &,
     &.-error {
@@ -108,10 +110,12 @@ input:not([type="checkbox"]):not([type="radio"]) {
 }
 
 .select {
-    width: 100%;
-    position: relative;
-    display: inline-block;
-    color: $form-color;
+    & {
+        width: 100%;
+        position: relative;
+        display: inline-block;
+        color: $form-color;
+    }
 
     &::after {
         position: absolute;

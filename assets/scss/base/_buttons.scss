@@ -1,0 +1,43 @@
+// Buttons
+// =========================
+
+input[type="submit"],
+input[type="button"],
+button,
+.button {
+    & {
+        position: relative;
+    }
+
+    &.-primary {
+        color: #fff;
+        background-color: $primary-color;
+        border-color: transparent;
+
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: darken($primary-color, 10%);
+        }
+    }
+
+    &.-secondary {
+        color: #fff;
+        background-color: $secondary-color;
+        border-color: transparent;
+
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: darken($secondary-color, 10%);
+        }
+    }
+
+    &.-ghost {
+        background-color: transparent;
+    }
+
+    &.-normal {}
+    &.-large {}
+    &.-small {}
+}

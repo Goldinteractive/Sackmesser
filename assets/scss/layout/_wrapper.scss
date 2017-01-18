@@ -1,7 +1,6 @@
 .layout-wrapper {
     & {
         display: flex;
-        height: 100%;
         min-height: 100vh;
         flex-direction: column;
     }
@@ -13,6 +12,5 @@
     > .content-wrapper {
         position: relative;
         flex-grow: 1;
-        box-sizing: border-box;
     }
 }

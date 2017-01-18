@@ -33,8 +33,6 @@ grid:
 	# compile the grid
 	@ scss \
 	    -I $(NODE_MODULES) \
-		--style=compressed \
-		--sourcemap=none \
 		$(SCSS_IN)/grid.scss:$(CSS_OUT)/grid.css \
 		-r sass-json-vars
 

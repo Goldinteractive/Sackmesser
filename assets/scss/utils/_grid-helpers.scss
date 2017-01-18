@@ -1,35 +1,52 @@
-// Addiotional helper classes
+// Helper classes depending on breakpoint
+
+@include gridle_generate_custom_class( ('no-gutter','@','%state') ) {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+@include gridle_generate_custom_class( ('no-gutter-left','@','%state') ) {
+    padding-left: 0 !important;
+}
+
+@include gridle_generate_custom_class( ('no-gutter-right','@','%state') ) {
+    padding-right: 0 !important;
+}
 
 @include gridle_generate_custom_class( ('tac','@','%state') ) {
-    text-align: center;
+    text-align: center !important;
 }
 
 @include gridle_generate_custom_class( ('tal','@','%state') ) {
-    text-align: left;
+    text-align: left !important;
 }
 
 @include gridle_generate_custom_class( ('tar','@','%state') ) {
-    text-align: right;
+    text-align: right !important;
 }
 
 @include gridle_generate_custom_class( ('fl','@','%state') ) {
-    float: left;
+    float: left !important;
 }
 
 @include gridle_generate_custom_class( ('fr','@','%state') ) {
-    float: right;
+    float: right !important;
 }
 
 @include gridle_generate_custom_class( ('fn','@','%state') ) {
-    float: none;
+    float: none !important;
 }
 
 @include gridle_generate_custom_class( ('float-none','@','%state') ) {
-    float: none;
+    float: none !important;
+}
+
+@include gridle_generate_custom_class( ('float-none','@','%state') ) {
+    float: none !important;
 }
 
 @include gridle_generate_custom_class( ('hide-br','@','%state') ) {
     br {
-        display: none;
+        display: none !important;
     }
 }
