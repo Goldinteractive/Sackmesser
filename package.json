@@ -29,7 +29,8 @@
     "url": ""
   },
   "browserslist": [
-    "> 5%"
+    "> 5%",
+    "last 2 version"
   ],
   "author": "Gold Interactive",
   "license": "MIT"

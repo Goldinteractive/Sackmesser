@@ -1,14 +1,14 @@
-// ICONS
-// ======
+// Icons
+// =========================
 
-.icon-svg {
-    transition: color .2s ease;
-}
-
-.icon {
+.grouped-svg .icon {
     &:not(#{$icons-excluded}) * {
         fill: currentColor;
     }
+}
+
+.icon-svg {
+    transition: color .2s ease;
 }
 
 .icon-box {
@@ -16,5 +16,5 @@
     display: inline-block;
     vertical-align: middle;
 
-    > .icon {}
+    > .icon-svg {}
 }

@@ -1,3 +1,6 @@
+// Common tag styles
+// =========================
+
 a {
     color: $link-color;
     text-decoration: none;
@@ -19,8 +22,11 @@ th {
     vertical-align: top;
 }
 
+label {
+    display: inline-block;
+}
+
 a, area, button, input, label, textarea, [tabindex] {
-    -ms-touch-action: manipulation; /* 1 */
     touch-action: manipulation;
 }
 
