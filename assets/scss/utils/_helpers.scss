@@ -58,3 +58,18 @@
         margin-bottom: 0;
     }
 }
+
+
+/*
+ * Height 100% alternative (thanks safari) with flexbox.
+ */
+.fit-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+
+    .fit {
+        flex-grow: 1;
+    }
+}

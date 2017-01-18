@@ -4,13 +4,14 @@
 // Colors
 // -------------------------
 
-
 // Scaffolding
 // -------------------------
 $body-background: #eee;
-$text-color: #444;
+$text-color: #333;
+$success-color: #69db7c;
+$error-color: #ff6b6b;
 $highlight-color: #b3d4fc;
-$placeholder-color: rgba($text-color, 0.7);
+$placeholder-color: rgba($text-color, 0.65);
 $disabled-opacity: 0.7;
 
 // Links
@@ -29,13 +30,14 @@ $default-font-type: 'default';
 $default-font-weight: 'regular';
 
 // Base font size and line-height
-$font-size: 15px;
+$font-size: 18px;
 $font-size-small: 80%;
 $line-height: 1.5;
 
 // Icons
 // -------------------------
 $icons-size: 22px;
+// prevent overwriting fill for paths with currentColor for certain icons
 $icons-excluded: (
     #sackmesser,
 );
@@ -46,6 +48,23 @@ $layers: (
   content: 0
 );
 
+// Form elements
+// ------------------------
+$form-color: $text-color;
+$form-line-height: 1.4;
+$form-border: 1px solid #c7c5c1;
+$form-radius: 0;
+$form-background: #fff;
+$form-padding-vertical: 10px;
+$form-padding-horizontal: 12px;
+
+$form-background-focus: #f8f8f8;
+$form-box-shadow-focus: 0 0 0 .075rem rgba(0,0,0,0.05);
+
+// Buttons
+// ------------------------
+
+
 // Vertical rhytm settings
 // ------------------------
 
@@ -53,8 +72,16 @@ $vspaces-attribute-default: 'margin-bottom';
 
 $vspaces: (
     'base': (
-        default: 25px,
-        breakpoints: (
+        'default': 25px,
+        'breakpoints': (
+            'large': 22px,
+            'medium': 20px,
+            'small': 18px,
+        ),
+    ),
+    'form-field': (
+        'default': 22px,
+        'breakpoints': (
             'large': 22px,
             'medium': 20px,
             'small': 18px,
@@ -65,12 +92,12 @@ $vspaces: (
 // Font management
 // -------------------------
 $fonts: (
-    sans: (
-        family: $sans-font-family,
-        weights: (
-            regular: 400,
-            semi-bold: 600,
-            bold: 700,
+    'sans': (
+        'family': $sans-font-family,
+        'weights': (
+            'regular': 400,
+            'semi-bold': 600,
+            'bold': 700,
         ),
     ),
 );
@@ -79,45 +106,31 @@ $font-types: (
     $default-font-type: (
         font-size: $font-size,
         line-height: $line-height,
-        config: (
-            font: $default-font,
-            weight: $default-font-weight,
+        'config': (
+            'font': $default-font,
+            'weight': $default-font-weight,
         ),
-        media: (
-            large: (
-                font-size: 14px,
+        'media': (
+            'large': (
+                font-size: 15px,
             ),
-            medium: (
-                font-size: 13px,
+            'medium': (
+                font-size: 16px,
             ),
-            small: (
-                font-size: 12px,
+            'small': (
+                font-size: 17px,
             ),
         ),
     ),
+    'form-element': (
+        font-size: inherit,
+        line-height: $form-line-height,
+        'config': (
+            'font': $default-font,
+            'weight': $default-font-weight,
+        ),
+    )
 );
-
-// Form elements
-// -------------------------
-$form-font-size: inherit;
-$form-color: $text-color;
-$form-line-height: 1.4;
-$form-border: 1px solid #c7c5c1;
-$form-radius: 0;
-$form-background: #fff;
-$form-background-focus: #f8f8f8;
-$form-padding-vertical: 10px;
-$form-padding-horizontal: 12px;
-
-$form-select-arrow-right: 16px;
-$form-select-arrow-border-width: 6px;
-$form-select-padding:
-    $form-padding-vertical
-    ($form-select-arrow-right
-        + $form-select-arrow-border-width
-        + $form-padding-horizontal)
-    $form-padding-vertical
-    $form-padding-horizontal;
 
 // Responsive breakpoints
 // -------------------------

@@ -25,6 +25,22 @@
 }
 
 /**
+ * For hacks. Use wisely.
+ */
+
+@mixin ie9() {
+    @media screen and (min-width:0\0) {
+        @content;
+    }
+}
+
+@mixin firefox() {
+    @-moz-document url-prefix() {
+        @content;
+    }
+}
+
+/**
  * Easy functions to create easily pure css arrows anywhere
  */
 
