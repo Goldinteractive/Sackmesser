@@ -139,12 +139,14 @@ $gutter-width-large: 40px;
 $gutter-width-medium: 30px;
 $gutter-width-small: 20px;
 
+$container-max-width: 1400px;
+
 $vertical-space: 0px;
 $vertical-space-large: 0px;
 $vertical-space-medium: 0px;
 $vertical-space-small: 0px;
 
-$container-max-width: $break-large - ($gutter-width * 2) - ($vertical-space * 2);
-$container-max-width-large: calc(100% - #{$gutter-width-large * 2} - #{$vertical-space-large * 2});
-$container-max-width-medium: calc(100% - #{$gutter-width-medium * 2} - #{$vertical-space-medium * 2});
-$container-max-width-small: calc(100% - #{$gutter-width-small * 2} - #{$vertical-space-small * 2});
+$container-width: calc(100% - #{$gutter-width * 2} - #{$vertical-space * 2});
+$container-width-large: calc(100% - #{$gutter-width-large * 2} - #{$vertical-space-large * 2});
+$container-width-medium: calc(100% - #{$gutter-width-medium * 2} - #{$vertical-space-medium * 2});
+$container-width-small: calc(100% - #{$gutter-width-small * 2} - #{$vertical-space-small * 2});

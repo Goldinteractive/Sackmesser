@@ -1,8 +1,8 @@
 @charset "utf-8";
 
 @import
-    'gridle/sass/gridle/gridle-flex',
     '../shared-variables.json',
+    'gridle/sass/gridle/gridle-flex',
     'utils/variables',
     'utils/mixins';
 
@@ -35,23 +35,23 @@
 @include gridle_generate_classes(all, -debug);
 @import 'utils/grid-helpers';
 
-
 /**
  * Main page container
  */
 
 .container {
+    width: $container-width;
     max-width: $container-max-width;
     margin: 0 auto;
 
     @include respond-to(large) {
-        max-width: $container-max-width-large;
+        width: $container-width-large;
     }
     @include respond-to(medium) {
-        max-width: $container-max-width-medium;
+       width: $container-width-medium;
     }
     @include respond-to(small) {
-        max-width: $container-max-width-small;
+        width: $container-width-small;
     }
 }
 
