@@ -27,9 +27,15 @@
     'base/reset',
     'base/typography',
     'base/common',
-    'base/form',
-    'base/buttons',
     'base/icons';
+
+// Base Form CSS
+@import
+    'base/form/default',
+    'base/form/field',
+    'base/form/select',
+    'base/form/controls',
+    'base/form/buttons';
 
 // Common UI layout Regions
 @import

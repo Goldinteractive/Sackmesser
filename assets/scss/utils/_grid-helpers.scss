@@ -13,6 +13,19 @@
     padding-right: 0 !important;
 }
 
+@include gridle_generate_custom_class( ('gutter-right','@','%state') ) {
+    padding-left: map-get(gridle_current_state(), 'gutter-left') !important;
+    padding-right: map-get(gridle_current_state(), 'gutter-right') !important;
+}
+
+@include gridle_generate_custom_class( ('gutter-left','@','%state') ) {
+    padding-left: map-get(gridle_current_state(), 'gutter-left') !important;
+}
+
+@include gridle_generate_custom_class( ('gutter-right','@','%state') ) {
+    padding-right: map-get(gridle_current_state(), 'gutter-right') !important;
+}
+
 @include gridle_generate_custom_class( ('tac','@','%state') ) {
     text-align: center !important;
 }
@@ -50,3 +63,5 @@
         display: none !important;
     }
 }
+
+
