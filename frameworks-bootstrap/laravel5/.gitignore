@@ -38,6 +38,12 @@ publish
 node_modules
 .sass-cache
 
+# Laravel files
+Homestead.json
+Homestead.yaml
+# Ignore the laravel vendor packages
+/vendor
+
 # Ignore all the vendor because they will be downloaded using bower
 public/assets/vendor/bower
 
@@ -47,15 +53,13 @@ public/assets/vendor/bower
 
 # the style.css must be generated using 'compass compile'
 public/assets/css/*.css
+public/assets/css/*.css.map
 public/assets/js/main.bundle.*
-
-# Ignore the laravel vendor packages
-/vendor
 
 .deployment/data/*.zip
 .deployment/data/*.tar.gz
 .deployment/data/*.sql
 .deployment/database/backup/*
 
-
+# The .env.local file must be copied and updated to match your individual requirements
 .env
