@@ -25,21 +25,21 @@ install:
 sass:
 	# compile the normal css
 	@ scss \
-	    -I $(NODE_MODULES) \
+		-I $(NODE_MODULES) \
 		$(SCSS_IN)/style.scss:$(CSS_OUT)/style.scss.css \
 		-r sass-json-vars
 
 grid:
 	# compile the grid
 	@ scss \
-	    -I $(NODE_MODULES) \
+		-I $(NODE_MODULES) \
 		$(SCSS_IN)/grid.scss:$(CSS_OUT)/grid.css \
 		-r sass-json-vars
 
 watch-grid:
 	# watch the grid
 	@ scss \
-	    -I $(NODE_MODULES) \
+		-I $(NODE_MODULES) \
 		--style=compressed \
 		--sourcemap=none \
 		$(SCSS_IN)/grid.scss:$(CSS_OUT)/grid.css \
@@ -49,7 +49,7 @@ watch-grid:
 # watch the scss files
 watch-sass:
 	@ scss \
-	    -I $(NODE_MODULES) \
+		-I $(NODE_MODULES) \
 		$(SCSS_IN)/style.scss:$(CSS_OUT)/style.scss.css \
 		-r sass-json-vars \
 		--watch

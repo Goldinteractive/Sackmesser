@@ -5,6 +5,7 @@ const webpack = require('webpack'),
 var plugins = [
   new webpack.ProvidePlugin({
     gi: 'gi-js-base',
+    base: 'gi-js-base',
     $: 'jquery',
     jQuery: 'jquery'
   }),
