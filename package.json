@@ -13,7 +13,7 @@
     "cssnano": "^3.10.0",
     "eslint": "^3.13.1",
     "expose-loader": "^0.7.1",
-    "gi-js-base": "^0.0.8",
+    "gi-js-base": "^0.0.13",
     "gridle": "^2.0.48",
     "jquery": "^3.1.1",
     "json-loader": "^0.5.4",
