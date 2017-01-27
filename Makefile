@@ -110,7 +110,7 @@ watch-js:
 debug-js:
 	@ DEBUG=true $(MAKE) js
 
-icons: icons-generate icons-optimize
+icons: icons-optimize icons-generate
 
 icons-generate:
 	# generate combined svg and json file with svg attribute informations
