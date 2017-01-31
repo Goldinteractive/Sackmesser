@@ -4,14 +4,17 @@ CONFIG_FOLDER=./.config
 
 # shell scripts paths and node bin files
 SCRIPTS_FOLDER=./.tasks
-WEBPACK=./node_modules/.bin/webpack
-ESLINT=./node_modules/.bin/eslint
-CLEANCSS=./node_modules/.bin/cleancss
-POSTCSS=./node_modules/.bin/postcss
-SVG_SPRITE=./node_modules/.bin/svg-sprite
+NODE_MODULES=./node_modules
+BROWSERSYNC=$(NODE_MODULES)/.bin/browser-sync
+WEBPACK=$(NODE_MODULES)/.bin/webpack
+ESLINT=$(NODE_MODULES)/.bin/eslint
+POSTCSS=$(NODE_MODULES)/.bin/postcss
+SVG_SPRITE=$(NODE_MODULES)/.bin/svg-sprite
 
 # this could change in any project
 ASSETS_PATH=assets
+TEMPLATES_PATH=index.html # e.g. craft/templates/**.*
+
 # set here the destination of your copy task
 COPY_DEST=dist
 
@@ -25,10 +28,13 @@ FAVICONS_PATH=$(ASSETS_PATH)/favicons
 # css
 SCSS_IN=$(ASSETS_PATH)/scss
 CSS_OUT=$(ASSETS_PATH)/css
+POSTCSS_CONFIG=$(CONFIG_FOLDER)/postcss.js
 
 # icons
-IN_ICONS_PATH=$(ASSETS_PATH)/img/icons
-OUT_ICONS_PATH=$(ASSETS_PATH)/css/iconsbuild
+ICONS_IN=$(ASSETS_PATH)/img/icons
+ICONS_OUT=$(ASSETS_PATH)/img/icons
+ICONS_DATA_FILE=$(ASSETS_PATH)/icons.json
+ICONS_COMBINED_SVG=$(ASSETS_PATH)/icons.svg
 
 # js
 JS_BASE=$(ASSETS_PATH)/js
@@ -38,3 +44,12 @@ JS_CONFIG=$(CONFIG_FOLDER)/webpack.js
 
 # deployment
 DEPLOY_SCRIPTS_FOLDER=$(SCRIPTS_FOLDER)/deployment
+
+# jsdoc output path
+JSDOC_CONFIG=$(CONFIG_FOLDER)/jsdoc.json
+JSDOC_IN=$(ASSETS_PATH)/js
+JSDOC_OUT=.docs
+JSDOC_README=$(ASSETS_PATH)/js/README.md
+
+# browsersync service
+BROWSERSYNC_CONFIG=$(CONFIG_FOLDER)/bs-sync.js

@@ -1,13 +1,13 @@
 %hw-accelerated {
     backface-visibility: hidden;
-    transform: translate3d(0,0,0);
+    transform: translateZ(0);
 }
 
 %fullscreen {
-    position: absolute;
-    top:0;
-    left:0;
-    bottom:0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
     right: 0;
     overflow: hidden;
     width: 100%;
@@ -18,4 +18,74 @@
 
 %transition {
     transition: all 0.3s ease-in-out;
+}
+
+%center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+%center-vertical {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+%center-horizontal {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+%contain-text {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+%ellipses {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+%bg-positions {
+    &.-top-left {
+        background-position: left top;
+    }
+
+    &.-top-center {
+        background-position: center top;
+    }
+
+    &.-top-right {
+        background-position: right top;
+    }
+
+    &.-center-left {
+        background-position: left center;
+    }
+
+    &.-center-center {
+        background-position: center center;
+    }
+
+    &.-center-right {
+        background-position: right center;
+    }
+
+    &.-bottom-left {
+        background-position: left bottom;
+    }
+
+    &.-bottom-center {
+        background-position: center bottom;
+    }
+
+    &.-bottom-right {
+        background-position: right bottom;
+    }
 }

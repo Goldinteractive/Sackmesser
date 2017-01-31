@@ -1,0 +1,64 @@
+/*---
+title: Buttons
+section: Base Form CSS
+---
+
+Fullwidth button in primary color:
+```example:html
+<a class="button -primary">Hello</a>
+```
+
+Auto sized button with small padding:
+```example:html
+<button role="submit -auto -small">Send</button>
+```
+*/
+
+input[type="submit"]:not([type=checkbox]):not([type=radio]),
+input[type="button"]:not([type=checkbox]):not([type=radio]),
+button,
+.button {
+    &.-auto {
+        width: auto;
+        padding-left: $form-button-padding-horizontal;
+        padding-right: $form-button-padding-horizontal;
+    }
+
+    &.-small {
+        padding-left: $form-button-padding-horizontal-small;
+        padding-right: $form-button-padding-horizontal-small;
+    }
+
+    &.-large {
+        padding-left: $form-button-padding-horizontal-large;
+        padding-right: $form-button-padding-horizontal-large;
+    }
+
+    &.-primary {
+        color: #fff;
+        background-color: $primary-color;
+        border-color: transparent;
+
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: darken($primary-color, 10%);
+        }
+    }
+
+    &.-secondary {
+        color: #fff;
+        background-color: $secondary-color;
+        border-color: transparent;
+
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: darken($secondary-color, 10%);
+        }
+    }
+
+    &.-ghost {
+        background-color: transparent;
+    }
+}

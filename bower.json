@@ -1,14 +1,8 @@
 {
-  "name": "Sackmesser",
+  "name": "sackmesser",
   "ignore": [
     "**/.*",
     "node_modules",
     "assets/bower/vendor"
-  ],
-  "dependencies": {
-    "gi-scss-mixins": "~0.3.0",
-    "gi-scss-global-variables": "~0.3.0",
-    "gridle": "~2.0.41",
-    "normalize-css": "~4.1.1"
-  }
+  ]
 }

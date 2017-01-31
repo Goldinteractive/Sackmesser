@@ -5,12 +5,10 @@
  * Designed and mantained by Gold Interactive
  */
 
-// CSS shared variables
-// compass and mixins
+// CSS shared variables and sanitize
 @import
     '../shared-variables.json',
-    '../vendor/bower/gi-scss-global-variables/global-variables',
-    '../vendor/bower/gi-scss-mixins/mixins';
+    'sanitize.css/sanitize.css';
 
 // Project variables and utils
 @import
@@ -20,8 +18,8 @@
     'utils/helpers';
 
 // Third party css
-@import
-    '../vendor/bower/normalize-css/normalize.css';
+// @import
+    // 'gi-feature-xxx/src/style';
 
 // Base CSS
 @import
@@ -31,11 +29,20 @@
     'base/common',
     'base/icons';
 
+// Base Form CSS
+@import
+    'base/form/default',
+    'base/form/field',
+    'base/form/select',
+    'base/form/controls',
+    'base/form/buttons';
+
 // Common UI layout Regions
 @import
     'layout/header',
     'layout/nav',
-    'layout/footer';
+    'layout/footer',
+    'layout/wrapper';
 
 // Gold Interactive UI Components
 // @import

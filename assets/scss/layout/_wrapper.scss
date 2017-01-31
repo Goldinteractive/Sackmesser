@@ -1,0 +1,16 @@
+.layout-wrapper {
+    & {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+
+    > * {
+        flex-shrink: 0;
+    }
+
+    > .content-wrapper {
+        position: relative;
+        flex-grow: 1;
+    }
+}

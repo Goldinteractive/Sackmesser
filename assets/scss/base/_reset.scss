@@ -1,20 +1,31 @@
-/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+* {
+    background-position: center center;
+    background-size: cover;
+}
 
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
+html, body {
+    height: 100%;
+}
 
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
+body {
+    min-height: 100vh;
+}
 
 html {
-  color: $text-color;
-  font-size: $font-size;
-  font-family: $sans-font-family;
-  background: $body-background;
+    color: $text-color;
+    line-height: $line-height;
+    font-family: $sans-font-family;
+    background: $body-background;
+    font-size: 16px;
+    text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+sub,
+sup,
+small {
+    font-size: $font-size-small;
 }
 
 /*
@@ -26,13 +37,31 @@ html {
  */
 
 ::-moz-selection {
-  background: #b3d4fc;
-  text-shadow: none;
+    background: $highlight-color;
+    text-shadow: none;
 }
 
 ::selection {
-  background: #b3d4fc;
-  text-shadow: none;
+    background: $highlight-color;
+    text-shadow: none;
+}
+
+:focus {
+    outline: none;
+}
+
+::-moz-focus-inner {
+    border:0;
+}
+
+// hide ugly focusring on firefox
+:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+
+:invalid {
+    box-shadow: none;
 }
 
 /*
@@ -40,12 +69,17 @@ html {
  */
 
 hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+td,
+th {
+    vertical-align: top;
 }
 
 /*
@@ -60,7 +94,7 @@ iframe,
 img,
 svg,
 video {
-  vertical-align: middle;
+    vertical-align: middle;
 }
 
 /*
@@ -68,9 +102,9 @@ video {
  */
 
 fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
+    border: 0;
+    margin: 0;
+    padding: 0;
 }
 
 /*
@@ -78,5 +112,25 @@ fieldset {
  */
 
 textarea {
-  resize: vertical;
+    resize: vertical;
+}
+
+img {
+    max-width: 100%;
+}
+
+/*
+ * Prevent ugly yellow background in Chrome on when input gets autofilled
+ */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s; // 1
+}
+
+
+::placeholder {
+    opacity: 1;
+    color: $placeholder-color;
 }

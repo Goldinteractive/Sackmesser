@@ -1,0 +1,11 @@
+{
+    "icons": {
+        "sackmesser": {
+            "attributes": {
+                "width": "720",
+                "height": "370",
+                "viewBox": "-110 0 720 370"
+            }
+        }
+    }
+}

@@ -1,10 +1,20 @@
 # Import the build variables
 -include .config/build
+# Import the environment variables
+-include .env
 
 help:
 	@ $(SCRIPTS_FOLDER)/help
 
 build: clean js css copy
+
+jsdoc:
+	# generate js documentation
+	@ jsdoc -r \
+		-c $(JSDOC_CONFIG) \
+		-d $(JSDOC_OUT) \
+		-R $(JSDOC_README) \
+		$(JSDOC_IN)
 
 # Install all the project dependencies
 # this may change in any project
@@ -15,22 +25,21 @@ install:
 sass:
 	# compile the normal css
 	@ scss \
-		--style=compressed \
-		--sourcemap=none \
+		-I $(NODE_MODULES) \
 		$(SCSS_IN)/style.scss:$(CSS_OUT)/style.scss.css \
 		-r sass-json-vars
 
 grid:
 	# compile the grid
 	@ scss \
-		--style=compressed \
-		--sourcemap=none \
+		-I $(NODE_MODULES) \
 		$(SCSS_IN)/grid.scss:$(CSS_OUT)/grid.css \
 		-r sass-json-vars
 
 watch-grid:
 	# watch the grid
 	@ scss \
+		-I $(NODE_MODULES) \
 		--style=compressed \
 		--sourcemap=none \
 		$(SCSS_IN)/grid.scss:$(CSS_OUT)/grid.css \
@@ -40,24 +49,26 @@ watch-grid:
 # watch the scss files
 watch-sass:
 	@ scss \
-		--style=compressed \
-		--sourcemap=none \
+		-I $(NODE_MODULES) \
 		$(SCSS_IN)/style.scss:$(CSS_OUT)/style.scss.css \
 		-r sass-json-vars \
 		--watch
 
 postcss:
-	# autoprefix the css
-	@ $(POSTCSS) --use autoprefixer --autoprefixer.browsers "> 0%" $(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css
+	# modify the normal css with postcss
+	@ ASSETS_PATH=$(ASSETS_PATH) \
+		$(POSTCSS) \
+		--config $(POSTCSS_CONFIG) \
+		$(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css
 
 watch-postcss:
-	@ $(POSTCSS) --use autoprefixer --autoprefixer.browsers "> 0%" $(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css --watch
+	@ ASSETS_PATH=$(ASSETS_PATH) \
+		$(POSTCSS) \
+		--config $(POSTCSS_CONFIG) \
+		$(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css \
+		--watch
 
-cssmin:
-	# optimize the css for the build
-	@ $(CLEANCSS) $(CSS_OUT)/style.css -o $(CSS_OUT)/style.css
-
-css: sass postcss grid cssmin
+css: grid sass postcss
 
 watch-css:
 	# compile the css on the fly
@@ -99,8 +110,28 @@ watch-js:
 debug-js:
 	@ DEBUG=true $(MAKE) js
 
-icons:
-	@ grunticon $(IN_ICONS_PATH) $(OUT_ICONS_PATH) --config=.config/grunticon
+icons: icons-optimize icons-generate
+
+icons-generate:
+	# generate combined svg and json file with svg attribute informations
+	@ php -f $(SCRIPTS_FOLDER)/icons/generate.php \
+		iconsFolder=$(ICONS_IN) \
+		dataFileOutput=$(ICONS_DATA_FILE) \
+		svgCombOutput=$(ICONS_COMBINED_SVG)
+
+icons-optimize:
+	# optimize svg icons
+	@ svgo --pretty --folder $(ICONS_IN) --output $(ICONS_OUT)
+
+browser-sync:
+	# starting browser sync server
+	@ ASSETS_PATH=$(ASSETS_PATH) \
+		TEMPLATES_PATH=$(TEMPLATES_PATH) \
+		BROWSER=$(BROWSERSYNC_BROWSER) \
+		$(BROWSERSYNC) start \
+	    --config $(BROWSERSYNC_CONFIG) \
+		--port $(BROWSERSYNC_PORT) \
+		--proxy $(PROXY)
 
 watch:
 	@ $(SCRIPTS_FOLDER)/utils/parallel \
@@ -108,9 +139,8 @@ watch:
 		"make watch-scss" \
 		"make watch-postcss"
 
-# setup your machine
 setup:
-	# install bower to manage the frontend dependencies
+	# setup your machine
 	@ $(SCRIPTS_FOLDER)/utils/setup
 
 favicons:
@@ -138,7 +168,6 @@ watch-scss: watch-sass
 	watch-css
 	watch-postcss
 	postcss
-	cssmin
 	favicons
 	test
 	phpunit
