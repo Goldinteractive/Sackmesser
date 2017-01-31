@@ -115,6 +115,7 @@ icons: icons-optimize icons-generate
 icons-generate:
 	# generate combined svg and json file with svg attribute informations
 	@ php -f $(SCRIPTS_FOLDER)/icons/generate.php \
+		sharedJson=$(ASSETS_PATH)/shared-variables.json \
 		iconsFolder=$(ICONS_IN) \
 		dataFileOutput=$(ICONS_DATA_FILE) \
 		svgCombOutput=$(ICONS_COMBINED_SVG)

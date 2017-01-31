@@ -39,10 +39,6 @@ $line-height: 1.5;
 // Icons
 // -------------------------
 $icons-size: 22px;
-// prevent overwriting fill for paths with currentColor for certain icons
-$icons-excluded: (
-    #sackmesser,
-);
 
 // Layer settings
 // -------------------------

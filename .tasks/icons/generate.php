@@ -5,9 +5,14 @@ parse_str(implode('&', array_slice($argv, 1)), $_GET);
 
 $root = dirname(__FILE__) .'/../..';
 
+$sharedJson     = $root .'/'. $_GET['sharedJson'];
 $iconsFolder    = $root .'/'. $_GET['iconsFolder'];
 $dataFileOutput = $root .'/'. $_GET['dataFileOutput'];
 $svgCombOutput  = $root .'/'. $_GET['svgCombOutput'];
+
+$shared = json_decode(file_get_contents($sharedJson), true);
+$iconsPreventFillRemove = isset($shared['icons-prevent-fill-remove'])
+                          ? $shared['icons-prevent-fill-remove'] : [];
 
 $iconsDir = new DirectoryIterator($iconsFolder);
 
@@ -27,15 +32,27 @@ foreach ($iconsDir as $info) {
         $svg->registerXPathNamespace('svg', 'http://www.w3.org/2000/svg');
         $svg->registerXPathNamespace('xlink', 'http://www.w3.org/1999/xlink');
 
+        if (!in_array($name, $iconsPreventFillRemove)) {
+            // remove fill attributes
+            $nodes = $svg->xpath('//*[@fill]');
+            foreach ($nodes as $node) {
+                unset($node['fill']);
+            }
+        }
+
         foreach ($svg->children() as $child) {
             $innerContent .= $child->asXML();
         }
 
         foreach ($svg->attributes() as $attribute => $value) {
-            $attributes[$attribute] = (string)$value;
+            $attributes[mb_strtolower($attribute)] = (string)$value;
         }
 
-        $icons[$name] = $innerContent;
+        $icons[$name] = [
+            'content'    => $innerContent,
+            'attributes' => $attributes,
+        ];
+
         $iconsMetaData['icons'][$name] = [
             'attributes' => $attributes
         ];

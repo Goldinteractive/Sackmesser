@@ -1,5 +1,6 @@
 {
     "break-small": "680px",
     "break-medium": "768px",
-    "break-large": "1200px"
+    "break-large": "1200px",
+    "icons-prevent-fill-remove": ["sackmesser"]
 }
