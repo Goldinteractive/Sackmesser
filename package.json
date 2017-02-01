@@ -22,7 +22,7 @@
     "postcss-import": "^9.0.0",
     "postcss-pxtorem": "^3.3.1",
     "sanitize.css": "^4.1.0",
-    "webpack": "beta"
+    "webpack": "^2.2.1"
   },
   "repository": {
     "type": "git",
