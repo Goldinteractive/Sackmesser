@@ -1,7 +1,10 @@
 // Icons
 // =========================
 
-.icon-svg {}
+.icon-svg {
+    fill: currentColor;
+    transition: color .2s ease;
+}
 
 .icon-box {
     @include square($icons-size);
@@ -14,7 +17,7 @@
         display: block;
         position: relative;
         width: 100%;
-        height: 0px;
+        height: 0;
 
         > .icon-svg {
             position: absolute;
