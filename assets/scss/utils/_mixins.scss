@@ -41,6 +41,15 @@
 }
 
 /**
+ * Object mixin to make polyfill working.
+ */
+@mixin object($fit: 'cover', $position: 'center center') {
+    object-fit: $fit;
+    object-position: $position;
+    font-family: 'object-fit: #{$fit}; object-position: #{$position};'
+}
+
+/**
  * Easy functions to create easily pure css arrows anywhere
  */
 
