@@ -3,26 +3,29 @@
 
 .icon-svg {
     fill: currentColor;
-    transition: color .2s ease;
 }
 
 .icon-box {
     @include square($icons-size);
-    display: inline-block;
-    vertical-align: middle;
+    display: inline-flex;
+    align-self: center;
+    position: relative;
 
-    > .icon-svg {}
+    > .icon-svg {
+        @include square($icons-size);
+        position: absolute;
+        bottom: $icons-baseline-fix;
+    }
 
     &.-responsive {
         display: block;
-        position: relative;
         width: 100%;
-        height: 0;
+        height: 0px;
 
         > .icon-svg {
-            position: absolute;
             top: 0;
             left: 0;
+            bottom: auto;
         }
     }
 }
