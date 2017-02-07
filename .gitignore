@@ -51,10 +51,11 @@ assets/css/*.css.map
 assets/js/main.bundle.*
 
 .deployment/data/*.zip
-.deployment/data/*.tar
 .deployment/data/*.tar.gz
 .deployment/data/*.sql
-.deployment/database/backup/*
+.deployment/database/backup/*.zip
+.deployment/database/backup/*.tar.gz
+.deployment/database/backup/*.sql
 
 # The .env.local file must be copied and updated to match your individual requirements
 .env
