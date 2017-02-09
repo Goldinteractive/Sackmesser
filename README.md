@@ -31,10 +31,10 @@
 
 ### How to install a Gold Interactive component
 
-To install a component just use `make feature-install [name of the component]` for example:
+To install a component just use `make feature-install-[name of the component]` for example:
 
 ```shell
-$ make feature-install datetime-picker
+$ make feature-install-datetime-picker
 ```
 
 
