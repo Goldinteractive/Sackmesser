@@ -1405,7 +1405,7 @@ domain-browser@^1.1.1:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.1.7.tgz#867aa4b093faa05f1de08c06f4d7b21fdf8698bc"
 
-easing-js@danro/easing-js, "easing-js@github:danro/easing-js":
+easing-js@danro/easing-js:
   version "0.5.4"
   resolved "https://codeload.github.com/danro/easing-js/tar.gz/4f5e7edbde7f7200a1baf08e357377896c0d207e"
 
@@ -1908,6 +1908,10 @@ gi-feature-object-fit-images@^0.0.1:
   dependencies:
     gi-js-base "^0.0.18"
     object-fit-images "^3.1.0"
+
+gi-feature-playground@^0.0.15:
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/gi-feature-playground/-/gi-feature-playground-0.0.15.tgz#101b72cc4224d2bfef5f65aeae9d498e08effbc1"
 
 gi-js-base@^0.0.18:
   version "0.0.18"

@@ -8,6 +8,20 @@ help:
 
 build: clean js css copy
 
+feature-install-%:
+	# install feature
+	@ yarn add gi-feature-$*
+	# copy feature assets
+	@ rsync -r $(NODE_MODULES)/gi-feature-$*/assets/features/* $(ASSETS_PATH)/features
+
+feature-remove-%:
+	# remove feature
+	@ yarn remove gi-feature-$*
+
+feature-upgrade-%:
+	# upgrade feature
+	@ yarn upgrade gi-feature-$*
+
 jsdoc:
 	# generate js documentation
 	@ jsdoc -r \
