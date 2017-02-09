@@ -10,7 +10,8 @@ rsync -avtR --ignore-errors . $DEST \
       --exclude='/*.*' \
       --exclude='.*' \
       --exclude='.*/' \
-      --exclude='craft/storage/*' \
+      --exclude='craft/storage/backups/*' \
+      --exclude='craft/storage/runtime/*' \
       --exclude='/public/files'
 
 # copy the important root files
