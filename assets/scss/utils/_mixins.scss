@@ -43,10 +43,11 @@
 /**
  * Object mixin to make polyfill working.
  */
-@mixin object($fit: 'cover', $position: 'center center') {
+@mixin object($fit: cover, $position: center center) {
+    width: 100%;
+    height: 100%;
     object-fit: $fit;
     object-position: $position;
-    font-family: 'object-fit: #{$fit}; object-position: #{$position};'
 }
 
 /**

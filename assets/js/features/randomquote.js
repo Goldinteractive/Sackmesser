@@ -23,6 +23,7 @@ class RandomQuote extends gi.features.Feature {
   }
 
   destroy() {
+    super.destroy()
     this.node.innerHTML = ''
   }
 

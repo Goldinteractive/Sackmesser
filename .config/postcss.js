@@ -1,5 +1,5 @@
 module.exports = {
-    'use': ['autoprefixer', 'postcss-import', 'postcss-pxtorem', 'postcss-assets', 'css-mqpacker', 'cssnano'],
+    'use': ['autoprefixer', 'postcss-object-fit-images', 'postcss-import', 'postcss-pxtorem', 'postcss-assets', 'css-mqpacker', 'cssnano'],
     'cssnano': {
         zindex: false
     },

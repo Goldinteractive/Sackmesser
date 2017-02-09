@@ -1,8 +1,14 @@
 // shared variables for js and css
 import * as SHARED from '../shared-variables'
 
-// features
+// icons
+import { Icon, IconManager } from 'gi-feature-icons'
+// object-fit-images polyfill
+import ObjectFitImage from 'gi-feature-object-fit-images'
+
+// site features
 import RandomQuote from './features/randomquote'
+
 
 var app = {
 
@@ -15,12 +21,13 @@ var app = {
   },
 
   eventHub: gi.eventHub,
+  icons: null,
   scroll: null,
   device: null,
 
   init() {
     this
-      .injectIconMarkup()
+      .initIcons()
       .initScroller()
       .initDeviceInfo()
       .addFeatures()
@@ -28,25 +35,33 @@ var app = {
   },
 
   addFeatures() {
+    // object-fit-images polyfill feature
+    gi.features.add('fit', ObjectFitImage)
+    gi.features.add('fit-watch', ObjectFitImage, { watchMQ: true })
+
+    // site features
     gi.features.add('quote', RandomQuote, { count: 1 })
+
     return this
   },
 
   initFeatures() {
-    gi.features.init()
+    gi.features.init(document.body)
     return this
   },
 
-  injectIconMarkup() {
-    var ajax = new XMLHttpRequest()
+  initIcons() {
+    this.icons = new IconManager({
+      svgJsonFile: 'assets/icons.json',
+      svgSpriteFile: 'assets/icons.svg'
+    })
 
-    ajax.open('GET', 'assets/icons.svg', true)
-    ajax.send()
-    ajax.onload = function(e) {
-      var div = document.createElement('div')
-      div.innerHTML = ajax.responseText
-      document.body.insertBefore(div, document.body.childNodes[0])
-    }
+    this.icons.injectSprite(() => {
+      this.icons.loadData(() => {
+        gi.features.add('icon', Icon, { manager: this.icons })
+        gi.features.init(document.body, 'icon')
+      })
+    })
 
     return this
   },

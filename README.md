@@ -9,26 +9,33 @@
 - [jquery](https://jquery.com): `jquery`
 - [sanitize.css](https://github.com/jonathantneal/sanitize.css): `sanitize.css`
 
-## Features
+## Available Features
 
-- table: coming soon
-- form: coming soon (replacing [form](http://goldinteractive.github.io/ui-form/))
-- search: coming soon
+- [icons](https://github.com/Goldinteractive/feature-icons) (installed by default)
+- [object-fit-images](https://github.com/Goldinteractive/feature-object-fit-images) (installed by default)
+- [overwrap](https://github.com/Goldinteractive/feature-overwrap)
+- [datetime-picker](https://github.com/Goldinteractive/feature-datetime-picker)
+
 - slider: coming soon (replacing [slider](http://goldinteractive.github.io/ui-slider/))
 - gallery: coming soon
 - map: coming soon
 - accordion: coming soon
+- form: coming soon (replacing [form](http://goldinteractive.github.io/ui-form/))
+- select-search: coming soon
+- forced-click: coming soon
+- search: coming soon
 - pagination: coming soon
 - tabs: coming soon
-- overlay: coming soon ([overlay](http://goldinteractive.github.io/ui-overlay/))
+- dropdown: coming soon
+- overlay: coming soon (replacing [overlay](http://goldinteractive.github.io/ui-overlay/))
 
 
 ### How to install a Gold Interactive component
 
-To install a component just use `yarn install gi-ui-[name of the component] -save` for example:
+To install a component just use `make feature-install [name of the component]` for example:
 
 ```shell
-$ yarn add gi-feature-table -save
+$ make feature-install datetime-picker
 ```
 
 

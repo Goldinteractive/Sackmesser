@@ -45,7 +45,7 @@ foreach ($iconsDir as $info) {
         }
 
         foreach ($svg->attributes() as $attribute => $value) {
-            $attributes[mb_strtolower($attribute)] = (string)$value;
+            $attributes[$attribute] = (string)$value;
         }
 
         $icons[$name] = [

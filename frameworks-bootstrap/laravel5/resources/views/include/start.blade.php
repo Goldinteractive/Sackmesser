@@ -26,7 +26,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
         <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="assets/favicons/favicon-96x96.png">
-        <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-android-chrome-192x192.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="assets/favicons/favicon-android-chrome-192x192.png">
         <link rel="icon" type="image/png" sizes="194x194" href="assets/favicons/favicon-194x194.png">
 
         <meta name="msapplication-TileImage" content="assets/favicons/windows-tile-144x144.png">
