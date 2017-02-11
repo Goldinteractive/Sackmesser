@@ -47,6 +47,7 @@ public/assets/vendor/bower
 
 # the style.css must be generated using 'compass compile'
 public/assets/css/*.css
+public/assets/css/*.css.map
 public/assets/js/main.bundle.*
 
 # craft stuff
