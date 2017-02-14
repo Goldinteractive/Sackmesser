@@ -51,7 +51,7 @@ assets/css/*.css.map
 assets/js/main.bundle.*
 
 # ignore transformed image files
-public/files/_imager/*
+public/imager/*
 
 .deployment/data/*.zip
 .deployment/data/*.tar.gz
