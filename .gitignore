@@ -50,6 +50,9 @@ assets/css/*.css
 assets/css/*.css.map
 assets/js/main.bundle.*
 
+# ignore transformed image files
+public/files/_imager/*
+
 .deployment/data/*.zip
 .deployment/data/*.tar.gz
 .deployment/data/*.sql
