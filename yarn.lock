@@ -1160,7 +1160,7 @@ cookie@0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
 
-core-js@^2.4.0:
+core-js@^2.4.0, core-js@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.4.1.tgz#4de911e667b0eae9124e34254b53aea6fc618d3e"
 
@@ -1896,13 +1896,13 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-gi-feature-icons@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/gi-feature-icons/-/gi-feature-icons-0.0.5.tgz#09b974aad6a482fd8cb5b6f407568d71b64975d3"
+gi-feature-icons@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/gi-feature-icons/-/gi-feature-icons-0.0.6.tgz#815ae5bb219e34d2817e5de354d7329191f8d4c0"
 
-gi-feature-object-fit-images@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/gi-feature-object-fit-images/-/gi-feature-object-fit-images-0.0.5.tgz#2cb009953a2389f1d0fcca98a82a16bc0c0f04d0"
+gi-feature-object-fit-images@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/gi-feature-object-fit-images/-/gi-feature-object-fit-images-0.0.6.tgz#f63a34e05897c5987281813cbd93086acd872aed"
   dependencies:
     object-fit-images "^3.1.0"
 
@@ -1910,11 +1910,12 @@ gi-feature-playground@^0.0.15:
   version "0.0.15"
   resolved "https://registry.yarnpkg.com/gi-feature-playground/-/gi-feature-playground-0.0.15.tgz#101b72cc4224d2bfef5f65aeae9d498e08effbc1"
 
-gi-js-base@^0.0.21:
-  version "0.0.21"
-  resolved "https://registry.yarnpkg.com/gi-js-base/-/gi-js-base-0.0.21.tgz#b31de246d686b3242b5c2eb9416f166458c0adc2"
+gi-js-base@^0.0.22:
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/gi-js-base/-/gi-js-base-0.0.22.tgz#29a9f3778753e7fe38f3be58f0f97585c808cf3b"
   dependencies:
     camel-case "^3.0.0"
+    core-js "^2.4.1"
     easing-js danro/easing-js
     metalsmith-navigation "^0.2.9"
     riot-observable "^3.0.0"
