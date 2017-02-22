@@ -1,6 +1,10 @@
 // shared variables for js and css
 import * as SHARED from '../shared-variables'
 
+// helpers
+import { Scroller } from 'gi-js-base/src/utils/dom'
+import { DeviceInfo } from 'gi-js-base/src/utils/device'
+
 // icons
 import { Icon, IconManager } from 'gi-feature-icons'
 // object-fit-images polyfill
@@ -13,14 +17,10 @@ import RandomQuote from './features/randomquote'
 var app = {
 
   ui: {
-    $window: $(window),
-    $html: $('html'),
-    $body: $('body'),
-    $header: $('.layout-header'),
-    $footer: $('.layout-footer')
+    $header: document.querySelector('.layout-header'),
+    $footer: document.querySelector('.layout-footer')
   },
 
-  eventHub: gi.eventHub,
   icons: null,
   scroll: null,
   device: null,
@@ -67,12 +67,12 @@ var app = {
   },
 
   initScroller() {
-    this.scroll = new gi.utils.dom.Scroller()
+    this.scroll = new Scroller()
     return this
   },
 
   initDeviceInfo() {
-    this.device = new gi.utils.device.DeviceInfo({
+    this.device = new DeviceInfo({
       breakpoints: {
         small: SHARED['break-small'],
         medium: SHARED['break-medium'],

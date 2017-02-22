@@ -10,13 +10,15 @@ Fullwidth button in primary color:
 
 Auto sized button with small padding:
 ```example:html
-<button role="submit -auto -small">Send</button>
+<button class="button" role="submit -auto -small">Send</button>
 ```
 */
 
-input[type="submit"]:not([type=checkbox]):not([type=radio]),
-input[type="button"]:not([type=checkbox]):not([type=radio]),
 .button {
+    & {
+        transition: all .15s ease-in;
+    }
+
     &.-auto {
         display: inline-block;
         width: auto;

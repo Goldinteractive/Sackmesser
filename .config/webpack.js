@@ -74,6 +74,16 @@ module.exports = function(env) {
                 ['es2015', { modules: false }]
               ]
             }
+          },
+          // gi base es6 source
+          {
+            test: /gi-js-base\/src/,
+            loader: 'babel-loader',
+            query: {
+              presets: [
+                ['es2015', { modules: false }]
+              ]
+            }
           }
         ]
       }
