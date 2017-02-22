@@ -12,7 +12,7 @@ fi
 
 source $DEPLOYMENT_CONFIG_FILE
 
-ask "Push files from localhost (DEPLOY_DATA_FOLDER)\nto $DEPLOY_HOST ($DEPLOY_APPROOT/current/$DEPLOY_DATA_FOLDER)?"
+ask "Push files from localhost ($DEPLOY_DATA_FOLDER)\nto $DEPLOY_HOST ($DEPLOY_APPROOT/current/$DEPLOY_DATA_FOLDER)?"
 
 if [ $? -ne 0 ]; then
     exit 1
