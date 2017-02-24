@@ -7,8 +7,8 @@ import { DeviceInfo } from 'gi-js-base/src/utils/device'
 
 // icons
 import { Icon, IconManager } from 'gi-feature-icons'
-// object-fit-images polyfill
-import ObjectFitImage from 'gi-feature-object-fit-images'
+// object-fit polyfill
+import ObjectFit from 'gi-feature-object-fit'
 
 // site features
 import RandomQuote from './features/randomquote'
@@ -36,8 +36,8 @@ var app = {
 
   addFeatures() {
     // object-fit-images polyfill feature
-    gi.features.add('fit', ObjectFitImage)
-    gi.features.add('fit-watch', ObjectFitImage, { watchMQ: true })
+    gi.features.add('fit', ObjectFit)
+    gi.features.add('fit-watch', ObjectFit, { watchMQ: true })
 
     // site features
     gi.features.add('quote', RandomQuote, { count: 1 })
