@@ -1405,7 +1405,7 @@ domain-browser@^1.1.1:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.1.7.tgz#867aa4b093faa05f1de08c06f4d7b21fdf8698bc"
 
-"easing-js@github:danro/easing-js":
+easing-js@danro/easing-js:
   version "0.5.4"
   resolved "https://codeload.github.com/danro/easing-js/tar.gz/4f5e7edbde7f7200a1baf08e357377896c0d207e"
 
@@ -1896,19 +1896,17 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-gi-feature-icons@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/gi-feature-icons/-/gi-feature-icons-0.0.6.tgz#815ae5bb219e34d2817e5de354d7329191f8d4c0"
+gi-feature-icons@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/gi-feature-icons/-/gi-feature-icons-0.0.7.tgz#2e5db376c63798a4d47cd2f61a29d12462375a3c"
 
-gi-feature-object-fit-images@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/gi-feature-object-fit-images/-/gi-feature-object-fit-images-0.0.6.tgz#f63a34e05897c5987281813cbd93086acd872aed"
+gi-feature-object-fit@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/gi-feature-object-fit/-/gi-feature-object-fit-0.0.1.tgz#9280ef20a59590ba5ec44605363eb7b4f9cdee6a"
   dependencies:
+    iphone-inline-video "^2.0.2"
     object-fit-images "^3.1.0"
-
-gi-feature-playground@^0.0.15:
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/gi-feature-playground/-/gi-feature-playground-0.0.15.tgz#101b72cc4224d2bfef5f65aeae9d498e08effbc1"
+    object-fit-videos "https://github.com/oncode/object-fit-videos.git"
 
 gi-js-base@^0.0.23:
   version "0.0.23"
@@ -2173,6 +2171,10 @@ interpret@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.1.tgz#d579fb7f693b858004947af39fa0db49f795602c"
 
+intervalometer@^1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/intervalometer/-/intervalometer-1.0.2.tgz#7c08f4ac07bd8876f9378fb4c74ff9b40e87d4be"
+
 invariant@^2.2.0:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
@@ -2182,6 +2184,13 @@ invariant@^2.2.0:
 invert-kv@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-1.0.0.tgz#104a8e4aaca6d3d8cd157a8ef8bfab2d7a3ffdb6"
+
+iphone-inline-video@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/iphone-inline-video/-/iphone-inline-video-2.0.2.tgz#7e721df07c891b40b60899c5c34a4f542d332f11"
+  dependencies:
+    intervalometer "^1.0.0"
+    poor-mans-symbol "^1.0.1"
 
 is-absolute-url@^2.0.0:
   version "2.1.0"
@@ -2851,8 +2860,12 @@ object-component@0.0.3:
   resolved "https://registry.yarnpkg.com/object-component/-/object-component-0.0.3.tgz#f0c69aa50efc95b866c186f400a33769cb2f1291"
 
 object-fit-images@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/object-fit-images/-/object-fit-images-3.1.0.tgz#a1f4fe2d3a333adbb038e00ccbe003aaea1e6cfe"
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/object-fit-images/-/object-fit-images-3.1.2.tgz#7a66d3373289dcdd758984588b8c5b8af7154460"
+
+"object-fit-videos@git+https://github.com/oncode/object-fit-videos.git":
+  version "1.0.2"
+  resolved "git+https://github.com/oncode/object-fit-videos.git#1212828cdea444a994562d8cc3e47f2f391a21fe"
 
 object-path@^0.9.0:
   version "0.9.2"
@@ -3051,6 +3064,10 @@ pkg-dir@^1.0.0:
 pluralize@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-1.2.1.tgz#d1a21483fd22bb41e58a12fa3421823140897c45"
+
+poor-mans-symbol@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/poor-mans-symbol/-/poor-mans-symbol-1.0.1.tgz#0c1b65ff1d49c07402b2235e562077d120671d0c"
 
 portscanner@2.1.1:
   version "2.1.1"
