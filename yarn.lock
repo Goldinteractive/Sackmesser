@@ -1900,9 +1900,9 @@ gi-feature-icons@^0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/gi-feature-icons/-/gi-feature-icons-0.0.7.tgz#2e5db376c63798a4d47cd2f61a29d12462375a3c"
 
-gi-feature-object-fit@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/gi-feature-object-fit/-/gi-feature-object-fit-0.0.1.tgz#9280ef20a59590ba5ec44605363eb7b4f9cdee6a"
+gi-feature-object-fit@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/gi-feature-object-fit/-/gi-feature-object-fit-0.0.2.tgz#a926d502625c33c2dc3c2e997bd7a331229a36ca"
   dependencies:
     iphone-inline-video "^2.0.2"
     object-fit-images "^3.1.0"

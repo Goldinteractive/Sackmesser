@@ -14,7 +14,7 @@
     "eslint": "^3.13.1",
     "expose-loader": "^0.7.1",
     "gi-feature-icons": "^0.0.7",
-    "gi-feature-object-fit": "^0.0.1",
+    "gi-feature-object-fit": "^0.0.2",
     "gi-js-base": "^0.0.23",
     "gridle": "^2.0.48",
     "jquery": "^3.1.1",

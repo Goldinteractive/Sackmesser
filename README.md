@@ -12,7 +12,7 @@
 ## Available Features
 
 - [icons](https://github.com/Goldinteractive/feature-icons) (installed by default)
-- [object-fit-images](https://github.com/Goldinteractive/feature-object-fit-images) (installed by default)
+- [object-fit](https://github.com/Goldinteractive/feature-object-fit) (installed by default)
 - [overwrap](https://github.com/Goldinteractive/feature-overwrap)
 - [datetime-picker](https://github.com/Goldinteractive/feature-datetime-picker)
 - slider: coming soon (replacing [slider](http://goldinteractive.github.io/ui-slider/))
