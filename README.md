@@ -13,11 +13,12 @@
 
 - [icons](https://github.com/Goldinteractive/feature-icons) (installed by default)
 - [object-fit](https://github.com/Goldinteractive/feature-object-fit) (installed by default)
+- [image-zoom](https://github.com/Goldinteractive/feature-image-zoom)
 - [overwrap](https://github.com/Goldinteractive/feature-overwrap)
+- [map](https://github.com/Goldinteractive/feature-map)
 - [datetime-picker](https://github.com/Goldinteractive/feature-datetime-picker)
 - slider: coming soon (replacing [slider](http://goldinteractive.github.io/ui-slider/))
 - gallery: coming soon
-- map: coming soon
 - accordion: coming soon
 - form: coming soon (replacing [form](http://goldinteractive.github.io/ui-form/))
 - select-search: coming soon
