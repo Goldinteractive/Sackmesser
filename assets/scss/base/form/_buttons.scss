@@ -41,6 +41,7 @@ Auto sized button with small padding:
         background-color: $primary-color;
         border-color: transparent;
 
+        &.-active,
         &:hover,
         &:active,
         &:focus {
@@ -53,6 +54,7 @@ Auto sized button with small padding:
         background-color: $secondary-color;
         border-color: transparent;
 
+        &.-active,
         &:hover,
         &:active,
         &:focus {

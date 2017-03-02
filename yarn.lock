@@ -1722,6 +1722,10 @@ fast-levenshtein@~2.0.4:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
 
+fetch-jsonp@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/fetch-jsonp/-/fetch-jsonp-1.0.6.tgz#8d2ae174ed14108292f025f43fa07d2078de6736"
+
 figures@^1.3.5:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/figures/-/figures-1.7.0.tgz#cbe1e3affcf1cd44b80cadfed28dc793a9701d2e"
@@ -1908,13 +1912,14 @@ gi-feature-object-fit@^0.0.2:
     object-fit-images "^3.1.0"
     object-fit-videos "https://github.com/oncode/object-fit-videos.git"
 
-gi-js-base@^0.0.26:
-  version "0.0.26"
-  resolved "https://registry.yarnpkg.com/gi-js-base/-/gi-js-base-0.0.26.tgz#ffc089288a3ee96e157108168d9affbeeea54a5f"
+gi-js-base@^0.0.35:
+  version "0.0.35"
+  resolved "https://registry.yarnpkg.com/gi-js-base/-/gi-js-base-0.0.35.tgz#acbff5d014ab428325a2bfe73f7f3b9b269dd4f0"
   dependencies:
     camel-case "^3.0.0"
     core-js "^2.4.1"
     easing-js danro/easing-js
+    fetch-jsonp "^1.0.6"
     promise-polyfill "^6.0.2"
     riot-observable "^3.0.0"
     whatwg-fetch "^2.0.2"

@@ -26,6 +26,13 @@ input:not([type="checkbox"]):not([type="radio"]) {
         border: $form-border;
         padding: $form-padding-vertical $form-padding-horizontal;
         transition: background-color .1s ease-in, box-shadow .1s ease-in;
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+            transition: background-color 5000s ease-in-out 0s;
+        }
     }
 
     &.-small {

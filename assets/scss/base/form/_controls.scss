@@ -63,7 +63,7 @@ Checkbox control with text and dash:
     }
 
     &.-with-text {
-        display: flex;
+        display: inline-flex;
         align-items: center;
 
         > .control-indicator {

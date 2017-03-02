@@ -22,8 +22,9 @@ Form field with error message:
 
     > .label,
     > label {
+        cursor: pointer;
         display: inline-block;
-        margin-bottom: 3px;
+        margin-bottom: $form-label-margin-bottom;
     }
 
     > .message {
