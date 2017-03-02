@@ -10,6 +10,7 @@ release:
 		 $(DEPLOY_SCRIPTS_FOLDER)/release.sh
 
 deploy-patch-%:
+	@   $(DEPLOY_SCRIPTS_FOLDER)/check-libs.sh
 	@	make build
 	@	DEPLOYENV=$* \
 		DEPLOY_SCRIPTS_FOLDER=$(DEPLOY_SCRIPTS_FOLDER) \
@@ -19,6 +20,7 @@ deploy-patch-%:
 		 $(DEPLOY_SCRIPTS_FOLDER)/deploy-patch.sh
 
 deploy-%:
+	@   $(DEPLOY_SCRIPTS_FOLDER)/check-libs.sh
 	@	make build
 	@	DEPLOYENV=$* \
 		DEPLOYMENT_FOLDER=$(DEPLOYMENT_FOLDER) \
