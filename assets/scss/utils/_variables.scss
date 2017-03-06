@@ -38,10 +38,10 @@ $font-size: 18px;
 $font-size-small: 80%;
 $line-height: 1.5;
 
-// Icons
+// Icons sizes (use em to resize according to font-size)
 // -------------------------
-$icons-height: 1em; // use em to resize according to font-size
-$icons-width: 1.125rem; // just used for wrapped, non responsive icons (use rem or px)
+$icons-width: 1.125em;
+$icons-height: 1em;
 $icons-baseline-fix: -0.125em;
 
 // Layer settings
