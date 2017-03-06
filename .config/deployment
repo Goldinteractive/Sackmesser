@@ -17,7 +17,7 @@ DB_DEV_USER=$DB_USERNAME
 DB_DEV_PW=$DB_PASSWORD
 
 # Document Root Path (usually . or ./public)
-WEBROOT_PATH=./public/files
+WEBROOT_PATH=./public
 
 # Folder where uploaded files are. Folder must be named "files"
 DEPLOY_DATA_FOLDER="public/files"
