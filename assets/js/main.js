@@ -23,6 +23,7 @@ var app = {
 
   icons: null,
   scroll: null,
+  scrollWithHeaderOffset: null,
   device: null,
 
   init() {
@@ -68,6 +69,12 @@ var app = {
 
   initScroller() {
     this.scroll = new Scroller()
+
+    // scroller with header as offset
+    this.scrollWithHeaderOffset = new Scroller({
+      offsetY: this.ui.$header.offsetHeight + 20
+    })
+
     return this
   },
 
