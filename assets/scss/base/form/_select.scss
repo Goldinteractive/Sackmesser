@@ -52,16 +52,9 @@ $form-select-padding:
         padding: $form-select-padding;
         appearance: none;
 
-        @include firefox() {
-            // hide arrow
-            text-indent: 0.01px;
-            text-overflow: '';
-            padding-right: 1rem;
-
-            // <option> elements inherit styles from <select>, so reset them.
-            option {
-                background-color: #fff;
-            }
+        // <option> elements inherit styles from <select>, so reset them.
+        option {
+            background-color: #fff;
         }
 
         // hide arrow ie 10 and above
