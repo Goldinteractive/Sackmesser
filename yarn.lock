@@ -1376,11 +1376,36 @@ destroy@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
 
+detect-hover@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/detect-hover/-/detect-hover-1.0.1.tgz#cf8293b91bdc16b35a8dbbe52be06553ad23d3fc"
+
 detect-indent@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/detect-indent/-/detect-indent-4.0.0.tgz#f76d064352cdf43a1cb6ce619c4ee3a9475de208"
   dependencies:
     repeating "^2.0.0"
+
+detect-it@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/detect-it/-/detect-it-2.1.1.tgz#dfdb60bff097de9ebe7366201c5350d4e0d64225"
+  dependencies:
+    detect-hover "^1.0.1"
+    detect-passive-events "^1.0.2"
+    detect-pointer "^1.0.1"
+    detect-touch-events "^1.0.1"
+
+detect-passive-events@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/detect-passive-events/-/detect-passive-events-1.0.2.tgz#0e39d7b675907eff55b8965f5be3fc0b0f4178b9"
+
+detect-pointer@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/detect-pointer/-/detect-pointer-1.0.1.tgz#cc9aa88b2b0f780250e50a81cfefa9393b14369f"
+
+detect-touch-events@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/detect-touch-events/-/detect-touch-events-1.0.1.tgz#115584aab7409c0b92df103ab0fbf5285cd50d71"
 
 dev-ip@^1.0.1:
   version "1.0.1"
@@ -1405,7 +1430,7 @@ domain-browser@^1.1.1:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.1.7.tgz#867aa4b093faa05f1de08c06f4d7b21fdf8698bc"
 
-easing-js@danro/easing-js:
+"easing-js@github:danro/easing-js":
   version "0.5.4"
   resolved "https://codeload.github.com/danro/easing-js/tar.gz/4f5e7edbde7f7200a1baf08e357377896c0d207e"
 
@@ -1912,12 +1937,13 @@ gi-feature-object-fit@^0.0.2:
     object-fit-images "^3.1.0"
     object-fit-videos "https://github.com/oncode/object-fit-videos.git"
 
-gi-js-base@^0.0.37:
-  version "0.0.37"
-  resolved "https://registry.yarnpkg.com/gi-js-base/-/gi-js-base-0.0.37.tgz#40b3f12245433bedf37d6f8118ce69e4774cabcf"
+gi-js-base@^0.0.42:
+  version "0.0.42"
+  resolved "https://registry.yarnpkg.com/gi-js-base/-/gi-js-base-0.0.42.tgz#6933d09daf500796adbbc150c8e2f0a4d8c3d7e6"
   dependencies:
     camel-case "^3.0.0"
     core-js "^2.4.1"
+    detect-it "^2.1.1"
     easing-js danro/easing-js
     fetch-jsonp "^1.0.6"
     promise-polyfill "^6.0.2"
