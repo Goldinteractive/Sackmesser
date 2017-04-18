@@ -83,7 +83,13 @@ ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "bash -s" << EOF
     fi
 
     if [ -d "current" ]; then
-        cp -af "current/$DEPLOY_DATA_FOLDER/." "$REV_FOLDER/$DEPLOY_DATA_FOLDER/"
+        if [ -d "current/$DEPLOY_DATA_FOLDER/." ]; then
+            cp -af "current/$DEPLOY_DATA_FOLDER/." "$REV_FOLDER/$DEPLOY_DATA_FOLDER/"
+        fi
+
+        if [ -d "current/$DEPLOY_STORAGE_FOLDER/." ]; then
+            cp -af "current/$DEPLOY_STORAGE_FOLDER/." "$REV_FOLDER/$DEPLOY_STORAGE_FOLDER/"
+        fi
 
         if [ -d $OLDREV_FOLDER ]; then
             rm -rf $OLDREV_FOLDER
