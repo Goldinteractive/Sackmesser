@@ -1,5 +1,8 @@
 #staging
 AuthType Basic
 AuthName "Password Protected Area"
-AuthUserFile /home/www-goldinteractive/.htpasswd
+# File for goldinter01
+#AuthUserFile /home/www-goldinteractive/.htpasswd
+# File for cloudone
+#AuthUserFile /var/www/vhosts/DOMAIN.ch/staging.DOMAIN.ch/current/.htpasswd
 Require valid-user
