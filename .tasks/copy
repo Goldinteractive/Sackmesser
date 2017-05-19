@@ -30,6 +30,7 @@ rsync -avtR --ignore-errors $ASSETS_PATH $DEST \
       --exclude='scss' \
       --exclude='img/icons' \
       --exclude='grid.*' \
+      --exclude='*.map' \
       --exclude='*.scss.*' \
       --exclude='vendor' \
       --exclude='js' \

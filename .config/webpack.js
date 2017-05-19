@@ -29,7 +29,7 @@ module.exports = function(env) {
     if (!IS_DEBUG)
       plugins = plugins.concat([
         new webpack.optimize.UglifyJsPlugin({
-          sourceMap: true,
+          sourceMap: IS_DEBUG ? true : false,
           comments: false,
           compress: {
             warnings: false
