@@ -21,6 +21,7 @@ WEBROOT_PATH=./public
 
 # Folder where uploaded files are. Folder must be named "files"
 DEPLOY_DATA_FOLDER="public/files"
+DEPLOY_STORAGE_FOLDER="storage"
 
 # Folder where the data files should be backuped
 DEPLOY_DATA_BACKUP_FOLDER="$DEPLOYMENT_FOLDER/data"
