@@ -1433,7 +1433,7 @@ domain-browser@^1.1.1:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.1.7.tgz#867aa4b093faa05f1de08c06f4d7b21fdf8698bc"
 
-easing-js@danro/easing-js:
+"easing-js@github:danro/easing-js":
   version "0.5.4"
   resolved "https://codeload.github.com/danro/easing-js/tar.gz/4f5e7edbde7f7200a1baf08e357377896c0d207e"
 
@@ -1940,9 +1940,9 @@ gi-feature-object-fit@^0.0.2:
     object-fit-images "^3.1.0"
     object-fit-videos "https://github.com/oncode/object-fit-videos.git"
 
-gi-js-base@^0.0.44:
-  version "0.0.44"
-  resolved "https://registry.yarnpkg.com/gi-js-base/-/gi-js-base-0.0.44.tgz#a0645286ec053ab4dda27b9bb6c05d04c272c975"
+gi-js-base@^0.0.45:
+  version "0.0.45"
+  resolved "https://registry.yarnpkg.com/gi-js-base/-/gi-js-base-0.0.45.tgz#c1142a32d16575c301752c748fed99a6f746d632"
   dependencies:
     camel-case "^3.0.0"
     core-js "^2.4.1"
