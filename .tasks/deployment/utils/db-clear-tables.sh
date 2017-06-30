@@ -1,5 +1,4 @@
-#!/bin/bash
-# clears the tables of a given database
+#!/usr/bin/env bash
 
 DB=$DB
 DB_HOST=$DB_HOST

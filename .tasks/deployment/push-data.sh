@@ -1,40 +1,39 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 source "$DEPLOY_SCRIPTS_FOLDER/utils/util.sh"
-source "$CONFIG_FOLDER/deployment"
+loadEnvConfig $DEPLOYENV
 
-#load config
-DEPLOYMENT_CONFIG_FILE="$CONFIG_FOLDER/deployment.$DEPLOYENV"
-if [ ! -e $DEPLOYMENT_CONFIG_FILE ]; then
-    printf "\033[0;31m Unknown Environment: $DEPLOYENV \033[0m \n"
-    exit 1
-fi
-
-source $DEPLOYMENT_CONFIG_FILE
-
-ask "Push files from localhost ($DEPLOY_DATA_FOLDER)\nto $DEPLOY_HOST ($DEPLOY_APPROOT/current/$DEPLOY_DATA_FOLDER)?"
+ask "Push files from localhost\nto $DEPLOY_HOST?"
 
 if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# backup files
-printf "\033[0;32m Backup files in $DEPLOY_DATA_FOLDER \033[0m \n"
+for item in "${DEPLOY_DATA_FOLDERS[@]}"
+do
+    printf "$COLOR_GREEN""Backup files in $item $COLOR_OFF \n"
 
-  ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "bash -s" << EOF
+    FOLDERNAME=$(basename $item)
+    FILENAME="backup_${item//\//_}.tar.gz"
+
+    ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "bash -s" << EOF
         cd $DEPLOY_APPROOT
 
-        if [ -d "current/$DEPLOY_DATA_FOLDER" ]; then
-            tar -cvzf "current/$DEPLOY_DATA_BACKUP_FOLDER/backup_files.tar.gz" -C "current/$DEPLOY_DATA_FOLDER/../" "files"
+        if [ -d "current/$item" ]; then
+            tar -cvzf "current/$DEPLOY_DATA_BACKUP_FOLDER/$FILENAME" -C "current/$item/../" $FOLDERNAME
         else
-            echo "Data folder does not exist. Continue."
+            echo "Data folder current/$item does not exist. Skip backup."
+        fi
+
+        if [ $? -ne 0 ]; then
+            exit 1
         fi
 EOF
 
-# upload files
-printf "\033[0;32m Upload files to $DEPLOY_APPROOT/current/$DEPLOY_DATA_FOLDER \033[0m \n"
-rsync -azP -e "ssh -p $DEPLOY_PORT" $DEPLOY_DATA_FOLDER/ $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT/current/$DEPLOY_DATA_FOLDER/
+printf "$COLOR_GREEN""Upload files to $DEPLOY_APPROOT/current/$item $COLOR_OFF \n"
+rsync -azP -e "ssh -p $DEPLOY_PORT" $item/ $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT/current/$item/
 
 if [ $? -ne 0 ]; then
     exit 1
 fi
+done

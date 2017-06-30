@@ -1,29 +1,19 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-source "$CONFIG_FOLDER/deployment"
+source "$DEPLOY_SCRIPTS_FOLDER/utils/util.sh"
+loadEnvConfig $DEPLOYENV
 
-REV_FILE=$DEPLOYMENT_FOLDER/rev
-CURRENTREV=$(cat $REV_FILE)
+CURRENTREV=$(getCurrentRev)
+CURRENTREVFOLDER=$(getCurrentRevFolder)
 ROLLBACKTOREV=$((CURRENTREV-1))
-
-REV_FOLDER="rev$CURRENTREV"
 ROLLBACKTOREV_FOLDER="rev$ROLLBACKTOREV"
 
-#load config
-DEPLOYMENT_CONFIG_FILE="$CONFIG_FOLDER/deployment.$DEPLOYENV"
-if [ ! -e $DEPLOYMENT_CONFIG_FILE ]; then
-    printf "\033[0;31m Unknown Environment: $DEPLOYENV \033[0m \n"
-    exit 1
-fi
-
-source $DEPLOYMENT_CONFIG_FILE
-
 if [ $CURRENTREV -eq 1 ]; then
-    printf "\033[0;31m We can't rollback below revision 1. Cancel. \033[0m \n"
+    printf "$COLOR_RED""We can't rollback below revision 1. Abort. $COLOR_OFF \n"
     exit 1
 fi
 
-printf "\033[0;32m Rollback to Revision $ROLLBACKTOREV. \033[0m \n"
+printf "$COLOR_GREEN""Rollback to Revision $ROLLBACKTOREV. $COLOR_OFF \n"
 
 ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT "bash -s" << EOF
     cd $DEPLOY_APPROOT
@@ -44,14 +34,13 @@ ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT "bash -s" << EOF
                   --password=$DEPLOY_DB_PW \
                   $DEPLOY_DB_DATABASE < "current/$DEPLOYMENT_FOLDER/database/backup/backup.sql"
         else
-           printf "\033[0;32m DB was not rolled back because the setting BACKUP_DB is set to false \033[0m \n"
+           printf "COLOR_RED""DB was not rolled back because the setting BACKUP_DB is set to false $COLOR_OFF \n"
         fi
     fi
 
-    mv "current" "$REV_FOLDER"
+    mv "current" "$CURRENTREVFOLDER"
     mv "$ROLLBACKTOREV_FOLDER" "current"
 EOF
-
 
 if [ $? -ne 0 ]; then
     exit 1

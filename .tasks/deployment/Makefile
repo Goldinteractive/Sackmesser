@@ -1,5 +1,6 @@
 deploy-setup-%:
 	@	DEPLOYENV=$* \
+	    DEPLOY_SCRIPTS_FOLDER=$(DEPLOY_SCRIPTS_FOLDER) \
 		CONFIG_FOLDER=$(CONFIG_FOLDER) \
 		 $(DEPLOY_SCRIPTS_FOLDER)/setup.sh
 
@@ -43,6 +44,7 @@ rollback-%:
 clean-%:
 	@	DEPLOYENV=$* \
 		WEBROOT_PATH=$(WEBROOT_PATH) \
+		DEPLOY_SCRIPTS_FOLDER=$(DEPLOY_SCRIPTS_FOLDER) \
         CONFIG_FOLDER=./.config \
 		 $(DEPLOY_SCRIPTS_FOLDER)/clean.sh
 

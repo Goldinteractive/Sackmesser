@@ -1,20 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-source "$CONFIG_FOLDER/deployment"
+source "$DEPLOY_SCRIPTS_FOLDER/utils/util.sh"
+loadEnvConfig $DEPLOYENV
 
-REV_FILE=$DEPLOYMENT_FOLDER/rev
-CURRENTREV=$(cat $REV_FILE)
-OLDREV=$(($CURRENTREV-1))
-OLDREV_FOLDER="rev$OLDREV"
-
-#load config
-DEPLOYMENT_CONFIG_FILE="$CONFIG_FOLDER/deployment.$DEPLOYENV"
-if [ ! -e $DEPLOYMENT_CONFIG_FILE ]; then
-    printf "\033[0;31m Unknown Environment: $DEPLOYENV \033[0m \n"
-    exit 1
-fi
-
-source $DEPLOYMENT_CONFIG_FILE
+CURRENTREV=$(getCurrentRev)
+OLDREV=$(getOldRev)
+CURRENTREVFOLDER=$(getCurrentRevFolder)
+OLDREVFOLDER=$(getOldRevFolder)
 
 if [ $CURRENTREV -le 1 ]; then
     printf "\033[0;31m  Nothing to clean. \033[0m \n"
@@ -24,7 +16,7 @@ fi
 ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT   "bash -s" << EOF
     cd $DEPLOY_APPROOT
 
-    mv $OLDREV_FOLDER "tmprev"
+    mv $OLDREVFOLDER "tmprev"
     rm -rf rev*
-    mv "tmprev" $OLDREV_FOLDER
+    mv "tmprev" $OLDREVFOLDER
 EOF

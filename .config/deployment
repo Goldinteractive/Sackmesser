@@ -19,8 +19,13 @@ DB_DEV_PW=$DB_PASSWORD
 # Document Root Path (usually . or ./public)
 WEBROOT_PATH=./public
 
-# Folder where uploaded files are. Folder must be named "files"
-DEPLOY_DATA_FOLDER="public/files"
+# Folders where uploaded files are.
+### craft files
+#DEPLOY_DATA_FOLDERS[0]="public/files"
+#DEPLOY_DATA_FOLDERS[1]="craft/storage/files"
+#DEPLOY_DATA_FOLDERS[2]="craft/storage/rebrand"
+#DEPLOY_DATA_FOLDERS[3]="craft/storage/userphotos"
+
 DEPLOY_STORAGE_FOLDER="storage"
 
 # Folder where the data files should be backuped

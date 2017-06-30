@@ -1,49 +1,30 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-source "$CONFIG_FOLDER/deployment"
+source "$DEPLOY_SCRIPTS_FOLDER/utils/util.sh"
 
-COL_HL="\033[0;32m"
-COL_ERR="\033[0;31m"
-COL_CLEAR="\033[0m"
 REV_FILE="$DEPLOYMENT_FOLDER/rev"
+CURRENTREV=$(getCurrentRev)
+NEWREV=$(($CURRENTREV+1))
 
-
-currentRev=$(cat $REV_FILE)
-
-newRev=$(($currentRev+1))
-
-printf "$COL_HL Creating new revision: $newRev $COL_CLEAR\n"
+printf "$COLOR_GREEN""Creating new revision: $NEWREV $COLOR_OFF\n"
 
 
 $DEPLOY_SCRIPTS_FOLDER/test.sh
 if [ $? -eq 1 ]; then
-    printf "$COL_ERR Unit Test failed $COL_CLEAR\n"
-    printf "$COL_ERR Release cancelled. Please fix the unit test $COL_CLEAR\n"
+    printf "$COLOR_RED""Unit Test failed $COLOR_OFF\n"
+    printf "$COLOR_RED""Release cancelled. Please fix the unit test $COLOR_OFF\n"
     exit 1
 fi
 
-if [ $USE_DB -eq 1 ]; then
-    REV=$newRev \
-    CONFIG_FOLDER=$CONFIG_FOLDER \
-    DEPLOYMENT_FOLDER=$DEPLOYMENT_FOLDER \
-        DEPLOY_SCRIPTS_FOLDER=$DEPLOY_SCRIPTS_FOLDER \
-        $DEPLOY_SCRIPTS_FOLDER/dbdump.sh
-
-    if [ $? -ne 0 ]; then
-        exit 1
-    fi
-fi
-
 if [ $USE_GIT -eq 1 ]; then
-    printf "$COL_HL Create Git tag$COL_CLEAR\n"
-    git tag -a "rev-$newRev" -m "Revision $newRev created"
-    git push origin "rev-$newRev"
+    printf "$COLOR_GREEN Create Git tag$COLOR_OFF\n"
+    git tag -a "rev-$NEWREV" -m "Revision $NEWREV created"
+    git push origin "rev-$NEWREV"
 
     if [ $? -ne 0 ]; then
         exit 1
     fi
 fi
-
 
 #finally write to new file
-echo $newRev > $REV_FILE
+echo $NEWREV > $REV_FILE
