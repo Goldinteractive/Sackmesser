@@ -28,7 +28,6 @@ rsync -dv --ignore-errors *.* $DEST \
 echo 'Copying the assets files'
 rsync -avtR --ignore-errors $ASSETS_PATH $DEST \
       --exclude='scss' \
-      --exclude='img/icons' \
       --exclude='grid.*' \
       --exclude='*.map' \
       --exclude='*.scss.*' \
