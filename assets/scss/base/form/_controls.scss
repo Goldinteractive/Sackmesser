@@ -34,18 +34,21 @@ Checkbox control with text and dash:
         z-index: -1; // Put the input behind the label so it doesn't overlay text
 
         &:focus ~ .control-indicator {
+            border: $form-control-border-focus;
             box-shadow: $form-box-shadow-focus;
         }
 
         // Checked state
         &:checked ~ .control-indicator {
             color: #fff;
+            border: $form-control-border-checked;
             background-color: $form-control-background-checked;
         }
 
         // Active state
         &:active ~ .control-indicator {
             color: #fff;
+            border: $form-control-border-active;
             background-color: $form-control-background-active;
         }
     }
@@ -56,6 +59,7 @@ Checkbox control with text and dash:
         height: $form-control-size;
         text-align: center;
         background-color: $form-background;
+        border: $form-control-border;
         background-size: 50% 50%;
         background-position: center center;
         background-repeat: no-repeat;

@@ -53,6 +53,7 @@ input:not([type="checkbox"]):not([type="radio"]) {
     }
 
     &:focus {
+        border: $form-border-focus;
         background-color: $form-background-focus;
         box-shadow: $form-box-shadow-focus;
     }
