@@ -72,14 +72,13 @@ postcss:
 	# modify the normal css with postcss
 	@ ASSETS_PATH=$(ASSETS_PATH) \
 		$(POSTCSS) \
-		--no-map \
-		--config $(POSTCSS_CONFIG) \
+		--config $(CONFIG_FOLDER) \
 		$(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css
 
 watch-postcss:
 	@ ASSETS_PATH=$(ASSETS_PATH) \
 		$(POSTCSS) \
-		--config $(POSTCSS_CONFIG) \
+		--config $(CONFIG_FOLDER) \
 		$(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css \
 		--watch
 

@@ -28,7 +28,6 @@ FAVICONS_PATH=$(ASSETS_PATH)/favicons
 # css
 SCSS_IN=$(ASSETS_PATH)/scss
 CSS_OUT=$(ASSETS_PATH)/css
-POSTCSS_CONFIG=$(CONFIG_FOLDER)/postcss.js
 
 # icons
 ICONS_IN=$(ASSETS_PATH)/img/icons
@@ -40,16 +39,16 @@ ICONS_COMBINED_SVG=$(ASSETS_PATH)/icons.svg
 JS_BASE=$(ASSETS_PATH)/js
 JS_IN=main.js
 JS_OUT=main.bundle.js
-JS_CONFIG=$(CONFIG_FOLDER)/webpack.js
+JS_CONFIG=$(CONFIG_FOLDER)/webpack.config.js
 
 # deployment
 DEPLOY_SCRIPTS_FOLDER=$(SCRIPTS_FOLDER)/deployment
 
 # jsdoc output path
-JSDOC_CONFIG=$(CONFIG_FOLDER)/jsdoc.json
+JSDOC_CONFIG=$(CONFIG_FOLDER)/jsdoc.config.json
 JSDOC_IN=$(ASSETS_PATH)/js
 JSDOC_OUT=.docs
 JSDOC_README=$(ASSETS_PATH)/js/README.md
 
 # browsersync service
-BROWSERSYNC_CONFIG=$(CONFIG_FOLDER)/bs-sync.js
+BROWSERSYNC_CONFIG=$(CONFIG_FOLDER)/bs-sync.config.js
