@@ -20,8 +20,8 @@ Form field with error message:
         display: block;
     }
 
-    > .label,
-    > label {
+    > .label:not(.control),
+    > label:not(.control) {
         cursor: pointer;
         display: inline-block;
         margin-bottom: $form-label-margin-bottom;
