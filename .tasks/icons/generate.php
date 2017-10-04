@@ -59,7 +59,7 @@ foreach ($iconsDir as $info) {
     }
 }
 
-$strIconsMetaData = json_encode($iconsMetaData, JSON_PRETTY_PRINT);
+$strIconsMetaData = json_encode($iconsMetaData);
 
 ob_start();
 include 'template.php';
