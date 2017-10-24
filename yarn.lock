@@ -1213,13 +1213,9 @@ cookie@0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
 
-core-js@^2.4.0, core-js@^2.5.0:
+core-js@^2.4.0, core-js@^2.5.0, core-js@^2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.1.tgz#ae6874dc66937789b80754ff5428df66819ca50b"
-
-core-js@^2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.4.1.tgz#4de911e667b0eae9124e34254b53aea6fc618d3e"
 
 core-util-is@~1.0.0:
   version "1.0.2"
@@ -1485,9 +1481,9 @@ destroy@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
 
-detect-hover@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/detect-hover/-/detect-hover-1.0.1.tgz#cf8293b91bdc16b35a8dbbe52be06553ad23d3fc"
+detect-hover@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/detect-hover/-/detect-hover-1.0.2.tgz#589fb0b469220897a9eee3fa36a917e1eda37a21"
 
 detect-indent@^4.0.0:
   version "4.0.0"
@@ -1495,26 +1491,26 @@ detect-indent@^4.0.0:
   dependencies:
     repeating "^2.0.0"
 
-detect-it@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/detect-it/-/detect-it-3.0.0.tgz#871e4295d98820c75c11d716181bb47a0dc1f242"
+detect-it@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/detect-it/-/detect-it-3.0.3.tgz#8e13daa0b62126150cbf76d083a1d34d1b07d071"
   dependencies:
-    detect-hover "^1.0.1"
-    detect-passive-events "^1.0.2"
-    detect-pointer "^1.0.1"
-    detect-touch-events "^2.0.0"
+    detect-hover "^1.0.2"
+    detect-passive-events "^1.0.4"
+    detect-pointer "^1.0.2"
+    detect-touch-events "^2.0.1"
 
-detect-passive-events@^1.0.2:
+detect-passive-events@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/detect-passive-events/-/detect-passive-events-1.0.4.tgz#6ed477e6e5bceb79079735dcd357789d37f9a91a"
+
+detect-pointer@^1.0.2:
   version "1.0.2"
-  resolved "https://registry.yarnpkg.com/detect-passive-events/-/detect-passive-events-1.0.2.tgz#0e39d7b675907eff55b8965f5be3fc0b0f4178b9"
+  resolved "https://registry.yarnpkg.com/detect-pointer/-/detect-pointer-1.0.2.tgz#1e0e4e261dab45055c50c74fb5a4ff09ceb18fbd"
 
-detect-pointer@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/detect-pointer/-/detect-pointer-1.0.1.tgz#cc9aa88b2b0f780250e50a81cfefa9393b14369f"
-
-detect-touch-events@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/detect-touch-events/-/detect-touch-events-2.0.0.tgz#d3d09e0b6e9ff00270c044c577087be83617e793"
+detect-touch-events@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/detect-touch-events/-/detect-touch-events-2.0.1.tgz#365833cf0c5c40c4090a08096b8a688db00fa337"
 
 dev-ip@^1.0.1:
   version "1.0.1"
@@ -1904,9 +1900,9 @@ fast-levenshtein@~2.0.4:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
 
-fetch-jsonp@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/fetch-jsonp/-/fetch-jsonp-1.0.6.tgz#8d2ae174ed14108292f025f43fa07d2078de6736"
+fetch-jsonp@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/fetch-jsonp/-/fetch-jsonp-1.1.3.tgz#9eb9e585ba08aaf700563538d17bbebbcd5a3db2"
 
 figures@^2.0.0:
   version "2.0.0"
@@ -2101,28 +2097,27 @@ gi-feature-icons@^0.0.14:
   version "0.0.14"
   resolved "https://registry.yarnpkg.com/gi-feature-icons/-/gi-feature-icons-0.0.14.tgz#ea42edecef1cae8701f3a3ed031742a1bdae45ed"
 
-gi-feature-object-fit@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/gi-feature-object-fit/-/gi-feature-object-fit-0.0.2.tgz#a926d502625c33c2dc3c2e997bd7a331229a36ca"
+gi-feature-object-fit@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/gi-feature-object-fit/-/gi-feature-object-fit-0.0.7.tgz#1c7b9195076f996abaf36f717a7fc442e56b3f45"
   dependencies:
     iphone-inline-video "^2.0.2"
     object-fit-images "^3.1.0"
     object-fit-videos "https://github.com/oncode/object-fit-videos.git"
 
-gi-js-base@^0.0.50:
-  version "0.0.50"
-  resolved "https://registry.yarnpkg.com/gi-js-base/-/gi-js-base-0.0.50.tgz#819bd565496528f6de93440844b53373c9f3243e"
+gi-js-base@^0.0.56:
+  version "0.0.56"
+  resolved "https://registry.yarnpkg.com/gi-js-base/-/gi-js-base-0.0.56.tgz#0f6b9bbae9c1f8a754f96b8c2db9e36013fc0aff"
   dependencies:
     camel-case "^3.0.0"
-    core-js "^2.4.1"
-    detect-it "^3.0.0"
+    core-js "^2.5.1"
+    detect-it "^3.0.3"
     easing-js danro/easing-js
-    fetch-jsonp "^1.0.6"
+    fetch-jsonp "^1.1.3"
     promise-polyfill "^6.0.2"
-    qs "^6.4.0"
+    qs "^6.5.1"
     riot-observable "^3.0.0"
-    whatwg-fetch "^2.0.2"
-    when-dom-ready "^1.2.6"
+    whatwg-fetch "^2.0.3"
 
 glob-base@^0.3.0:
   version "0.3.0"
@@ -3720,9 +3715,9 @@ qs@6.2.1:
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.2.1.tgz#ce03c5ff0935bc1d9d69a9f14cbd18e568d67625"
 
-"qs@>= 0.4.0", qs@^6.4.0:
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.0.tgz#8d04954d364def3efc55b5a0793e1e2c8b1e6e49"
+"qs@>= 0.4.0", qs@^6.5.1:
+  version "6.5.1"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.1.tgz#349cdf6eef89ec45c12d7d5eb3fc0c870343a6d8"
 
 qs@~6.4.0:
   version "6.4.0"
@@ -4656,13 +4651,9 @@ weinre@^2.0.0-pre-I0Z7U9OV:
     nopt "3.0.x"
     underscore "1.7.x"
 
-whatwg-fetch@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.2.tgz#fe294d1d89e36c5be8b3195057f2e4bc74fc980e"
-
-when-dom-ready@^1.2.6:
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/when-dom-ready/-/when-dom-ready-1.2.6.tgz#87fbd3af552410a416349359e149921a0cfa0d87"
+whatwg-fetch@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.3.tgz#9c84ec2dcf68187ff00bc64e1274b442176e1c84"
 
 whet.extend@~0.9.9:
   version "0.9.9"
