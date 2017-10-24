@@ -16,7 +16,7 @@
 - [slider](https://github.com/Goldinteractive/feature-slider)
 - [gallery](https://github.com/Goldinteractive/feature-gallery)
 - [accordion](https://github.com/Goldinteractive/feature-accordion)
-- form: coming soon (replacing [form](http://goldinteractive.github.io/ui-form/)
+- form: coming soon (replacing [form](http://goldinteractive.github.io/ui-form/))
 - [select-search](https://github.com/Goldinteractive/feature-select-search)
 - [map](https://github.com/Goldinteractive/feature-map)
 - modal: coming soon (replacing [overlay](http://goldinteractive.github.io/ui-overlay/))
