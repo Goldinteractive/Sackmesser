@@ -23,7 +23,7 @@ RewriteRule ^ index.php [L]
 # ----------------------------------------------------------------------
 
 <IfModule mod_deflate.c>
-    AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css text/javascript application/javascript
+    AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css text/javascript application/javascript image/svg+xml application/json
 </IfModule>
 
 <IfModule mod_headers.c>
@@ -103,3 +103,4 @@ FileETag None
 
   # Other
     ExpiresByType text/x-cross-domain-policy            "access plus 1 week"
+</IfModule>
