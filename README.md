@@ -16,19 +16,19 @@
 - [slider](https://github.com/Goldinteractive/feature-slider)
 - [gallery](https://github.com/Goldinteractive/feature-gallery)
 - [accordion](https://github.com/Goldinteractive/feature-accordion)
-- form: coming soon (replacing [form](http://goldinteractive.github.io/ui-form/))
+- [form](https://github.com/Goldinteractive/feature-form)
 - [select-search](https://github.com/Goldinteractive/feature-select-search)
 - [map](https://github.com/Goldinteractive/feature-map)
 - modal: coming soon (replacing [overlay](http://goldinteractive.github.io/ui-overlay/))
 - [image-zoom](https://github.com/Goldinteractive/feature-image-zoom)
 - [overwrap](https://github.com/Goldinteractive/feature-overwrap)
 - [datetime-picker](https://github.com/Goldinteractive/feature-datetime-picker)
-- forced-click: coming soon
-- search: coming soon
-- pagination: coming soon
-- dropdown: coming soon
-- tabs: coming soon
-- slide-navigation: coming soon
+- [touch-hover](https://github.com/Goldinteractive/feature-touch-hover)
+- search: todo
+- pagination: todo
+- dropdown: todo
+- tabs: todo
+- slide-navigation: todo
 
 ### How to install a Gold Interactive component
 

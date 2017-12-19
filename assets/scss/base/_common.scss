@@ -33,8 +33,3 @@ a, area, button, input, label, textarea, [tabindex] {
 [disabled] {
     opacity: $disabled-opacity;
 }
-
-.-loading {
-    opacity: $loading-opacity;
-    transition: $loading-transition;
-}
