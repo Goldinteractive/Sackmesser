@@ -19,7 +19,7 @@
 - [form](https://github.com/Goldinteractive/feature-form)
 - [select-search](https://github.com/Goldinteractive/feature-select-search)
 - [map](https://github.com/Goldinteractive/feature-map)
-- modal: coming soon (replacing [overlay](http://goldinteractive.github.io/ui-overlay/))
+- [modal](https://github.com/Goldinteractive/feature-modal)
 - [image-zoom](https://github.com/Goldinteractive/feature-image-zoom)
 - [overwrap](https://github.com/Goldinteractive/feature-overwrap)
 - [datetime-picker](https://github.com/Goldinteractive/feature-datetime-picker)
