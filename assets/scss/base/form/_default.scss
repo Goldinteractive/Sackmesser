@@ -35,6 +35,12 @@ input:not([type="checkbox"]):not([type="radio"]) {
         }
     }
 
+    &:focus {
+        border: $form-border-focus;
+        background-color: $form-background-focus;
+        box-shadow: $form-box-shadow-focus;
+    }
+
     &.-small {
         line-height: $form-line-height-small;
         padding: $form-padding-vertical-small $form-padding-horizontal-small;
@@ -50,11 +56,5 @@ input:not([type="checkbox"]):not([type="radio"]) {
         border-bottom-color: $error-color;
         border-bottom-width: $form-error-line-height;
         margin-bottom: -$form-error-line-height / 2;
-    }
-
-    &:focus {
-        border: $form-border-focus;
-        background-color: $form-background-focus;
-        box-shadow: $form-box-shadow-focus;
     }
 }
