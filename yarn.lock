@@ -1535,7 +1535,7 @@ domain-browser@^1.1.1:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/domain-browser/-/domain-browser-1.1.7.tgz#867aa4b093faa05f1de08c06f4d7b21fdf8698bc"
 
-easing-js@danro/easing-js:
+"easing-js@github:danro/easing-js":
   version "0.5.4"
   resolved "https://codeload.github.com/danro/easing-js/tar.gz/4f5e7edbde7f7200a1baf08e357377896c0d207e"
 
@@ -2096,17 +2096,17 @@ gi-feature-icons@^0.0.14:
   version "0.0.14"
   resolved "https://registry.yarnpkg.com/gi-feature-icons/-/gi-feature-icons-0.0.14.tgz#ea42edecef1cae8701f3a3ed031742a1bdae45ed"
 
-gi-feature-object-fit@^0.0.12:
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/gi-feature-object-fit/-/gi-feature-object-fit-0.0.12.tgz#5cdf17e076765fd5bcb6d5fad1d90835af4090bb"
+gi-feature-object-fit@^0.0.14:
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/gi-feature-object-fit/-/gi-feature-object-fit-0.0.14.tgz#57d61fdd243b5dbdc39d5ced63d053c0a1ee4e6c"
   dependencies:
     iphone-inline-video "^2.2.2"
     object-fit-images "^3.2.3"
-    object-fit-videos "https://github.com/oncode/object-fit-videos.git"
+    object-fit-videos "^1.0.4"
 
-gi-js-base@^0.0.59:
-  version "0.0.59"
-  resolved "https://registry.yarnpkg.com/gi-js-base/-/gi-js-base-0.0.59.tgz#9a7d552ac809fea73095a2ceec8b0ee276a11641"
+gi-js-base@^0.0.61:
+  version "0.0.61"
+  resolved "https://registry.yarnpkg.com/gi-js-base/-/gi-js-base-0.0.61.tgz#861cffc51bfb7a1587db6f35fb64f91b602f58e3"
   dependencies:
     camel-case "^3.0.0"
     core-js "^2.5.1"
@@ -3105,9 +3105,9 @@ object-fit-images@^3.2.3:
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/object-fit-images/-/object-fit-images-3.2.3.tgz#4089f6d0070a3b5563d3c1ab6f1b28d61331f0ac"
 
-"object-fit-videos@https://github.com/oncode/object-fit-videos.git":
-  version "1.0.3"
-  resolved "https://github.com/oncode/object-fit-videos.git#b4039bf1e47c9c7f69cbf03bb6d9cb0f65fa4e30"
+object-fit-videos@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/object-fit-videos/-/object-fit-videos-1.0.4.tgz#56ff1fdf4d824ed08172d77a1651154fc3df79b6"
 
 object-path@^0.9.0:
   version "0.9.2"
