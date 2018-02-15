@@ -26,7 +26,7 @@ module.exports = function(env) {
     // Extend the default plugins to
     // minify everything in production
     // adding the credits as well
-    if (!IS_DEBUG)
+    if (!IS_DEBUG) {
       plugins = plugins.concat([
         new webpack.optimize.UglifyJsPlugin({
           sourceMap: IS_DEBUG ? true : false,
@@ -42,6 +42,7 @@ module.exports = function(env) {
           banner: `Gold Interactive - www.goldinteractive.ch - ${ new Date().getFullYear() }`
         })
       ])
+    }
 
 
     var config = {
