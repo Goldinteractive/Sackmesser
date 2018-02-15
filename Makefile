@@ -136,7 +136,7 @@ icons-generate:
 
 icons-optimize:
 	# optimize svg icons
-	@ svgo --pretty --folder $(ICONS_IN) --output $(ICONS_OUT)
+	@ $(SVGO) --pretty --disable=removeViewBox --folder $(ICONS_IN) --output $(ICONS_OUT)
 
 browser-sync:
 	# starting browser sync server

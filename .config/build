@@ -7,6 +7,7 @@ SCRIPTS_FOLDER=./.tasks
 NODE_MODULES=./node_modules
 BROWSERSYNC=$(NODE_MODULES)/.bin/browser-sync
 WEBPACK=$(NODE_MODULES)/.bin/webpack
+SVGO=$(NODE_MODULES)/.bin/svgo
 ESLINT=$(NODE_MODULES)/.bin/eslint
 POSTCSS=$(NODE_MODULES)/.bin/postcss
 SVG_SPRITE=$(NODE_MODULES)/.bin/svg-sprite
