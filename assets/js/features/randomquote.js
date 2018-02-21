@@ -1,3 +1,5 @@
+import { features } from '@goldinteractive/js-base'
+
 const quotes = [
   ['Programs must be written for people to read, and only incidentally for machines to execute.', 'Harold Abelson'],
   ["You've baked a really lovely cake, but then you've used dog shit for frosting.", 'Steve Jobs'],
@@ -15,7 +17,7 @@ const quotes = [
  *
  * @extends {module:base/features~Feature}
  */
-class RandomQuote extends gi.features.Feature {
+class RandomQuote extends features.Feature {
 
   init() {
     var quote = quotes[Math.floor(Math.random()*quotes.length)]

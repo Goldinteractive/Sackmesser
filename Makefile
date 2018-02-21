@@ -10,17 +10,17 @@ build: clean js css copy
 
 feature-install-%:
 	# install feature
-	@ yarn add gi-feature-$*
+	@ yarn add @goldinteractive/feature-$*
 	# copy feature assets
-	@ rsync -r $(NODE_MODULES)/gi-feature-$*/assets/features/* $(ASSETS_PATH)/features
+	@ rsync -r $(NODE_MODULES)/@goldinteractive/feature-$*/assets/features/* $(ASSETS_PATH)/features
 
 feature-remove-%:
 	# remove feature
-	@ yarn remove gi-feature-$*
+	@ yarn remove @goldinteractive/feature-$*
 
 feature-upgrade-%:
 	# upgrade feature
-	@ yarn upgrade gi-feature-$*
+	@ yarn upgrade @goldinteractive/feature-$*
 
 jsdoc:
 	# generate js documentation

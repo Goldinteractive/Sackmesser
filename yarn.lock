@@ -2,6 +2,32 @@
 # yarn lockfile v1
 
 
+"@goldinteractive/feature-icons@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@goldinteractive/feature-icons/-/feature-icons-0.0.2.tgz#d595cb8b25b1bcbbc1c69270c28f4f955005cc77"
+
+"@goldinteractive/feature-object-fit@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@goldinteractive/feature-object-fit/-/feature-object-fit-0.0.1.tgz#18f42958e41ca884b47e5338ab3c9c8007f170df"
+  dependencies:
+    iphone-inline-video "^2.2.2"
+    object-fit-images "^3.2.3"
+    object-fit-videos "^1.0.4"
+
+"@goldinteractive/js-base@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@goldinteractive/js-base/-/js-base-0.0.1.tgz#91daec794b0903bfec0289f61304ddeaa5903bf5"
+  dependencies:
+    camel-case "^3.0.0"
+    core-js "^2.5.1"
+    detect-it "^3.0.3"
+    easing-js danro/easing-js
+    fetch-jsonp "^1.1.3"
+    promise-polyfill "^6.0.2"
+    qs "^6.5.1"
+    riot-observable "^3.0.0"
+    whatwg-fetch "^2.0.3"
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -1218,9 +1244,13 @@ cookie@0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
 
-core-js@^2.4.0, core-js@^2.5.0, core-js@^2.5.1:
+core-js@^2.4.0, core-js@^2.5.0:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.1.tgz#ae6874dc66937789b80754ff5428df66819ca50b"
+
+core-js@^2.5.1:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.3.tgz#8acc38345824f16d8365b7c9b4259168e8ed603e"
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
@@ -1546,8 +1576,8 @@ detect-indent@^4.0.0:
     repeating "^2.0.0"
 
 detect-it@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/detect-it/-/detect-it-3.0.3.tgz#8e13daa0b62126150cbf76d083a1d34d1b07d071"
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/detect-it/-/detect-it-3.0.4.tgz#79df04f25cc5b2529ebfa37c0fa1baa0e1d41862"
   dependencies:
     detect-hover "^1.0.2"
     detect-passive-events "^1.0.4"
@@ -2197,32 +2227,6 @@ getpass@^0.1.1:
   resolved "https://registry.yarnpkg.com/getpass/-/getpass-0.1.7.tgz#5eff8e3e684d569ae4cb2b1282604e8ba62149fa"
   dependencies:
     assert-plus "^1.0.0"
-
-gi-feature-icons@^0.0.14:
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/gi-feature-icons/-/gi-feature-icons-0.0.14.tgz#ea42edecef1cae8701f3a3ed031742a1bdae45ed"
-
-gi-feature-object-fit@^0.0.14:
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/gi-feature-object-fit/-/gi-feature-object-fit-0.0.14.tgz#57d61fdd243b5dbdc39d5ced63d053c0a1ee4e6c"
-  dependencies:
-    iphone-inline-video "^2.2.2"
-    object-fit-images "^3.2.3"
-    object-fit-videos "^1.0.4"
-
-gi-js-base@^0.0.61:
-  version "0.0.61"
-  resolved "https://registry.yarnpkg.com/gi-js-base/-/gi-js-base-0.0.61.tgz#861cffc51bfb7a1587db6f35fb64f91b602f58e3"
-  dependencies:
-    camel-case "^3.0.0"
-    core-js "^2.5.1"
-    detect-it "^3.0.3"
-    easing-js danro/easing-js
-    fetch-jsonp "^1.1.3"
-    promise-polyfill "^6.0.2"
-    qs "^6.5.1"
-    riot-observable "^3.0.0"
-    whatwg-fetch "^2.0.3"
 
 glob-base@^0.3.0:
   version "0.3.0"
@@ -3880,8 +3884,8 @@ progress@^2.0.0:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.0.tgz#8a1be366bf8fc23db2bd23f10c6fe920b4389d1f"
 
 promise-polyfill@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/promise-polyfill/-/promise-polyfill-6.0.2.tgz#d9c86d3dc4dc2df9016e88946defd69b49b41162"
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/promise-polyfill/-/promise-polyfill-6.1.0.tgz#dfa96943ea9c121fca4de9b5868cb39d3472e057"
 
 prr@~0.0.0:
   version "0.0.0"

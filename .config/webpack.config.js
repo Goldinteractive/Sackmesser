@@ -4,8 +4,8 @@ const webpack = require('webpack'),
 // default plugins
 var plugins = [
   new webpack.ProvidePlugin({
-    gi: 'gi-js-base',
-    base: 'gi-js-base',
+    gi: '@goldinteractive/js-base/src',
+    base: '@goldinteractive/js-base/src',
     $: 'jquery',
     jQuery: 'jquery'
   }),
@@ -65,7 +65,6 @@ module.exports = function(env) {
       watch: IS_WATCH,
       module: {
         rules: [
-          // { test: require.resolve('jquery'), loader: 'expose?$!expose?jQuery' },
           {
             test: /\.js$/,
             exclude: /(node_modules|bower)/,
@@ -76,9 +75,8 @@ module.exports = function(env) {
               ]
             }
           },
-          // gi base es6 source
           {
-            test: /gi-js-base\/src/,
+            test: /@goldinteractive\/(?!.+node_modules)/,
             loader: 'babel-loader',
             query: {
               presets: [

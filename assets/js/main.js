@@ -2,13 +2,13 @@
 import * as SHARED from '../shared-variables'
 
 // helpers
-import { Scroller } from 'gi-js-base/src/utils/dom'
-import { DeviceInfo } from 'gi-js-base/src/utils/device'
+import { Scroller } from '@goldinteractive/js-base/src/utils/dom'
+import { DeviceInfo } from '@goldinteractive/js-base/src/utils/device'
 
 // icons
-import { Icon, IconManager } from 'gi-feature-icons'
+import { Icon, IconManager } from '@goldinteractive/feature-icons'
 // object-fit polyfill
-import ObjectFit from 'gi-feature-object-fit'
+import ObjectFit from '@goldinteractive/feature-object-fit'
 
 // site features
 import RandomQuote from './features/randomquote'

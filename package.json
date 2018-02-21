@@ -14,9 +14,9 @@
   "author": "Gold Interactive",
   "license": "MIT",
   "dependencies": {
-    "gi-feature-icons": "^0.0.14",
-    "gi-feature-object-fit": "^0.0.14",
-    "gi-js-base": "^0.0.61",
+    "@goldinteractive/feature-icons": "^0.0.2",
+    "@goldinteractive/feature-object-fit": "^0.0.1",
+    "@goldinteractive/js-base": "^0.0.1",
     "gridle": "^2.0.48",
     "jquery": "^3.2.1"
   },
@@ -30,14 +30,14 @@
     "cssnano": "^3.10.0",
     "eslint": "^4.7.2",
     "expose-loader": "^0.7.3",
-    "svgo": "^1.0.4",
+    "imports-loader": "^0.7.1",
     "postcss-assets": "^5.0.0",
     "postcss-cli": "^4.1.1",
     "postcss-import": "^11.0.0",
     "postcss-object-fit-images": "^1.1.2",
     "postcss-pxtorem": "^4.0.1",
     "sanitize.css": "^5.0.0",
-    "webpack": "^3.8.1",
-    "imports-loader": "^0.7.1"
+    "svgo": "^1.0.4",
+    "webpack": "^3.8.1"
   }
 }
