@@ -24,6 +24,12 @@
   }
 }
 
+@mixin breakpoint-between($min, $max) {
+    @media only screen and (min-width: $min) and (max-width: $max) {
+        @content;
+    }
+}
+
 /**
  * For hacks. Use wisely.
  */
