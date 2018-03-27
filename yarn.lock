@@ -2,21 +2,21 @@
 # yarn lockfile v1
 
 
-"@goldinteractive/feature-icons@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@goldinteractive/feature-icons/-/feature-icons-0.0.2.tgz#d595cb8b25b1bcbbc1c69270c28f4f955005cc77"
+"@goldinteractive/feature-icons@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@goldinteractive/feature-icons/-/feature-icons-0.0.4.tgz#de54d9c4c8b64b4561f44916d7996b4d2dfca3ed"
 
-"@goldinteractive/feature-object-fit@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@goldinteractive/feature-object-fit/-/feature-object-fit-0.0.1.tgz#18f42958e41ca884b47e5338ab3c9c8007f170df"
+"@goldinteractive/feature-object-fit@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@goldinteractive/feature-object-fit/-/feature-object-fit-0.0.4.tgz#91b9b662a03038899b5f2ce57cc8330bde054dbc"
   dependencies:
     iphone-inline-video "^2.2.2"
     object-fit-images "^3.2.3"
     object-fit-videos "^1.0.4"
 
-"@goldinteractive/js-base@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@goldinteractive/js-base/-/js-base-0.0.1.tgz#91daec794b0903bfec0289f61304ddeaa5903bf5"
+"@goldinteractive/js-base@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@goldinteractive/js-base/-/js-base-0.0.2.tgz#8dea3eb3c524494eeeaa5bc965ff92f9d5245338"
   dependencies:
     camel-case "^3.0.0"
     core-js "^2.5.1"
