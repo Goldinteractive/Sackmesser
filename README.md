@@ -6,29 +6,12 @@
 
 - [base](https://github.com/Goldinteractive/js-base): `gi-js-base`
 - [grid](http://gridle.org/) `gridle`
-- [jquery](https://jquery.com): `jquery`
 - [sanitize.css](https://github.com/jonathantneal/sanitize.css): `sanitize.css`
+
 
 ## Available Features
 
-- [icons](https://github.com/Goldinteractive/feature-icons) (installed by default)
-- [object-fit](https://github.com/Goldinteractive/feature-object-fit) (installed by default)
-- [slider](https://github.com/Goldinteractive/feature-slider)
-- [gallery](https://github.com/Goldinteractive/feature-gallery)
-- [accordion](https://github.com/Goldinteractive/feature-accordion)
-- [form](https://github.com/Goldinteractive/feature-form)
-- [select-search](https://github.com/Goldinteractive/feature-select-search)
-- [map](https://github.com/Goldinteractive/feature-map)
-- [modal](https://github.com/Goldinteractive/feature-modal)
-- [image-zoom](https://github.com/Goldinteractive/feature-image-zoom)
-- [overwrap](https://github.com/Goldinteractive/feature-overwrap)
-- [datetime-picker](https://github.com/Goldinteractive/feature-datetime-picker)
-- [touch-hover](https://github.com/Goldinteractive/feature-touch-hover)
-- search: todo
-- pagination: todo
-- dropdown: todo
-- tabs: todo
-- slide-navigation: todo
+[Gold Features](https://github.com/Goldinteractive/gold-features) Checkout all features
 
 ### How to install a Gold Interactive component
 
@@ -41,29 +24,16 @@ $ make feature-install-datetime-picker
 
 ### How to install other frontend frameworks
 
-Bower is designed to keep track of all the frameworks we are using in our project (jquery plugins, libraries and so on) so to install a new framework just run es:
+Respect the proper scope of the dependency (runtime vs. compile time)
 
 ```shell
-$ yarn add jquery
+$ yarn add dependency-name
 ```
 and it will add the new utility into the `node_modules` folder.
 
-
-## Before installing the frontend dependencies
-
-Please select the right setup for your project from the `frameworks-bootstrap` folder.
-The default files contained into the root folder can be useful just for a normal html project without too much ceremony.
-
-__Attention__: the `frameworks-bootstrap` subfolders could contain also other kind of assets, in that case just replace the files needed for the new project setup for example:
-
-`frameworks-bootstrap/craft/.bowerrc` -> `.bowerrc`
-
-Delete the `frameworks-bootstrap` folder, once you have replace the config files.
-
-
 ## Install all the dependencies
 
-Use the `Makefile` to install all the current project dependencies (`bower`, `yarn` & `composer`):
+Use the `Makefile` to install all the current project dependencies (`yarn` & `composer`):
 
 ```shell
 $ make install
