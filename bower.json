@@ -1,8 +1,0 @@
-{
-  "name": "sackmesser",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "assets/bower/vendor"
-  ]
-}

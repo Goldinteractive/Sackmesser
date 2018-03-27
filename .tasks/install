@@ -1,11 +1,6 @@
 #!/bin/bash
 
 # install the frontend dependencies
-if [ -f .bowerrc ]; then
-  bower install
-fi
-
-# install the npm dependencies
 if [ -f package.json ]; then
   yarn install
 fi
