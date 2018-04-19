@@ -1,0 +1,1 @@
+FROM goldinteractive/craft:1.4
