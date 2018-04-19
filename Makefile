@@ -165,6 +165,12 @@ favicons:
 scss: sass
 watch-scss: watch-sass
 
+docker-up:
+	@ docker-compose up
+
+docker-connect:
+	@ docker exec -i -t $(subst -,,$(shell basename $(CURDIR)))_app_1 bash
+	
 -include $(DEPLOY_SCRIPTS_FOLDER)/Makefile
 
 .PHONY:
