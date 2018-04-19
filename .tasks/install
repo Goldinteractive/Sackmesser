@@ -9,6 +9,3 @@ fi
 if [ -f composer.json ]; then
   composer install --prefer-dist
 fi
-
-# first time css and javascript compilation
-make css && make js
