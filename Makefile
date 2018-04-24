@@ -80,7 +80,8 @@ watch-postcss:
 		$(POSTCSS) \
 		--config $(CONFIG_FOLDER) \
 		$(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css \
-		--watch
+		--watch \
+		--poll
 
 css: grid sass postcss
 
