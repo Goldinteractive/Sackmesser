@@ -24,19 +24,18 @@ copyDeploymentFolderToDist
 
 # prepare dist folder for deployment
 printf "$COLOR_GREEN""Prepare dist folder for deployment.$COLOR_OFF\n"
-mv "$COPY_DEST" "$CURRENTREVFOLDER"
 
 ARCHIVEFILENAME="rev$CURRENTREV.tar.gz"
-tar --exclude="$ARCHIVEFILENAME" -cvzf "$CURRENTREVFOLDER/$ARCHIVEFILENAME" -C "$CURRENTREVFOLDER/../" $CURRENTREVFOLDER
-
-mv "$CURRENTREVFOLDER" "$COPY_DEST"
+tar --exclude="$ARCHIVEFILENAME" -cvzf "$ARCHIVEFILENAME" -C "$COPY_DEST/../" $COPY_DEST
 
 printf "$COLOR_GREEN""Upload our archive to the server.$COLOR_OFF\n"
-scp -P $DEPLOY_PORT "$COPY_DEST/$ARCHIVEFILENAME" $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT
+scp -P $DEPLOY_PORT "$ARCHIVEFILENAME" $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT
 
 if [ $? -eq 1 ]; then
     exit 1
 fi
+
+rm "$ARCHIVEFILENAME"
 
 ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT "bash -s" << EOF
     cd $DEPLOY_APPROOT
@@ -76,7 +75,7 @@ ssh $DEPLOY_USER@$DEPLOY_HOST -p $DEPLOY_PORT "bash -s" << EOF
         mv "current" "$OLDREVFOLDER"
     fi
 
-    mv "$CURRENTREVFOLDER" "current"
+    mv "$COPY_DEST" "current"
 EOF
 
 if [ $? -ne 0 ]; then

@@ -14,7 +14,7 @@ if [ $USE_DB -eq 0 ]; then
  exit 1
 fi
 
-DB_DATA_PUSH_FILE=`mktemp -t deployment`
+DB_DATA_PUSH_FILE=`mktemp`
 
 DB_DATA_BACKUP_FILE="current/$DEPLOY_DATA_BACKUP_FOLDER/backup_db.sql"
 
