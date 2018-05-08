@@ -170,7 +170,7 @@ docker-up:
 	@ docker-compose up
 
 docker-connect:
-	@ docker exec -i -t $(subst -,,$(shell basename $(CURDIR)))_app_1 bash
+	@ docker exec -i -t $(shell basename $(CURDIR))_app_1 bash
 
 -include $(DEPLOY_SCRIPTS_FOLDER)/Makefile
 
