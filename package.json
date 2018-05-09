@@ -14,9 +14,9 @@
   "author": "Gold Interactive",
   "license": "MIT",
   "dependencies": {
-    "@goldinteractive/feature-icons": "^0.0.4",
-    "@goldinteractive/feature-object-fit": "^0.0.4",
-    "@goldinteractive/js-base": "^0.0.2",
+    "@goldinteractive/feature-icons": "^0.0.6",
+    "@goldinteractive/feature-object-fit": "^0.0.6",
+    "@goldinteractive/js-base": "^0.0.3",
     "gridle": "^2.0.48",
     "jquery": "^3.2.1"
   },
