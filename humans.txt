@@ -1,20 +1,5 @@
 Copyright: Gold Interactive
-Site: http://www.goldinteractive.ch
-
-/* TEAM */
-Chris Lalive d'Epinay
-Kevin Luginbuehl
-Nadine Engler
-Jonathan Beck
-Sidney Widmer
-Watezz Bleuer
-Manuel Sommerhalder
-Christian Ruhstaller
-
-
-
-
-
+Site: https://www.goldinteractive.ch
 
                                                                         ,rXAHs      r3&&&,
                                                                    .S@@@@@@s;.   ,@@@;:,;
