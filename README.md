@@ -72,11 +72,6 @@ All the build variables are stored in the `.config/build` file
 - [sass-guidelines](http://sass-guidelin.es/)
 
 
-# Other Links
-
-- [Changelog](CHANGELOG.md)
-
-
 # Deployment
 
 - [Deployment README](.deployment/README.md)
