@@ -11,6 +11,7 @@ trim_trailing_whitespace = true
 
 [*.js]
 indent_size = 2
+quote_type = single
 
 [*.txt]
 insert_final_newline = false
