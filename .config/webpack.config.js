@@ -1,94 +1,250 @@
-const webpack = require('webpack'),
-  path = require('path')
+const webpack = require('webpack')
+const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const IgnoreAssetsWebpackPlugin = require('@goldinteractive/ignore-assets-webpack-plugin')
+const jsonImporter = require('node-sass-json-importer')
+const dotenv = require('dotenv')
 
-// default plugins
-var plugins = [
-  new webpack.ProvidePlugin({
-    gi: '@goldinteractive/js-base/src',
-    base: '@goldinteractive/js-base/src',
-    $: 'jquery',
-    jQuery: 'jquery'
-  }),
-  new webpack.LoaderOptionsPlugin({
-    options: {
-      context: __dirname
-    }
-  })
-]
+const appConfiguration = require('./app-configuration')
 
+const frontendFolder = 'frontend'
 
-module.exports = function(env) {
+const root = path.join(__dirname, '..')
+const base = path.join(root, frontendFolder)
+const jsBase = path.join(base, 'js')
+const cssBase = path.join(base, 'css')
 
-    const IS_DEBUG = process.env.DEBUG && process.env.DEBUG != 'false',
-      IS_WATCH = process.env.WATCH && process.env.WATCH != 'false',
-      BASE = path.join(__dirname, '..', process.env.BASE)
-
-    // Extend the default plugins to
-    // minify everything in production
-    // adding the credits as well
-    if (!IS_DEBUG) {
-      plugins = plugins.concat([
-        new webpack.optimize.UglifyJsPlugin({
-          sourceMap: IS_DEBUG ? true : false,
-          comments: false,
-          compress: {
-            warnings: false
-          }
-        }),
-        new webpack.LoaderOptionsPlugin({
-          minimize: true
-        }),
-        new webpack.BannerPlugin({
-          banner: `Gold Interactive - www.goldinteractive.ch - ${ new Date().getFullYear() }`
-        })
-      ])
-    }
-
-
-    var config = {
-      resolve: {
-        modules: [
-            BASE, 'node_modules'
-        ]
-      },
-      plugins: plugins,
-      entry: path.join(BASE, process.env.IN),
-      target: 'web',
-      cache: true,
-      bail: !IS_WATCH, // exit the build process in case of errors
-      output: {
-        path: BASE,
-        filename: `${process.env.OUT}`,
-        sourceMapFilename: `${process.env.OUT}.map`
-      },
-      devtool: IS_DEBUG ? '#source-map' : false,
-      watch: IS_WATCH,
-      module: {
-        rules: [
-          {
-            test: /\.js$/,
-            exclude: /(node_modules|bower)/,
-            loader: 'babel-loader',
-            query: {
-              presets: [
-                ['es2015', { modules: false }]
-              ]
-            }
-          },
-          {
-            test: /@goldinteractive\/(?!.+node_modules)/,
-            loader: 'babel-loader',
-            query: {
-              presets: [
-                ['es2015', { modules: false }]
-              ]
-            }
-          }
-        ]
-      }
-    }
-
-    return config
-
+const sassLoader = {
+  loader: 'sass-loader',
+  options: {
+    includePaths: [cssBase, 'node_modules'],
+    importer: jsonImporter
+  }
 }
 
+const postcssLoader = {
+  loader: 'postcss-loader',
+  options: {
+    config: {
+      path: '.config/postcss.config.js'
+    }
+  }
+}
+
+// Note that svg fonts won't be picked up by this loader
+const fontLoader = () => ({
+  test: /\.(ttf|eot|woff|woff2)$/,
+  use: {
+    loader: 'file-loader',
+    options: {
+      name: 'fonts/[name].[ext]'
+    }
+  }
+})
+
+const imageLoader = ({ isProd, assetHash }) => ({
+  test: /\.(gif|png|jpe?g|svg)$/i,
+  use: [
+    {
+      loader: 'file-loader',
+      options: {
+        name: isProd ? '[hash].[ext]' : '[path][name].[ext]',
+        outputPath: assetHash + '/files/'
+      }
+    },
+    {
+      loader: 'image-webpack-loader',
+      options: {
+        disable: true, // disabled in dev mode
+        optipng: {
+          enabled: false
+        },
+        pngquant: {
+          quality: '90-95'
+        }
+      }
+    }
+  ]
+})
+
+const buildBaseConfig = ({ isProd }) => ({
+  watch: !isProd,
+  bail: isProd,
+  target: 'web'
+})
+
+const pushIfSet = (bool, entry, array = []) => {
+  if (bool) {
+    return array.concat([entry])
+  }
+  return array
+}
+
+const buildBasePlugins = ({ isProd }) =>
+  pushIfSet(
+    isProd,
+    new webpack.BannerPlugin({
+      banner: `Gold Interactive GmbH - www.goldinteractive.ch - ${new Date().getFullYear()}`
+    })
+  )
+
+const buildCssConfig = (cssEntry, { assetHash, isProd, assetDir }) => ({
+  ...buildBaseConfig({
+    isProd
+  }),
+  entry: {
+    [cssEntry]: path.join(cssBase, cssEntry + '.scss')
+  },
+  resolve: {
+    modules: [cssBase, base, 'node_modules']
+  },
+  output: {
+    filename: '[name].js',
+    path: assetDir
+  },
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          'file-loader?name=[name].css',
+          'extract-loader',
+          'css-loader',
+          postcssLoader,
+          sassLoader
+        ]
+      },
+      fontLoader(),
+      imageLoader({ isProd, assetHash })
+    ]
+  },
+  plugins: [
+    ...buildBasePlugins({
+      isProd
+    }),
+    new IgnoreAssetsWebpackPlugin({
+      ignore: cssEntry + '.js'
+    })
+  ]
+})
+
+const buildJsConfig = (jsEntry, { assetHash, isProd, assetDir }) => ({
+  ...buildBaseConfig({
+    isProd
+  }),
+  entry: {
+    [jsEntry]: path.join(jsBase, jsEntry + '.js')
+  },
+  resolve: {
+    modules: [jsBase, base, 'node_modules']
+  },
+  output: {
+    filename: '[name].js',
+    path: assetDir
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        options: {
+          cacheDirectory: true
+        }
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          postcssLoader,
+          sassLoader
+        ]
+      },
+      fontLoader(),
+      imageLoader({ isProd })
+    ]
+  },
+  plugins: [
+    ...buildBasePlugins({
+      isProd
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    })
+  ]
+})
+
+const buildProjectSkeletonConfig = ({
+  jsEntries,
+  assetHash,
+  isProd,
+  baseOutputDir,
+  assetDir
+}) => ({
+  ...buildBaseConfig({
+    isProd
+  }),
+  entry: {
+    // Webpack needs an entry...
+    [jsEntries[0] + '-omit']: path.join(jsBase, jsEntries[0] + '.js')
+  },
+  output: {
+    filename: '[name].js',
+    path: assetDir
+  },
+  module: {
+    rules: [
+      {
+        // match all
+        test: /[\s\S]*/,
+        use: 'null-loader'
+      }
+    ]
+  },
+  plugins: [
+    new IgnoreAssetsWebpackPlugin({
+      ignore: jsEntries[0] + '-omit.js'
+    }),
+    ...buildBasePlugins({
+      isProd
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: path.join(base, '_public'),
+        to: '..'
+      }
+    ])
+  ]
+})
+
+module.exports = env => {
+  const isProd = env.mode === 'production'
+  const assetHash = env.assetHash
+  const environment = env.environment
+  const publicDest = env.publicDest
+
+  // parses current .env file and provides all variables in process.env.XYZ
+  // usage: process.env.APP_URL
+  dotenv.config({
+    path: path.join(base, '.env.' + environment)
+  })
+
+  const baseOutputDir = path.join(root, publicDest)
+  const assetDir = baseOutputDir + '/' + assetHash
+  const { jsEntries, cssEntries } = appConfiguration(env)
+
+  const configObject = {
+    baseOutputDir,
+    assetDir,
+    assetHash,
+    isProd,
+    jsEntries
+  }
+
+  return [
+    buildProjectSkeletonConfig(configObject),
+    ...jsEntries.map(jsEntry => buildJsConfig(jsEntry, configObject)),
+    ...cssEntries.map(cssEntry => buildCssConfig(cssEntry, configObject))
+  ]
+}

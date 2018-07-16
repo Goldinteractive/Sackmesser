@@ -29,11 +29,7 @@ globals:
   #                                                                         #
   ###########################################################################
 
-  gi: true
-  base: true
   require: true
-  $: true
-  jQuery: true
   google: true
 
 rules:
