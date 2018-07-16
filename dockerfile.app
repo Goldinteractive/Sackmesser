@@ -1,1 +1,1 @@
-FROM goldinteractive/craft:1.4
+FROM goldinteractive/sackmesser:2.0
