@@ -1,0 +1,68 @@
+pipeline:
+  restore-cache:
+      image: drillster/drone-volume-cache
+      restore: true
+      mount:
+        - ./backend/vendor
+        - ./node_modules
+      volumes:
+        - /tmp/cache:/cache
+
+  build:
+    image: goldinteractive/sackmesser:2.0
+    environment:
+      - ASSET_HASH=${DRONE_BUILD_CREATED}
+      - ENV=${DRONE_BRANCH##release/}
+    commands:
+      - echo "BE build"
+      - .scripts/ci/build-be.sh
+      - echo "FE build"
+      - .scripts/ci/build-fe.sh
+
+  test:
+    image: goldinteractive/sackmesser:2.0
+    commands:
+          - echo "Test BE"
+          - .scripts/ci/test-be.sh
+          - echo "Test FE"
+          - .scripts/ci/test-fe.sh
+
+  deploy:
+    image: appleboy/drone-scp
+    commands:
+      - ENV=${DRONE_BRANCH##release/} .scripts/ci/deploy.sh
+    secrets:
+      - source: deploy_${DRONE_BRANCH##release/}_password
+        target: ssh_password
+
+  golive:
+    image: appleboy/drone-ssh
+    commands:
+      - ENV=${DRONE_BRANCH##release/} .scripts/ci/golive.sh
+    secrets:
+      - source: deploy_${DRONE_BRANCH##release/}_password
+        target: ssh_password
+
+  # slack:
+  #   image: plugins/slack
+  #   webhook: "REPLACEME"
+  #   template: >
+  #     {{#success build.status}}
+  #       *{{repo.name}}* (#{{build.number}}) by *{{build.author}}* deployed (*{{build.branch}}*). Yay.
+  #     {{else}}
+  #       *{{repo.name}}* (#{{build.number}}) by *{{build.author}}* was not deployed (*{{build.branch}}*). Oh noes.
+  #     {{/success}}
+  #   when:
+  #     status: [ success, failure ]
+
+  rebuild-cache:
+      image: drillster/drone-volume-cache
+      rebuild: true
+      mount:
+        - ./backend/vendor
+        - ./node_modules
+      volumes:
+        - /tmp/cache:/cache
+
+branches: [ release/production, release/staging ]
+

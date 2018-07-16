@@ -1,5 +1,5 @@
 # What kind of project is it? Can be default, craft, laravel
-RECIPE=craft
+RECIPE=default
 
 # Name of the config folder where this file is
 CONFIG_FOLDER=./.config

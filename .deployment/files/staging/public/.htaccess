@@ -1,0 +1,14 @@
+RewriteEngine On
+
+#staging
+AuthType Basic
+AuthName "Password Protected Area"
+# File for goldinter01
+#AuthUserFile /home/www-goldinteractive/.htpasswd
+# File for cloudone
+#AuthUserFile /var/www/vhosts/DOMAIN.ch/staging.DOMAIN.ch/current/.htpasswd
+Require valid-user
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]

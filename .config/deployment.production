@@ -1,4 +1,4 @@
 DEPLOY_APPROOT=deployment.ch
-DEPLOY_HOST=cloudone.goldinteractive.ch
-DEPLOY_PORT=2121
+DEPLOY_HOST=deployment.ch
+DEPLOY_PORT=21
 DEPLOY_USER=deployment
