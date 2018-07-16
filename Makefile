@@ -1,144 +1,70 @@
-# Import the build variables
+SHELL:=/bin/bash
+
 -include .config/build
-# Import the environment variables
--include .env
 
 help:
-	@ $(SCRIPTS_FOLDER)/help
+	@ $(SCRIPTS_FOLDER)/help.sh
 
-build: clean js css copy
+.PHONY: install
+install: install-be install-fe
 
+.PHONY: install-fe
+install-fe:
+	@ $(SCRIPTS_FOLDER)/frontend/install.sh
+
+.PHONY: install-be
+install-be:
+	@ $(SCRIPTS_FOLDER)/backend/install.sh
+
+.PHONY: feature-install-%
 feature-install-%:
 	# install feature
 	@ yarn add @goldinteractive/feature-$*
 	# copy feature assets
 	@ rsync -r $(NODE_MODULES)/@goldinteractive/feature-$*/assets/features/* $(ASSETS_PATH)/features
 
+.PHONY: feature-remove-%
 feature-remove-%:
 	# remove feature
 	@ yarn remove @goldinteractive/feature-$*
 
-feature-upgrade-%:
-	# upgrade feature
-	@ yarn upgrade @goldinteractive/feature-$*
+.PHONY: watch
+watch: install icons-optimize icons-generate watch-frontend
 
-jsdoc:
-	# generate js documentation
-	@ jsdoc -r \
-		-c $(JSDOC_CONFIG) \
-		-d $(JSDOC_OUT) \
-		-R $(JSDOC_README) \
-		$(JSDOC_IN)
+.PHONY: watch-frontend
+watch-frontend:
+	@ $(SCRIPTS_FOLDER)/frontend/watch.sh
 
-# Install all the project dependencies
-# this may change in any project
-install:
-	@ $(SCRIPTS_FOLDER)/install
+.PHONY: build-local
+build-local:
+	@ ASSET_HASH=assets \
+		PUBLIC_DEST=$(DEST) \
+		ENVIRONMENT=production \
+		.scripts/frontend/build.sh
 
-# compile the scss files
-sass:
-	# compile the normal css
-	@ scss \
-		-I $(NODE_MODULES) \
-		$(SCSS_IN)/style.scss:$(CSS_OUT)/style.scss.css \
-		-r sass-json-vars
-
-grid:
-	# compile the grid
-	@ scss \
-		-I $(NODE_MODULES) \
-		$(SCSS_IN)/grid.scss:$(CSS_OUT)/grid.css \
-		-r sass-json-vars
-
-watch-grid:
-	# watch the grid
-	@ scss \
-		-I $(NODE_MODULES) \
-		--style=compressed \
-		--sourcemap=none \
-		$(SCSS_IN)/grid.scss:$(CSS_OUT)/grid.css \
-		-r sass-json-vars \
-		--watch
-
-# watch the scss files
-watch-sass:
-	@ scss \
-		-I $(NODE_MODULES) \
-		$(SCSS_IN)/style.scss:$(CSS_OUT)/style.scss.css \
-		-r sass-json-vars \
-		--watch
-
-postcss:
-	# modify the normal css with postcss
-	@ ASSETS_PATH=$(ASSETS_PATH) \
-		$(POSTCSS) \
-		--config $(CONFIG_FOLDER) \
-		$(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css
-
-watch-postcss:
-	@ ASSETS_PATH=$(ASSETS_PATH) \
-		$(POSTCSS) \
-		--config $(CONFIG_FOLDER) \
-		$(CSS_OUT)/style.scss.css -o $(CSS_OUT)/style.css \
-		--watch \
-		--poll
-
-css: grid sass postcss
-
-watch-css:
-	# compile the css on the fly
-	@ $(SCRIPTS_FOLDER)/utils/parallel \
-		"make watch-scss" \
-		"make watch-postcss"
-
-# check the js files
-test:
-	@ $(ESLINT) $(JS_BASE) --ignore-pattern=$(JS_BASE)/$(JS_OUT)
-
-phpunit:
-	# Not in use for right now
-	# @ $(PHPUNIT) --bootstrap $(PHPUNIT_BOOTSTRAP) --configuration $(PHPUNIT_CONFIG) $(PHPUNIT_TESTDIR)
-
-copy:
-	@ ASSETS_PATH=$(ASSETS_PATH) \
-		DEST=$(COPY_DEST) \
-		JS_BASE=$(JS_BASE) \
-		JS_OUT=$(JS_OUT) \
-		$(SCRIPTS_FOLDER)/copy
-	# replace the @TIMESTAMP variable
-	@ egrep -lRZ "@TIMESTAMP" $(COPY_DEST) | xargs --null sed -i "s/@TIMESTAMP/$(TIMESTAMP)/g"
-
-clean:
-	@ $(SCRIPTS_FOLDER)/clean
-
-js:
-	@ BASE=$(JS_BASE) \
-		IN=$(JS_IN) \
-		OUT=$(JS_OUT) \
-		$(WEBPACK) \
-		--config $(JS_CONFIG) \
-		--display-error-details
-
-watch-js:
-	@ DEBUG=true WATCH=true $(MAKE) js
-
-debug-js:
-	@ DEBUG=true $(MAKE) js
-
+.PHONY: icons
 icons: icons-optimize icons-generate
 
+.PHONY: icons-generate
 icons-generate:
 	# generate combined svg and json file with svg attribute informations
-	@ php -f $(SCRIPTS_FOLDER)/icons/generate.php \
-		sharedJson=$(ASSETS_PATH)/shared-variables.json \
-		iconsFolder=$(ICONS_IN) \
+	@ php -f $(SCRIPTS_FOLDER)/frontend/icons/generate.php \
+		sharedJson=$(FE_SOURCE)/shared-variables.json \
+		iconsFolder=$(ICONS_OUT) \
 		dataFileOutput=$(ICONS_DATA_FILE) \
 		svgCombOutput=$(ICONS_COMBINED_SVG)
 
+.PHONY: icons-optimize
 icons-optimize:
 	# optimize svg icons
+	@ mkdir -p $(ICONS_OUT)
 	@ $(SVGO) --pretty --disable=removeViewBox --folder $(ICONS_IN) --output $(ICONS_OUT)
 
+.PHONY: favicons
+favicons:
+	@ $(SCRIPTS_FOLDER)/frontend/favicons.sh $(FAVICONS_IN) $(FAVICONS_OUT)
+
+.PHONY: browser-sync
 browser-sync:
 	# starting browser sync server
 	@ ASSETS_PATH=$(ASSETS_PATH) \
@@ -149,50 +75,10 @@ browser-sync:
 		--port $(BROWSERSYNC_PORT) \
 		--proxy $(PROXY)
 
-watch:
-	@ $(SCRIPTS_FOLDER)/utils/parallel \
-		"make watch-js" \
-		"make watch-scss" \
-		"make watch-postcss"
-
-setup:
-	# setup your machine
-	@ $(SCRIPTS_FOLDER)/utils/setup
-
-favicons:
-	@ $(SCRIPTS_FOLDER)/favicons $(FAVICONS_PATH)
-
-# alias tasks
-scss: sass
-watch-scss: watch-sass
-
+.PHONY: docker-up
 docker-up:
 	@ docker-compose up
 
+.PHONY: docker-connect
 docker-connect:
 	@ docker exec -i -t $(shell basename $(CURDIR))_app_1 bash
-
--include $(DEPLOY_SCRIPTS_FOLDER)/Makefile
-
-.PHONY:
-	install
-	setup
-	scss
-	sass
-	js
-	grid
-	debug-js
-	watch
-	watch-js
-	watch-grid
-	watch-sass
-	watch-scss
-	watch-css
-	watch-postcss
-	postcss
-	favicons
-	test
-	phpunit
-	build
-	icons
-	clean
