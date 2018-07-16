@@ -10,11 +10,10 @@ services:
       context: ./
       dockerfile: dockerfile.app
     working_dir: /var/www
-    command: bash -c "make install && php-fpm"
     volumes:
       - ./:/var/www/:delegated
       - node_modules:/var/www/node_modules
-      - vendor:/var/www/crafter/vendor
+      - vendor:/var/www/backend/vendor
       - dist:/var/www/dist
       - ~/.composer/auth.json:/root/.composer/auth.json
 
@@ -24,6 +23,7 @@ services:
       dockerfile: dockerfile.web
     working_dir: /var/www/
     volumes:
+      - ./_data:/var/www/_data:delegated
       - ./public:/var/www/public:delegated
     ports:
       - 8000:80

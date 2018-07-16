@@ -30,7 +30,8 @@ ICONS_DATA_FILE=${FE_SOURCE}/_public/generated/icons.json
 ICONS_COMBINED_SVG=${FE_SOURCE}/_public/generated/icons.svg
 
 # Favicons
-FAVICONS_PATH=${FE_SOURCE}/_public/assets/img/favicons
+FAVICONS_IN=$(FE_SOURCE)/_public/assets/img/favicons
+FAVICONS_OUT=$(FE_SOURCE)/_public/generated/img/favicons
 
 DEST=dist
 TEST_DIR=citest

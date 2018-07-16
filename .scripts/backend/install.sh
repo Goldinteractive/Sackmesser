@@ -2,6 +2,11 @@
 set -e
 source .config/build
 
+if [ "$RECIPE" == "default" ]
+then
+  exit 0
+fi
+
 cd $BE_SOURCE
 
 if [ "$CI_BULD" == "1" ]

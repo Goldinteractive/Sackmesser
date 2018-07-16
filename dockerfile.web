@@ -1,1 +1,1 @@
-FROM goldinteractive/apache:1.0
+FROM goldinteractive/apache:1.1
