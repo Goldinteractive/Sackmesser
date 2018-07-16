@@ -1,19 +1,4 @@
-#should the db be backuped when deploying?
-BACKUP_DB=0
-
-#root folder of the web app
-DEPLOY_APPROOT="deployment.ch"
-
-# SSH
-DEPLOY_HOST="host"
-DEPLOY_PORT="22"
-DEPLOY_USER="user"
-
-# DB
-source .env.production
-
-DEPLOY_DB_DATABASE=$DB_DATABASE
-DEPLOY_DB_PORT=$DB_PORT
-DEPLOY_DB_HOST=$DB_HOST
-DEPLOY_DB_USER=$DB_USERNAME
-DEPLOY_DB_PW=$DB_PASSWORD
+DEPLOY_APPROOT=deployment.ch
+DEPLOY_HOST=cloudone.goldinteractive.ch
+DEPLOY_PORT=2121
+DEPLOY_USER=deployment
