@@ -8,7 +8,7 @@ source .config/build
 # clear the directory
 if [ -d "$PUBLIC_DEST" ]
 then
-  rm -rf "$PUBLIC_DEST"
+  rm -rf "$PUBLIC_DEST/*"
 fi
 
 # For the dev environment we want to create a link to the uploaded files
