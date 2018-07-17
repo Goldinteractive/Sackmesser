@@ -17,14 +17,14 @@ executeSSH() {
 
 # setup environment
 executeSSH "if [ ! -d $APPROOT/_data ]; then mkdir $APPROOT/_data; fi
-    if [ ! -d $APPROOT/_data/files ]; then mkdir $APPROOT/_data/files; fi
+    if [ ! -d $APPROOT/_data/uploads ]; then mkdir $APPROOT/_data/uploads; fi
     if [ ! -d $APPROOT/_data/storage ]; then mkdir $APPROOT/_data/storage; fi"
 
 # symlinks
 if [ "$RECIPE" == "craft" ]
 then
     executeSSH "ln -s ../../../_data/storage $APPROOT/deploy/backend/craft/storage
-        ln -s ../../_data/files $APPROOT/deploy/public/files"
+        ln -s ../../_data/uploads $APPROOT/deploy/public/uploads"
 fi
 
 # go live

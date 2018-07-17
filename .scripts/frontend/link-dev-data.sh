@@ -4,7 +4,7 @@ source .config/build
 
 if [ "$RECIPE" == "craft" ]
 then
-    ln -s ../_data/files "$PUBLIC_DEST/files"
+    ln -s ../_data/uploads "$PUBLIC_DEST/uploads"
 fi
 
 exit 0
