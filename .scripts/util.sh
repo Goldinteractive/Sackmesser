@@ -24,3 +24,22 @@ loadEnvConfig() {
 
     source $DEPLOYMENT_CONFIG_FILE
 }
+
+ask() {
+    local DEFAULT=1
+    local DEFAULT_TEMPLATE="(Y/N=Default)"
+
+    case ${2:-} in
+        [0] ) DEFAULT=0; DEFAULT_TEMPLATE="(Y=Default/N)";;
+        * ) DEFAULT=1;;
+    esac
+
+    printf "$COLOR_GREEN$1 $COLOR_OFF \n"
+    read -p "Answer: $DEFAULT_TEMPLATE: " yn
+
+    case $yn in
+        [Yy]* ) return 0;;
+        [Nn]* ) return 1;;
+        * ) return $DEFAULT;;
+    esac
+}

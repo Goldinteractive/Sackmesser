@@ -48,3 +48,16 @@ docker-make-exec:
 .PHONY: docker-exec
 docker-exec:
 	@ docker exec -i -t $(DOCKERAPPNAME) $(DOCKERCMD)
+
+# data sync for files (legacy)
+pull-data-%:
+	@	DEPLOYENV=$* \
+		SCRIPTS_FOLDER=$(SCRIPTS_FOLDER) \
+		CONFIG_FOLDER=$(CONFIG_FOLDER) \
+		 $(SCRIPTS_FOLDER)/datasync/pull-data.sh
+
+push-data-%:
+	@	DEPLOYENV=$* \
+		DEPLOY_SCRIPTS_FOLDER=$(SCRIPTS_FOLDER) \
+		CONFIG_FOLDER=$(CONFIG_FOLDER) \
+		 $(SCRIPTS_FOLDER)/datasync/push-data.sh
