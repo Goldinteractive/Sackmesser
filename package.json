@@ -50,7 +50,6 @@
   "dependencies": {
     "@goldinteractive/feature-icons": "^0.0.6",
     "@goldinteractive/feature-object-fit": "^0.0.6",
-    "@goldinteractive/js-base": "^0.0.4",
-    "gridle": "^2.0.48"
+    "@goldinteractive/js-base": "^0.0.4"
   }
 }
