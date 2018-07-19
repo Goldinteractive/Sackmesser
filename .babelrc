@@ -3,9 +3,7 @@
     "plugins": [
         "transform-decorators-legacy",
         "transform-class-properties",
-        "transform-object-rest-spread",
-        "syntax-async-functions",
-        "syntax-dynamic-import"
+        "transform-object-rest-spread"
     ],
     "ignore": [],
     "env": {}
