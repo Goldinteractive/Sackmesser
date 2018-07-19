@@ -5,10 +5,15 @@ import * as SHARED from '../shared-variables'
 import { Scroller } from '@goldinteractive/js-base/src/utils/dom'
 import { DeviceInfo } from '@goldinteractive/js-base/src/utils/device'
 
+import { features } from '@goldinteractive/js-base'
+
 // icons
 import { Icon, IconManager } from '@goldinteractive/feature-icons'
 // object-fit polyfill
 import ObjectFit from '@goldinteractive/feature-object-fit'
+
+// @extension:js-import:begin
+// @extension:js-import:end
 
 // site features
 import RandomQuote from './features/randomquote'
@@ -33,21 +38,32 @@ var app = {
       .initDeviceInfo()
       .addFeatures()
       .initFeatures()
+    // @extension:js-init:begin
+
+    // @extension:js-init:end
   },
+
+  // @extension:js-custom:begin
+
+  // @extension:js-custom:end
 
   addFeatures() {
     // object-fit-images polyfill feature
-    gi.features.add('fit', ObjectFit)
-    gi.features.add('fit-watch', ObjectFit, { watchMQ: true })
+    features.add('fit', ObjectFit)
+    features.add('fit-watch', ObjectFit, { watchMQ: true })
 
     // site features
-    gi.features.add('quote', RandomQuote, { count: 1 })
+    features.add('quote', RandomQuote, { count: 1 })
+
+    // @extension:js-features:begin
+
+    // @extension:js-features:end
 
     return this
   },
 
   initFeatures() {
-    gi.features.init(document.body)
+    features.init(document.body)
     return this
   },
 
@@ -59,8 +75,8 @@ var app = {
 
     this.icons.injectSprite(() => {
       this.icons.loadData(() => {
-        gi.features.add('icon', Icon, { manager: this.icons })
-        gi.features.init(document.body, 'icon')
+        features.add('icon', Icon, { manager: this.icons })
+        features.init(document.body, 'icon')
       })
     })
 
