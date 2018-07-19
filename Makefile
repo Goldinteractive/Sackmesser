@@ -1,6 +1,6 @@
 SHELL:=/bin/bash
 LOCALMAKEFILE:=Makefile.local
-DOCKERAPPNAME=$(shell basename $(CURDIR))_app_1
+DOCKERAPPNAME=$(shell basename $(CURDIR) | tr '[:upper:]' '[:lower:]')_app_1
 
 -include .config/build
 
