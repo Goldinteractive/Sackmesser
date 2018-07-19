@@ -13,10 +13,9 @@ import { Icon, IconManager } from '@goldinteractive/feature-icons'
 import ObjectFit from '@goldinteractive/feature-object-fit'
 
 // @extension:js-import:begin
-// @extension:js-import:end
-
 // site features
 import RandomQuote from './features/randomquote'
+// @extension:js-import:end
 
 
 var app = {
@@ -33,14 +32,14 @@ var app = {
 
   init() {
     this
+    // @extension:js-init:begin
+
+    // @extension:js-init:end
       .initIcons()
       .initScroller()
       .initDeviceInfo()
       .addFeatures()
       .initFeatures()
-    // @extension:js-init:begin
-
-    // @extension:js-init:end
   },
 
   // @extension:js-custom:begin
@@ -52,11 +51,9 @@ var app = {
     features.add('fit', ObjectFit)
     features.add('fit-watch', ObjectFit, { watchMQ: true })
 
+    // @extension:js-features:begin
     // site features
     features.add('quote', RandomQuote, { count: 1 })
-
-    // @extension:js-features:begin
-
     // @extension:js-features:end
 
     return this
@@ -69,8 +66,8 @@ var app = {
 
   initIcons() {
     this.icons = new IconManager({
-      svgJsonFile: 'assets/icons.json',
-      svgSpriteFile: 'assets/icons.svg'
+      svgJsonFile: 'generated/icons.json',
+      svgSpriteFile: 'generated/icons.svg'
     })
 
     this.icons.injectSprite(() => {
