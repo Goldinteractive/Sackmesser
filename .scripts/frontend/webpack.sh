@@ -4,6 +4,9 @@ set -e
 source .config/build
 
 #expects $WEBPACK_MODE, $ASSET_HASH, $PUBLIC_DEST, $ENVIRONMENT
+$SCRIPTS_FOLDER/frontend/icons/icons.sh
+
+$SCRIPTS_FOLDER/frontend/favicons.sh $FAVICONS_IN $FAVICONS_OUT
 
 # clear the directory
 if [ -d "$PUBLIC_DEST" ]

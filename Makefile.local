@@ -25,7 +25,7 @@ feature-remove-%:
 	@ yarn remove @goldinteractive/feature-$*
 
 .PHONY: watch
-watch: install icons-optimize icons-generate watch-frontend
+watch: install watch-frontend
 
 .PHONY: watch-frontend
 watch-frontend:
@@ -39,22 +39,8 @@ build:
 		.scripts/frontend/build.sh
 
 .PHONY: icons
-icons: icons-optimize icons-generate
-
-.PHONY: icons-generate
-icons-generate:
-	# generate combined svg and json file with svg attribute informations
-	@ php -f $(SCRIPTS_FOLDER)/frontend/icons/generate.php \
-		sharedJson=$(FE_SOURCE)/shared-variables.json \
-		iconsFolder=$(ICONS_OUT) \
-		dataFileOutput=$(ICONS_DATA_FILE) \
-		svgCombOutput=$(ICONS_COMBINED_SVG)
-
-.PHONY: icons-optimize
-icons-optimize:
-	# optimize svg icons
-	@ mkdir -p $(ICONS_OUT)
-	@ $(SVGO) --pretty --disable=removeViewBox --folder $(ICONS_IN) --output $(ICONS_OUT)
+icons:
+	@ $(SCRIPTS_FOLDER)/frontend/icons/icons.sh
 
 .PHONY: favicons
 favicons:
