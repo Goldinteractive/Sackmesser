@@ -71,7 +71,11 @@ const imageLoader = ({ isProd, assetHash }) => ({
 const buildBaseConfig = ({ isProd }) => ({
   watch: !isProd,
   bail: isProd,
-  target: 'web'
+  target: 'web',
+  performance: {
+    maxEntrypointSize: 700000,
+    maxAssetSize: 700000
+  }
 })
 
 const pushIfSet = (bool, entry, array = []) => {
