@@ -2,9 +2,9 @@
 set -e
 source .config/build
 
-if [ "$RECIPE" == "default" ]
+if [ "$RECIPE" == "default" ]  || [ "$RECIPE" == "craft" ]
 then
-  exit 1
+  exit 0
 fi
 
 # Clean dir
