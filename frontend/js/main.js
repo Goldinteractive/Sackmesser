@@ -22,8 +22,8 @@ import RandomQuote from './features/randomquote'
 var app = {
 
   ui: {
-    $header: document.querySelector('.layout-header'),
-    $footer: document.querySelector('.layout-footer')
+    $header: document.querySelector('.header'),
+    $footer: document.querySelector('.footer')
   },
 
   icons: null,
