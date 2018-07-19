@@ -75,7 +75,8 @@ const buildBaseConfig = ({ isProd }) => ({
   performance: {
     maxEntrypointSize: 700000,
     maxAssetSize: 700000
-  }
+  },
+  stats: isProd ? 'minimal' : 'normal'
 })
 
 const pushIfSet = (bool, entry, array = []) => {
