@@ -14,7 +14,7 @@
   "author": "Gold Interactive",
   "license": "MIT",
   "devDependencies": {
-    "@goldinteractive/ignore-assets-webpack-plugin": "^2.0.1",
+    "@goldinteractive/ignore-assets-webpack-plugin": "^3.0.0",
     "autoprefixer": "^8.6.3",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",

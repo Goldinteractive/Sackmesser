@@ -14,9 +14,9 @@
     object-fit-images "^3.2.3"
     object-fit-videos "^1.0.4"
 
-"@goldinteractive/ignore-assets-webpack-plugin@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@goldinteractive/ignore-assets-webpack-plugin/-/ignore-assets-webpack-plugin-2.0.1.tgz#ebb369b75a76d079f023a81f52a3748973d5f8be"
+"@goldinteractive/ignore-assets-webpack-plugin@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@goldinteractive/ignore-assets-webpack-plugin/-/ignore-assets-webpack-plugin-3.0.0.tgz#a20df9189cc093ef803b969448e3c2195f67f2f4"
   dependencies:
     lodash "^4.17.4"
 
