@@ -1,17 +1,24 @@
 RewriteEngine On
 
 # Force www
-RewriteCond %{HTTP_HOST} !^www\.yourodmain\.com [NC]
-RewriteRule ^(.*)$ http://www.yourodmain.com/$1 [R=301,L]
+#RewriteCond %{HTTP_HOST} !^www\.yourodmain\.com [NC]
+#RewriteRule ^(.*)$ http://www.yourodmain.com/$1 [R=301,L]
 
 # Force ssl
-RewriteCond %{SERVER_PORT} 80
-RewriteRule ^(.*)$ https://www.yourodmain.com/$1 [R=301,L]
+#RewriteCond %{SERVER_PORT} 80
+#RewriteRule ^(.*)$ https://www.yourodmain.com/$1 [R=301,L]
 
 Header set Strict-Transport-Security "max-age=2592000; includeSubDomains"
 Header always set X-Frame-Options "SAMEORIGIN"
 Header always set X-Xss-Protection "1; mode=block"
 Header set Referrer-Policy "no-referrer"
+
+# Craft Presto Caching
+# If this is not in the root directory you need to edit the path in the last line to ../cache
+#RewriteCond %{REQUEST_FILENAME} !\.(css|eot|gif|ico|jpe?g|otf|png|svg|ttf|webp|woff2?)$ [NC]
+#RewriteCond %{REQUEST_METHOD} GET
+#RewriteCond %{DOCUMENT_ROOT}/cache/%{HTTP_HOST}/presto%{REQUEST_URI}/index.html -f
+#RewriteRule .* /cache/%{HTTP_HOST}/presto%{REQUEST_URI}/index.html [L,E=nocache:1]]
 
 # Handle Front Controller...
 RewriteCond %{REQUEST_FILENAME} !-d
