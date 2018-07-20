@@ -43,5 +43,5 @@ ASSET_HASH_TEMPLATE_REPLACE_PATH=${DEST}/backend/craft/config
 
 BROWSERSYNC_CONFIG=${CONFIG_FOLDER}/bs-sync.config.js
 
-# Folders for uploaded or runtime data
-DEPLOY_DATA_FOLDERS[0]="_data"
+# Folder for uploaded or runtime data
+DEPLOY_DATA_FOLDER="_data"
