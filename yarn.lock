@@ -20,9 +20,9 @@
   dependencies:
     lodash "^4.17.4"
 
-"@goldinteractive/js-base@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@goldinteractive/js-base/-/js-base-0.0.6.tgz#41ea7b4681ca8128c6d3009a18235e256e7142ab"
+"@goldinteractive/js-base@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@goldinteractive/js-base/-/js-base-0.0.7.tgz#90620e485ead5513ece45d774058216db945e0cf"
   dependencies:
     camel-case "^3.0.0"
     core-js "^2.5.1"
