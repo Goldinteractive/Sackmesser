@@ -2,18 +2,18 @@
 
 ![Sackmesser logo](sackmesser.png)
 
-Sackmesser provides the core of a web project. It contains configuraiotn in order to get you started.
+Sackmesser provides the core of a web project. It contains configuration in order to get you started.
 ## Components
 
-- [base](https://github.com/Goldinteractive/js-base): `@goldinteractive/js-base`
+- [js-base](https://github.com/Goldinteractive/js-base): `@goldinteractive/js-base`
 
 ## Available Features
 
-[Gold Features](https://github.com/Goldinteractive/gold-features) Checkout all features
+[Gold Features, checkout all features](https://github.com/Goldinteractive/gold-features)
 
-### How to install a Gold Interactive component
+### How to install a Gold Feature
 
-To install a component just use `make feature-install-[name of the component]` for example:
+To install a feature just use `make feature-install-[name of the component]` for example:
 
 ```shell
 $ make feature-install-modal
@@ -42,7 +42,7 @@ $ make install
 
 Make sure you have Docker installed.
 
-## Build the project
+## Maintain the Project
 
 To build the project we need to use several command line tools and bash scripts. You can have a full list of all the available tasks by typing:
 
@@ -50,17 +50,31 @@ To build the project we need to use several command line tools and bash scripts.
 $ make
 ```
 
-If you just want to build the project to bring it on the live site please use:
+Please note, that we encourage you to use Docker to develop. So you must always start a docker container before working on the project. To do so, simply execute:
 
 ```shell
-$ make build
+$ make docker-up
 ```
 
-All the build variables are stored in the `.config/build` file
+All other command will automatically use the docker container instance, so in order to start working on the frontend, use:
 
+```shell
+$ make watch
+```
 
-#### References
+If you want to work locally, you can do so by using the `Makefile.local`.
 
-- [rscss](http://rscss.io/)
-- [sass-guidelines](http://sass-guidelin.es/)
+```shell
+$ make -f Makefile.local watch
+```
 
+### Deploy the Project
+
+The deployment is handled by a CI server - [Circle CI](https://circleci.com/).
+
+So in order to deploy your changes to any environment simply commit them into the corresponding release branch.
+
+These are the corresponding branches:
+
+* staging `release/staging`
+* production `release/production`
