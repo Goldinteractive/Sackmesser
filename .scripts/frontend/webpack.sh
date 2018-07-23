@@ -3,7 +3,7 @@ set -e
 
 source .config/build
 
-#expects $WEBPACK_MODE, $ASSET_HASH, $PUBLIC_DEST, $ENVIRONMENT
+#expects $WEBPACK_MODE, $ASSET_HASH, $PUBLIC_DEST, $ENVIRONMENT, $PROGRESS
 $SCRIPTS_FOLDER/frontend/icons/icons.sh
 
 $SCRIPTS_FOLDER/frontend/favicons.sh $FAVICONS_IN $FAVICONS_OUT
@@ -24,6 +24,7 @@ fi
 
 $WEBPACK --mode $WEBPACK_MODE \
   --config $WEBPACK_CONFIG \
+  --progress $PROGRESS \
   --env.assetHash $ASSET_HASH \
   --env.environment $ENVIRONMENT \
   --env.publicDest $PUBLIC_DEST \

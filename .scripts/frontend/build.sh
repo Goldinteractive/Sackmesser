@@ -11,4 +11,5 @@ WEBPACK_MODE=production \
 ASSET_HASH=$ASSET_HASH \
 PUBLIC_DEST=$PUBLIC_DEST \
 ENVIRONMENT=$ENVIRONMENT \
+PROGRESS=false \
 .scripts/frontend/webpack.sh
