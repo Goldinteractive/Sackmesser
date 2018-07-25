@@ -70,11 +70,14 @@ $ make -f Makefile.local watch
 
 ### Deploy the Project
 
-The deployment is handled by a CI server - [Circle CI](https://circleci.com/).
+The deployment is handled by a CI server
 
 So in order to deploy your changes to any environment simply commit them into the corresponding release branch.
 
-These are the corresponding branches:
+The defaults are following branches:
 
 * staging `release/staging`
 * production `release/production`
+
+The actual branches are dependent on the project and can change. 
+Look in the .drone.yml file for the `branches` key. 
