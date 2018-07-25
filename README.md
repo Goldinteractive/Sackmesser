@@ -42,6 +42,16 @@ $ make install
 
 Make sure you have Docker installed.
 
+## Setup the Project
+
+To setup the project you need to change the RECIPE in `build` to your corresponding project:
+
+* default: Default project (Mostly static html or js app)
+* craft: A project setup with Craft CMS
+* laravel: A project for laravel
+
+The recipe defined how a project is built and packaged for the deployment.
+
 ## Maintain the Project
 
 To build the project we need to use several command line tools and bash scripts. You can have a full list of all the available tasks by typing:
