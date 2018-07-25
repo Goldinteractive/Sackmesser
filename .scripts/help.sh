@@ -19,4 +19,7 @@ Work on the project:
 Deploy the project:
   $START  [git branches]        $END push to release/environment to deploy the project
 
-"
+Synchronize files (uploads):
+  $START  make push-data-*      $END push data to environment (* = production, staging …)
+  $START  make pull-data-*      $END pull data from environment (* = production, staging …)
+  "
