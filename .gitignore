@@ -21,6 +21,7 @@ node_modules
 
 frontend/_public/generated
 /public
+/_data
 
 backend/vendor
 
