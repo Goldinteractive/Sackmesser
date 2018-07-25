@@ -78,6 +78,18 @@ If you want to work locally, you can do so by using the `Makefile.local`.
 $ make -f Makefile.local watch
 ```
 
+## Deployment
+
+### Setup 
+To setup the project for the deployment you need to edit the deployment configuration files
+for each environment (production, staging …) you will use:
+
+```
+.config/deployment.*
+
+* = environment (production, staging …)
+```
+
 ### Deploy the Project
 
 The deployment is handled by a CI server
@@ -91,3 +103,17 @@ The defaults are following branches:
 
 The actual branches are dependent on the project and can change. 
 Look in the .drone.yml file for the `branches` key. 
+
+### Synchronize uploaded files
+
+To synchronize uploaded files with an environment you have 2 actions:
+
+```
+# Push data to environment
+make push-data-%
+
+# Pull data from environment
+make pull-data-%
+
+# % = environment (production, staging …)
+```
