@@ -9,7 +9,7 @@ indent_size = 4
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.js]
+[*.{js,jsx,json,babelrc}]
 indent_size = 2
 quote_type = single
 
