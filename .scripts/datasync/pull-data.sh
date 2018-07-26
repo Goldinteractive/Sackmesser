@@ -11,12 +11,9 @@ if [ $? -ne 0 ]; then
 fi
 
 # download files
-for item in "${DEPLOY_DATA_FOLDERS[@]}"
-do
-    printf "$COLOR_GREEN""Download files from $DEPLOY_APPROOT/$item $COLOR_OFF \n"
-    rsync -azP -e "ssh -p $DEPLOY_PORT" $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT"/$item/." $item/
+printf "$COLOR_GREEN""Download files from $DEPLOY_APPROOT/$DEPLOY_DATA_FOLDER $COLOR_OFF \n"
+rsync -azP -e "ssh -p $DEPLOY_PORT" $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_APPROOT"/$DEPLOY_DATA_FOLDER/." $DEPLOY_DATA_FOLDER/
 
-    if [ $? -ne 0 ]; then
-        exit 1
-    fi
-done
+if [ $? -ne 0 ]; then
+    exit 1
+fi
