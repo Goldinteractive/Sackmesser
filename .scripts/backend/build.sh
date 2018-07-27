@@ -6,7 +6,7 @@ source $SCRIPTS_FOLDER/util.sh
 
 if [ "$RECIPE" == "default" ]
 then
-  exit 1
+  exit 0
 fi
 
 DEST_DIR=../$DEST/backend
