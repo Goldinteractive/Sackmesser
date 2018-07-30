@@ -94,7 +94,7 @@ for each environment (production, staging …) you will use:
 
 The deployment is handled by a CI server
 
-So in order to deploy your changes to any environment simply commit them into the corresponding release branch.
+So in order to deploy your changes to any environment simply merge them into the corresponding release branch.
 
 The defaults are following branches:
 
