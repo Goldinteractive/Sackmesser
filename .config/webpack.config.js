@@ -111,7 +111,7 @@ const buildCssConfig = (cssEntry, { assetHash, isProd, assetDir }) => ({
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         use: [
           'file-loader?name=[name].css',
           'extract-loader',
@@ -142,6 +142,7 @@ const buildJsConfig = (jsEntry, { assetHash, isProd, assetDir }) => ({
     [jsEntry]: path.join(jsBase, jsEntry + '.js')
   },
   resolve: {
+    extensions: ['.js', '.json', '.jsx'],
     modules: [jsBase, base, 'node_modules']
   },
   output: {
@@ -158,7 +159,7 @@ const buildJsConfig = (jsEntry, { assetHash, isProd, assetDir }) => ({
         }
       },
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
