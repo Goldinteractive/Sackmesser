@@ -1,0 +1,4 @@
+{
+  "id": "sm",
+  "blackList": ["sackmesser\\.(svg|png)"]
+}
