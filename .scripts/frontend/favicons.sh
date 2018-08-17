@@ -16,7 +16,6 @@ then
     exit;
 fi
 
-echo $SRC_IMAGE
 if [ -z $SRC_IMAGE ];
 then
   echo 'You must set correctly the path to the source image.'
@@ -25,7 +24,7 @@ fi
 
 if [ ! -f $SRC_IMAGE ];
 then
-    echo 'Source image \"$SRC_IMAGE\" does not exist.'
+    echo "Source image '$SRC_IMAGE' does not exist, did not generate any icons"
     exit;
 fi
 

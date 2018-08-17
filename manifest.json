@@ -1,18 +1,13 @@
 {
-  "name": "Sackmesser",
-  "version": "2.0.3",
-  "description": "Toolset to build and maintain any kind of website or web app",
-  "main": "assets/js/main.js",
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "browserslist": [
-    "> 5%",
-    "last 2 version"
+  "id": "sm",
+  "blackList": [
+    "sackmesser\\.(svg|png)"
   ],
-  "author": "Gold Interactive",
-  "license": "MIT",
+  "dependencies": {
+    "@goldinteractive/feature-icons": "^0.0.6",
+    "@goldinteractive/feature-object-fit": "^0.0.6",
+    "@goldinteractive/js-base": "^0.0.7"
+  },
   "devDependencies": {
     "@goldinteractive/ignore-assets-webpack-plugin": "^3.0.0",
     "autoprefixer": "^8.6.3",
@@ -46,10 +41,5 @@
     "svgo": "^1.0.5",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.0.8"
-  },
-  "dependencies": {
-    "@goldinteractive/feature-icons": "^0.0.6",
-    "@goldinteractive/feature-object-fit": "^0.0.6",
-    "@goldinteractive/js-base": "^0.0.7"
   }
 }

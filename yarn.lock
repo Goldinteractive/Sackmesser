@@ -2302,7 +2302,7 @@ each-async@^1.0.0, each-async@^1.1.1:
     onetime "^1.0.0"
     set-immediate-shim "^1.0.0"
 
-"easing-js@github:danro/easing-js":
+easing-js@danro/easing-js:
   version "0.5.4"
   resolved "https://codeload.github.com/danro/easing-js/tar.gz/4f5e7edbde7f7200a1baf08e357377896c0d207e"
 
