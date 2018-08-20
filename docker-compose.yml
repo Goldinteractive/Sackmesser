@@ -1,9 +1,9 @@
 version: '3.1'
 
 volumes:
-  node_modules:
-  vendor:
-  dist:
+  v_node_modules:
+  v_vendor:
+  v_dist:
 services:
   app:
     build:
@@ -12,16 +12,16 @@ services:
     working_dir: /var/www
     volumes:
       - ./:/var/www/:delegated
-      - node_modules:/var/www/node_modules
-      - vendor:/var/www/backend/vendor
-      - dist:/var/www/dist
+      - v_node_modules:/var/www/node_modules
+      - v_vendor:/var/www/backend/vendor
+      - v_dist:/var/www/dist
       - ~/.composer/auth.json:/root/.composer/auth.json
 
   web:
     build:
       context: ./
       dockerfile: dockerfile.web
-    working_dir: /var/www/
+    working_dir: /var/www
     volumes:
       - ./_data:/var/www/_data:delegated
       - ./public:/var/www/public:delegated
