@@ -25,6 +25,10 @@ if [ "$RECIPE" == "craft" ]
 then
     executeSSH "ln -s ../../../_data/storage $APPROOT/deploy/backend/craft/storage
         ln -s ../../_data/uploads $APPROOT/deploy/public/uploads"
+
+    # Replace the placeholder with the db pw for the environment
+    executeSSH "sed -i "s/@DB_PASSWORD/$DB_PASSWORD/g" $APPROOT/deploy/backend/craft/config/db.php"
+    executeSSH "APPENV=$ENV $APPROOT/deploy/backend/crafter/cli.php crafter clearTemplateCache"
 fi
 
 # go live

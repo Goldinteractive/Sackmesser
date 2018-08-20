@@ -42,6 +42,8 @@ pipeline:
     secrets:
       - source: deploy_${DRONE_BRANCH##release/}_password
         target: ssh_password
+      - source: deploy_${DRONE_BRANCH##release/}_db_password
+        target: DB_PASSWORD
 
   # slack:
   #   image: plugins/slack

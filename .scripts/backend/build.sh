@@ -21,7 +21,7 @@ CI_BUILD=$CI_BUILD \
 OLD_DIR=$PWD
 cd $BE_SOURCE
 printInfo "Copy folders and files to dist"
-rsync -atRl --info=progress2 --ignore-errors . $DEST_DIR \
+rsync -atRlq --ignore-errors . $DEST_DIR \
       --exclude=$DEST \
       --exclude='public' \
       --exclude='_public' \
@@ -31,11 +31,11 @@ rsync -atRl --info=progress2 --ignore-errors . $DEST_DIR \
       --exclude='.*' \
       --exclude='.*/'
 
-rsync -ad --info=progress2 --ignore-errors *.lock $DEST_DIR
+rsync -adq --ignore-errors *.lock $DEST_DIR
 
-rsync -ad --info=progress2 --ignore-errors composer.json $DEST_DIR
+rsync -adq --ignore-errors composer.json $DEST_DIR
 
-rsync -ad --info=progress2 --ignore-errors *.* $DEST_DIR \
+rsync -adq --ignore-errors *.* $DEST_DIR \
       --exclude='*/' \
       --exclude='.*' \
       --exclude='*.md' \
@@ -49,6 +49,5 @@ cd $OLD_DIR
 egrep -lRZ "@ASSET_HASH" $ASSET_HASH_TEMPLATE_REPLACE_PATH  | xargs --null sed -i "s/@ASSET_HASH/$ASSET_HASH/g"
 # macos
 #egrep -lRZ "@ASSET_HASH" $ASSET_HASH_TEMPLATE_REPLACE_PATH  | xargs  sed -i '' "s/@ASSET_HASH/$ASSET_HASH/g"
-
 
 exit 0
