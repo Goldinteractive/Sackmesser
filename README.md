@@ -94,7 +94,10 @@ for each environment (production, staging …) you will use:
 
 The deployment is handled by a CI server
 
-So in order to deploy your changes to any environment simply merge them into the corresponding release branch.
+So in order to deploy your changes to any environment simply push them into the corresponding release branch.
+
+__You are *allowed* to use --force when pushing to the release branch. Do not use merge or rebase!__
+
 
 The defaults are following branches:
 
@@ -103,6 +106,7 @@ The defaults are following branches:
 
 The actual branches are dependent on the project and can change. 
 Look in the .drone.yml file for the `branches` key. 
+
 
 ### Synchronize uploaded files
 
