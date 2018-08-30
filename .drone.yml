@@ -14,17 +14,14 @@ pipeline:
       - ASSET_HASH=${DRONE_BUILD_CREATED}
       - ENV=${DRONE_BRANCH##release/}
     commands:
-      - echo "BE build"
       - .scripts/ci/build-be.sh
-      - echo "FE build"
       - .scripts/ci/build-fe.sh
+      - .scripts/ci/post-build.sh
 
   test:
     image: goldinteractive/sackmesser:2.0
     commands:
-          - echo "Test BE"
           - .scripts/ci/test-be.sh
-          - echo "Test FE"
           - .scripts/ci/test-fe.sh
 
   deploy:

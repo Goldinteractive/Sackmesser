@@ -46,8 +46,5 @@ rsync -adq --ignore-errors *.* $DEST_DIR \
 
 
 cd $OLD_DIR
-egrep -lRZ "@ASSET_HASH" $ASSET_HASH_TEMPLATE_REPLACE_PATH  | xargs --null sed -i "s/@ASSET_HASH/$ASSET_HASH/g"
-# macos
-#egrep -lRZ "@ASSET_HASH" $ASSET_HASH_TEMPLATE_REPLACE_PATH  | xargs  sed -i '' "s/@ASSET_HASH/$ASSET_HASH/g"
 
 exit 0
