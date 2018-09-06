@@ -28,4 +28,5 @@ $WEBPACK --mode $WEBPACK_MODE \
   --env.assetHash $ASSET_HASH \
   --env.environment $ENVIRONMENT \
   --env.publicDest $PUBLIC_DEST \
-  --env.mode $WEBPACK_MODE
+  --env.mode $WEBPACK_MODE \
+  --env.assetHashTemplateReplacePath $ASSET_HASH_TEMPLATE_REPLACE_PATH

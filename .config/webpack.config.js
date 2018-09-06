@@ -14,6 +14,9 @@ const root = path.join(__dirname, '..')
 const base = path.join(root, frontendFolder)
 const jsBase = path.join(base, 'js')
 const cssBase = path.join(base, 'css')
+const publicPath = path.join(base, '_public')
+
+const ASSET_HASH_REGEX = '@ASSET_HASH'
 
 const sassLoader = {
   loader: 'sass-loader',
@@ -186,7 +189,8 @@ const buildProjectSkeletonConfig = ({
   assetHash,
   isProd,
   baseOutputDir,
-  assetDir
+  assetDir,
+  assetHashTemplateReplacePath
 }) => ({
   ...buildBaseConfig({
     isProd
@@ -217,8 +221,19 @@ const buildProjectSkeletonConfig = ({
     }),
     new CopyWebpackPlugin([
       {
-        from: path.join(base, '_public'),
-        to: '..'
+        from: publicPath,
+        to: '..',
+        transform: (content, pathname) => {
+          const fullPath = path.join(root, assetHashTemplateReplacePath)
+          if(pathname.startsWith(fullPath)) {
+            const regex = new RegExp(ASSET_HASH_REGEX, 'g')
+            return content.toString().replace(
+              regex,
+              assetHash
+            )
+          }
+          return content
+        }
       }
     ])
   ]
@@ -229,6 +244,7 @@ module.exports = env => {
   const assetHash = env.assetHash
   const environment = env.environment
   const publicDest = env.publicDest
+  const assetHashTemplateReplacePath = env.assetHashTemplateReplacePath
 
   // parses current .env file and provides all variables in process.env.XYZ
   // usage: process.env.APP_URL
@@ -244,6 +260,7 @@ module.exports = env => {
     baseOutputDir,
     assetDir,
     assetHash,
+    assetHashTemplateReplacePath,
     isProd,
     jsEntries
   }
