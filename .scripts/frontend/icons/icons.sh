@@ -10,16 +10,17 @@ source $SCRIPTS_FOLDER/util.sh
 rm -rf $ICONS_OUT
 mkdir -p $ICONS_OUT
 
-# svgo will fail if the folder does not contain any icons so we must check the folder contents
-COUNT=$(ls -l $ICONS_IN | grep "\.svg$" | wc -l)
-if [ $COUNT -gt 0 ]
-then
-  $SVGO -q --pretty --disable=removeViewBox --folder $ICONS_IN --output $ICONS_OUT
-else
-  # even if svgo did not copy anything we still want the empty icon files so that the app knows
-  # there is nothing to load
-  echo "no icons found"
-fi
+FILES=$(find $ICONS_IN -maxdepth 1 -name "*.svg")
+for FULL_FILE_PATH in $FILES; do
+  # filename with extension - but without path
+  FILENAME="${FULL_FILE_PATH##*/}"
+  # filename without extension
+  NAME="${FILENAME%.*}"
+
+  # the prefix must be set per file because they will afterwards be merged into a single svg
+  $SVGO -q --pretty --disable=removeViewBox --input $FULL_FILE_PATH --output $ICONS_OUT \
+    --config '{"plugins": [{"cleanupIDs": { "prefix": "'"$NAME"'-" }}] }'
+done
 
 # generate
 php -f $SCRIPTS_FOLDER/frontend/icons/generate.php \
