@@ -78,6 +78,41 @@ If you want to work locally, you can do so by using the `Makefile.local`.
 $ make -f Makefile.local watch
 ```
 
+## Work on the Frontend
+Quick help for common questions while working on the frontend.
+
+### App Configuration (`.config/app-configuration.js`)
+
+This file is responsible for telling webpack which bundles shall be produced.
+
+Currently there is support for `css` and `js` (with optional `css`) bundles.
+
+It will also generate and reference external resources automatically.
+
+> Please note that if you use any css in your js bundle it will generate a **standalone css** file which must be imported manually.
+
+### Load special resources
+
+Currently these file types are handled and can be used as resources:
+- `.gif`
+- `.png`
+- `.jpg` / `.jpeg`
+- `.svg`
+- `.ttf`
+- `.eot`
+- `.woff`
+- `.woff2`
+
+In order to use them, create a folder in `frontend` with the given resource category as name. e.g. `font` or `img`.
+
+All folders inside of `frontend` can be automatically used for resource imports - there is no additional configuraiton required.
+
+#### JS
+Resources can be imported with `import 'img/file.png'`.
+
+#### CSS
+To import resources of another type (e.g. `background-image`), use it in your SASS file as `url('~img/file.png')`.
+
 ## Deployment
 
 ### Setup 
