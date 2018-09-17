@@ -224,13 +224,12 @@ const buildProjectSkeletonConfig = ({
         from: publicPath,
         to: '..',
         transform: (content, pathname) => {
-          const fullPath = path.join(root, assetHashTemplateReplacePath)
-          if(pathname.startsWith(fullPath)) {
-            const regex = new RegExp(ASSET_HASH_REGEX, 'g')
-            return content.toString().replace(
-              regex,
-              assetHash
-            )
+          if (assetHashTemplateReplacePath) {
+            const fullPath = path.join(root, assetHashTemplateReplacePath)
+            if (pathname.startsWith(fullPath)) {
+              const regex = new RegExp(ASSET_HASH_REGEX, 'g')
+              return content.toString().replace(regex, assetHash)
+            }
           }
           return content
         }
