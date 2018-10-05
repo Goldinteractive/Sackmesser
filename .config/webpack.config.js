@@ -17,6 +17,15 @@ const cssBase = path.join(base, 'css')
 const publicPath = path.join(base, '_public')
 
 const ASSET_HASH_REGEX = '@ASSET_HASH'
+// which file types should be checked for asset hash regex?
+const ASSET_HASH_REPLACEMENT_FILE_TYPES_WHITELIST = [
+  '.html',
+  '.twig',
+  '.php',
+  '.js',
+  '.jsx',
+  '.css'
+]
 
 const sassLoader = {
   loader: 'sass-loader',
@@ -226,7 +235,11 @@ const buildProjectSkeletonConfig = ({
         transform: (content, pathname) => {
           if (assetHashTemplateReplacePath) {
             const fullPath = path.join(root, assetHashTemplateReplacePath)
-            if (pathname.startsWith(fullPath)) {
+            // One must not stringify binary files such as png, glb, etc.
+            const isInFileTypeWhiteList = ASSET_HASH_REPLACEMENT_FILE_TYPES_WHITELIST.find(
+              fileType => fullPath.endsWith(fileType)
+            )
+            if (isInFileTypeWhiteList && pathname.startsWith(fullPath)) {
               const regex = new RegExp(ASSET_HASH_REGEX, 'g')
               return content.toString().replace(regex, assetHash)
             }
