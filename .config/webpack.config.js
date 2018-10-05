@@ -236,9 +236,10 @@ const buildProjectSkeletonConfig = ({
           if (assetHashTemplateReplacePath) {
             const fullPath = path.join(root, assetHashTemplateReplacePath)
             // One must not stringify binary files such as png, glb, etc.
-            const isInFileTypeWhiteList = ASSET_HASH_REPLACEMENT_FILE_TYPES_WHITELIST.find(
-              fileType => fullPath.endsWith(fileType)
-            )
+            const isInFileTypeWhiteList =
+              ASSET_HASH_REPLACEMENT_FILE_TYPES_WHITELIST.find(fileType =>
+                pathname.endsWith(fileType)
+              ) !== undefined
             if (isInFileTypeWhiteList && pathname.startsWith(fullPath)) {
               const regex = new RegExp(ASSET_HASH_REGEX, 'g')
               return content.toString().replace(regex, assetHash)
