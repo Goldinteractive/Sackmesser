@@ -91,6 +91,13 @@ It will also generate and reference external resources automatically.
 
 > Please note that if you use any css in your js bundle it will generate a **standalone css** file which must be imported manually.
 
+### Replace asset hash of resources in static files
+
+This feature can be used to set the asset hash in static files.
+`.config/build` contains the configuration in which files the constant `@ASSET_HASH` shall be replaced.
+The variable name is `ASSET_HASH_TEMPLATE_REPLACE_PATH`.
+It can be a file or a directory. But the replacement will be performed only on text files - so no binary files will be transformed.
+
 ### Load special resources
 
 Currently these file types are handled and can be used as resources:
