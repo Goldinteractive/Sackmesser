@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link type="text/plain" rel="author" href="humans.txt" />
 
-        <link rel="stylesheet" href="assets/css/style.css?@TIMESTAMP">
+        <link rel="stylesheet" href="@ASSET_HASH/style.css">
 
         <link rel="shortcut icon" href="assets/favicons/favicon.ico">
         <link rel="icon" type="image/png" sizes="64x64" href="assets/favicons/favicon.png">
@@ -40,7 +40,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="gr-12">
-                            <h1 data-feature="quote"></h1>
+                            <h1>Sackmesser Bootstrap</h1>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="gr-12 tac">
-                            <span data-feature="icon" data-icon="sackmesser" data-original></span>
+                            <span>Content</span>
                         </div>
                     </div>
                 </div>
@@ -61,18 +61,6 @@
             </footer>
         </main>
 
-        <script src="assets/main.js"></script>
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <!--
-        <script>
-        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-        e.src='//www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-        ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
-        -->
+        <script src="@ASSET_HASH/main.js"></script>
     </body>
 </html>
