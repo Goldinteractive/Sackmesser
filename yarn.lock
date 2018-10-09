@@ -2,18 +2,6 @@
 # yarn lockfile v1
 
 
-"@goldinteractive/feature-icons@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@goldinteractive/feature-icons/-/feature-icons-0.0.6.tgz#b21311a7100c77e64aca2dfe1f2af79c8775239a"
-
-"@goldinteractive/feature-object-fit@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@goldinteractive/feature-object-fit/-/feature-object-fit-0.0.6.tgz#84f7a3c6ddae9c7287f49b6ed5d09b83d6204bf8"
-  dependencies:
-    iphone-inline-video "^2.2.2"
-    object-fit-images "^3.2.3"
-    object-fit-videos "^1.0.4"
-
 "@goldinteractive/ignore-assets-webpack-plugin@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@goldinteractive/ignore-assets-webpack-plugin/-/ignore-assets-webpack-plugin-3.0.0.tgz#a20df9189cc093ef803b969448e3c2195f67f2f4"
@@ -3502,10 +3490,6 @@ intersection-observer@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/intersection-observer/-/intersection-observer-0.5.0.tgz#9fe8bee3953c755b1485c38efd9633d535775ea6"
 
-intervalometer@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/intervalometer/-/intervalometer-1.0.4.tgz#e807229ae8ac2cbf9156cc010eeb207b6e65ad23"
-
 invariant@^2.2.2:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
@@ -3519,13 +3503,6 @@ invert-kv@^1.0.0:
 ip-regex@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/ip-regex/-/ip-regex-1.0.3.tgz#dc589076f659f419c222039a33316f1c7387effd"
-
-iphone-inline-video@^2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/iphone-inline-video/-/iphone-inline-video-2.2.2.tgz#b5cd8d53d0c60fbcb1248cfdbbe44d36ff610fb2"
-  dependencies:
-    intervalometer "^1.0.4"
-    poor-mans-symbol "^1.0.1"
 
 is-absolute-url@^2.0.0:
   version "2.1.0"
@@ -4725,14 +4702,6 @@ object-copy@^0.1.0:
     define-property "^0.2.5"
     kind-of "^3.0.3"
 
-object-fit-images@^3.2.3:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/object-fit-images/-/object-fit-images-3.2.3.tgz#4089f6d0070a3b5563d3c1ab6f1b28d61331f0ac"
-
-object-fit-videos@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/object-fit-videos/-/object-fit-videos-1.0.4.tgz#56ff1fdf4d824ed08172d77a1651154fc3df79b6"
-
 object-keys@^1.0.11, object-keys@^1.0.8:
   version "1.0.12"
   resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.0.12.tgz#09c53855377575310cca62f55bb334abff7b3ed2"
@@ -5045,10 +5014,6 @@ pngquant-bin@^4.0.0:
     bin-wrapper "^3.0.0"
     execa "^0.10.0"
     logalot "^2.0.0"
-
-poor-mans-symbol@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/poor-mans-symbol/-/poor-mans-symbol-1.0.1.tgz#0c1b65ff1d49c07402b2235e562077d120671d0c"
 
 posix-character-classes@^0.1.0:
   version "0.1.1"

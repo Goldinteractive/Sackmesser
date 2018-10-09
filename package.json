@@ -48,8 +48,6 @@
     "webpack-cli": "^3.0.8"
   },
   "dependencies": {
-    "@goldinteractive/feature-icons": "^0.0.6",
-    "@goldinteractive/feature-object-fit": "^0.0.6",
     "@goldinteractive/js-base": "^0.0.7"
   }
 }
