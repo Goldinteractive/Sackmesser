@@ -1,7 +1,7 @@
 {
   "id": "sm",
   "blackList": [
-    "sackmesser\\.(svg|png)"
+    "sackmesser\\.(svg|png)", "^LICENSE$"
   ],
   "dependencies": {
     "@goldinteractive/feature-icons": "^0.0.6",
