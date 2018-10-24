@@ -26,4 +26,4 @@ services:
       - ./_data:/var/www/_data:delegated
       - ./public:/var/www/public:delegated
     ports:
-      - 8000:80
+      - ${DOCKER_PORT_WEB:-8000}:80

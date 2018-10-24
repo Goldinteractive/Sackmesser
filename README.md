@@ -78,6 +78,17 @@ If you want to work locally, you can do so by using the `Makefile.local`.
 $ make -f Makefile.local watch
 ```
 
+### Start web container with custom port
+
+The web container will start with a default port of 8000. If you need to use another port you can
+create a `.env` file in the project root:
+
+```.env
+DOCKER_PORT_WEB=1337
+```
+
+With that configuration the container will use the port given in the .env file. 
+
 ## Work on the Frontend
 Quick help for common questions while working on the frontend.
 
