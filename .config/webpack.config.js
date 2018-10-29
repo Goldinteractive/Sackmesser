@@ -62,7 +62,9 @@ const imageLoader = ({ isProd, assetHash }) => ({
       loader: 'file-loader',
       options: {
         name: isProd ? '[hash].[ext]' : '[path][name].[ext]',
-        outputPath: assetHash + '/files/'
+        outputPath: '/files/',
+        publicPath: assetHash + '/files/',
+        context: 'frontend'
       }
     },
     {
@@ -180,7 +182,7 @@ const buildJsConfig = (jsEntry, { assetHash, isProd, assetDir }) => ({
         ]
       },
       fontLoader(),
-      imageLoader({ isProd })
+      imageLoader({ isProd, assetHash })
     ]
   },
   plugins: [
