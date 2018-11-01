@@ -2,3 +2,4 @@ DEPLOY_APPROOT=deployment.ch
 DEPLOY_HOST=deployment.ch
 DEPLOY_PORT=21
 DEPLOY_USER=deployment
+DEPLOY_PHP_BINARY=/opt/php72/bin/php

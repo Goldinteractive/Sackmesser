@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 set -e
 source .config/build
+source $SCRIPTS_FOLDER/util.sh
 
-if [ "$RECIPE" == "craft" ]
-then
-    ln -s ../_data/uploads "$PUBLIC_DEST/uploads"
-fi
+ln -s ../_data/uploads "$PUBLIC_DEST/uploads"
 
 exit 0

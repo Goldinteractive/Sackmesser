@@ -22,11 +22,10 @@ OLD_DIR=$PWD
 cd $BE_SOURCE
 printInfo "Copy folders and files to dist"
 rsync -atRlq --ignore-errors . $DEST_DIR \
-      --exclude=$DEST \
-      --exclude='public' \
-      --exclude='_public' \
-      --exclude='craft/storage' \
-      --exclude='storage' \
+      --exclude='/public' \
+      --exclude='/_public' \
+      --exclude='/craft/storage' \
+      --exclude='/storage' \
       --exclude='/*.*' \
       --exclude='.*' \
       --exclude='.*/'

@@ -6,6 +6,7 @@ CONFIG_FOLDER=./.config
 
 # Name of the folder where the scripts are
 SCRIPTS_FOLDER=./.scripts
+RECIPES_FOLDER=./.scripts/recipes
 
 # Main Entry Points
 BE_SOURCE=backend

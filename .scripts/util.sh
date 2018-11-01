@@ -43,3 +43,24 @@ ask() {
         * ) return $DEFAULT;;
     esac
 }
+
+executeSSH() {
+    local SCRIPT=$1
+
+   /bin/drone-ssh --host "$DEPLOY_HOST" \
+    --port "$DEPLOY_PORT" \
+    --username "$DEPLOY_USER" \
+    --script "$SCRIPT"
+}
+
+callRecipeEvent() {
+    local RECIPE=$1
+    local FILE=$RECIPES_FOLDER/$RECIPE/$2.sh
+
+    if [ -f "$FILE" ]; then
+        $FILE
+        return $?
+    fi
+
+    return 0
+}
