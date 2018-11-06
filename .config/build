@@ -40,7 +40,7 @@ VENDOR_DIR=vendor
 DEPLOYMENT_FOLDER=.deployment
 
 # Where should the build look for text replacements for the asset hash
-ASSET_HASH_TEMPLATE_REPLACE_PATH=backend/config
+ASSET_HASH_TEMPLATE_REPLACE_PATH=${DEST}/backend/config
 
 BROWSERSYNC_CONFIG=${CONFIG_FOLDER}/bs-sync.config.js
 
