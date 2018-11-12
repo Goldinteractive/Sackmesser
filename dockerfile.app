@@ -1,1 +1,1 @@
-FROM goldinteractive/sackmesser:2.0
+FROM goldinteractive/sackmesser:2.4
