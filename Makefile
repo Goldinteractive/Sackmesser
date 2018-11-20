@@ -1,6 +1,6 @@
 SHELL:=/bin/bash
 LOCALMAKEFILE:=Makefile.local
-DOCKERAPPNAME=$(shell basename $(CURDIR) | tr '[:upper:]' '[:lower:]')_app_1
+$(eval DOCKERAPPNAME=$(shell sh -c "docker container ls -f name=$$(basename $$PWD)_app_1 --format '{{.Names}}'"))
 
 -include .config/build
 
