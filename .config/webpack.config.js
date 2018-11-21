@@ -235,7 +235,7 @@ const buildProjectSkeletonConfig = ({
         from: publicPath,
         to: '..',
         transform: (content, pathname) => {
-          if (assetHashTemplateReplacePath) {
+          if (assetHashTemplateReplacePath && typeof assetHashTemplateReplacePath === 'string') {
             const fullPath = path.join(root, assetHashTemplateReplacePath)
             // One must not stringify binary files such as png, glb, etc.
             const isInFileTypeWhiteList =
