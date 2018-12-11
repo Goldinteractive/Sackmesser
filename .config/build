@@ -1,6 +1,9 @@
 # What kind of project is it? Can be default, craft, laravel
 RECIPE=default
 
+# Should the database get migrated? Currently only used for laravel projects
+MIGRATE_DB=1
+
 # Name of the config folder where this file is
 CONFIG_FOLDER=./.config
 

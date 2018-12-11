@@ -43,7 +43,6 @@ rsync -adq --ignore-errors *.* $DEST_DIR \
       --exclude='phpunit.xml' \
       --exclude='*.json'
 
-
 cd $OLD_DIR
 
 exit 0
