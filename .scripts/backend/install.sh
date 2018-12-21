@@ -9,7 +9,7 @@ fi
 
 cd $BE_SOURCE
 
-if [ "$CI_BULD" == "1" ]
+if [ "$DRONE" == "true" ]
 then
       composer install --no-ansi --no-dev --no-interaction --no-progress --no-scripts --optimize-autoloader
 else
