@@ -47,5 +47,5 @@ ASSET_HASH_TEMPLATE_REPLACE_PATH=${DEST}/backend/config
 
 BROWSERSYNC_CONFIG=${CONFIG_FOLDER}/bs-sync.config.js
 
-# Folder for uploaded or runtime data
-DEPLOY_DATA_FOLDER="_data"
+# Folder for uploaded data
+DEPLOY_DATA_FOLDER="_data/uploads"
