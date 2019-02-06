@@ -191,6 +191,9 @@ const buildJsConfig = (jsEntry, { assetHash, isProd, assetDir }) => ({
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css'
+    }),
+    new webpack.DefinePlugin({
+      __ASSET_HASH__: '"' + assetHash + '"'
     })
   ]
 })
