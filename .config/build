@@ -22,7 +22,6 @@ WEBPACK_CONFIG=${CONFIG_FOLDER}/webpack.config.js
 
 # Binaries
 WEBPACK=${NODE_MODULES}/.bin/webpack
-BROWSERSYNC=${NODE_MODULES}/.bin/browser-sync
 SVGO=${NODE_MODULES}/.bin/svgo
 
 ASSETS_PATH=${FE_SOURCE}/_public/assets
@@ -44,8 +43,6 @@ DEPLOYMENT_FOLDER=.deployment
 
 # Where should the build look for text replacements for the asset hash
 ASSET_HASH_TEMPLATE_REPLACE_PATH=${DEST}/backend/config
-
-BROWSERSYNC_CONFIG=${CONFIG_FOLDER}/bs-sync.config.js
 
 # Folder for uploaded data
 DEPLOY_DATA_FOLDER="_data/uploads"

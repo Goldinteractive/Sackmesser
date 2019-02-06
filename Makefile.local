@@ -45,14 +45,3 @@ icons:
 .PHONY: favicons
 favicons:
 	@ $(SCRIPTS_FOLDER)/frontend/favicons.sh $(FAVICONS_IN) $(FAVICONS_OUT)
-
-.PHONY: browser-sync
-browser-sync:
-	# starting browser sync server
-	@ ASSETS_PATH=$(ASSETS_PATH) \
-		TEMPLATES_PATH=$(TEMPLATES_PATH) \
-		BROWSER=$(BROWSERSYNC_BROWSER) \
-		$(BROWSERSYNC) start \
-	    --config $(BROWSERSYNC_CONFIG) \
-		--port $(BROWSERSYNC_PORT) \
-		--proxy $(PROXY)
