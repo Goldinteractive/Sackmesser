@@ -9,8 +9,8 @@ END="\033[0m"
 printf "
 Command list:
 Work on the project:
-  $START  make docker-up             $END start the docker engine (this is required for all tasks)
-  $START  make docker-connect        $END connect to the docker container
+  $START  make up                    $END start the docker engine (this is required for all tasks)
+  $START  make connect               $END connect to the docker container
   $START  make install               $END install all project dependencies
   $START  make watch                 $END watch the js and the scss files compiling them
   $START  make icons                 $END generate the icons
