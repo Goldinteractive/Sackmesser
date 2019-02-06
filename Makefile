@@ -32,14 +32,23 @@ icons:
 favicons:
 	@ make docker-make-exec CMD=favicons
 
+# dev machine
+.PHONY: up
+up:
+	@ docker-compose up
+
+.PHONY: connect
+connect:
+	@ docker exec -i -t $(DOCKERAPPNAME) bash
+
 # docker 
 .PHONY: docker-up
 docker-up:
-	@ docker-compose up
+	@ make up
 
 .PHONY: docker-connect
 docker-connect:
-	@ docker exec -i -t $(DOCKERAPPNAME) bash
+	@ make connect
 
 .PHONY: docker-make-exec
 docker-make-exec: 
