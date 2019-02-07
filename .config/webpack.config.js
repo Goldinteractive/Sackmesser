@@ -153,7 +153,7 @@ const buildJsConfig = (jsEntry, { assetHash, isProd, assetDir }) => ({
     isProd
   }),
   entry: {
-    [jsEntry]: path.join(jsBase, jsEntry + '.js')
+    [jsEntry]: path.join(jsBase, jsEntry)
   },
   resolve: {
     extensions: ['.js', '.json', '.jsx'],
@@ -221,7 +221,7 @@ const buildProjectSkeletonConfig = ({
   }),
   entry: {
     // Webpack needs an entry...
-    [jsEntries[0] + '-omit']: path.join(jsBase, jsEntries[0] + '.js')
+    [jsEntries[0] + '-omit']: path.join(jsBase, jsEntries[0])
   },
   output: {
     filename: '[name].js',
