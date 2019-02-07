@@ -24,6 +24,10 @@ feature-remove-%:
 watch: 
 	@ make docker-make-exec CMD=watch
 
+.PHONY: build
+build: 
+	@ make docker-make-exec CMD=build
+
 .PHONY: icons
 icons:
 	@ make docker-make-exec CMD=icons
