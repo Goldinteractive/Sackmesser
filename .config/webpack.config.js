@@ -173,6 +173,16 @@ const buildJsConfig = (jsEntry, { assetHash, isProd, assetDir }) => ({
         }
       },
       {
+        test: /\.worker\.js$/,
+        use: {
+          loader: 'worker-loader',
+          options: {
+            name: '[hash]-[name].js',
+            publicPath: `${assetHash}/`
+          }
+        }
+      },
+      {
         test: /\.s?css$/,
         use: [
           MiniCssExtractPlugin.loader,
