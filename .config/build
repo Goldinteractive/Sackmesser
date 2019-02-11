@@ -42,7 +42,7 @@ VENDOR_DIR=vendor
 DEPLOYMENT_FOLDER=.deployment
 
 # Where should the build look for text replacements for the asset hash
-ASSET_HASH_TEMPLATE_REPLACE_PATH=${DEST}/backend/config
+ASSET_HASH_TEMPLATE_REPLACE_PATH=backend/config
 
 # Folder for uploaded data
 DEPLOY_DATA_FOLDER="_data/uploads"
