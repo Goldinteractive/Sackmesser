@@ -9,7 +9,7 @@ pipeline:
         - /tmp/cache:/cache
 
   build:
-    image: goldinteractive/sackmesser:2.4
+    image: goldinteractive/sackmesser:3.0
     environment:
       - ASSET_HASH=${DRONE_BUILD_CREATED}
       - ENV=${DRONE_BRANCH##release/}
@@ -19,7 +19,7 @@ pipeline:
       - .scripts/ci/post-build.sh
 
   test:
-    image: goldinteractive/sackmesser:2.4
+    image: goldinteractive/sackmesser:3.0
     commands:
           - .scripts/ci/test-be.sh
           - .scripts/ci/test-fe.sh
