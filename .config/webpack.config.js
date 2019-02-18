@@ -148,7 +148,10 @@ const buildCssConfig = (cssEntry, { assetHash, isProd, assetDir }) => ({
   ]
 })
 
-const buildJsConfig = (jsEntry, { assetHash, isProd, assetDir }) => ({
+const buildJsConfig = (
+  jsEntry,
+  { assetHash, isProd, assetDir, compileBundleEntries }
+) => ({
   ...buildBaseConfig({
     isProd
   }),
@@ -167,7 +170,16 @@ const buildJsConfig = (jsEntry, { assetHash, isProd, assetDir }) => ({
     rules: [
       {
         test: /\.jsx?$/,
+        exclude: /node_modules/,
         loader: 'babel-loader',
+        options: {
+          cacheDirectory: true
+        }
+      },
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        include: compileBundleEntries,
         options: {
           cacheDirectory: true
         }
@@ -285,7 +297,7 @@ module.exports = env => {
 
   const baseOutputDir = path.join(root, publicDest)
   const assetDir = baseOutputDir + '/' + assetHash
-  const { jsEntries, cssEntries } = appConfiguration(env)
+  const { jsEntries, cssEntries, compileBundleEntries } = appConfiguration(env)
 
   const configObject = {
     baseOutputDir,
@@ -293,7 +305,8 @@ module.exports = env => {
     assetHash,
     assetHashTemplateReplacePath,
     isProd,
-    jsEntries
+    jsEntries,
+    compileBundleEntries
   }
 
   return [
