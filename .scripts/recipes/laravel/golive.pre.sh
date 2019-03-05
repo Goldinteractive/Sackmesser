@@ -18,6 +18,6 @@ executeSSH "mkdir -p $APPROOT/_data/storage/app
 executeSSH "ln -s ../../_data/storage $APPROOT/deploy/backend/storage"
 
 # Replace the placeholder with the db pw for the environment
-executeSSH "sed -i "s/@DB_PASSWORD/$DB_PASSWORD/g" $APPROOT/deploy/backend/config/database.php" > /dev/null
+executeSSH "sed -i \"s/@DB_PASSWORD/$DB_PASSWORD/g\" $APPROOT/deploy/backend/config/database.php" > /dev/null
 
 exit 0
