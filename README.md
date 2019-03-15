@@ -109,6 +109,15 @@ This feature can be used to set the asset hash in static files.
 The variable name is `ASSET_HASH_TEMPLATE_REPLACE_PATH`.
 It can be a file or a directory. But the replacement will be performed only on text files - so no binary files will be transformed.
 
+### Favicons
+
+Based on `frontend/_public/assets/img/favicons/source.png` the different sizes for favicons will be generated.
+Make sure the source has a dimension of `512px × 512px`. The output can be found in `frontend/_public/generated/favicons`.
+
+### Icons
+
+All `.svg` files in `frontend/_public/assets/img/icons` will be processed. Firstly SVGs are optimized using `svgo`. Afterwards all files will be put into one file and a meta information file is being generated.
+
 ### Load special resources
 
 Currently these file types are handled and can be used as resources:
