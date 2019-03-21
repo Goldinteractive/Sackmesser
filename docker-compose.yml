@@ -11,7 +11,7 @@ services:
       dockerfile: dockerfile.app
     working_dir: /var/www
     volumes:
-      - ./:/var/www/:delegated
+      - ./:/var/www/:cached
       - v_node_modules:/var/www/node_modules
       - v_vendor:/var/www/backend/vendor
       - v_dist:/var/www/dist
@@ -23,7 +23,7 @@ services:
       dockerfile: dockerfile.web
     working_dir: /var/www
     volumes:
-      - ./_data:/var/www/_data:delegated
-      - ./public:/var/www/public:delegated
+      - ./_data:/var/www/_data:cached
+      - ./public:/var/www/public:cached
     ports:
       - ${DOCKER_PORT_WEB:-8000}:80
