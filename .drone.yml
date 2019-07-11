@@ -1,67 +1,82 @@
-pipeline:
-  restore-cache:
-      image: drillster/drone-volume-cache
+kind: pipeline
+name: default
+
+steps:
+  - name: restore-cache
+    image: drillster/drone-volume-cache
+    settings:
       restore: true
       mount:
         - ./backend/vendor
-        - ./node_modules
-      volumes:
-        - /tmp/cache:/cache
+        - ./frontend/node_modules
+    volumes:
+      - name: cache
+        path: /cache
 
-  build:
+  - name: build
     image: goldinteractive/sackmesser:3.1
     environment:
-      - ASSET_HASH=${DRONE_BUILD_CREATED}
-      - ENV=${DRONE_BRANCH##release/}
+      ASSET_HASH: ${DRONE_BUILD_CREATED}
+      ENV: ${DRONE_BRANCH##release/}
     commands:
       - .scripts/ci/build-be.sh
       - .scripts/ci/build-fe.sh
       - .scripts/ci/post-build.sh
 
-  test:
+  - name: test
     image: goldinteractive/sackmesser:3.1
     commands:
-          - .scripts/ci/test-be.sh
-          - .scripts/ci/test-fe.sh
+      - .scripts/ci/test-be.sh
+      - .scripts/ci/test-fe.sh
 
-  deploy:
+  - name: deploy
     image: appleboy/drone-scp
     commands:
       - ENV=${DRONE_BRANCH##release/} .scripts/ci/deploy.sh
-    secrets:
-      - source: deploy_${DRONE_BRANCH##release/}_password
-        target: ssh_password
+    environment:
+      SSH_PASSWORD:
+        from_secret: deploy_${DRONE_BRANCH##release/}_password
 
-  golive:
+  - name: golive
     image: appleboy/drone-ssh
     commands:
       - ENV=${DRONE_BRANCH##release/} .scripts/ci/golive.sh
-    secrets:
-      - source: deploy_${DRONE_BRANCH##release/}_password
-        target: ssh_password
-      - source: deploy_${DRONE_BRANCH##release/}_db_password
-        target: DB_PASSWORD
+    environment:
+      SSH_PASSWORD:
+        from_secret: deploy_${DRONE_BRANCH##release/}_password
+      DB_PASSWORD:
+        from_secret: deploy_${DRONE_BRANCH##release/}_db_password
 
-#  slack:
+#  - name: slack
 #    image: plugins/slack
-#    webhook: "REPLACEME"
-#    template: >
-#      {{#success build.status}}
-#        *{{repo.name}}* (#{{build.number}}) by *{{build.author}}* deployed (*{{build.branch}}*). Yay.
-#      {{else}}
-#        *{{repo.name}}* (#{{build.number}}) by *{{build.author}}* was not deployed (*{{build.branch}}*). Oh noes.
-#      {{/success}}
+#    settings:
+#      webhook: "REPLACEME"
+#      template: >
+#        {{#success build.status}}
+#          *{{repo.name}}* (#{{build.number}}) by *{{build.author}}* deployed (*{{build.branch}}*). Yay.
+#        {{else}}
+#          *{{repo.name}}* (#{{build.number}}) by *{{build.author}}* was not deployed (*{{build.branch}}*). Oh noes.
+#        {{/success}}
 #    when:
 #      status: [ success, failure ]
 
-  rebuild-cache:
-      image: drillster/drone-volume-cache
+  - name: rebuild-cache
+    image: drillster/drone-volume-cache
+    settings:
       rebuild: true
       mount:
         - ./backend/vendor
         - ./node_modules
-      volumes:
-        - /tmp/cache:/cache
+    volumes:
+      - name: cache
+        path: /cache
 
-branches: [ release/production, release/staging ]
+volumes:
+  - name: cache
+    host:
+      path: /tmp/cache
 
+trigger:
+  branch:
+    - release/staging
+    - release/production
