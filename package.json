@@ -47,6 +47,6 @@
     "worker-loader": "^2.0.0"
   },
   "dependencies": {
-    "@goldinteractive/js-base": "^0.0.8"
+    "@goldinteractive/js-base": "^0.0.9"
   }
 }
