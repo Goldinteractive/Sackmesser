@@ -14,7 +14,7 @@ steps:
         path: /cache
 
   - name: build
-    image: goldinteractive/sackmesser:3.1
+    image: goldinteractive/sackmesser:3.2
     environment:
       ASSET_HASH: ${DRONE_BUILD_CREATED}
       ENV: ${DRONE_BRANCH##release/}
@@ -24,7 +24,7 @@ steps:
       - .scripts/ci/post-build.sh
 
   - name: test
-    image: goldinteractive/sackmesser:3.1
+    image: goldinteractive/sackmesser:3.2
     commands:
       - .scripts/ci/test-be.sh
       - .scripts/ci/test-fe.sh
