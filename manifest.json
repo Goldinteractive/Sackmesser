@@ -3,40 +3,5 @@
   "blackList": [
     "sackmesser\\.(svg|png)",
     "^LICENSE$"
-  ],
-  "dependencies": {
-    "@goldinteractive/js-base": "^0.0.9"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-class-properties": "^7.3.0",
-    "@babel/plugin-proposal-decorators": "^7.3.0",
-    "@babel/plugin-transform-classes": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
-    "@goldinteractive/ignore-assets-webpack-plugin": "^3.0.0",
-    "autoprefixer": "^8.6.3",
-    "babel-loader": "^8.0.5",
-    "clean-webpack-plugin": "^0.1.19",
-    "copy-webpack-plugin": "^4.5.2",
-    "css-loader": "^1.0.0",
-    "cssnano": "^4.0.2",
-    "cssnano-preset-default": "^4.0.0",
-    "dotenv": "^6.0.0",
-    "extract-loader": "^2.0.1",
-    "file-loader": "^1.1.11",
-    "image-webpack-loader": "^4.3.1",
-    "mini-css-extract-plugin": "^0.4.1",
-    "node-sass": "^4.9.0",
-    "node-sass-json-importer": "^3.3.1",
-    "null-loader": "^0.1.1",
-    "postcss-import": "^11.1.0",
-    "postcss-loader": "^2.1.5",
-    "postcss-pxtorem": "^4.0.1",
-    "sass-loader": "^7.0.3",
-    "style-loader": "^0.21.0",
-    "svgo": "^1.0.5",
-    "webpack": "^4.29.3",
-    "webpack-cli": "^3.2.3",
-    "worker-loader": "^2.0.0"
-  }
+  ]
 }
