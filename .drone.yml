@@ -53,9 +53,9 @@ steps:
 #      webhook: "REPLACEME"
 #      template: >
 #        {{#success build.status}}
-#          *{{repo.name}}* (#{{build.number}}) by *{{build.author}}* deployed (*{{build.branch}}*). Yay.
+#          *{{repo.name}}* (#{{build.number}}) by *{{build.author.name}}* deployed (*{{build.branch}}*). Yay.
 #        {{else}}
-#          *{{repo.name}}* (#{{build.number}}) by *{{build.author}}* was not deployed (*{{build.branch}}*). Oh noes.
+#          *{{repo.name}}* (#{{build.number}}) by *{{build.author.name}}* was not deployed (*{{build.branch}}*). Oh noes.
 #        {{/success}}
 #    when:
 #      status: [ success, failure ]
