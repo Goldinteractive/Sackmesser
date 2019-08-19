@@ -23,6 +23,7 @@
     "@goldinteractive/ignore-assets-webpack-plugin": "^3.0.0",
     "autoprefixer": "^8.6.3",
     "babel-loader": "^8.0.5",
+    "babel-plugin-dev-expression": "^0.2.2",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
