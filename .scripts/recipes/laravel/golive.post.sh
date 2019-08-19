@@ -5,7 +5,7 @@ source $SCRIPTS_FOLDER/util.sh
 loadEnvConfig $ENV
 
 if [ $MIGRATE_DB -eq 1 ]; then
-executeSSH "$DEPLOY_PHP_BINARY $DEPLOY_APPROOT/current/backend/artisan migrate;"
+executeSSH "$DEPLOY_PHP_BINARY $DEPLOY_APPROOT/current/backend/artisan migrate --force;"
 fi
 
 exit 0
