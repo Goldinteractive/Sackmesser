@@ -6,6 +6,18 @@ Feature detector enables detecting browser features and using a fallback in case
 
 Configuration can be done in `config.js` using a configuration preset in `configurations`.
 
+Note that `config.js` is expected to return a function which generates an array of `configurations`.
+
+A configuration object consists of the following structure:
+
+```js
+{
+  features: [], // list of features to test
+  fallback: bodyClassClickCookieFallback, // fallback strategy to invoke with parameter `supported`
+  breaking: bool // indicator whether it should quit after the first not supported rule set
+}
+```
+
 ## Presets
 
 Presets combine detectors and a fallback strategy.
