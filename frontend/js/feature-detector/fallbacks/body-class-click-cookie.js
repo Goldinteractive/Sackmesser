@@ -1,3 +1,9 @@
+/**
+ * In case of an unsupported browser this will add a body className and register a click handler.
+ * Upon clicking the button a cookie will be set to stop showing the information on subsequent loads.
+ *
+ * @param {boolean} support indicates whether the feature is supported
+ */
 const bodyClassNameFallback = support => {
   const COOKIE_NAME = 'browser-fallback-raised'
   const CLASS_NAME = '-browser-not-supported'
