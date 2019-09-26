@@ -102,6 +102,10 @@ It will also generate and reference external resources automatically.
 
 > Please note that if you use any css in your js bundle it will generate a **standalone css** file which must be imported manually.
 
+### Static assets
+
+All assets within `frontend/_public` are directly copied to the output directory without any futher processing. Except for potential asset hash replacement.
+
 ### Replace asset hash of resources in static files
 
 This feature can be used to set the asset hash in static files.
