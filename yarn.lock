@@ -563,10 +563,10 @@
   dependencies:
     lodash "^4.17.4"
 
-"@goldinteractive/js-base@^0.0.10":
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/@goldinteractive/js-base/-/js-base-0.0.10.tgz#73c4e127b21c253643e46c168d8a342320be015f"
-  integrity sha512-2bKquQGOayN56mimPOpAYNcLPwX6I9rfHx6T+du3v419RP0VFuZYlSRl/y5gNjLSSvRORFLiXsy/qGDe2vS7xQ==
+"@goldinteractive/js-base@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@goldinteractive/js-base/-/js-base-0.1.0.tgz#657482f4c7cdf9ff6a24b7e2e45c06c80a47bfb2"
+  integrity sha512-O1f+bkxulzFzDgW3NgkkP/0OlAhHn5ZMHGvt4/n9pTmBx4A6EYVI+NCkv5CAGUjj6iUpbM+/5zTlxFSGS6GJBg==
   dependencies:
     core-js "^2.5.1"
     detect-it "^3.0.3"
@@ -576,6 +576,7 @@
     promise-polyfill "^6.0.2"
     qs "^6.5.1"
     riot-observable "^3.0.0"
+    tiny-invariant "^1.0.6"
     whatwg-fetch "^2.0.3"
 
 "@webassemblyjs/ast@1.8.2":
@@ -6570,6 +6571,11 @@ timers-browserify@^2.0.4:
 timsort@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/timsort/-/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
+
+tiny-invariant@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.0.6.tgz#b3f9b38835e36a41c843a3b0907a5a7b3755de73"
+  integrity sha512-FOyLWWVjG+aC0UqG76V53yAWdXfH8bO6FNmyZOuUrzDzK8DI3/JRY25UD7+g49JWM1LXwymsKERB+DzI0dTEQA==
 
 to-absolute-glob@^0.1.1:
   version "0.1.1"
