@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const path = require('path')
+const assert = require('assert')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const IgnoreAssetsWebpackPlugin = require('@goldinteractive/ignore-assets-webpack-plugin')
@@ -282,7 +283,13 @@ const buildProjectSkeletonConfig = ({
   ]
 })
 
+const validateEnvironmentVariables = env => {
+  assert.ok(env.assetHash, 'assetHash must be set to non empty value.')
+  assert.ok(env.publicDest, 'publicDest must be set to non empty value.')
+}
+
 module.exports = env => {
+  validateEnvironmentVariables(env)
   const isProd = env.mode === 'production'
   const assetHash = env.assetHash
   const environment = env.environment
