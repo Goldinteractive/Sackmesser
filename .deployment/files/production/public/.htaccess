@@ -13,23 +13,23 @@ Header always set X-Frame-Options "SAMEORIGIN"
 Header always set X-Xss-Protection "1; mode=block"
 Header set Referrer-Policy "no-referrer"
 
-# Craft Presto Caching
-# If this is not in the root directory you need to edit the path in the last line to ../cache
+#- Blitz cache rewrite
 #RewriteCond %{REQUEST_FILENAME} !\.(css|eot|gif|ico|jpe?g|otf|png|svg|ttf|webp|woff2?)$ [NC]
-#RewriteCond %{REQUEST_METHOD} GET
-#RewriteCond %{DOCUMENT_ROOT}/cache/%{HTTP_HOST}/presto%{REQUEST_URI}/index.html -f
-#RewriteRule .* /cache/%{HTTP_HOST}/presto%{REQUEST_URI}/index.html [L,E=nocache:1]]
-
-# Craft blitz caching
-#RewriteCond %{REQUEST_FILENAME} !\.(css|eot|gif|ico|jpe?g|otf|png|svg|ttf|webp|woff2?)$ [NC]
-#RewriteCond %{REQUEST_METHOD} GET
 #RewriteCond %{DOCUMENT_ROOT}/cache/blitz/%{HTTP_HOST}/%{REQUEST_URI}/%{QUERY_STRING}/index.html -s
-#RewriteRule .* cache/blitz/%{HTTP_HOST}/%{REQUEST_URI}/%{QUERY_STRING}/index.html [L]
+#RewriteCond %{REQUEST_METHOD} GET
+#RewriteCond %{QUERY_STRING} !token= [NC]
+#RewriteRule .* /cache/blitz/%{HTTP_HOST}/%{REQUEST_URI}/%{QUERY_STRING}/index.html [L]
 
 # Handle Front Controller...
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule ^de/(.+)$ /de/index.php [NC,L]
+#
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule ^en/(.+)$ /en/index.php [NC,L]
+
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.php [L]
+RewriteRule ^ /index.php [L]
 
 # ----------------------------------------------------------------------
 # | Compression                                                        |
