@@ -24,9 +24,12 @@ $ make feature-install-modal
 
 Respect the proper scope of the dependency (runtime vs. compile time)
 
+Run this command in the `frontend` container:
+
 ```shell
 $ yarn add dependency-name
 ```
+
 and it will add the new utility into the `node_modules` folder.
 
 ## Install all the dependencies
@@ -63,19 +66,13 @@ $ make
 Please note, that we encourage you to use Docker to develop. So you must always start a docker container before working on the project. To do so, simply execute:
 
 ```shell
-$ make docker-up
+$ make up
 ```
 
 All other command will automatically use the docker container instance, so in order to start working on the frontend, use:
 
 ```shell
 $ make watch
-```
-
-If you want to work locally, you can do so by using the `Makefile.local`.
-
-```shell
-$ make -f Makefile.local watch
 ```
 
 ### Start web container with custom port
