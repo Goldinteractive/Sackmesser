@@ -17,7 +17,7 @@ build-fe:
 		.scripts/frontend/build.sh
 
 .PHONY: watch
-watch: install-fe watch-fe
+watch: watch-fe
 
 .PHONY: watch-fe
 watch-fe:

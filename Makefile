@@ -27,6 +27,7 @@ build-fe:
 
 .PHONY: watch
 watch:
+	@ make docker-make-exec SERVICE=frontend CMD=install-fe
 	@ make favicons
 	@ make icons
 	@ make docker-make-exec SERVICE=frontend CMD=watch
