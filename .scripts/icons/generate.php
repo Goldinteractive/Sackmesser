@@ -1,7 +1,7 @@
 <?php
 // parse cli arguments into GET variables
 parse_str(implode('&', array_slice($argv, 1)), $_GET);
-$root = dirname(__FILE__) .'/../../..';
+$root = dirname(__FILE__) .'/../..';
 $sharedJson     = $root .'/'. $_GET['sharedJson'];
 $iconsFolder    = $root .'/'. $_GET['iconsFolder'];
 $dataFileOutput = $root .'/'. $_GET['dataFileOutput'];

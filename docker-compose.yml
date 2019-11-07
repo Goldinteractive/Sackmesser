@@ -1,29 +1,49 @@
-version: '3.1'
+version: '3.7'
 
 volumes:
   v_node_modules:
+  v_node_modules_empty:
   v_vendor:
-  v_dist:
-services:
-  app:
-    build:
-      context: ./
-      dockerfile: dockerfile.app
-    working_dir: /var/www
-    volumes:
-      - ./:/var/www/:cached
-      - v_node_modules:/var/www/node_modules
-      - v_vendor:/var/www/backend/vendor
-      - v_dist:/var/www/dist
-      - ~/.composer/auth.json:/root/.composer/auth.json
 
-  web:
-    build:
-      context: ./
-      dockerfile: dockerfile.web
-    working_dir: /var/www
-    volumes:
-      - ./_data:/var/www/_data:cached
-      - ./public:/var/www/public:cached
+services:
+  apache:
+    image: goldinteractive/sm-apache:2.4-rev1
     ports:
       - ${DOCKER_PORT_WEB:-8000}:80
+    volumes:
+      - ./public:/var/www/public:delegated
+      - ./_data:/var/www/_data:delegated
+    networks:
+      app-network:
+        aliases:
+          - apache
+    depends_on:
+      - backend
+      - frontend
+
+  frontend:
+    image: goldinteractive/sm-node:10.17-rev2
+    entrypoint: "tail -f /dev/null"
+    volumes:
+      - ./:/usr/src/app/:delegated
+      - v_node_modules:/usr/src/app/node_modules
+    networks:
+      app-network:
+        aliases:
+          - frontend
+
+  backend:
+    image: goldinteractive/sm-php:7.3-rev2
+    volumes:
+      - ./:/var/www/:delegated
+      - v_vendor:/var/www/backend/vendor
+      - v_node_modules_empty:/var/www/node_modules
+      - ~/.composer/auth.json:/root/.composer/auth.json
+    networks:
+      app-network:
+        aliases:
+          - backend
+
+networks:
+  app-network:
+    driver: bridge

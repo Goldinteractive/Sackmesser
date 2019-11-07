@@ -1,3 +1,7 @@
+global-variables:
+  image_sm_php: &image_sm_php goldinteractive/sm-php:7.3-rev2
+  image_sm_node: &image_sm_node goldinteractive/sm-node:10.17-rev2
+
 kind: pipeline
 name: default
 
@@ -8,26 +12,65 @@ steps:
       restore: true
       mount:
         - ./backend/vendor
-        - ./frontend/node_modules
+        - ./node_modules
     volumes:
       - name: cache
         path: /cache
 
-  - name: build
-    image: goldinteractive/sackmesser:3.2
+  - name: install-fe
+    image: *image_sm_node
+    environment:
+      ASSET_HASH: ${DRONE_BUILD_CREATED}
+      ENV: ${DRONE_BRANCH##release/}
+    commands:
+      - .scripts/frontend/install.sh
+
+  - name: icons-optimize
+    image:  *image_sm_node
+    commands:
+      - .scripts/ci/icons-optimize.sh
+
+  - name: icons-compile
+    image: *image_sm_php
+    commands:
+      - .scripts/ci/icons-compile.sh
+
+  - name: favicons
+    image: v4tech/imagemagick:latest
+    commands:
+      - .scripts/ci/favicons.sh
+
+  - name: build-fe
+    image: *image_sm_node
+    environment:
+      ASSET_HASH: ${DRONE_BUILD_CREATED}
+      ENV: ${DRONE_BRANCH##release/}
+    commands:
+      - .scripts/ci/build-fe.sh
+
+  - name: test-fe
+    image: *image_sm_node
+    commands:
+      - .scripts/ci/test-fe.sh
+
+  - name: install-be
+    image: *image_sm_php
+    commands:
+      - .scripts/backend/install.sh
+
+  - name: build-be
+    image: *image_sm_php
     environment:
       ASSET_HASH: ${DRONE_BUILD_CREATED}
       ENV: ${DRONE_BRANCH##release/}
     commands:
       - .scripts/ci/build-be.sh
-      - .scripts/ci/build-fe.sh
       - .scripts/ci/post-build.sh
 
-  - name: test
-    image: goldinteractive/sackmesser:3.2
+  - name: test-be
+    image: *image_sm_php
     commands:
       - .scripts/ci/test-be.sh
-      - .scripts/ci/test-fe.sh
 
   - name: deploy
     image: appleboy/drone-scp

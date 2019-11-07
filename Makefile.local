@@ -1,47 +1,57 @@
 SHELL:=/bin/bash
 -include .config/build
 
-.PHONY: install
-install: install-be install-fe
+##################
+# Frontend
+##################
 
 .PHONY: install-fe
 install-fe:
 	@ $(SCRIPTS_FOLDER)/frontend/install.sh
 
-.PHONY: install-be
-install-be:
-	@ $(SCRIPTS_FOLDER)/backend/install.sh
-
-.PHONY: feature-install-%
-feature-install-%:
-	# install feature
-	@ yarn add @goldinteractive/feature-$*
-	# copy feature assets
-	@ rsync -r $(NODE_MODULES)/@goldinteractive/feature-$*/assets/features/* $(ASSETS_PATH)/features
-
-.PHONY: feature-remove-%
-feature-remove-%:
-	# remove feature
-	@ yarn remove @goldinteractive/feature-$*
-
-.PHONY: watch
-watch: install watch-frontend
-
-.PHONY: watch-frontend
-watch-frontend:
-	@ $(SCRIPTS_FOLDER)/frontend/watch.sh
-
-.PHONY: build
-build:
+.PHONY: build-fe
+build-fe:
 	@ ASSET_HASH=assets \
 		PUBLIC_DEST=$(DEST) \
 		ENVIRONMENT=production \
 		.scripts/frontend/build.sh
 
-.PHONY: icons
-icons:
-	@ $(SCRIPTS_FOLDER)/frontend/icons/icons.sh
+.PHONY: watch
+watch: install-fe watch-fe
+
+.PHONY: watch-fe
+watch-fe:
+	$(SCRIPTS_FOLDER)/frontend/watch.sh
+
+.PHONY: feature-install-%
+feature-install-%:
+	@ yarn add @goldinteractive/feature-$*
+	@ cp -r $(NODE_MODULES)/@goldinteractive/feature-$*/assets/features/* $(ASSETS_PATH)/features
+
+.PHONY: feature-remove-%
+feature-remove-%:
+	@ yarn remove @goldinteractive/feature-$*
+
+##################
+# Backend
+##################
+
+.PHONY: install-be
+install-be:
+	@ $(SCRIPTS_FOLDER)/backend/install.sh
+
+##################
+# Icons
+##################
+
+.PHONY: icons-optimize
+icons-optimize:
+	@ $(SCRIPTS_FOLDER)/icons/icons-optimize.sh
+
+.PHONY: icons-compile
+icons-compile:
+	@ $(SCRIPTS_FOLDER)/icons/icons-compile.sh
 
 .PHONY: favicons
 favicons:
-	@ $(SCRIPTS_FOLDER)/frontend/favicons.sh $(FAVICONS_IN) $(FAVICONS_OUT)
+	@ $(SCRIPTS_FOLDER)/icons/favicons.sh
