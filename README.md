@@ -24,9 +24,10 @@ $ make feature-install-modal
 
 Respect the proper scope of the dependency (runtime vs. compile time)
 
-Run this command in the `frontend` container:
+Run these commands in your terminal:
 
 ```shell
+$ make connect-frontend
 $ yarn add dependency-name
 ```
 
