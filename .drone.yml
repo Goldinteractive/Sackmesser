@@ -24,21 +24,29 @@ steps:
       ENV: ${DRONE_BRANCH##release/}
     commands:
       - .scripts/frontend/install.sh
+    depends_on:
+      - restore-cache
 
   - name: icons-optimize
     image:  *image_sm_node
     commands:
       - .scripts/ci/icons-optimize.sh
+    depends_on:
+      - install-fe
 
   - name: icons-compile
     image: *image_sm_php
     commands:
       - .scripts/ci/icons-compile.sh
+    depends_on:
+      - icons-optimize
 
   - name: favicons
     image: v4tech/imagemagick:latest
     commands:
       - .scripts/ci/favicons.sh
+    depends_on:
+      - icons-compile
 
   - name: build-fe
     image: *image_sm_node
@@ -47,16 +55,22 @@ steps:
       ENV: ${DRONE_BRANCH##release/}
     commands:
       - .scripts/ci/build-fe.sh
+    depends_on:
+      - favicons
 
   - name: test-fe
     image: *image_sm_node
     commands:
       - .scripts/ci/test-fe.sh
+    depends_on:
+      - build-fe
 
   - name: install-be
     image: *image_sm_php
     commands:
       - .scripts/backend/install.sh
+    depends_on:
+      - restore-cache
 
   - name: build-be
     image: *image_sm_php
@@ -66,11 +80,15 @@ steps:
     commands:
       - .scripts/ci/build-be.sh
       - .scripts/ci/post-build.sh
+    depends_on:
+      - install-be
 
   - name: test-be
     image: *image_sm_php
     commands:
       - .scripts/ci/test-be.sh
+    depends_on:
+      - build-be
 
   - name: deploy
     image: appleboy/drone-scp
@@ -79,6 +97,9 @@ steps:
     environment:
       SSH_PASSWORD:
         from_secret: deploy_${DRONE_BRANCH##release/}_password
+    depends_on:
+      - test-fe
+      - test-be
 
   - name: golive
     image: appleboy/drone-ssh
@@ -89,6 +110,8 @@ steps:
         from_secret: deploy_${DRONE_BRANCH##release/}_password
       DB_PASSWORD:
         from_secret: deploy_${DRONE_BRANCH##release/}_db_password
+    depends_on:
+      - deploy
 
 #  - name: slack
 #    image: plugins/slack
@@ -100,6 +123,8 @@ steps:
 #        {{else}}
 #          *{{repo.name}}* (#{{build.number}}) by *{{build.author.name}}* was not deployed (*{{build.branch}}*). Oh noes.
 #        {{/success}}
+#    depends_on:
+#      - golive
 #    when:
 #      status: [ success, failure ]
 
@@ -113,6 +138,8 @@ steps:
     volumes:
       - name: cache
         path: /cache
+    depends_on:
+      - golive
 
 volumes:
   - name: cache
