@@ -98,7 +98,7 @@ pull-data-%:
 
 .PHONY: push-data-%
 push-data-%:
- 	@	DEPLOYENV=$* \
+	@	DEPLOYENV=$* \
         DEPLOY_SCRIPTS_FOLDER=$(SCRIPTS_FOLDER) \
         CONFIG_FOLDER=$(CONFIG_FOLDER) \
          $(SCRIPTS_FOLDER)/datasync/push-data.sh
