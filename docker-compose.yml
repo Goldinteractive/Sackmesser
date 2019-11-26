@@ -22,7 +22,7 @@ services:
       - frontend
 
   frontend:
-    image: goldinteractive/sm-node:10.17-rev2
+    image: goldinteractive/sm-node:12.13-rev1
     entrypoint: "tail -f /dev/null"
     volumes:
       - ./:/usr/src/app/:delegated
