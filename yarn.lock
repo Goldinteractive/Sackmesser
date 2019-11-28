@@ -563,13 +563,12 @@
   dependencies:
     lodash "^4.17.4"
 
-"@goldinteractive/js-base@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@goldinteractive/js-base/-/js-base-0.1.0.tgz#657482f4c7cdf9ff6a24b7e2e45c06c80a47bfb2"
-  integrity sha512-O1f+bkxulzFzDgW3NgkkP/0OlAhHn5ZMHGvt4/n9pTmBx4A6EYVI+NCkv5CAGUjj6iUpbM+/5zTlxFSGS6GJBg==
+"@goldinteractive/js-base@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@goldinteractive/js-base/-/js-base-1.0.0.tgz#e5208e2842bdb8428d7f7de4ca20d5ec58853dcd"
+  integrity sha512-1zo0UlREefTO4WU9TsAy8NZuAkJEtSvqwax1XebR7RLZdf5BOnqxBH7SSySGYpTxvWEHW9v3sqCFwDLkacWXqw==
   dependencies:
     core-js "^2.5.1"
-    detect-it "^3.0.3"
     easing-js danro/easing-js
     fetch-jsonp "^1.1.3"
     intersection-observer "^0.5.0"
@@ -2115,34 +2114,9 @@ detect-file@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/detect-file/-/detect-file-1.0.0.tgz#f0d66d03672a825cb1b73bdb3fe62310c8e552b7"
 
-detect-hover@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/detect-hover/-/detect-hover-1.0.2.tgz#589fb0b469220897a9eee3fa36a917e1eda37a21"
-
-detect-it@^3.0.3:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/detect-it/-/detect-it-3.0.5.tgz#816396c0fe12b11af08299a7c2b8381e58d15175"
-  dependencies:
-    detect-hover "^1.0.2"
-    detect-passive-events "^1.0.4"
-    detect-pointer "^1.0.2"
-    detect-touch-events "^2.0.1"
-
 detect-libc@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
-
-detect-passive-events@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/detect-passive-events/-/detect-passive-events-1.0.4.tgz#6ed477e6e5bceb79079735dcd357789d37f9a91a"
-
-detect-pointer@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/detect-pointer/-/detect-pointer-1.0.2.tgz#1e0e4e261dab45055c50c74fb5a4ff09ceb18fbd"
-
-detect-touch-events@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/detect-touch-events/-/detect-touch-events-2.0.1.tgz#365833cf0c5c40c4090a08096b8a688db00fa337"
 
 diffie-hellman@^5.0.0:
   version "5.0.3"
