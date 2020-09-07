@@ -20,5 +20,5 @@ for FULL_FILE_PATH in $FILES; do
 
   # the prefix must be set per file because they will afterwards be merged into a single svg
   $SVGO -q --pretty --disable=removeViewBox --input $FULL_FILE_PATH --output $ICONS_OUT \
-    --config '{"plugins": [{"cleanupIDs": { "force": true }},{"removeStyleElement": true}] }'
+    --config '{"plugins": [{"cleanupIDs": { "force": true }},{"removeStyleElement": true},{"addAttributesToSVGElement": { "attributes": [{"focusable": false}]}}] }'
 done
