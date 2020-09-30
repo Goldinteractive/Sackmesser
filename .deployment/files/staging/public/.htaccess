@@ -19,6 +19,7 @@ RewriteRule ^ %1 [L,R=301]
 #RewriteCond %{DOCUMENT_ROOT}/cache/blitz/%{HTTP_HOST}/%{REQUEST_URI}/%{QUERY_STRING}/index.html -s
 #RewriteCond %{REQUEST_METHOD} GET
 #RewriteCond %{QUERY_STRING} !token= [NC]
+#RewriteCond %{QUERY_STRING} !%
 #RewriteRule .* /cache/blitz/%{HTTP_HOST}/%{REQUEST_URI}/%{QUERY_STRING}/index.html [L]
 
 # Handle Front Controller...
