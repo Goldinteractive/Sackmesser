@@ -1,5 +1,9 @@
 RewriteEngine On
 
+# Remove linefeed and spaces from url which interfere with the language redirect
+RewriteRule "^(\S*)\s+(\S*)$" /$1+$2 [L,NE,R=302]
+RewriteRule "^(\S*)\s+(\S*\s+.*)$" $1+$2 [L]
+
 # Force www
 #RewriteCond %{HTTP_HOST} !^www\.yourodmain\.com [NC]
 #RewriteRule ^(.*)$ http://www.yourodmain.com/$1 [R=301,L]
