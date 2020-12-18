@@ -4,11 +4,10 @@ parse_str(implode('&', array_slice($argv, 1)), $_GET);
 $root = dirname(__FILE__) .'/../..';
 $sharedJson     = $root .'/'. $_GET['sharedJson'];
 $iconsFolder    = $root .'/'. $_GET['iconsFolder'];
-$dataFileOutput = $root .'/'. $_GET['dataFileOutput'];
 $svgCombOutput  = $root .'/'. $_GET['svgCombOutput'];
 $shared = json_decode(file_get_contents($sharedJson), true);
 $iconsPreventFillRemove = isset($shared['icons-prevent-fill-remove'])
-                          ? $shared['icons-prevent-fill-remove'] : [];
+    ? $shared['icons-prevent-fill-remove'] : [];
 $iconsDir = new DirectoryIterator($iconsFolder);
 $icons = [];
 $iconsMetaData = ['icons' => []];
@@ -49,7 +48,6 @@ ob_start();
 include 'template.php';
 $strIcons = ob_get_clean();
 // write files
-file_put_contents($dataFileOutput, $strIconsMetaData);
 file_put_contents($svgCombOutput, $strIcons);
 echo 'Icons successfully converted!';
 echo PHP_EOL . PHP_EOL;
