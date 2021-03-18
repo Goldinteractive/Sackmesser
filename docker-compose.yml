@@ -44,6 +44,18 @@ services:
         aliases:
           - backend
 
+  designsystem:
+      image: goldinteractive/sm-node:12.13-rev1
+      ports:
+          - 3002:3002
+      entrypoint: "tail -f /dev/null"
+      volumes:
+          - ./:/usr/src/app/:delegated
+          - v_node_modules:/usr/src/app/node_modules
+      networks:
+          app-network:
+              aliases:
+                  - designsystem
 networks:
   app-network:
     driver: bridge

@@ -33,6 +33,17 @@ feature-remove-%:
 	@ yarn remove @goldinteractive/feature-$*
 
 ##################
+# Design System
+##################
+.PHONY: watch-designsystem
+watch-designsystem:
+	@ yarn run storybook
+
+.PHONY: build-designsystem
+build-designsystem:
+	@ yarn build-designsystem -o public/_designsystem
+
+##################
 # Backend
 ##################
 

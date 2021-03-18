@@ -4,6 +4,7 @@ LOCALMAKEFILE:=Makefile.local
 $(eval DOCKERCONTAINER_apache=$(shell sh -c "docker container ls -f name=$$(basename $$PWD)_apache --format '{{.Names}}'"))
 $(eval DOCKERCONTAINER_frontend=$(shell sh -c "docker container ls -f name=$$(basename $$PWD)_frontend --format '{{.Names}}'"))
 $(eval DOCKERCONTAINER_backend=$(shell sh -c "docker container ls -f name=$$(basename $$PWD)_backend --format '{{.Names}}'"))
+$(eval DOCKERCONTAINER_designsystem=$(shell sh -c "docker container ls -f name=$$(basename $$PWD)_designsystem --format '{{.Names}}'"))
 
 ##################
 # General
@@ -39,6 +40,20 @@ feature-install-%:
 .PHONY: feature-remove-%
 feature-remove-%:
 	@ make docker-make-exec SERVICE=frontend CMD=feature-remove-$*
+
+##################
+# Design System
+##################
+
+.PHONY: watch-designsystem
+watch-designsystem:
+	@ make install
+	@ docker-compose restart designsystem
+	@ make docker-make-exec SERVICE=designsystem CMD=watch-designsystem
+
+.PHONY: build-designsystem
+build-designsystem:
+	@ make docker-make-exec SERVICE=designsystem CMD=build-designsystem
 
 ##################
 # Icons
