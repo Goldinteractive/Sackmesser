@@ -1,21 +1,15 @@
+const loaders = require('./webpack/loader')
 const webpack = require('webpack')
+const paths = require('./paths')
 const path = require('path')
 const assert = require('assert')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const IgnoreAssetsWebpackPlugin = require('@goldinteractive/ignore-assets-webpack-plugin')
-const jsonImporter = require('node-sass-json-importer')
 const dotenv = require('dotenv')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const appConfiguration = require('./app-configuration')
-
-const frontendFolder = 'frontend'
-
-const root = path.join(__dirname, '..')
-const base = path.join(root, frontendFolder)
-const jsBase = path.join(base, 'js')
-const cssBase = path.join(base, 'css')
-const publicPath = path.join(base, '_public')
 
 const ASSET_HASH_REGEX = '@ASSET_HASH'
 // which file types should be checked for asset hash regex?
@@ -28,61 +22,6 @@ const ASSET_HASH_REPLACEMENT_FILE_TYPES_WHITELIST = [
   '.css'
 ]
 
-const sassLoader = {
-  loader: 'sass-loader',
-  options: {
-    includePaths: [cssBase, 'node_modules'],
-    importer: jsonImporter
-  }
-}
-
-const postcssLoader = {
-  loader: 'postcss-loader',
-  options: {
-    config: {
-      path: '.config/postcss.config.js'
-    }
-  }
-}
-
-// Note that svg fonts won't be picked up by this loader
-const fontLoader = () => ({
-  test: /\.(ttf|eot|woff|woff2)$/,
-  use: {
-    loader: 'file-loader',
-    options: {
-      name: 'fonts/[name].[ext]'
-    }
-  }
-})
-
-const imageLoader = ({ isProd, assetHash }) => ({
-  test: /\.(gif|png|jpe?g|svg)$/i,
-  use: [
-    {
-      loader: 'file-loader',
-      options: {
-        name: isProd ? '[hash].[ext]' : '[path][name].[ext]',
-        outputPath: '/files/',
-        publicPath: assetHash + '/files/',
-        context: 'frontend'
-      }
-    },
-    {
-      loader: 'image-webpack-loader',
-      options: {
-        disable: true, // disabled in dev mode
-        optipng: {
-          enabled: false
-        },
-        pngquant: {
-          quality: '90-95'
-        }
-      }
-    }
-  ]
-})
-
 const buildBaseConfig = ({ isProd }) => ({
   watch: !isProd,
   bail: isProd,
@@ -91,7 +30,8 @@ const buildBaseConfig = ({ isProd }) => ({
     maxEntrypointSize: 700000,
     maxAssetSize: 700000
   },
-  stats: isProd ? 'minimal' : 'normal'
+  stats: isProd ? 'minimal' : 'normal',
+  devtool: isProd ? false : 'source-map',
 })
 
 const pushIfSet = (bool, entry, array = []) => {
@@ -114,13 +54,12 @@ const buildCssConfig = (cssEntry, { assetHash, isProd, assetDir }) => ({
     isProd
   }),
   entry: {
-    [cssEntry]: path.join(cssBase, cssEntry + '.scss')
+    [cssEntry]: path.join(paths.app.cssBase, cssEntry + '.scss')
   },
   resolve: {
-    modules: [cssBase, base, 'node_modules']
+    modules: [paths.app.cssBase, paths.app.frontend, 'node_modules']
   },
   output: {
-    filename: '[name].js',
     path: assetDir
   },
   module: {
@@ -131,12 +70,12 @@ const buildCssConfig = (cssEntry, { assetHash, isProd, assetDir }) => ({
           'file-loader?name=[name].css',
           'extract-loader',
           'css-loader',
-          postcssLoader,
-          sassLoader
+          loaders.postcssLoader,
+          loaders.sassLoader
         ]
       },
-      fontLoader(),
-      imageLoader({ isProd, assetHash })
+      loaders.fontLoader(),
+      loaders.imageLoader({ isProd, assetHash })
     ]
   },
   plugins: [
@@ -150,91 +89,110 @@ const buildCssConfig = (cssEntry, { assetHash, isProd, assetDir }) => ({
 })
 
 const buildJsConfig = (
-  jsEntry,
-  { assetHash, isProd, assetDir, compileBundleEntries }
-) => ({
-  ...buildBaseConfig({
-    isProd
-  }),
-  entry: {
-    [jsEntry]: path.join(jsBase, jsEntry)
-  },
-  resolve: {
-    extensions: ['.js', '.json', '.jsx'],
-    modules: [jsBase, base, 'node_modules']
-  },
-  output: {
-    filename: '[name].js',
-    path: assetDir
-  },
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          cacheDirectory: true
-        }
-      },
-      {
-        test: /\.jsx?$/,
-        loader: 'babel-loader',
-        include: compileBundleEntries,
-        options: {
-          cacheDirectory: true
-        }
-      },
-      {
-        test: /\.worker\.js$/,
-        use: {
-          loader: 'worker-loader',
+  jsEntries,
+  { assetHash, isProd, assetDir, compileBundleEntries, enableBundleAnalyzer }
+) => {
+  let entryPoints = {}
+  jsEntries.forEach(jsEntry => {
+    entryPoints[jsEntry] = path.join(paths.app.jsBase, jsEntry)
+  })
+
+  return {
+    ...buildBaseConfig({
+      isProd,
+    }),
+    entry: entryPoints,
+    resolve: {
+      extensions: ['.js', '.json', '.jsx'],
+      modules: [paths.app.jsBase, paths.app.frontend, 'node_modules'],
+    },
+    output: {
+      filename: '[name].js',
+      publicPath: 'assets/',
+      path: assetDir,
+    },
+    module: {
+      rules: [
+        {
+          test: /\.jsx?$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader',
           options: {
-            name: '[hash]-[name].js',
-            publicPath: `${assetHash}/`
-          }
-        }
+            cacheDirectory: true,
+          },
+        },
+        {
+          test: /\.jsx?$/,
+          loader: 'babel-loader',
+          include: compileBundleEntries,
+          options: {
+            cacheDirectory: true,
+          },
+        },
+        {
+          test: /\.worker\.js$/,
+          use: {
+            loader: 'worker-loader',
+            options: {
+              name: '[hash]-[name].js',
+              publicPath: `${assetHash}/`,
+            },
+          },
+        },
+        {
+          test: /\.s?css$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            loaders.postcssLoader,
+            loaders.sassLoader
+          ],
+        },
+        loaders.fontLoader(),
+        loaders.imageLoader({ isProd, assetHash })
+      ],
+    },
+    plugins: [
+      ...buildBasePlugins({
+        isProd,
+      }),
+      new MiniCssExtractPlugin({
+        filename: '[name].css',
+      }),
+      new webpack.DefinePlugin({
+        __ASSET_HASH__: '"' + assetHash + '"',
+      }),
+      new BundleAnalyzerPlugin({
+        analyzerMode: enableBundleAnalyzer ? 'static' : 'disabled'
+      }),
+    ],
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          commons: {
+            name: 'commons',
+            chunks: 'initial',
+            minChunks: 2,
+          },
+        },
       },
-      {
-        test: /\.s?css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          postcssLoader,
-          sassLoader
-        ]
-      },
-      fontLoader(),
-      imageLoader({ isProd, assetHash })
-    ]
-  },
-  plugins: [
-    ...buildBasePlugins({
-      isProd
-    }),
-    new MiniCssExtractPlugin({
-      filename: '[name].css'
-    }),
-    new webpack.DefinePlugin({
-      __ASSET_HASH__: '"' + assetHash + '"'
-    })
-  ]
-})
+    },
+  }
+}
 
 const buildProjectSkeletonConfig = ({
-  jsEntries,
-  assetHash,
-  isProd,
-  baseOutputDir,
-  assetDir,
-  assetHashTemplateReplacePath
-}) => ({
+                                      jsEntries,
+                                      assetHash,
+                                      isProd,
+                                      assetDir,
+                                      assetHashTemplateReplacePath
+                                    }) => ({
   ...buildBaseConfig({
     isProd
   }),
   entry: {
     // Webpack needs an entry...
-    [jsEntries[0] + '-omit']: path.join(jsBase, jsEntries[0])
+    [jsEntries[0]]: path.join(paths.app.jsBase, jsEntries[0])
   },
   output: {
     filename: '[name].js',
@@ -258,14 +216,14 @@ const buildProjectSkeletonConfig = ({
     }),
     new CopyWebpackPlugin([
       {
-        from: publicPath,
+        from: paths.app.publicPath,
         to: '..',
         transform: (content, pathname) => {
           if (
             assetHashTemplateReplacePath &&
             typeof assetHashTemplateReplacePath === 'string'
           ) {
-            const fullPath = path.join(root, assetHashTemplateReplacePath)
+            const fullPath = path.join(paths.app.root, assetHashTemplateReplacePath)
             // One must not stringify binary files such as png, glb, etc.
             const isInFileTypeWhiteList =
               ASSET_HASH_REPLACEMENT_FILE_TYPES_WHITELIST.find(fileType =>
@@ -279,7 +237,7 @@ const buildProjectSkeletonConfig = ({
           return content
         }
       }
-    ])
+    ]),
   ]
 })
 
@@ -295,30 +253,31 @@ module.exports = env => {
   const environment = env.environment
   const publicDest = env.publicDest
   const assetHashTemplateReplacePath = env.assetHashTemplateReplacePath
+  const enableBundleAnalyzer = env.mode === 'development'
 
   // parses current .env file and provides all variables in process.env.XYZ
   // usage: process.env.APP_URL
   dotenv.config({
-    path: path.join(base, '.env.' + environment)
+    path: path.join(paths.app.frontend, '.env.' + environment)
   })
 
-  const baseOutputDir = path.join(root, publicDest)
+  const baseOutputDir = path.join(paths.app.root, publicDest)
   const assetDir = baseOutputDir + '/' + assetHash
   const { jsEntries, cssEntries, compileBundleEntries } = appConfiguration(env)
 
   const configObject = {
-    baseOutputDir,
     assetDir,
     assetHash,
     assetHashTemplateReplacePath,
     isProd,
     jsEntries,
-    compileBundleEntries
+    compileBundleEntries,
+    enableBundleAnalyzer
   }
 
   return [
     buildProjectSkeletonConfig(configObject),
-    ...jsEntries.map(jsEntry => buildJsConfig(jsEntry, configObject)),
+    buildJsConfig(jsEntries, configObject),
     ...cssEntries.map(cssEntry => buildCssConfig(cssEntry, configObject))
   ]
 }
