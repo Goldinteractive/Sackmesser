@@ -7,6 +7,10 @@
     "type": "git",
     "url": ""
   },
+  "scripts": {
+    "storybook": "start-storybook -p 3002 --config-dir=.config/storybook",
+    "build-designsystem": "build-storybook --config-dir=.config/storybook --quiet"
+  },
   "browserslist": [
     "> 5%",
     "last 2 versions",

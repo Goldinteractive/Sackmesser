@@ -18,6 +18,9 @@ FE_SOURCE=frontend
 # FE stuff
 NODE_MODULES=./node_modules
 
+# Designsystem stuff
+STORYBOOK_CONFIG_DIR=${CONFIG_FOLDER}/storybook
+
 WEBPACK_CONFIG=${CONFIG_FOLDER}/webpack.config.js
 
 # Binaries

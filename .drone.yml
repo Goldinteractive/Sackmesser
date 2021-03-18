@@ -58,6 +58,16 @@ steps:
     depends_on:
       - favicons
 
+  - name: build-designsystem
+    image: *image_sm_node
+    environment:
+        ASSET_HASH: ${DRONE_BUILD_CREATED}
+        ENV: ${DRONE_BRANCH##release/}
+    commands:
+        - .scripts/ci/build-designsystem.sh
+    depends_on:
+        - install-fe
+
   - name: test-fe
     image: *image_sm_node
     commands:

@@ -35,13 +35,14 @@ feature-remove-%:
 ##################
 # Design System
 ##################
+
 .PHONY: watch-designsystem
 watch-designsystem:
-	@ yarn run storybook
+	@ $(SCRIPTS_FOLDER)/designsystem/watch.sh
 
 .PHONY: build-designsystem
 build-designsystem:
-	@ yarn build-designsystem -o public/_designsystem
+	@ STORYBOOK_DEST=public/designsystem $(SCRIPTS_FOLDER)/designsystem/build.sh
 
 ##################
 # Backend
