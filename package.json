@@ -59,6 +59,6 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.10.5",
-    "@goldinteractive/js-base": "^1.0.2"
+    "@goldinteractive/js-base": "^1.1.1"
   }
 }
