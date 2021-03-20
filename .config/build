@@ -30,9 +30,8 @@ SVGO=${NODE_MODULES}/.bin/svgo
 ASSETS_PATH=${FE_SOURCE}/_public/assets
 
 # Icons
-ICONS_IN=${FE_SOURCE}/_public/assets/img/icons
+ICONS_IN=${FE_SOURCE}/icons/icons
 ICONS_OUT=${FE_SOURCE}/_public/generated/img/icons
-ICONS_DATA_FILE=${FE_SOURCE}/_public/generated/icons.json
 ICONS_COMBINED_SVG=${FE_SOURCE}/_public/generated/icons.svg
 
 # Favicons
