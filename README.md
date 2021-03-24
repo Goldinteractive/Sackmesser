@@ -76,6 +76,10 @@ All other command will automatically use the docker container instance, so in or
 $ make watch
 ```
 
+```shell
+$ make watch-designsystem
+```
+
 ### Start web container with custom port
 
 The web container will start with a default port of 8000. If you need to use another port you can
