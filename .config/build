@@ -14,6 +14,7 @@ RECIPES_FOLDER=./.scripts/recipes
 # Main Entry Points
 BE_SOURCE=backend
 FE_SOURCE=frontend
+UI_SOURCE=ui
 
 # FE stuff
 NODE_MODULES=./node_modules

@@ -45,4 +45,10 @@ rsync -adq --ignore-errors *.* $DEST_DIR \
 
 cd $OLD_DIR
 
+DEST_DIR=../$DEST/$UI_SOURCE
+cd $UI_SOURCE
+
+rsync -atRlq --ignore-errors . $DEST_DIR
+
+cd $OLD_DIR
 exit 0
