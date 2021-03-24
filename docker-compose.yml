@@ -7,7 +7,7 @@ volumes:
 
 services:
   apache:
-    image: goldinteractive/sm-apache:2.4-rev1
+    image: goldinteractive/sm-apache:2.4-rev2
     ports:
       - ${DOCKER_PORT_WEB:-8000}:80
     volumes:
