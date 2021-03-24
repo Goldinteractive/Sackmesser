@@ -14,6 +14,7 @@ Work on the project:
   $START  make connect               $END Connect to the docker container
   $START  make install               $END Install all project dependencies
   $START  make watch                 $END Watch the js and the scss files compiling them
+  $START  make watch-designsystem    $END Start the designsystem
   $START  make build-fe              $END Build the js and the scss files
   $START  make icons                 $END Generate the icons
   $START  make favicons              $END Generate the favicons
