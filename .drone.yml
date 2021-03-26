@@ -124,16 +124,18 @@ steps:
     depends_on:
       - deploy
 
-#  - name: slack
-#    image: plugins/slack
+#  - name: notify
+#    image: goldinteractive/drone-google-chat
 #    settings:
-#      webhook: "REPLACEME"
-#      template: >
-#        {{#success build.status}}
-#          *{{repo.name}}* (#{{build.number}}) by *{{build.author.name}}* deployed (*{{build.branch}}*). Yay.
-#        {{else}}
-#          *{{repo.name}}* (#{{build.number}}) by *{{build.author.name}}* was not deployed (*{{build.branch}}*). Oh noes.
-#        {{/success}}
+#        webhook: "REPLACEME"
+#        key: 'REPLACEME'
+#        token: 'REPLACEME'
+#        template: >
+#            {{#success build.status}}
+#              *Success*: *{{repo.name}}* (#{{build.number}}) by *{{build.author.name}}* deployed (*{{build.branch}}*). Yay.
+#            {{else}}
+#              *Failure*: *{{repo.name}}* (#{{build.number}}) by *{{build.author.name}}* was not deployed (*{{build.branch}}*). Oh noes.
+#            {{/success}}
 #    depends_on:
 #      - golive
 #    when:
