@@ -31,7 +31,7 @@
     "@goldinteractive/ignore-assets-webpack-plugin": "^3.0.0",
     "@storybook/addon-a11y": "^6.0.28",
     "@storybook/addon-essentials": "^6.0.28",
-    "@storybook/html": "6.0.21",
+    "@storybook/html": "^6.2",
     "autoprefixer": "^8.6.3",
     "babel-loader": "^8.0.5",
     "babel-plugin-dev-expression": "^0.2.2",
