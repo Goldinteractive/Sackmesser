@@ -1,6 +1,6 @@
 {
   "name": "Sackmesser",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "description": "Toolset to build and maintain any kind of website or web app",
   "main": "assets/js/main.js",
   "repository": {
