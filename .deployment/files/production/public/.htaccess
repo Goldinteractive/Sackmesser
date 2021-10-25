@@ -32,10 +32,10 @@ RewriteRule ^ %1 [L,R=301]
 
 # Handle Front Controller...
 #RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteRule ^de/(.+)$ /de/index.php [NC,L]
+#RewriteRule ^de/(.+)?$ /de/index.php [NC,L]
 #
 #RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteRule ^en/(.+)$ /en/index.php [NC,L]
+#RewriteRule ^en/(.+)?$ /en/index.php [NC,L]
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
