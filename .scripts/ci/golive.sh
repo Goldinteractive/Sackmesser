@@ -19,8 +19,8 @@ callRecipeEvent $RECIPE "golive.pre"
 
 # go live
 executeSSH "if [ -d $APPROOT/old ]; then rm -rf $APPROOT/old; fi
-    mv $APPROOT/current $APPROOT/old
-    mv $APPROOT/deploy $APPROOT/current"
+    mv -T $APPROOT/current $APPROOT/old
+    mv -T $APPROOT/deploy $APPROOT/current"
 
 # post go live
 callRecipeEvent $RECIPE "golive.post"
