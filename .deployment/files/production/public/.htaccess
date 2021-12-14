@@ -15,7 +15,7 @@ RewriteRule "^(\S*)\s+(\S*\s+.*)$" $1+$2 [L]
 Header set Strict-Transport-Security "max-age=2592000; includeSubDomains"
 Header always set X-Frame-Options "SAMEORIGIN"
 Header always set X-Xss-Protection "1; mode=block"
-Header set Referrer-Policy "no-referrer"
+Header set Referrer-Policy "same-origin"
 
 # Redirect Trailing Slashes If Not A Folder...
 RewriteCond %{REQUEST_FILENAME} !-d
