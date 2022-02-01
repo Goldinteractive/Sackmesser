@@ -1,10 +1,10 @@
 SHELL:=/bin/bash
 -include .config/build
 LOCALMAKEFILE:=Makefile.local
-$(eval DOCKERCONTAINER_apache=$(shell sh -c "docker container ls -f name=$$(basename $$PWD)_apache --format '{{.Names}}'"))
-$(eval DOCKERCONTAINER_frontend=$(shell sh -c "docker container ls -f name=$$(basename $$PWD)_frontend --format '{{.Names}}'"))
-$(eval DOCKERCONTAINER_backend=$(shell sh -c "docker container ls -f name=$$(basename $$PWD)_backend --format '{{.Names}}'"))
-$(eval DOCKERCONTAINER_designsystem=$(shell sh -c "docker container ls -f name=$$(basename $$PWD)_designsystem --format '{{.Names}}'"))
+$(eval DOCKERCONTAINER_apache=$(shell sh -c "docker container ls -f name=$$(basename $$PWD)-apache --format '{{.Names}}'"))
+$(eval DOCKERCONTAINER_frontend=$(shell sh -c "docker container ls -f name=$$(basename $$PWD)-frontend --format '{{.Names}}'"))
+$(eval DOCKERCONTAINER_backend=$(shell sh -c "docker container ls -f name=$$(basename $$PWD)-backend --format '{{.Names}}'"))
+$(eval DOCKERCONTAINER_designsystem=$(shell sh -c "docker container ls -f name=$$(basename $$PWD)-designsystem --format '{{.Names}}'"))
 
 ##################
 # General
