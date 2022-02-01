@@ -48,7 +48,7 @@ feature-remove-%:
 .PHONY: watch-designsystem
 watch-designsystem:
 	@ make install
-	@ docker-compose restart designsystem
+	@ docker compose restart designsystem
 	@ make docker-make-exec SERVICE=designsystem CMD=watch-designsystem
 
 .PHONY: build-designsystem
@@ -82,11 +82,11 @@ favicons:
 
 .PHONY: up
 up:
-	@ docker-compose up
+	@ docker compose up
 
 .PHONY: stop
 stop:
-	@ docker-compose stop
+	@ docker compose stop
 
 .PHONY: connect-%
 connect-%:
