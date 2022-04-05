@@ -22,7 +22,7 @@ services:
       - frontend
 
   frontend:
-    image: goldinteractive/sm-node:12.13-rev1
+    image: goldinteractive/sm-node:16.14-rev1
     entrypoint: "tail -f /dev/null"
     volumes:
       - ./:/usr/src/app/:delegated
@@ -45,7 +45,7 @@ services:
           - backend
 
   designsystem:
-      image: goldinteractive/sm-node:12.13-rev1
+      image: goldinteractive/sm-node:16.14-rev1
       ports:
           - 3002:3002
       entrypoint: "tail -f /dev/null"
