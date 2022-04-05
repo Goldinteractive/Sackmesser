@@ -21,9 +21,9 @@ fi
 
 $WEBPACK --mode $WEBPACK_MODE \
   --config $WEBPACK_CONFIG \
-  --progress $PROGRESS \
-  --env.assetHash $ASSET_HASH \
-  --env.environment $ENVIRONMENT \
-  --env.publicDest $PUBLIC_DEST \
-  --env.mode $WEBPACK_MODE \
-  --env.assetHashTemplateReplacePath $ASSET_HASH_TEMPLATE_REPLACE_PATH
+  --progress=$PROGRESS \
+  --env assetHash=$ASSET_HASH \
+  --env environment=$ENVIRONMENT \
+  --env publicDest=$PUBLIC_DEST \
+  --env mode=$WEBPACK_MODE \
+  --env assetHashTemplateReplacePath=$ASSET_HASH_TEMPLATE_REPLACE_PATH

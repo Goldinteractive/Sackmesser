@@ -5,5 +5,5 @@ ASSET_HASH=assets \
 ENVIRONMENT=local \
 PUBLIC_DEST=public \
 WEBPACK_MODE=development \
-PROGRESS=true \
+PROGRESS=profile \
 .scripts/frontend/webpack.sh
