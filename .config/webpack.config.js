@@ -60,7 +60,8 @@ const buildCssConfig = (cssEntry, { assetHash, isProd, assetDir }) => ({
     modules: [paths.app.cssBase, paths.app.frontend, 'node_modules']
   },
   output: {
-    path: assetDir
+    path: assetDir,
+    publicPath: '',
   },
   module: {
     rules: [
