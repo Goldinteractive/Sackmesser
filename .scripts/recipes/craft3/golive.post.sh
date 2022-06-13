@@ -6,5 +6,5 @@ loadEnvConfig $ENV
 
 APPROOT=$DEPLOY_APPROOT
 
-executeSSH "APPENV=$ENV $DEPLOY_PHP_BINARY $APPROOT/deploy/backend/craft blitz/cache/clear"
-executeSSH "APPENV=$ENV $DEPLOY_PHP_BINARY $APPROOT/deploy/backend/craft crafter/cache/clear-template"
+executeSSH "APPENV=$ENV $DEPLOY_PHP_BINARY $APPROOT/current/backend/craft blitz/cache/clear"
+executeSSH "APPENV=$ENV $DEPLOY_PHP_BINARY $APPROOT/current/backend/craft crafter/cache/clear-template"
