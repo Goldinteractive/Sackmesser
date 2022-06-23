@@ -1,5 +1,5 @@
 global-variables:
-  image_sm_php: &image_sm_php goldinteractive/sm-php:8.0-rev3
+  image_sm_php: &image_sm_php goldinteractive/sm-php:8.0-rev5
   image_sm_node: &image_sm_node goldinteractive/sm-node:16.14-rev1
 
 kind: pipeline
