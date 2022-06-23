@@ -33,7 +33,7 @@ services:
           - frontend
 
   backend:
-    image: goldinteractive/sm-php:8.0-rev3
+    image: goldinteractive/sm-php:8.0-rev5
     volumes:
       - ./:/var/www/:delegated
       - v_vendor:/var/www/backend/vendor
